@@ -1,1 +1,103 @@
-Hello
+<ion-header>
+  <ion-toolbar color="light">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Income and Expenses
+    </ion-title>
+    <!-- <ion-buttons slot="end">
+      <ion-button (click)="authService.logout()">
+        <ion-icon slot="icon-only" name="log-out"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content color="primary">
+  
+  <ion-toolbar color="light">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-left">
+          DD-MMM
+        </ion-col>
+        <ion-col class="ion-text-center">
+          Today
+          <ion-icon name="arrow-dropdown" class="valign-middle"></ion-icon>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          Upcoming
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+
+  <ion-grid class="ion-margin-top ion-margin-bottom ion-padding-top">
+    <ion-row class="ion-align-items-center">
+      <ion-col size="5" class="ion-text-center border-right">
+        <div>Spent</div>
+        <div>
+          <h1 class="ion-no-margin">
+            <small>&#x20B9;</small> <b>520</b>
+          </h1>
+          out of <b>&#x20B9; 780</b>
+        </div>
+      </ion-col>
+      <ion-col>
+        <div>
+          <div class="ion-text-center">Top 3 spent</div>
+          <ion-grid>
+            <ion-row>
+              <ion-col class="ion-no-padding ion-text-left">&#x20B9; 280</ion-col>
+              <ion-col class="ion-no-padding ion-text-right">Food</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding ion-text-left">&#x20B9; 200</ion-col>
+              <ion-col class="ion-no-padding ion-text-right">Grossary</ion-col>
+            </ion-row>
+            <ion-row>
+              <ion-col class="ion-no-padding ion-text-left">&#x20B9; 300</ion-col>
+              <ion-col class="ion-no-padding ion-text-right">Fashion</ion-col>
+            </ion-row>
+          </ion-grid>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+
+  <ion-card class="top-rounded ion-no-margin bg-white">
+    <ion-card-header>
+      <ion-card-title>Sponsers</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="2"><b>Date</b></ion-col>
+          <ion-col size="4"><b>Description</b></ion-col>
+          <ion-col size="3" class="ion-text-right"><b>Cr.</b></ion-col>
+          <ion-col size="3" class="ion-text-right"><b>D</b></ion-col>
+        </ion-row>
+  
+        <ng-container *ngFor="let i of [].constructor(5)">
+          <ion-row>
+            <ion-col size="2">02/10</ion-col>
+            <ion-col size="4">XYZ Resturant</ion-col>
+            <ion-col size="3" class="ion-text-right">-</ion-col>
+            <ion-col size="3" class="ion-text-right">750</ion-col>
+          </ion-row>
+    
+          <ion-row>
+            <ion-col size="2">02/10</ion-col>
+            <ion-col size="4">Salary</ion-col>
+            <ion-col size="3" class="ion-text-right">15250</ion-col>
+            <ion-col size="3" class="ion-text-right">-</ion-col>
+          </ion-row>
+        </ng-container>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+  
+</ion-content>

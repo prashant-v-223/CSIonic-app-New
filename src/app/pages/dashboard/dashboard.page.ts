@@ -8,19 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardPage implements OnInit {
 
-  page = 'TimeTable';
-  selectOrChange = 'Select';
-  index: any;
-  iconsOnly = false;
-  userData: any;
-  subscription: any;
-  constructor(
-   ) {
-  }
-  ionViewDidLoad() {
+  constructor() {}
 
-  }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 }

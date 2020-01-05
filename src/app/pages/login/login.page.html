@@ -1,0 +1,101 @@
+<ion-content>
+
+  <ion-grid class="full-height">
+    <ion-row class="full-height ion-align-items-center ion-justify-content-center">
+      <ion-col>
+        <div class="ion-text-center">
+          <h2>
+            Smart Hisab
+          </h2>
+        </div>
+
+        <ion-grid>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size-sm="8" size-md="6" size-lg="6" size-xl="4">
+              <ion-card class="ion-no-margin bg-white">
+                <ion-card-header>
+                  <ion-card-title class="ion-text-center">
+                    <b>Already a Smart Hisab User</b>
+                  </ion-card-title>
+                </ion-card-header>
+
+                <ion-card-content>
+                  <form [formGroup]="loginForm" (submit)="login()">
+
+                    <ion-item [class.ion-touched]="isSubmitionInitiated && loginForm.get('username').invalid">
+                      <ion-input type="text" placeholder="Username *" formControlName="username"></ion-input>
+                      <ion-icon name="person" slot="end"></ion-icon>
+                    </ion-item>
+                    <div class="ion-padding-start ion-padding-end" @fontSizeEnterLeave
+                      *ngIf="(isSubmitionInitiated || loginForm.get('username').touched) && loginForm.get('username').invalid">
+                      <ion-text color="danger" class="text-sm" *ngIf="loginForm.get('username').errors.required">
+                        Username is required field
+                      </ion-text>
+                      <ion-text color="danger" class="text-sm" *ngIf="!loginForm.get('username').errors.required">
+                        Enter a valid username
+                      </ion-text>
+                    </div>
+
+                    <ion-item [class.ion-touched]="isSubmitionInitiated && loginForm.get('password').invalid">
+                      <ion-input type="password" placeholder="Password *" formControlName="password"></ion-input>
+                      <ion-icon name="key" slot="end"></ion-icon>
+                    </ion-item>
+                    <div class="ion-padding-start ion-padding-end" @fontSizeEnterLeave
+                      *ngIf="(isSubmitionInitiated || loginForm.get('password').touched) && loginForm.get('password').invalid">
+                      <ion-text color="danger" class="text-sm" *ngIf="loginForm.get('password').errors.required">
+                        Password is required field
+                      </ion-text>
+                      <ion-text color="danger" class="text-sm" *ngIf="loginForm.get('password').errors.minlength">
+                        Use at least {{ loginForm.get('password').errors.minlength.requiredLength }} characters
+                      </ion-text>
+                    </div>
+
+                    <div class="ion-text-center ion-margin-top">
+                      <ion-button type="submit">
+                        Login
+                      </ion-button>
+                      <br><br>
+      
+                      New to Smart Hisab?
+                      <br>
+                      <a routerLink="/register" routerDirection="root">Create new account</a>
+                    </div>
+
+                  </form>
+                </ion-card-content>
+
+                <h6 class="ion-margin-start ion-margin-end line-on-each-side">OR</h6>
+
+                <ion-card-header>
+                  <ion-card-title class="ion-text-center">
+                    <b>Login With</b>
+                  </ion-card-title>
+                </ion-card-header>
+
+                <ion-card-content class="ion-text-center">
+                  
+                  <ion-button fill="outline" color="danger" class="social-signin">
+                    <ion-icon name="logo-googleplus" slot="start"></ion-icon>
+                    Google
+                  </ion-button>
+                  <br>
+                  <ion-button fill="outline" color="primary" class="social-signin">
+                    <ion-icon name="logo-facebook" slot="start"></ion-icon>
+                    Facebook
+                  </ion-button>
+
+                  <br>
+                  <br>
+
+                </ion-card-content>
+
+              </ion-card>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

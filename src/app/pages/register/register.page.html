@@ -1,0 +1,135 @@
+<ion-content>
+
+  <ion-grid class="full-height">
+    <ion-row class="full-height ion-align-items-center ion-justify-content-center">
+      <ion-col>
+        <div class="ion-text-center">
+          <h2>
+            Smart Hisab
+          </h2>
+        </div>
+
+        <ion-grid>
+          <ion-row class="ion-justify-content-center">
+            <ion-col size-sm="8" size-md="6" size-lg="6" size-xl="4">
+              <ion-card class="ion-no-margin bg-white">
+                <ion-card-header>
+                  <ion-card-title class="ion-text-center">
+                    <b>Register for a Smart Hisab account</b>
+                  </ion-card-title>
+                </ion-card-header>
+                <ion-card-content>
+      
+                  <form [formGroup]="registerForm" (submit)="register()">
+                    
+                    <ion-item [class.ion-touched]="isSubmitionInitiated && registerForm.get('email').invalid">
+                      <ion-input type="email" placeholder="Email ID *" formControlName="email"></ion-input>
+                      <ion-icon name="mail" slot="end"></ion-icon>
+                    </ion-item>
+                    <div class="ion-padding-start ion-padding-end" @fontSizeEnterLeave
+                      *ngIf="(isSubmitionInitiated || registerForm.get('email').touched) && registerForm.get('email').invalid">
+                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('email').errors.required">
+                        Email is required field
+                      </ion-text>
+                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('email').errors.pattern">
+                        Enter a valid email address
+                      </ion-text>
+                    </div>
+      
+                    <ion-item [class.ion-touched]="isSubmitionInitiated && registerForm.get('username').invalid">
+                      <ion-input type="text" placeholder="Username *" formControlName="username"></ion-input>
+                      <ion-icon name="person" slot="end"></ion-icon>
+                    </ion-item>
+                    <div class="ion-padding-start ion-padding-end" @fontSizeEnterLeave
+                      *ngIf="(isSubmitionInitiated || registerForm.get('username').touched) && registerForm.get('username').invalid">
+                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('username').errors.required">
+                        Username is required field
+                      </ion-text>
+                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('username').errors.pattern">
+                        You can only use alphabets and digits
+                      </ion-text>
+                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('username').errors.minlength">
+                        Use at least {{ registerForm.get('username').errors.minlength.requiredLength }} characters
+                      </ion-text>
+                    </div>
+      
+                    <ion-item [class.ion-touched]="isSubmitionInitiated && registerForm.get('password').invalid">
+                      <ion-input type="password" placeholder="Password *" formControlName="password"></ion-input>
+                      <ion-icon name="key" slot="end"></ion-icon>
+                    </ion-item>
+                    <div class="ion-padding-start ion-padding-end" @fontSizeEnterLeave
+                      *ngIf="(isSubmitionInitiated || registerForm.get('password').touched) && registerForm.get('password').invalid">
+                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('password').errors.required">
+                        Password is required field
+                      </ion-text>
+                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('password').errors.minlength">
+                        Use at least {{ registerForm.get('password').errors.minlength.requiredLength }} characters
+                      </ion-text>
+                    </div>
+      
+                    <ion-item [class.ion-touched]="isSubmitionInitiated && registerForm.get('confirmPassword').invalid">
+                      <ion-input type="password" placeholder="Confirm Password *" formControlName="confirmPassword"></ion-input>
+                      <ion-icon name="key" slot="end"></ion-icon>
+                    </ion-item>
+                    <div class="ion-padding-start ion-padding-end" @fontSizeEnterLeave
+                      *ngIf="(isSubmitionInitiated || registerForm.get('confirmPassword').touched) && (registerForm.get('confirmPassword').invalid || (registerForm.invalid && registerForm.errors?.fieldEqual))">
+                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('confirmPassword').errors?.required">
+                        Confirm your password here
+                      </ion-text>
+                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('confirmPassword').valid && registerForm.invalid && registerForm.errors?.fieldEqual">
+                        Confirm password doesn't match
+                      </ion-text>
+                    </div>
+      
+                    <ion-item [class.ion-touched]="isSubmitionInitiated && registerForm.get('birthDate').invalid">
+                      <ion-datetime type="text" placeholder="Birth Date *" formControlName="birthDate" displayFormat="D MMM, YYYY" pickerFormat="DD MMM YYYY" class="no-padding-start"></ion-datetime>
+                      <ion-icon name="calendar" slot="end"></ion-icon>
+                    </ion-item>
+                    <div class="ion-padding-start ion-padding-end" @fontSizeEnterLeave
+                      *ngIf="(isSubmitionInitiated || registerForm.get('birthDate').touched) && registerForm.get('birthDate').invalid">
+                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('birthDate').errors.required">
+                        Birth Date is required field
+                      </ion-text>
+                    </div>
+      
+                    <div class="ion-text-center">
+                      <h2>
+                        <ion-button fill="outline" [color]="registerForm.get('gender').value === 'male' ? 'dark' : 'medium'" size="medium" (click)="selectGender('male')">
+                          <ion-icon name="man"></ion-icon>
+                        </ion-button>
+                        <ion-button fill="outline" [color]="registerForm.get('gender').value === 'female' ? 'dark' : 'medium'" size="medium" (click)="selectGender('female')">
+                          <ion-icon name="woman"></ion-icon>
+                        </ion-button>
+                      </h2>
+                      <div class="ion-text-center ion-padding-start ion-padding-end" @fontSizeEnterLeave
+                        *ngIf="isSubmitionInitiated && registerForm.get('gender').invalid">
+                        <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('gender').errors.required">
+                          Please select gender
+                        </ion-text>
+                      </div>
+                    </div>
+                  
+                    <div class="ion-text-center ion-margin-top">
+                      <ion-button type="submit">
+                        Register
+                      </ion-button>
+                      <br><br>
+      
+                      Already a Smart Hisab User? <a routerLink="/login" routerDirection="root">Login</a>
+                    </div>
+      
+                  </form>
+
+                </ion-card-content>
+              </ion-card>
+
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

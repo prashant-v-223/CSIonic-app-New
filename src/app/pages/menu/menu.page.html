@@ -1,0 +1,29 @@
+<ion-split-pane contentId="main-content">
+
+  <ion-menu class="styled" contentId="main-content">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Income And Expenses</ion-title>
+      </ion-toolbar>
+    </ion-header>
+
+    <ion-content>
+
+      <ion-list>
+        <ion-menu-toggle auto-hide="false" *ngFor="let menuItem of menuItems">
+          <ion-item *ngIf="menuItem.show !== false"
+            [routerLink]="[menuItem.url]"
+            routerDirection="root"
+            [class.active-item]="selectedPath.endsWith(menuItem.url)">
+            <ion-icon slot="start" [name]="menuItem.icon"></ion-icon>
+            <ion-label>{{ menuItem.label }}</ion-label>
+          </ion-item>
+        </ion-menu-toggle>
+      </ion-list>
+      
+    </ion-content>
+  </ion-menu>
+
+  <ion-router-outlet id="main-content"></ion-router-outlet>
+
+</ion-split-pane>

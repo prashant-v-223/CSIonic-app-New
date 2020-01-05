@@ -9,3 +9,55 @@
 @import '~@ionic/angular/css/text-alignment.css';
 @import '~@ionic/angular/css/text-transformation.css';
 @import '~@ionic/angular/css/flex-utils.css';
+
+
+/**
+* Utility classes
+*/
+.valign-middle {
+  vertical-align: middle;
+}
+
+.border-right {
+  border-right: solid 1px var(--ion-color-medium);
+}
+
+.full-height {
+  height: 100%;
+}
+
+.no-padding-start {
+  padding-left: 0;
+}
+
+.bg-white {
+  background-color: white;
+}
+
+// Text in center and border on both side
+.line-on-each-side {
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  text-align: center;
+
+  &:before, &:after {
+    position: absolute;
+    top: 51%;
+    overflow: hidden;
+    width: 48%;
+    height: 1px;
+    content: '\a0';
+    background-color: var(--ion-color-medium);
+  }
+
+  &:before {
+    margin-left: -50%;
+    text-align: right;
+  }
+
+  &:after {
+    margin-left: 2%;
+    text-align: right;
+  }
+}

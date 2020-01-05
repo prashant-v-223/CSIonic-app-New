@@ -1,5 +1,7 @@
 {
   "name": "hisaab",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
