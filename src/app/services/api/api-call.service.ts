@@ -3,7 +3,9 @@ import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { ApiConfiguration } from './configuration';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root'
+})
 export class ApiCallService extends ApiConfiguration {
 
   token: any = {};
@@ -18,7 +20,7 @@ export class ApiCallService extends ApiConfiguration {
 
   setHeaderToken(token) {
     this.token = token;
-    // localStorage.setItem('token', token);
+    localStorage.setItem('token', token);
   }
 
   getHeader() {

@@ -1,23 +1,43 @@
 import { Injectable } from '@angular/core';
 import { User } from '../models/user.model';
+import { ApiCallService } from './api/api-call.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor() { }
+  private user: User;
 
-  register(newUser: User){
+  constructor(
+    private apiCallService: ApiCallService
+  ) { }
 
-    let formData = new FormData();
-    formData.append('username', newUser.username);
-    formData.append('email', newUser.email);
-    formData.append('password', newUser.password);
-    formData.append('birthDate', newUser.birthDate);
-    formData.append('gender', newUser.gender);
+  setUser(user: User) {
+    localStorage.setItem('user', JSON.stringify(user));
+  }
 
-    //API call the register a new user
+  getUser(): User {
+    return JSON.parse(localStorage.getItem('user')) as User;
+  }
 
+  login(credential: {email: string, password: string}): Promise<any> {
+    return new Promise((resolve, reject) => {
+      this.apiCallService.postData(this.apiCallService.login, credential, false)
+        .then(res => {
+          if (res.data.status === 'SUCCESS'){
+            this.apiCallService.setHeaderToken(res.data.token);
+            localStorage.setItem('user', res.data.user);
+            resolve(res);
+          }
+        })
+        .catch(err => {
+          reject(err);
+        })
+    });
+  }
+
+  register(newUser: User): Promise<any> {
+    return this.apiCallService.postData(this.apiCallService.register, newUser, false);
   }
 }

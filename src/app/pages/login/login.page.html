@@ -22,26 +22,31 @@
                 <ion-card-content>
                   <form [formGroup]="loginForm" (submit)="login()">
 
-                    <ion-item [class.ion-touched]="isSubmitionInitiated && loginForm.get('username').invalid">
-                      <ion-input type="text" placeholder="Username *" formControlName="username"></ion-input>
-                      <ion-icon name="person" slot="end"></ion-icon>
+                    <ion-item [class.ion-touched]="isSubmitionInitiated && loginForm.get('email').invalid" [class.ion-invalid]="emailNotRegistered">
+                      <ion-input type="email" placeholder="Email ID *" formControlName="email" (input)="emailNotRegistered = false"></ion-input>
+                      <ion-icon name="mail" slot="end"></ion-icon>
                     </ion-item>
                     <div class="ion-padding-start ion-padding-end" @fontSizeEnterLeave
-                      *ngIf="(isSubmitionInitiated || loginForm.get('username').touched) && loginForm.get('username').invalid">
-                      <ion-text color="danger" class="text-sm" *ngIf="loginForm.get('username').errors.required">
-                        Username is required field
+                      *ngIf="(isSubmitionInitiated || loginForm.get('email').touched) && loginForm.get('email').invalid && !emailNotRegistered">
+                      <ion-text color="danger" class="text-sm" *ngIf="loginForm.get('email').errors.required">
+                        Email is required field
                       </ion-text>
-                      <ion-text color="danger" class="text-sm" *ngIf="!loginForm.get('username').errors.required">
-                        Enter a valid username
+                      <ion-text color="danger" class="text-sm" *ngIf="loginForm.get('email').errors.pattern">
+                        Enter a valid email address
+                      </ion-text>
+                    </div>
+                    <div class="ion-padding-start ion-padding-end" *ngIf="emailNotRegistered" @fontSizeEnterLeave>
+                      <ion-text color="danger" class="text-sm">
+                        This email is not registered
                       </ion-text>
                     </div>
 
-                    <ion-item [class.ion-touched]="isSubmitionInitiated && loginForm.get('password').invalid">
-                      <ion-input type="password" placeholder="Password *" formControlName="password"></ion-input>
+                    <ion-item [class.ion-touched]="isSubmitionInitiated && loginForm.get('password').invalid"  [class.ion-invalid]="invalidPassword">
+                      <ion-input type="password" placeholder="Password *" formControlName="password" (input)="invalidPassword = false"></ion-input>
                       <ion-icon name="key" slot="end"></ion-icon>
                     </ion-item>
                     <div class="ion-padding-start ion-padding-end" @fontSizeEnterLeave
-                      *ngIf="(isSubmitionInitiated || loginForm.get('password').touched) && loginForm.get('password').invalid">
+                      *ngIf="(isSubmitionInitiated || loginForm.get('password').touched) && loginForm.get('password').invalid  && !invalidPassword">
                       <ion-text color="danger" class="text-sm" *ngIf="loginForm.get('password').errors.required">
                         Password is required field
                       </ion-text>
@@ -49,10 +54,20 @@
                         Use at least {{ loginForm.get('password').errors.minlength.requiredLength }} characters
                       </ion-text>
                     </div>
+                    <div class="ion-padding-start ion-padding-end" *ngIf="invalidPassword" @fontSizeEnterLeave>
+                      <ion-text color="danger" class="text-sm">
+                        Invalid password, please try again
+                      </ion-text>
+                    </div>
 
                     <div class="ion-text-center ion-margin-top">
-                      <ion-button type="submit">
-                        Login
+                      <ion-button type="submit" [disabled]="loginForm.disabled">
+                        <ng-container *ngIf="!loginForm.disabled else loggingin">
+                          Login
+                        </ng-container>
+                        <ng-template #loggingin>
+                          <ion-spinner name="crescent" class="ion-margin-end"></ion-spinner> Please Wait..
+                        </ng-template>
                       </ion-button>
                       <br><br>
       

@@ -20,14 +20,28 @@
                 </ion-card-header>
                 <ion-card-content>
       
-                  <form [formGroup]="registerForm" (submit)="register()">
+                  <form [formGroup]="registerForm" (ngSubmit)="register()">
                     
-                    <ion-item [class.ion-touched]="isSubmitionInitiated && registerForm.get('email').invalid">
-                      <ion-input type="email" placeholder="Email ID *" formControlName="email"></ion-input>
+                    <ion-item [class.ion-touched]="isSubmitionInitiated && registerForm.get('name').invalid">
+                      <ion-input type="text" placeholder="Name *" formControlName="name"></ion-input>
+                      <ion-icon name="person" slot="end"></ion-icon>
+                    </ion-item>
+                    <div class="ion-padding-start ion-padding-end" @fontSizeEnterLeave
+                      *ngIf="(isSubmitionInitiated || registerForm.get('name').touched) && registerForm.get('name').invalid">
+                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('name').errors.required">
+                        Name is required field
+                      </ion-text>
+                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('name').errors.pattern">
+                        You can only use alphabets and digits
+                      </ion-text>
+                    </div>
+
+                    <ion-item [class.ion-touched]="isSubmitionInitiated && registerForm.get('email').invalid" [class.ion-invalid]="emailAlreadyRegistered">
+                      <ion-input type="email" placeholder="Email ID *" formControlName="email" (input)="emailAlreadyRegistered = false"></ion-input>
                       <ion-icon name="mail" slot="end"></ion-icon>
                     </ion-item>
                     <div class="ion-padding-start ion-padding-end" @fontSizeEnterLeave
-                      *ngIf="(isSubmitionInitiated || registerForm.get('email').touched) && registerForm.get('email').invalid">
+                      *ngIf="(isSubmitionInitiated || registerForm.get('email').touched) && registerForm.get('email').invalid && !emailAlreadyRegistered">
                       <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('email').errors.required">
                         Email is required field
                       </ion-text>
@@ -35,21 +49,9 @@
                         Enter a valid email address
                       </ion-text>
                     </div>
-      
-                    <ion-item [class.ion-touched]="isSubmitionInitiated && registerForm.get('username').invalid">
-                      <ion-input type="text" placeholder="Username *" formControlName="username"></ion-input>
-                      <ion-icon name="person" slot="end"></ion-icon>
-                    </ion-item>
-                    <div class="ion-padding-start ion-padding-end" @fontSizeEnterLeave
-                      *ngIf="(isSubmitionInitiated || registerForm.get('username').touched) && registerForm.get('username').invalid">
-                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('username').errors.required">
-                        Username is required field
-                      </ion-text>
-                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('username').errors.pattern">
-                        You can only use alphabets and digits
-                      </ion-text>
-                      <ion-text color="danger" class="text-sm" *ngIf="registerForm.get('username').errors.minlength">
-                        Use at least {{ registerForm.get('username').errors.minlength.requiredLength }} characters
+                    <div class="ion-padding-start ion-padding-end" @fontSizeEnterLeave *ngIf="emailAlreadyRegistered">
+                      <ion-text color="danger" class="text-sm">
+                        This email is already registered
                       </ion-text>
                     </div>
       
@@ -94,10 +96,10 @@
       
                     <div class="ion-text-center">
                       <h2>
-                        <ion-button fill="outline" [color]="registerForm.get('gender').value === 'male' ? 'dark' : 'medium'" size="medium" (click)="selectGender('male')">
+                        <ion-button fill="outline" [color]="registerForm.get('gender').value === 'male' ? 'dark' : 'medium'" size="medium" (click)="selectGender('male')" [disabled]="registerForm.disabled">
                           <ion-icon name="man"></ion-icon>
                         </ion-button>
-                        <ion-button fill="outline" [color]="registerForm.get('gender').value === 'female' ? 'dark' : 'medium'" size="medium" (click)="selectGender('female')">
+                        <ion-button fill="outline" [color]="registerForm.get('gender').value === 'female' ? 'dark' : 'medium'" size="medium" (click)="selectGender('female')" [disabled]="registerForm.disabled">
                           <ion-icon name="woman"></ion-icon>
                         </ion-button>
                       </h2>
@@ -110,8 +112,13 @@
                     </div>
                   
                     <div class="ion-text-center ion-margin-top">
-                      <ion-button type="submit">
-                        Register
+                      <ion-button type="submit" [disabled]="registerForm.disabled">
+                        <ng-container *ngIf="!registerForm.disabled else registaring">
+                          Register
+                        </ng-container>
+                        <ng-template #registaring>
+                          <ion-spinner name="crescent" class="ion-margin-end"></ion-spinner> Please Wait..
+                        </ng-template>
                       </ion-button>
                       <br><br>
       

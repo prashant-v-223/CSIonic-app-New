@@ -1,8 +1,8 @@
 export interface User {
   _id?: string;
-  username: string;
+  name: string;
   email: string;
   password?: string;
-  birthDate: string;
+  dob: string;
   gender: 'male' | 'female';
 }
