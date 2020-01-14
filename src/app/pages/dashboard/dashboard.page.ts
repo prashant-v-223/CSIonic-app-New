@@ -10,5 +10,7 @@ export class DashboardPage implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    console.log('home');
+  }
 }
