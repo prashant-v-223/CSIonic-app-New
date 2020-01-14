@@ -21,19 +21,21 @@ export class UserService {
     return JSON.parse(localStorage.getItem('user')) as User;
   }
 
-  login(credential: {email: string, password: string}): Promise<any> {
+  login(credential: { email: string, password: string }): Promise<any> {
     return new Promise((resolve, reject) => {
       this.apiCallService.postData(this.apiCallService.login, credential, false)
         .then(res => {
-          if (res.data.status === 'SUCCESS'){
+          console.log('login service', res);
+          if (res.status === 'SUCCESS') {
             this.apiCallService.setHeaderToken(res.data.token);
             localStorage.setItem('user', res.data.user);
             resolve(res);
           }
         })
         .catch(err => {
+          console.log(err);
           reject(err);
-        })
+        });
     });
   }
 

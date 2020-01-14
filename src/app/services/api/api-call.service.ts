@@ -49,11 +49,12 @@ export class ApiCallService extends ApiConfiguration {
     return new Promise((resolve, reject) => {
       console.log('Token :', token);
       console.log('Data :', this.getHeader());
-
       const request: string = this.baseUrl + subUrl;
       this.http.post(request, data, token ? this.getHeader() : {})
         .subscribe(
-          res => resolve(res),
+          res => {
+            resolve(res);
+          },
           error => {
             console.log('Main Error :', error);
             reject(error);
