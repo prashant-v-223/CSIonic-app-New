@@ -34,7 +34,7 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         
         this.platform.ready().then(() => {
-          if('/tabs/dashboard' === event.url) return;
+          if(['/tabs/dashboard', '/'].indexOf(event.url) !== -1) return;
           this.statusBar.styleDefault();
           this.statusBar.backgroundColorByHexString('#ffffff');
         });

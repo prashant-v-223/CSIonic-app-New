@@ -16,7 +16,7 @@ export class MenuPage implements OnInit {
   ) {
     this.menuItems = [
       {
-        label: 'Log out',
+        label: 'Logout',
         icon: 'unlock',
         url: '/login'
       }

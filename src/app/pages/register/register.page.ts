@@ -71,6 +71,8 @@ export class RegisterPage implements OnInit {
       dob: this.registerForm.get('birthDate').value.trim()
     }
 
+    console.log(newUser);
+
     this.userService.register(newUser)
       .then(res => {
         console.log(res);

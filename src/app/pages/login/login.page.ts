@@ -33,7 +33,7 @@ export class LoginPage implements OnInit {
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [
-        Validators.required, 
+        Validators.required,
         Validators.pattern('^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9])+$')
       ]),
       password: new FormControl('', [
@@ -46,21 +46,22 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  login(){
-    
-    this.isSubmitionInitiated = true;
-    if (this.loginForm.invalid) return;
+  login() {
 
+    this.isSubmitionInitiated = true;
+    if (this.loginForm.invalid) {
+      return;
+    }
     this.loginForm.disable();
 
     const credential = {
       email: this.loginForm.get('email').value,
       password: this.loginForm.get('password').value
-    }
+    };
     this.userService.login(credential)
       .then(res => {
-        console.log(res);
-        if (res.status === 'SUCCESS'){
+        console.log('here', res);
+        if (res.status === 'SUCCESS') {
           this.apiCallService.setHeaderToken(res.data.token);
           this.userService.setUser(res.data.user);
           this.router.navigateByUrl('/');
@@ -70,10 +71,10 @@ export class LoginPage implements OnInit {
         }
       })
       .catch(err => {
-        if (err.status === 401){
+        if (err.status === 401) {
           // 401 for email not available
           this.emailNotRegistered = true;
-        } else if (err.status === 402){
+        } else if (err.status === 402) {
           // 402 for incorrect password
           this.invalidPassword = true;
         } else {
