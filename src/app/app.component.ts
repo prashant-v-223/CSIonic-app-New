@@ -10,6 +10,8 @@ import { Router, NavigationEnd } from '@angular/router';
   templateUrl: 'app.component.html'
 })
 export class AppComponent implements OnInit {
+
+  currentStatusBarColor: string = '';
   
   constructor(
     private platform: Platform,
@@ -23,8 +25,6 @@ export class AppComponent implements OnInit {
 
   initializeApp() {
     this.platform.ready().then(() => {
-      // this.statusBar.styleDefault();
-      // this.statusBar.backgroundColorByHexString('#ffffff');
       this.splashScreen.hide();
     });
   }
@@ -34,9 +34,18 @@ export class AppComponent implements OnInit {
       if (event instanceof NavigationEnd) {
         
         this.platform.ready().then(() => {
-          if(['/tabs/dashboard', '/'].indexOf(event.url) !== -1) return;
-          this.statusBar.styleDefault();
-          this.statusBar.backgroundColorByHexString('#ffffff');
+          if(['/tabs/dashboard', '/tabs/savings', '/tabs/investment', '/tabs/goals', '/'].indexOf(event.url) !== -1){
+            const color = getComputedStyle(document.documentElement).getPropertyValue('--ion-color-primary');
+            if (this.currentStatusBarColor !== color){
+              this.statusBar.backgroundColorByHexString(color.trim());
+              this.statusBar.styleLightContent();
+              this.currentStatusBarColor = color;
+            }
+          } else if(this.currentStatusBarColor !== '#ffffff') {
+            this.statusBar.styleDefault();
+            this.statusBar.backgroundColorByHexString('#ffffff');
+            this.currentStatusBarColor = '#ffffff';
+          }
         });
       }
     })

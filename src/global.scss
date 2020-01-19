@@ -27,11 +27,38 @@
 }
 
 .no-padding-start {
-  padding-left: 0;
+  padding-left: 0 !important;
+}
+.no-padding-end {
+  padding-right: 0 !important;
+}
+.no-padding {
+  padding: 0 !important;
 }
 
 .bg-white {
   background-color: white;
+}
+
+hr.styled {
+  height: 0px;
+  border-width: 1px;
+}
+
+.top-rounded {
+  border-top-left-radius: 1.5rem;
+  border-top-right-radius: 1.5rem;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  color: var(--ion-color-dark);
+}
+
+.h-80 {
+  min-height: 80vh;
+}
+
+.bg-transparent {
+  --background: transparent !important;
 }
 
 // Text in center and border on both side

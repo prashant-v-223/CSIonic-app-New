@@ -13,16 +13,16 @@ const routes: Routes = [
         loadChildren: '../dashboard/dashboard.module#DashboardPageModule'
       },
       {
-        path: 'dashboard1',
-        loadChildren: '../dashboard/dashboard.module#DashboardPageModule'
+        path: 'savings',
+        loadChildren: '../savings/savings.module#SavingsPageModule'
       },
       {
-        path: 'dashboard2',
-        loadChildren: '../dashboard/dashboard.module#DashboardPageModule'
+        path: 'investment',
+        loadChildren: '../investment/investment.module#InvestmentPageModule'
       },
       {
-        path: 'dashboard3',
-        loadChildren: '../dashboard/dashboard.module#DashboardPageModule'
+        path: 'goals',
+        loadChildren: '../goals/goals.module#GoalsPageModule'
       },
       {
         path: '',

@@ -1,0 +1,123 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Investment
+    </ion-title>
+    <ion-buttons slot="end">
+      <ion-button>
+        <ion-icon slot="icon-only" name="search"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+  
+<ion-content color="primary">
+
+  <ion-toolbar color="primary">
+    <ion-grid>
+      <ion-row>
+        <ion-col class="ion-text-left">
+          MM-YYYY
+        </ion-col>
+        <ion-col class="ion-text-center">
+          Month
+          <ion-icon name="arrow-dropdown" class="valign-middle"></ion-icon>
+        </ion-col>
+        <ion-col class="ion-text-right">
+          Upcoming
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+
+  <ion-grid class="ion-margin-bottom">
+    <ion-row class="ion-align-items-center">
+      <ion-col class="ion-text-center border-right">
+        <div class="ion-padding">Investment for this period</div>
+        <div>
+          <h1 class="ion-no-margin">
+            <small>&#x20B9;</small> <b>2000</b>
+          </h1>
+        </div>
+      </ion-col>
+      <ion-col class="ion-text-center">
+        <div class="ion-padding">Total Investment</div>
+        <div>
+          <h1 class="ion-no-margin">
+            <small>&#x20B9;</small> <b>2200</b>
+          </h1>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-card class="top-rounded h-80 ion-no-margin bg-white">
+    <div class="ion-padding-top ion-padding-bottom"></div>
+
+    <ion-card-content class="no-padding-start no-padding-end">
+      <ion-item lines="none">
+        <ion-label>{{ isCategoryView ? 'Switch to Transaction View' : 'Switch to Category View' }}</ion-label>
+        <ion-toggle color="medium" class="no-padding-end" (ionChange)="toggleView()"></ion-toggle>
+      </ion-item>
+
+      <ion-item color="light" lines="none">
+        <ion-label>
+          <b>SIP: Paytm Money</b>
+        </ion-label>
+      </ion-item>
+      <ion-grid class="ion-padding-start ion-padding-end">
+        <ion-row>
+          <ion-col size="2"><b>Date</b></ion-col>
+          <ion-col size="6"><b>Description</b></ion-col>
+          <ion-col size="4" class="ion-text-right"><b>Amount</b></ion-col>
+        </ion-row>
+  
+        <ng-container *ngFor="let i of [].constructor(2)">
+          <ion-row>
+            <ion-col size="2">02/10</ion-col>
+            <ion-col size="6">XYZ large cap</ion-col>
+            <ion-col size="4" class="ion-text-right">750</ion-col>
+          </ion-row>
+    
+          <ion-row>
+            <ion-col size="2">02/10</ion-col>
+            <ion-col size="6">XYZ Gov bond</ion-col>
+            <ion-col size="4" class="ion-text-right">15250</ion-col>
+          </ion-row>
+        </ng-container>
+      </ion-grid>
+
+      <ion-item color="light" lines="none">
+        <ion-label>
+          <b>Bank: Fixed Deposite</b>
+        </ion-label>
+      </ion-item>
+      <ion-grid class="ion-padding-start ion-padding-end">
+        <ion-row>
+          <ion-col size="2"><b>Date</b></ion-col>
+          <ion-col size="6"><b>Description</b></ion-col>
+          <ion-col size="4" class="ion-text-right"><b>Amount</b></ion-col>
+        </ion-row>
+  
+        <ng-container *ngFor="let i of [].constructor(2)">
+          <ion-row>
+            <ion-col size="2">02/10</ion-col>
+            <ion-col size="6">XYZ Bank</ion-col>
+            <ion-col size="4" class="ion-text-right">75000</ion-col>
+          </ion-row>
+    
+          <ion-row>
+            <ion-col size="2">02/10</ion-col>
+            <ion-col size="6">ABC Bank</ion-col>
+            <ion-col size="4" class="ion-text-right">15250</ion-col>
+          </ion-row>
+        </ng-container>
+      </ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+
+</ion-content>

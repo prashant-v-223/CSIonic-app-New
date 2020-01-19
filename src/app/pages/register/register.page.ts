@@ -63,38 +63,38 @@ export class RegisterPage implements OnInit {
 
     this.registerForm.disable();
 
-    const newUser: User = {
-      name: this.registerForm.get('name').value.trim(),
-      email: this.registerForm.get('email').value.trim(),
-      password: this.registerForm.get('password').value.trim(),
-      gender: this.registerForm.get('gender').value.trim(),
-      dob: this.registerForm.get('birthDate').value.trim()
-    }
+    this.router.navigateByUrl('/login', { replaceUrl: true });
 
-    console.log(newUser);
+    // const newUser: User = {
+    //   name: this.registerForm.get('name').value.trim(),
+    //   email: this.registerForm.get('email').value.trim(),
+    //   password: this.registerForm.get('password').value.trim(),
+    //   gender: this.registerForm.get('gender').value.trim(),
+    //   dob: this.registerForm.get('birthDate').value.trim()
+    // }
 
-    this.userService.register(newUser)
-      .then(res => {
-        console.log(res);
-        if (res.status === 'SUCCESS'){
-          this.apiCallService.setHeaderToken(res.data.token);
-          this.userService.setUser(res.data.user);
-          this.router.navigateByUrl('/');
-        } else {
-          this.utilService.showToast();
-          this.registerForm.enable();
-        }
-      })
-      .catch(err => {
-        //401 Email already exists
-        if (err.status === 401){
-          this.emailAlreadyRegistered = true;
-        } else {
-          console.log('ERROR in user registeration', err);
-          this.utilService.showToast();
-        }
-        this.registerForm.enable();
-      })
+    // this.userService.register(newUser)
+    //   .then(res => {
+    //     console.log(res);
+    //     if (res.status === 'SUCCESS'){
+    //       this.apiCallService.setHeaderToken(res.data.token);
+    //       this.userService.setUser(res.data.user);
+    //       this.router.navigateByUrl('/', { replaceUrl: true });
+    //     } else {
+    //       this.utilService.showToast();
+    //       this.registerForm.enable();
+    //     }
+    //   })
+    //   .catch(err => {
+    //     //401 Email already exists
+    //     if (err.status === 401){
+    //       this.emailAlreadyRegistered = true;
+    //     } else {
+    //       console.log('ERROR in user registeration', err);
+    //       this.utilService.showToast();
+    //     }
+    //     this.registerForm.enable();
+    //   })
   }
 
 }

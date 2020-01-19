@@ -54,34 +54,36 @@ export class LoginPage implements OnInit {
     }
     this.loginForm.disable();
 
-    const credential = {
-      email: this.loginForm.get('email').value,
-      password: this.loginForm.get('password').value
-    };
-    this.userService.login(credential)
-      .then(res => {
-        console.log('here', res);
-        if (res.status === 'SUCCESS') {
-          this.apiCallService.setHeaderToken(res.data.token);
-          this.userService.setUser(res.data.user);
-          this.router.navigateByUrl('/');
-        } else {
-          this.utilService.showToast();
-          this.loginForm.enable();
-        }
-      })
-      .catch(err => {
-        if (err.status === 401) {
-          // 401 for email not available
-          this.emailNotRegistered = true;
-        } else if (err.status === 402) {
-          // 402 for incorrect password
-          this.invalidPassword = true;
-        } else {
-          this.utilService.showToast();
-        }
-        this.loginForm.enable();
-      });
+    this.router.navigateByUrl('/', { replaceUrl: true });
+
+    // const credential = {
+    //   email: this.loginForm.get('email').value,
+    //   password: this.loginForm.get('password').value
+    // };
+    // this.userService.login(credential)
+    //   .then(res => {
+    //     console.log('here', res);
+    //     if (res.status === 'SUCCESS') {
+    //       this.apiCallService.setHeaderToken(res.data.token);
+    //       this.userService.setUser(res.data.user);
+    //       this.router.navigateByUrl('/', { replaceUrl: true });
+    //     } else {
+    //       this.utilService.showToast();
+    //       this.loginForm.enable();
+    //     }
+    //   })
+    //   .catch(err => {
+    //     if (err.status === 401) {
+    //       // 401 for email not available
+    //       this.emailNotRegistered = true;
+    //     } else if (err.status === 402) {
+    //       // 402 for incorrect password
+    //       this.invalidPassword = true;
+    //     } else {
+    //       this.utilService.showToast();
+    //     }
+    //     this.loginForm.enable();
+    //   });
   }
 
 }
