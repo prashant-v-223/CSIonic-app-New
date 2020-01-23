@@ -14,9 +14,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content color="primary">
 
-  <ion-item color="light" lines="none">
+  <ion-item color="primary" lines="none">
     <ion-label>
       <h2>
         <b>November</b>
@@ -24,15 +24,16 @@
     </ion-label>
   </ion-item>
 
+
   <ion-slides [options]="sliderConfig">
     <ion-slide *ngFor="let i of [0,1,2,3,4,5]">
       <div class="ion-margin-top ion-margin-bottom sliding-goal-card">
         <div class="ion-text-left">
-          <ion-text color="medium">
+          <ion-text color="light">
             <small>Today</small>
           </ion-text>
         </div>
-        <ion-card class="ion-no-margin">
+        <ion-card class="ion-no-margin" color="light">
           <ion-card-content class="ion-no-padding">
             <ion-item [color]="i == 0 ? 'light' : ''" lines="full">
               <ion-label>
@@ -54,72 +55,81 @@
     </ion-slide>
   </ion-slides>
 
-
-
-  <ion-item color="light" lines="none">
-    <ion-label>
-      <h2>
-        <b>Upcomings</b>
-      </h2>
-    </ion-label>
-    <p class="ion-margin-end">01-Dec</p>
-  </ion-item>
-
-  <div>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="1">
-          <ion-icon name="logo-game-controller-b" size="large"></ion-icon>
-        </ion-col>
-        <ion-col size="5" class="ion-text-center ion-padding-start">
-          &#x20B9; 200 x 6 Months
-          <hr class="styled">
-          &#x20B9; 1200
-        </ion-col>
-        <ion-col size="3" class="ion-text-center">
-          <div class="circle-container">
-            <div id="activeBorder" class="active-border">
-              <div id="circle" class="circle">
-                <span class="prec 270" id="prec">&#x20B9; 800</span>
-              </div>
-            </div>
-          </div>
-        </ion-col>
-        <ion-col size="3" class="ion-text-center">
-          <ion-icon name="flag" size="large" color="medium"></ion-icon><br>
-          01-Jan
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+  <div class="ion-text-center ion-margin">
+    5 Goals completed till now
   </div>
 
-  <div>
-    <ion-grid>
-      <ion-row>
-        <ion-col size="1">
-          <ion-icon name="ios-gift" size="large"></ion-icon>
-        </ion-col>
-        <ion-col size="5" class="ion-text-center ion-padding-start">
-          &#x20B9; 100 x 5 Months
-          <hr class="styled">
-          &#x20B9; 500
-        </ion-col>
-        <ion-col size="3" class="ion-text-center">
-          <div class="circle-container">
-            <div id="activeBorder" class="active-border">
-              <div id="circle" class="circle">
-                <span class="prec 270" id="prec">&#x20B9; 800</span>
+
+  <ion-card class="top-rounded h-80 ion-no-margin bg-white">
+
+    <ion-item color="light" lines="none">
+      <ion-label>
+        <h2>
+          <b>Upcomings</b>
+        </h2>
+      </ion-label>
+      <p class="ion-margin-end">01-Dec</p>
+    </ion-item>
+  
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="1">
+            <ion-icon name="logo-game-controller-b" size="large"></ion-icon>
+          </ion-col>
+          <ion-col size="5" class="ion-text-center ion-padding-start">
+            &#x20B9; 200 x 6 Months
+            <hr class="styled">
+            &#x20B9; 1200
+          </ion-col>
+          <ion-col size="3" class="ion-text-center">
+            <div class="circle-container">
+              <div id="activeBorder" class="active-border">
+                <div id="circle" class="circle">
+                  <span class="prec 270" id="prec">&#x20B9; 800</span>
+                </div>
               </div>
             </div>
-          </div>
-        </ion-col>
-        <ion-col size="3" class="ion-text-center">
-          <ion-icon name="flag" size="large" color="medium"></ion-icon><br>
-          01-Jan
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+          </ion-col>
+          <ion-col size="3" class="ion-text-center">
+            <ion-icon name="flag" size="large" color="medium"></ion-icon><br>
+            01-Jan
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  
+    <div>
+      <ion-grid>
+        <ion-row>
+          <ion-col size="1">
+            <ion-icon name="ios-gift" size="large"></ion-icon>
+          </ion-col>
+          <ion-col size="5" class="ion-text-center ion-padding-start">
+            &#x20B9; 100 x 5 Months
+            <hr class="styled">
+            &#x20B9; 500
+          </ion-col>
+          <ion-col size="3" class="ion-text-center">
+            <div class="circle-container">
+              <div id="activeBorder" class="active-border">
+                <div id="circle" class="circle">
+                  <span class="prec 270" id="prec">&#x20B9; 800</span>
+                </div>
+              </div>
+            </div>
+          </ion-col>
+          <ion-col size="3" class="ion-text-center">
+            <ion-icon name="flag" size="large" color="medium"></ion-icon><br>
+            01-Jan
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+
+  </ion-card>
+
+
 
 
 </ion-content>
