@@ -18,16 +18,14 @@
 
   <ion-item color="primary" lines="none">
     <ion-label>
-      <h2>
-        <b>November</b>
-      </h2>
+      <h2><b>November</b></h2>
     </ion-label>
+    <p>5 Goals completed till now</p>
   </ion-item>
-
 
   <ion-slides [options]="sliderConfig">
     <ion-slide *ngFor="let i of [0,1,2,3,4,5]">
-      <div class="ion-margin-top ion-margin-bottom sliding-goal-card">
+      <div class="ion-margin-bottom sliding-goal-card">
         <div class="ion-text-left">
           <ion-text color="light">
             <small>Today</small>
@@ -54,10 +52,6 @@
       </div>
     </ion-slide>
   </ion-slides>
-
-  <div class="ion-text-center ion-margin">
-    5 Goals completed till now
-  </div>
 
 
   <ion-card class="top-rounded h-80 ion-no-margin bg-white">
