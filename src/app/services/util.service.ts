@@ -17,4 +17,14 @@ export class UtilService {
     });
     toast.present();
   }
+
+  getFormattedDate(format?: string, date?: Date) {
+    if (!date)
+      date = new Date();
+    if (!format)
+      format = 'd/m/yyyy';
+      
+    if (format === 'd/m/yyyy')
+      return `${date.getDate()}/${date.getMonth() + 1}/${date.getFullYear()}`;
+  };
 }

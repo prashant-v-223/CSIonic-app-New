@@ -29,6 +29,7 @@
     "core-js": "^3.6.1",
     "ion2-calendar": "^3.0.0-rc.0",
     "moment": "^2.24.0",
+    "ng-circle-progress": "^1.5.1",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "zone.js": "~0.10.2"

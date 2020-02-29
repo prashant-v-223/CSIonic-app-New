@@ -5,7 +5,11 @@ const routes: Routes = [
   { path: '', loadChildren: './pages/menu/menu.module#MenuPageModule' },
   { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
   { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
-  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' }
+  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
+  {
+    path: 'income-expense-form',
+    loadChildren: './pages/income-expense-form/income-expense-form.module#IncomeExpenseFormPageModule'
+  }
 ];
 
 @NgModule({

@@ -35,3 +35,26 @@
 .sliding-goal-card {
   min-width: 90%;
 }
+
+.current-completion-text {
+  position: absolute; 
+  top: 50%; 
+  bottom: auto; 
+  left: 50%; 
+  transform: translateY(-50%) translateX(-50%); 
+  font-size: .7rem;
+}
+
+ion-col.progress-container {
+  max-height: 70px;
+}
+
+round-progress{
+
+  margin-left: auto;
+  margin-right: auto;
+
+  &.completed {
+    max-width:80px
+  }
+}

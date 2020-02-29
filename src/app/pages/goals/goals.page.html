@@ -1,4 +1,4 @@
-<ion-header>
+<ion-header class="no-background">
   <ion-toolbar color="primary">
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
@@ -76,14 +76,44 @@
             <hr class="styled">
             &#x20B9; 1200
           </ion-col>
-          <ion-col size="3" class="ion-text-center">
-            <div class="circle-container">
+          <ion-col size="3" class="ion-text-center progress-container">
+            <circle-progress
+              [percent]="85"
+              [outerStrokeWidth]="16"
+              [innerStrokeWidth]="8"
+              [showInnerStroke]="true"
+              [animation]="true"
+              [animationDuration]="300"
+              [responsive]="true"
+              [showSubtitle]="false"
+              [titleFontSize]="50"
+              [title]="'&#x20B9; 800'"
+            ></circle-progress>
+            
+            <!-- <div class="current-completion-text">
+              80%
+            </div>
+            <round-progress 
+              [max]="100" 
+              [current]="80"
+              [color]="'#45ccce'"
+              [background]="'#eaeaea'"
+              [responsive]="true"
+              [stroke]="15"
+              [duration]="2000"
+              [animation]="'easeInOutQuart'"
+              [animationDelay]="500"
+              class="completed">
+            </round-progress> -->
+
+
+            <!-- <div class="circle-container">
               <div id="activeBorder" class="active-border">
                 <div id="circle" class="circle">
                   <span class="prec 270" id="prec">&#x20B9; 800</span>
                 </div>
               </div>
-            </div>
+            </div> -->
           </ion-col>
           <ion-col size="3" class="ion-text-center">
             <ion-icon name="flag" size="large" color="medium"></ion-icon><br>
@@ -104,14 +134,27 @@
             <hr class="styled">
             &#x20B9; 500
           </ion-col>
-          <ion-col size="3" class="ion-text-center">
-            <div class="circle-container">
+          <ion-col size="3" class="ion-text-center progress-container">
+              <circle-progress
+              [percent]="85"
+              [outerStrokeWidth]="16"
+              [innerStrokeWidth]="8"
+              [showInnerStroke]="true"
+              [animation]="true"
+              [animationDuration]="300"
+              [responsive]="true"
+              [showSubtitle]="false"
+              [titleFontSize]="50"
+              [title]="'&#x20B9; 800'"
+            ></circle-progress>
+
+            <!-- <div class="circle-container">
               <div id="activeBorder" class="active-border">
                 <div id="circle" class="circle">
                   <span class="prec 270" id="prec">&#x20B9; 800</span>
                 </div>
               </div>
-            </div>
+            </div> -->
           </ion-col>
           <ion-col size="3" class="ion-text-center">
             <ion-icon name="flag" size="large" color="medium"></ion-icon><br>
