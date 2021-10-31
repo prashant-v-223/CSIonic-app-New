@@ -1,137 +1,98 @@
-// http://ionicframework.com/docs/theming/
-@import '~@ionic/angular/css/core.css';
-@import '~@ionic/angular/css/normalize.css';
-@import '~@ionic/angular/css/structure.css';
-@import '~@ionic/angular/css/typography.css';
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
 @import '~@ionic/angular/css/display.css';
-@import '~@ionic/angular/css/padding.css';
-@import '~@ionic/angular/css/float-elements.css';
-@import '~@ionic/angular/css/text-alignment.css';
-@import '~@ionic/angular/css/text-transformation.css';
-@import '~@ionic/angular/css/flex-utils.css';
 
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+@import "../node_modules/flex-css-classes/css/flex-prefixed.css";
+@import "./theme/general.scss";
 
-/**
-* Utility classes
-*/
-.valign-middle {
-  vertical-align: middle;
+.link {
+  text-decoration: none;
+  outline: none;
+  color: var(--ion-color-primary);
+  font-size: 0.9rem;
 }
 
-.border-right {
-  border-right: solid 1px var(--ion-color-medium);
+.gray-text {
+  color: var(--ion-color-medium);
 }
 
-.full-height {
+.page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
   height: 100%;
+  padding: 1rem;
 }
 
-.no-padding-top {
-  padding-top: 0 !important;
-}
-.no-padding-bottom {
-  padding-bottom: 0 !important;
-}
-.no-padding-start {
-  padding-left: 0 !important;
-}
-.no-padding-end {
-  padding-right: 0 !important;
-}
-.no-padding {
-  padding: 0 !important;
-}
-
-.bg-white {
-  background-color: white;
-}
-
-hr.styled {
-  height: 0px;
-  border-width: 1px;
-}
-
-.top-rounded {
-  border-top-left-radius: 1.5rem;
-  border-top-right-radius: 1.5rem;
-  border-bottom-left-radius: 0;
-  border-bottom-right-radius: 0;
-  color: var(--ion-color-dark);
-}
-
-.h-80 {
-  min-height: 80vh;
-}
-
-.bg-transparent {
-  --background: transparent !important;
-}
-
-// Text in center and border on both side
-.line-on-each-side {
-  position: relative;
-  z-index: 1;
-  overflow: hidden;
-  text-align: center;
-
-  &:before, &:after {
-    position: absolute;
-    top: 51%;
-    overflow: hidden;
-    width: 48%;
-    height: 1px;
-    content: '\a0';
-    background-color: var(--ion-color-medium);
-  }
-
-  &:before {
-    margin-left: -50%;
-    text-align: right;
-  }
-
-  &:after {
-    margin-left: 2%;
-    text-align: right;
-  }
-}
-
-ion-header.no-background:after {
-  background-image: none !important;
-}
-
-.quit-bold{
-  font-weight: 500;
-}
-
-/* Border */
-.border-bottom {
-  border-bottom-width: 1px;
-  border-bottom-style: solid;
-  border-bottom-color: var(--ion-item-border-color,var(--ion-border-color,var(--ion-color-step-150,rgba(0,0,0,0.13))));;
-}
-.border-color-danger {
-  border-bottom-color: var(--ion-color-danger);
-}
-
-
-.btn-category{
-  // background: var(--ion-color-light) !important;
-  // border-radius: 50%;
-  float: left;
-  width: 70px !important;
-  padding: 0px !important;
-  margin: 10px;
-  font-size: x-small !important;
+.app-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 20%;
 
   span {
-    display: flex !important;
-    flex-direction: column !important;
+    color: var(--ion-color-primary);
+    font-size: 1.5rem;
+  }
+}
 
-    ion-icon {
-      margin: auto !important;
-      background: var(--ion-color-light) !important;
-      border-radius: 50%;
-      padding: 5px;
-    }
+.back-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: -7px !important;
+
+  mat-icon {
+    color: var(--ion-color-primary) !important;
+  }
+}
+
+.color-primary {
+  color: var(--ion-color-primary) !important;
+}
+
+.green-text {
+  color: var(--ion-color-success);
+}
+
+.header {
+  position: relative;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  min-height: 50px;
+  align-items: center;
+  padding: 1rem;
+
+  .header-title {
+    position: absolute;
+    color: var(--ion-color-primary);
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    margin-bottom: 0;
   }
 }

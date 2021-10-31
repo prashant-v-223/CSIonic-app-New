@@ -1,0 +1,21 @@
+.frequency-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  width: 100%;
+  flex-grow: 1;
+
+  .chip-btn {
+    border: 1px solid var(--ion-color-medium);
+    border-radius: 4px;
+    padding: 0.5rem;
+    min-width: 70px;
+    text-align: center;
+  }
+
+  .active {
+    background-color: var(--ion-color-primary);
+    color: #fff;
+    border: none;
+  }
+}

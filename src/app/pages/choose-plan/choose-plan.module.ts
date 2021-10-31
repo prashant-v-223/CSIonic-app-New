@@ -3,14 +3,16 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-import { LoginPage } from './login.page';
+
+import { ChoosePlanPage } from './choose-plan.page';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared/shared.module';
+
 
 const routes: Routes = [
   {
     path: '',
-    component: LoginPage,
+    component: ChoosePlanPage
   }
 ];
 
@@ -22,6 +24,6 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     SharedModule
   ],
-  declarations: [LoginPage]
+  declarations: [ChoosePlanPage]
 })
-export class LoginPageModule { }
+export class ChoosePlanPageModule { }

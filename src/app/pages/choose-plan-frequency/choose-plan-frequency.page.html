@@ -1,0 +1,18 @@
+<ion-content>
+<div class="page-container">
+  <div class="flex-row w-100 align-center no-shrink p-relative">
+    <button mat-icon-button class="back-btn" (click)="onBack()">
+      <mat-icon>arrow_back_ios</mat-icon>
+    </button>
+      <h2 class="header-title mb-0">Choose Your Plan Frequency</h2>
+  </div>
+  <div class="frequency-container">
+    <div class="flex-row align-center items-space-even">
+      <div class="chip-btn" [ngClass]="{active: selectFrequency==='daily'}" (click)="onSelectFrequency('daily')">Daily</div>
+      <div class="chip-btn" [ngClass]="{active: selectFrequency==='weekly'}" (click)="onSelectFrequency('weekly')">Weekly</div>
+      <div class="chip-btn" [ngClass]="{active: selectFrequency==='monthly'}" (click)="onSelectFrequency('monthly')">Monthly</div>
+    </div>
+  </div>
+  <button mat-flat-button color="primary" class="w-100 mt-4 no-shrink" (click)="onNext()">Next</button>    
+</div>
+</ion-content>

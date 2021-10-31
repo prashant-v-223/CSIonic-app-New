@@ -2,13 +2,26 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  { path: '', loadChildren: './pages/menu/menu.module#MenuPageModule' },
-  { path: 'register', loadChildren: './pages/register/register.module#RegisterPageModule' },
-  { path: 'login', loadChildren: './pages/login/login.module#LoginPageModule' },
-  { path: 'tabs', loadChildren: './pages/tabs/tabs.module#TabsPageModule' },
   {
-    path: 'income-expense-form',
-    loadChildren: './pages/income-expense-form/income-expense-form.module#IncomeExpenseFormPageModule'
+    path: 'login',
+    loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
+  },
+  {
+    path: 'sign-up',
+    loadChildren: () => import('./pages/sign-up/sign-up.module').then(m => m.SignUpPageModule)
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
+  {
+    path: 'choose-plan',
+    loadChildren: () => import('./pages/choose-plan/choose-plan.module').then( m => m.ChoosePlanPageModule)
+  },
+  {
+    path: 'choose-plan-frequency',
+    loadChildren: () => import('./pages/choose-plan-frequency/choose-plan-frequency.module').then( m => m.ChoosePlanFrequencyPageModule)
   }
 ];
 
