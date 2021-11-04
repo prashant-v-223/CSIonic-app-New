@@ -2,76 +2,33 @@
   <div class="page-container p-0">
     <div class="flex-row items-end header">
       <h2 class="header-title">Choose Plan</h2>
-      <a class="link flex-row align-center">Skip <mat-icon>arrow_forward_ios</mat-icon></a>
+      <a class="link flex-row align-center" (click)="onSelectPlan()">Skip <mat-icon>arrow_forward_ios</mat-icon></a>
     </div>
     <div class="plan-list">
-      <div class="plan-item">
+      <div class="plan-item" *ngFor="let plan of planList" (click)="onSelectPlan()">
         <div class="flex-row align-start">
-          <h3 class="color-primary flex-item grow">ICICI Prudential Focused Bluechip Equity Fund.</h3>
-          <mat-icon class="color-primary mt-1 flex-item no-shrink">arrow_forward_ios</mat-icon>
+          <h3 class="color-primary flex-item grow">{{plan.name}}</h3>
+          <mat-icon class="arrow-icon">arrow_forward_ios</mat-icon>
         </div>
         <div class="flex-row align-start items-space-between">
-          <div class="flex-column align-stretch flex-item no-shrink w-33">
+          <div class="flex-column align-stretch flex-item no-shrink">
             <span class="gray-text">Min. Invest</span>
-            <span>$100</span>
+            <span>${{plan.minInvest}}</span>
+          </div>
+          <div class="flex-column align-stretch flex-item no-shrink">
+            <span class="gray-text">Category Return</span>
+            <div class="flex-row align-center">
+              <span class="mr-2">{{plan.low}}%</span> 
+              <mat-progress-bar class="progress" mode="determinate" value="100"></mat-progress-bar>
+              <span class="ml-2">{{plan.high}}%</span> 
+            </div>
           </div>
           <div class="flex-column align-stretch flex-item no-shrink">
             <span class="gray-text">Returns</span>
-            <span class="green-text">+33.45%</span>
+            <span [ngClass]="plan.returns > 0 ? 'green-text' : 'red-text'">{{plan.returns > 0 ? '+'+plan.returns : plan.returns}}%</span>
           </div>
         </div>
       </div>
-      <div class="plan-item">
-        <div class="flex-row align-start">
-          <h3 class="color-primary flex-item grow">ICICI Prudential Focused Bluechip Equity Fund.</h3>
-          <mat-icon class="color-primary mt-1 flex-item no-shrink">arrow_forward_ios</mat-icon>
-        </div>
-        <div class="flex-row align-start items-space-between">
-          <div class="flex-column align-stretch flex-item no-shrink w-33">
-            <span class="gray-text">Min. Invest</span>
-            <span>$100</span>
-          </div>
-          <div class="flex-column align-stretch flex-item no-shrink">
-            <span class="gray-text">Returns</span>
-            <span class="green-text">+33.45%</span>
-          </div>
-        </div>
-      </div>
-      <div class="plan-item">
-        <div class="flex-row align-start">
-          <h3 class="color-primary flex-item grow">ICICI Prudential Focused Bluechip Equity Fund.</h3>
-          <mat-icon class="color-primary mt-1 flex-item no-shrink">arrow_forward_ios</mat-icon>
-        </div>
-        <div class="flex-row align-start items-space-between">
-          <div class="flex-column align-stretch flex-item no-shrink w-33">
-            <span class="gray-text">Min. Invest</span>
-            <span>$100</span>
-          </div>
-          <div class="flex-column align-stretch flex-item no-shrink">
-            <span class="gray-text">Returns</span>
-            <span class="green-text">+33.45%</span>
-          </div>
-        </div>
-      </div>
-      <div class="plan-item">
-        <div class="flex-row align-start">
-          <h3 class="color-primary flex-item grow">ICICI Prudential Focused Bluechip Equity Fund.</h3>
-          <mat-icon class="color-primary mt-1 flex-item no-shrink">arrow_forward_ios</mat-icon>
-        </div>
-        <div class="flex-row align-start items-space-between">
-          <div class="flex-column align-stretch flex-item no-shrink w-33">
-            <span class="gray-text">Min. Invest</span>
-            <span>$100</span>
-          </div>
-          <div class="flex-column align-stretch flex-item no-shrink">
-            <span class="gray-text">Returns</span>
-            <span class="green-text">+33.45%</span>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="p-3 b-t-light">
-      <button mat-flat-button color="primary" class="w-100 no-shrink" (click)="onNext()">Next</button>    
     </div>
   </div>
 </ion-content>

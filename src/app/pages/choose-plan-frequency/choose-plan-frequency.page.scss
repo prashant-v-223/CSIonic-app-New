@@ -19,3 +19,10 @@
     border: none;
   }
 }
+
+.week {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  margin: 1rem -0.5rem;
+}
