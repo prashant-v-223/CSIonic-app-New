@@ -1,0 +1,35 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.back-btn {
+  position: absolute;
+  left: 0;
+}
+
+.amount-input {
+  margin-top: 2rem;
+  height: 40px;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  text-align: center;
+}
+
+.amt-list {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  margin-top: 2rem;
+
+  .amt-chip {
+    background-color: rgba(45, 211, 111, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+  }
+}

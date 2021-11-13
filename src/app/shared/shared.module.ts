@@ -10,6 +10,9 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatRippleModule } from '@angular/material/core';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
+import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 
 const MODULES = [
   MatFormFieldModule,
@@ -22,16 +25,20 @@ const MODULES = [
   FormsModule,
   ReactiveFormsModule,
   MatProgressBarModule,
-
+  MatRippleModule,
+  NgxChartsModule,
 ];
-const COMPONENTS = [];
+const COMPONENTS = [
+  PieChartComponent
+];
 
 @NgModule({
-  declarations: [],
+  declarations: [
+    ...COMPONENTS
+  ],
   imports: [
     CommonModule,
     ...MODULES,
-    ...COMPONENTS
   ],
   exports: [
     ...MODULES,

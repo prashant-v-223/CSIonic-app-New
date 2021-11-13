@@ -17,11 +17,19 @@ const routes: Routes = [
   },
   {
     path: 'choose-plan',
-    loadChildren: () => import('./pages/choose-plan/choose-plan.module').then( m => m.ChoosePlanPageModule)
+    loadChildren: () => import('./pages/choose-plan/choose-plan.module').then(m => m.ChoosePlanPageModule)
   },
   {
     path: 'choose-plan-frequency',
-    loadChildren: () => import('./pages/choose-plan-frequency/choose-plan-frequency.module').then( m => m.ChoosePlanFrequencyPageModule)
+    loadChildren: () => import('./pages/choose-plan-frequency/choose-plan-frequency.module').then(m => m.ChoosePlanFrequencyPageModule)
+  },
+  {
+    path: 'dashboard',
+    loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardPageModule)
+  },
+  {
+    path: 'add-amount',
+    loadChildren: () => import('./pages/add-amount/add-amount.module').then( m => m.AddAmountPageModule)
   }
 ];
 

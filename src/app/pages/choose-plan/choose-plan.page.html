@@ -16,14 +16,6 @@
             <span>${{plan.minInvest}}</span>
           </div>
           <div class="flex-column align-stretch flex-item no-shrink">
-            <span class="gray-text">Category Return</span>
-            <div class="flex-row align-center">
-              <span class="mr-2">{{plan.low}}%</span> 
-              <mat-progress-bar class="progress" mode="determinate" value="100"></mat-progress-bar>
-              <span class="ml-2">{{plan.high}}%</span> 
-            </div>
-          </div>
-          <div class="flex-column align-stretch flex-item no-shrink">
             <span class="gray-text">Returns</span>
             <span [ngClass]="plan.returns > 0 ? 'green-text' : 'red-text'">{{plan.returns > 0 ? '+'+plan.returns : plan.returns}}%</span>
           </div>

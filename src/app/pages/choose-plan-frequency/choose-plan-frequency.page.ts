@@ -40,4 +40,8 @@ export class ChoosePlanFrequencyPage implements OnInit {
     this.navCtrl.back();
   }
 
+  onGoDashboard() {
+    this.navCtrl.navigateRoot('/add-amount');
+  }
+
 }

@@ -105,3 +105,11 @@
 .red-text {
   color: var(--ion-color-danger);
 }
+
+.body-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow: auto;
+  padding: 1rem;
+}

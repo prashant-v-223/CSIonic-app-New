@@ -1,0 +1,20 @@
+<ion-content>
+  <div class="page-container">
+    <div class="flex-row w-100 align-center items-center no-shrink p-relative mb-5">
+      <button mat-icon-button class="back-btn" (click)="onBack()">
+        <mat-icon>arrow_back_ios</mat-icon>
+      </button>
+      <h2 class="header-title color-primary mb-0">Add Amount</h2>
+    </div>
+    <div class="main-container">
+      <app-pie-chart></app-pie-chart>
+      <input type="number" class="amount-input" placeholder="&#8377; Amount">
+      <div class="amt-list">
+        <span class="amt-chip">+ &#8377;1000</span>
+        <span class="amt-chip">+ &#8377;2000</span>
+        <span class="amt-chip">+ &#8377;5000</span>
+      </div>
+    </div>
+    <button mat-flat-button color="primary" class="w-100 mt-4 no-shrink" (click)="onGoDashboard()">Next</button>
+  </div>
+</ion-content>
