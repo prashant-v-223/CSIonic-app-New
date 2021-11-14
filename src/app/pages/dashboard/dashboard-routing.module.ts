@@ -9,6 +9,10 @@ const routes: Routes = [
     component: DashboardPage
   },
   {
+    path: 'menu',
+    loadChildren: () => import('../menu/menu.module').then(m => m.MenuPageModule)
+  },
+  {
     path: 'sip-details',
     loadChildren: () => import('../sip-details/sip-details.module').then(m => m.SipDetailsPageModule)
   }

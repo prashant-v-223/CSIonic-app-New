@@ -12,7 +12,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: '/login',
     pathMatch: 'full'
   },
   {
@@ -29,7 +29,7 @@ const routes: Routes = [
   },
   {
     path: 'add-amount',
-    loadChildren: () => import('./pages/add-amount/add-amount.module').then( m => m.AddAmountPageModule)
+    loadChildren: () => import('./pages/add-amount/add-amount.module').then(m => m.AddAmountPageModule)
   }
 ];
 

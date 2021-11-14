@@ -13,6 +13,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRippleModule } from '@angular/material/core';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
+import { LineChartComponent } from './components/line-chart/line-chart.component';
 
 const MODULES = [
   MatFormFieldModule,
@@ -29,7 +30,8 @@ const MODULES = [
   NgxChartsModule,
 ];
 const COMPONENTS = [
-  PieChartComponent
+  PieChartComponent,
+  LineChartComponent
 ];
 
 @NgModule({

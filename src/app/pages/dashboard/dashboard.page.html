@@ -1,7 +1,7 @@
 <ion-content>
   <div class="page-container p-0">
     <div class="page-header">
-      <img src="../../../assets/icon/logo.svg" class="app-logo" width="40" height="40" alt="app-logo">
+      <img src="../../../assets/icon/logo.svg" class="app-logo" width="39" height="39" alt="app-logo">
       <h2 class="m-0">Cryptostation</h2>
     </div>
     <div class="body-container">
@@ -29,10 +29,7 @@
         </div>
       </div>
       <div class="sip-list" *ngFor="let sip of SIPList" matRipple (click)="onViewDetails()">
-        <div class="flex-column flex-item grow ">
-          <p class="mb-2">{{sip.name}}</p>
-          <span class="chip">SIP</span>
-        </div>
+        <p class="mb-2 flex-item grow">{{sip.name}}</p>
         <div class="flex-column flex-item no-shrink align-end">
           <span class="mb-2"
             [ngClass]="sip.investment < sip.returns ? 'green-text' : 'red-text'">{{sip.investment > sip.returns ? "-":""}}
@@ -42,11 +39,14 @@
       </div>
     </div>
     <div class="page-footer">
-      <button mat-icon-button color="primary">
+      <button mat-icon-button routerLink="/choose-plan" routerLinkActive="active">
+        <mat-icon>legend_toggle</mat-icon>
+      </button>
+      <button mat-icon-button routerLink="/" routerLinkActive="active">
         <mat-icon>home</mat-icon>
       </button>
-      <button mat-icon-button color="primary">
-        <mat-icon>account_circle</mat-icon>
+      <button mat-icon-button routerLink="/dashboard/menu" routerLinkActive="active">
+        <mat-icon>menu</mat-icon>
       </button>
     </div>
   </div>

@@ -2,13 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 
 @Component({
-  selector: 'app-sip-details',
-  templateUrl: './sip-details.page.html',
-  styleUrls: ['./sip-details.page.scss'],
+  selector: 'app-menu',
+  templateUrl: './menu.page.html',
+  styleUrls: ['./menu.page.scss'],
 })
-export class SipDetailsPage implements OnInit {
-
-  selectedTime: string = '3y';
+export class MenuPage implements OnInit {
 
   constructor(
     private navCtrl: NavController
@@ -17,12 +15,7 @@ export class SipDetailsPage implements OnInit {
   ngOnInit() {
   }
 
-  onSelectTime(time) {
-    this.selectedTime = time;
-  }
-
   onBack() {
     this.navCtrl.navigateBack('/dashboard');
   }
-
 }
