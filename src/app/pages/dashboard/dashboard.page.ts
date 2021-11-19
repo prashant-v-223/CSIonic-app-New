@@ -10,37 +10,37 @@ export class DashboardPage implements OnInit {
 
   SIPList: any[] = [
     {
-      name: "ICICI Prudential Focused Bluechip Equity Fund.",
+      name: "Bitcoin",
       investment: 2000,
       returns: 2045,
     },
     {
-      name: "Axis Prudential Focused Bluechip Equity Fund.",
+      name: "Ethereun",
       investment: 34000,
       returns: 35190,
     },
     {
-      name: "HDFC Prudential Focused Bluechip Equity Fund.",
+      name: "bitcoin + Ethereum + BNB",
       investment: 7629,
       returns: 6800,
     },
     {
-      name: "HDFC Prudential Focused Bluechip Equity Fund.",
+      name: "Bitcoin + Ethereum + BNB + ADA + XRP",
       investment: 7629,
       returns: 7800,
     },
     {
-      name: "HDFC Prudential Focused Bluechip Equity Fund.",
+      name: "Doge and Shib (High Risk)",
       investment: 7629,
       returns: 7800,
     },
     {
-      name: "HDFC Prudential Focused Bluechip Equity Fund.",
+      name: "Polkadot + Solana + Polygon (Matic)",
       investment: 7629,
       returns: 7800,
     },
     {
-      name: "HDFC Prudential Focused Bluechip Equity Fund.",
+      name: "Exchange basket (BNB / FTX / Kucoin) / Choose till this",
       investment: 7629,
       returns: 7800,
     },

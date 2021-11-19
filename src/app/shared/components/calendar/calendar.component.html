@@ -1,0 +1,13 @@
+<div class="calendar-container">
+  <h2 class="t-center mt-3">SIP Date</h2>
+  <div class="day-list">
+    <span class="day" *ngFor="let day of weekList">{{day}}</span>
+  </div>
+  <div class="date-list">
+    <div class="date" *ngFor="let date of dateList" (click)="onSelectDate(date)">
+      <div class="date-item" [ngClass]="{active: date == selectedDate}">
+        <span>{{date}}</span>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-choose-plan-frequency',
@@ -11,14 +12,14 @@ export class ChoosePlanFrequencyPage implements OnInit {
   selectFrequency: any;
   selectedDay: any;
   week: any[] = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-  today = new Date();
-  endDate: Date;
+  startOfMonth = moment().startOf('month').format();
+  endOfMonth = moment().endOf('month').format();
   fifteenDays: Date;
+  isOpened: boolean = true;
 
   constructor(
     private navCtrl: NavController
   ) {
-    this.getEndDate();
   }
 
   ngOnInit() {
@@ -30,10 +31,6 @@ export class ChoosePlanFrequencyPage implements OnInit {
 
   onSelectDay(day) {
     this.selectedDay = day;
-  }
-
-  getEndDate() {
-    this.endDate = new Date(this.today.getFullYear(), this.today.getMonth() + 1, 0);
   }
 
   onBack() {

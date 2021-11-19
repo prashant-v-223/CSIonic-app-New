@@ -1,8 +1,8 @@
 <ion-content>
   <div class="page-container p-0">
     <div class="page-header">
-      <img src="../../../assets/icon/logo.svg" class="app-logo" width="39" height="39" alt="app-logo">
       <h2 class="m-0">Cryptostation</h2>
+      <img src="../../../assets/icon/logo.svg" class="logo" width="39" height="39" alt="app-logo">
     </div>
     <div class="body-container">
       <div class="dash-card mb-5">
@@ -29,7 +29,7 @@
         </div>
       </div>
       <div class="sip-list" *ngFor="let sip of SIPList" matRipple (click)="onViewDetails()">
-        <p class="mb-2 flex-item grow">{{sip.name}}</p>
+        <p class="m-0 flex-item grow">{{sip.name}}</p>
         <div class="flex-column flex-item no-shrink align-end">
           <span class="mb-2"
             [ngClass]="sip.investment < sip.returns ? 'green-text' : 'red-text'">{{sip.investment > sip.returns ? "-":""}}

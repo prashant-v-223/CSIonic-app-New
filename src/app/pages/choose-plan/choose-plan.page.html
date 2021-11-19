@@ -7,7 +7,7 @@
     <div class="plan-list">
       <div class="plan-item" *ngFor="let plan of planList" (click)="onSelectPlan()">
         <div class="flex-row align-start">
-          <h3 class="color-primary flex-item grow">{{plan.name}}</h3>
+          <h3 class="color-primary flex-item grow text-capitalize">{{plan.name}}</h3>
           <mat-icon class="arrow-icon">arrow_forward_ios</mat-icon>
         </div>
         <div class="flex-row align-start items-space-between">
@@ -17,7 +17,8 @@
           </div>
           <div class="flex-column align-stretch flex-item no-shrink">
             <span class="gray-text">Returns</span>
-            <span [ngClass]="plan.returns > 0 ? 'green-text' : 'red-text'">{{plan.returns > 0 ? '+'+plan.returns : plan.returns}}%</span>
+            <span
+              [ngClass]="plan.returns > 0 ? 'green-text' : 'red-text'">{{plan.returns > 0 ? '+'+plan.returns : plan.returns}}%</span>
           </div>
         </div>
       </div>

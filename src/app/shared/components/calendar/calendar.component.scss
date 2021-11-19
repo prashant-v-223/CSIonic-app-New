@@ -1,0 +1,52 @@
+.calendar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+
+  .day-list {
+    display: flex;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .day {
+      width: 14.28%;
+      height: 30px;
+      text-align: center;
+      text-transform: capitalize;
+      color: var(--ion-color-medium);
+    }
+  }
+
+  .date-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+
+    .date {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 14.28%;
+
+      .date-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        color: #626262;
+      }
+    }
+
+  }
+
+  .active {
+    background-color: var(--ion-color-primary);
+    color: #fff !important;
+    border-radius: 50%;
+    font-weight: 500;
+  }
+}
