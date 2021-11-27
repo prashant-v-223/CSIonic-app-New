@@ -17,14 +17,14 @@ export class ChoosePlanPage implements OnInit {
       high: 60,
     },
     {
-      name: "Ethereun",
+      name: "Ethereum",
       minInvest: 50,
       returns: 60,
       low: 35,
       high: 76,
     },
     {
-      name: "bitcoin + Ethereum + BNB",
+      name: "Bitcoin + Ethereum + BNB",
       minInvest: 70,
       returns: 45,
       low: 27,
@@ -38,7 +38,7 @@ export class ChoosePlanPage implements OnInit {
       high: 67,
     },
     {
-      name: "Doge and Shib (High Risk)",
+      name: "Doge and Shiba Inu (High Risk)",
       minInvest: 70,
       returns: 45,
       low: 27,
@@ -52,7 +52,7 @@ export class ChoosePlanPage implements OnInit {
       high: 67,
     },
     {
-      name: "Exchange basket (BNB / FTX / Kucoin) / Choose till this",
+      name: "Exchange basket (BNB / FTX / Kucoin)",
       minInvest: 70,
       returns: -45,
       low: 27,

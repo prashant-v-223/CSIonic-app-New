@@ -15,12 +15,12 @@ export class DashboardPage implements OnInit {
       returns: 2045,
     },
     {
-      name: "Ethereun",
+      name: "Ethereum",
       investment: 34000,
       returns: 35190,
     },
     {
-      name: "bitcoin + Ethereum + BNB",
+      name: "Bitcoin + Ethereum + BNB",
       investment: 7629,
       returns: 6800,
     },
@@ -30,7 +30,7 @@ export class DashboardPage implements OnInit {
       returns: 7800,
     },
     {
-      name: "Doge and Shib (High Risk)",
+      name: "Doge and Shiba Inu (High Risk)",
       investment: 7629,
       returns: 7800,
     },
@@ -40,7 +40,7 @@ export class DashboardPage implements OnInit {
       returns: 7800,
     },
     {
-      name: "Exchange basket (BNB / FTX / Kucoin) / Choose till this",
+      name: "Exchange basket (BNB / FTX / Kucoin)",
       investment: 7629,
       returns: 7800,
     },

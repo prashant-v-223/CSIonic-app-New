@@ -15,16 +15,12 @@ export class PieChartComponent implements OnInit {
     },
     {
       name: "Ethereum",
-      value: 25
+      value: 20
     },
     {
-      name: "Harmony",
-      value: 15
+      name: "BNB",
+      value: 20
     },
-    {
-      name: "Helium",
-      value: 5
-    }
   ];
 
   view: any[] = [300, 200];
@@ -34,7 +30,7 @@ export class PieChartComponent implements OnInit {
   isDoughnut: boolean = false;
 
   colorScheme = {
-    domain: ['#1c0c5b', '#88E0EF', '#FF5151', '#FF9B6A']
+    domain: ['#1c0c5b', '#88E0EF', '#FF5151']
   };
 
   constructor() { }
