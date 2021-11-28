@@ -26,6 +26,7 @@
 @import "~@ionic/angular/css/flex-utils.css";
 @import "../node_modules/flex-css-classes/css/flex-prefixed.css";
 @import "./theme/general.scss";
+@import '~@aws-amplify/ui-angular/theme.css';
 
 .link {
   text-decoration: none;
