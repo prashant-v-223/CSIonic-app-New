@@ -15,8 +15,6 @@ export class CalendarComponent implements OnInit {
   selectedDate: any = this.today.format('D');
 
   constructor() {
-    console.log("today", this.today.format('D'));
-
   }
 
   ngOnInit() {

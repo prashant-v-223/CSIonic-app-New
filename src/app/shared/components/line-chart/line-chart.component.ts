@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
@@ -7,9 +8,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LineChartComponent implements OnInit {
 
-  view: any[] = [350, 200];
-  showLabels: boolean = true;
-  animations: boolean = true;
   data: any[] = [
     {
       name: "2018",
@@ -89,12 +87,11 @@ export class LineChartComponent implements OnInit {
     }
   ];
 
-  colorScheme = {
-    domain: ['#2dd36f']
-  };
+  constructor() {
+  }
 
-  constructor() { }
+  ngOnInit() {
 
-  ngOnInit() { }
+  }
 
 }

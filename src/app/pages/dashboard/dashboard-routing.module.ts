@@ -15,6 +15,10 @@ const routes: Routes = [
   {
     path: 'sip-details',
     loadChildren: () => import('../sip-details/sip-details.module').then(m => m.SipDetailsPageModule)
+  },
+  {
+    path: 'add-money',
+    loadChildren: () => import('../add-money/add-money.module').then(m => m.AddMoneyPageModule)
   }
 ];
 

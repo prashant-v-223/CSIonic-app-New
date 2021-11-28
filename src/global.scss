@@ -120,3 +120,28 @@
   overflow: auto;
   padding: 1rem;
 }
+
+.grow {
+  flex-grow: 1;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  outline: none;
+  padding: 0.5rem 0.7rem;
+  color: var(--ion-color-success);
+  background-color: rgba(45, 211, 111, 0.12);
+  border-radius: 20px;
+}
+
+.amount-input {
+  width: 100%;
+  margin-top: 2rem;
+  height: 40px;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
+  text-align: center;
+}

@@ -11,7 +11,6 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRippleModule } from '@angular/material/core';
-import { NgxChartsModule } from '@swimlane/ngx-charts';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
@@ -28,7 +27,6 @@ const MODULES = [
   ReactiveFormsModule,
   MatProgressBarModule,
   MatRippleModule,
-  NgxChartsModule,
 ];
 const COMPONENTS = [
   PieChartComponent,
