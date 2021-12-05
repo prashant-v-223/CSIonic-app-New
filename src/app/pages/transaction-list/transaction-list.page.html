@@ -1,0 +1,44 @@
+<ion-content>
+  <div class="page-container">
+    <div class="page-header">
+      <button mat-icon-button class="back-btn" (click)="onBack()">
+        <fa-icon class="fa-icon color-primary" icon="chevron-left"></fa-icon>
+      </button>
+      <h2 class="m-0 color-primary">All transaction</h2>
+    </div>
+    <div class="page-body">
+      <div class="list-header">
+        <p class="m-0">Closing balance</p>
+        <p class="m-0">Bal : &#8377; 1,521</p>
+      </div>
+      <div class="transaction-list">
+        <div class="list-item">
+          <img class="arrow-icon" src="../../../assets/icon/arrow-top-left.svg" alt="down">
+          <div class="flex-row aling-center items-space-between grow">
+            <div class="flex-column align-stretch">
+              <span class="f-500 mb-1">Paid for Bitcoin SIP</span>
+              <span>26 Nov 2021</span>
+            </div>
+            <div class="flex-column items-end align-end">
+              <span class="f-500 mb-1">&#8377; 100</span>
+              <span>Bal : &#8377; 1,421</span>
+            </div>
+          </div>
+        </div>
+        <div class="list-item">
+          <img class="arrow-icon down" src="../../../assets/icon/arrow-top-left-green.svg" alt="up">
+          <div class="flex-row aling-center items-space-between grow">
+            <div class="flex-column align-stretch">
+              <span class="f-500 mb-1">Balance Deposit</span>
+              <span>29 Nov 2021</span>
+            </div>
+            <div class="flex-column items-end align-end">
+              <span class="f-500 mb-1 green-text">&#8377; 1000</span>
+              <span>Bal : &#8377; 2,421</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

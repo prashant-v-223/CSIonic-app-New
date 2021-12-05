@@ -67,8 +67,9 @@ export class ChoosePlanPage implements OnInit {
   ngOnInit() {
   }
 
-  onSelectPlan() {
-    this.navCtrl.navigateForward('/choose-plan-frequency');
+  skipPlan() {
+    this.navCtrl.navigateForward('/dashboard');
   }
+
 
 }

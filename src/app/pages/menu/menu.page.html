@@ -2,7 +2,7 @@
   <div class="page-container p-0">
     <div class="page-header">
       <button mat-icon-button class="back-btn" (click)="onBack()">
-        <mat-icon>arrow_back_ios</mat-icon>
+        <fa-icon class="fa-icon" icon="chevron-left"></fa-icon>
       </button>
       <h2 class="m-0">Menu</h2>
     </div>
@@ -11,23 +11,9 @@
       <h2>Alexandra N. Ford</h2>
     </div>
     <div class="menu-list pt-0">
-      <div class="menu-item" matRipple>
+      <div class="menu-item" matRipple (click)="viewTransactions()">
         <div class="menu-icon-container">
-          <mat-icon>account_balance_wallet</mat-icon>
-        </div>
-        <div class="flex-row align-center grow">
-          <div class="flex-column align-stretch ">
-            <h2 class="mb-1">&#8377;13,489.98</h2>
-            <span class="gray-text">Wallet Balance</span>
-          </div>
-          <div class="grow flex-row items-end mr-3">
-            <a href="/dashboard/add-money" class="link-btn"><span class="font-4 mr-2">+</span> Add Money</a>
-          </div>
-        </div>
-      </div>
-      <div class="menu-item" matRipple>
-        <div class="menu-icon-container">
-          <mat-icon>receipt</mat-icon>
+          <fa-icon class="fa-icon color-primary" icon="receipt"></fa-icon>
         </div>
         <div class="flex-row align-center">
           <div class="flex-column align-stretch">
@@ -38,7 +24,7 @@
       </div>
       <div class="menu-item" matRipple>
         <div class="menu-icon-container">
-          <mat-icon>account_balance</mat-icon>
+          <fa-icon class="fa-icon color-primary" icon="university"></fa-icon>
         </div>
         <div class="flex-row align-center">
           <div class="flex-column align-stretch">
@@ -49,7 +35,7 @@
       </div>
       <div class="menu-item" matRipple>
         <div class="menu-icon-container">
-          <mat-icon>help</mat-icon>
+          <fa-icon class="fa-icon color-primary" icon="question-circle"></fa-icon>
         </div>
         <div class="flex-row align-center">
           <div class="flex-column align-stretch">
@@ -60,7 +46,7 @@
       </div>
       <div class="menu-item" matRipple>
         <div class="menu-icon-container">
-          <mat-icon>redeem</mat-icon>
+          <fa-icon class="fa-icon color-primary" icon="gift"></fa-icon>
         </div>
         <div class="flex-row align-center">
           <div class="flex-column align-stretch">
@@ -71,7 +57,7 @@
       </div>
       <div class="menu-item" matRipple>
         <div class="menu-icon-container">
-          <mat-icon>logout</mat-icon>
+          <fa-icon class="fa-icon color-primary" icon="sign-out-alt"></fa-icon>
         </div>
         <div class="flex-row align-center">
           <div class="flex-column align-stretch">

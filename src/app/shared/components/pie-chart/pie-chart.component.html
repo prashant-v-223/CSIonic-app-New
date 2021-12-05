@@ -1,13 +1,3 @@
 <div class="flex-column">
-  <!-- <ngx-charts-pie-chart [view]="view" [scheme]="colorScheme" [results]="single" [gradient]="gradient"
-    [legend]="showLegend" [legendPosition]="legendPosition" [labels]="showLabels" [doughnut]="isDoughnut">
-  </ngx-charts-pie-chart> -->
-  <div class="flex-row align-center items-space-between">
-    <span class="navy-box"></span>
-    <span class="f-500">Bitcoin</span>
-    <span class="blue-box"></span>
-    <span class="f-500">Ethereum</span>
-    <span class="red-box"></span>
-    <span class="f-500">BNB</span>
-  </div>
+  <canvas #pieChart class="pie-chart"></canvas>
 </div>

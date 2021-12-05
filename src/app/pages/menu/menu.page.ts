@@ -15,6 +15,14 @@ export class MenuPage implements OnInit {
   ngOnInit() {
   }
 
+  viewWallet() {
+    this.navCtrl.navigateForward("/dashboard/view-wallet");
+  }
+
+  viewTransactions() {
+    this.navCtrl.navigateForward('/dashboard/transaction-list');
+  }
+
   onBack() {
     this.navCtrl.navigateBack('/dashboard');
   }

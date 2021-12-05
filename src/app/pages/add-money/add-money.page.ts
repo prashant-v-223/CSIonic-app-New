@@ -15,7 +15,7 @@ export class AddMoneyPage implements OnInit {
   ngOnInit() {
   }
   onBack() {
-    this.navCtrl.navigateBack('/dashboard')
+    this.navCtrl.navigateBack('/dashboard/menu');
   }
 
 }

@@ -2,26 +2,13 @@
   <div class="page-container p-0">
     <div class="flex-row items-end header">
       <h2 class="header-title">Choose Plan</h2>
-      <a class="link flex-row align-center" (click)="onSelectPlan()">Skip <mat-icon>arrow_forward_ios</mat-icon></a>
-    </div>
-    <div class="plan-list">
-      <div class="plan-item" *ngFor="let plan of planList" (click)="onSelectPlan()">
-        <div class="flex-row align-start">
-          <h3 class="color-primary flex-item grow text-capitalize">{{plan.name}}</h3>
-          <mat-icon class="arrow-icon">arrow_forward_ios</mat-icon>
-        </div>
-        <div class="flex-row align-start items-space-between">
-          <div class="flex-column align-stretch flex-item no-shrink">
-            <span class="gray-text">Min. Invest</span>
-            <span>${{plan.minInvest}}</span>
-          </div>
-          <div class="flex-column align-stretch flex-item no-shrink">
-            <span class="gray-text">Returns</span>
-            <span
-              [ngClass]="plan.returns > 0 ? 'green-text' : 'red-text'">{{plan.returns > 0 ? '+'+plan.returns : plan.returns}}%</span>
-          </div>
-        </div>
+      <div class="link flex-row align-center" (click)="skipPlan()">
+        <span>Skip</span>
+        <fa-icon class="fa-icon ml-2" icon="chevron-right"></fa-icon>
       </div>
+    </div>
+    <div class="p-3">
+      <app-plan-list [planList]="planList" viewType="planList"></app-plan-list>
     </div>
   </div>
 </ion-content>

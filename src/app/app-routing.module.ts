@@ -31,7 +31,6 @@ const routes: Routes = [
     path: 'add-amount',
     loadChildren: () => import('./pages/add-amount/add-amount.module').then(m => m.AddAmountPageModule)
   }
-
 ];
 
 @NgModule({

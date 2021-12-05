@@ -8,54 +8,66 @@ import { NavController } from '@ionic/angular';
 })
 export class DashboardPage implements OnInit {
 
-  SIPList: any[] = [
+  selectedTab: string = 'planList';
+  planList: any[] = [
     {
       name: "Bitcoin",
-      investment: 2000,
-      returns: 2045,
+      minInvest: 100,
+      returns: 80,
+      low: 20,
+      high: 60,
     },
     {
       name: "Ethereum",
-      investment: 34000,
-      returns: 35190,
+      minInvest: 50,
+      returns: 60,
+      low: 35,
+      high: 76,
     },
     {
       name: "Bitcoin + Ethereum + BNB",
-      investment: 7629,
-      returns: 6800,
+      minInvest: 70,
+      returns: 45,
+      low: 27,
+      high: 67,
     },
     {
       name: "Bitcoin + Ethereum + BNB + ADA + XRP",
-      investment: 7629,
-      returns: 7800,
+      minInvest: 70,
+      returns: 45,
+      low: 27,
+      high: 67,
     },
     {
       name: "Doge and Shiba Inu (High Risk)",
-      investment: 7629,
-      returns: 7800,
+      minInvest: 70,
+      returns: 45,
+      low: 27,
+      high: 67,
     },
     {
       name: "Polkadot + Solana + Polygon (Matic)",
-      investment: 7629,
-      returns: 7800,
+      minInvest: 70,
+      returns: 45,
+      low: 27,
+      high: 67,
     },
     {
       name: "Exchange basket (BNB / FTX / Kucoin)",
-      investment: 7629,
-      returns: 7800,
+      minInvest: 70,
+      returns: -45,
+      low: 27,
+      high: 67,
     },
   ];
 
-
-  constructor(
-    private navCtrl: NavController
-  ) { }
+  constructor() { }
 
   ngOnInit() {
   }
 
-  onViewDetails() {
-    this.navCtrl.navigateForward('/dashboard/sip-details');
+  onSelectTab(type) {
+    this.selectedTab = type;
   }
 
 }

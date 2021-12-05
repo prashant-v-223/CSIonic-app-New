@@ -14,6 +14,8 @@ import { MatRippleModule } from '@angular/material/core';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { PlanListComponent } from './components/plan-list/plan-list.component';
 
 const MODULES = [
   MatFormFieldModule,
@@ -27,11 +29,13 @@ const MODULES = [
   ReactiveFormsModule,
   MatProgressBarModule,
   MatRippleModule,
+  FontAwesomeModule,
 ];
 const COMPONENTS = [
   PieChartComponent,
   LineChartComponent,
-  CalendarComponent
+  CalendarComponent,
+  PlanListComponent
 ];
 
 @NgModule({
