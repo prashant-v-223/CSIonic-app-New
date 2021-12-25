@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
 
 @Component({
   selector: 'app-login',
@@ -9,38 +10,58 @@ import { Router } from '@angular/router';
 })
 export class LoginPage implements OnInit {
 
-  loginForm: FormGroup;
+  title = 'amplify-angular-auth';
+  user: CognitoUserInterface | undefined;
+  authState: AuthState;
+  formFields = [{
+    type: 'email',
+    label: 'Email',
+    placeholder: 'Enter email here',
+    inputProps: { required: true, autocomplete: 'email' },
+  }, {
+    type: 'password',
+    label: 'Password',
+    placeholder: 'Enter password here',
+    inputProps: { required: true, autocomplete: 'new-password' },
+  }, {
+    type: 'given_name',
+    label: 'First Name',
+    placeholder: 'Enter your first name',
+    inputProps: { required: true },
+  }, {
+    type: 'family_name',
+    label: 'Last Name',
+    placeholder: 'Enter your last name',
+    inputProps: { required: true },
+  }, {
+    type: 'phone_number',
+    label: 'Phone Number',
+    placeholder: 'Enter Phone number here',
+    inputProps: { required: true, autocomplete: 'tel' },
+  }];
 
   constructor(
     private router: Router,
+    private ref: ChangeDetectorRef
   ) { }
 
   ngOnInit() {
-    this.initForm();
-  }
-
-  initForm() {
-    this.loginForm = new FormGroup({
-      email: new FormControl('', [
-        Validators.required,
-        Validators.pattern('^([a-zA-Z0-9_\\.\\-])+\\@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z0-9])+$')
-      ]),
-      password: new FormControl('', [
-        Validators.required,
-        Validators.minLength(6)
-      ]),
-    });
+    onAuthUIStateChange((authState, authData) => {
+      this.authState = authState;
+      this.user = authData as CognitoUserInterface;
+      this.ref.detectChanges();
+      this.onLogin();
+    })
   }
 
   onLogin() {
-    if (this.loginForm.valid) {
-      const formValue = {
-        email: this.loginForm.get('email').value,
-        password: this.loginForm.get('password').value
-      };
-      console.log("formValue", formValue);
+    if(this.authState === 'signedin'){
+      this.router.navigateByUrl('/choose-plan');
     }
-    this.router.navigateByUrl('/choose-plan');
+  }
+
+  ngOnDestroy() {
+    return onAuthUIStateChange;
   }
 
 }

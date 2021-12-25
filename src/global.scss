@@ -26,7 +26,12 @@
 @import "~@ionic/angular/css/flex-utils.css";
 @import "../node_modules/flex-css-classes/css/flex-prefixed.css";
 @import "./theme/general.scss";
-@import '~@aws-amplify/ui-angular/theme.css';
+
+:root{
+  --amplify-primary-color: var(--ion-color-primary);
+  --amplify-primary-tint: var(--ion-color-primary-tint);
+  --amplify-primary-shade: var(--ion-color-primary-shade);
+}
 
 .link {
   text-decoration: none;
@@ -151,5 +156,30 @@
   line-height: 22px;
   width: 22px;
   height: 22px;
+  text-align: center;
+}
+
+.grow {
+  flex-grow: 1;
+}
+
+.link-btn {
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  outline: none;
+  padding: 0.5rem 0.7rem;
+  color: var(--ion-color-success);
+  background-color: rgba(45, 211, 111, 0.12);
+  border-radius: 20px;
+}
+
+.amount-input {
+  width: 100%;
+  margin-top: 2rem;
+  height: 40px;
+  font-size: 1.5rem;
+  border: none;
+  outline: none;
   text-align: center;
 }

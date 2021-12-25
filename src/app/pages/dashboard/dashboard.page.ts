@@ -53,7 +53,7 @@ export class DashboardPage implements OnInit {
       high: 67,
     },
     {
-      name: "Exchange basket (BNB / FTX / Kucoin)",
+      name: "Exchange basket (BNB/FTX/Kucoin)",
       minInvest: 70,
       returns: -45,
       low: 27,

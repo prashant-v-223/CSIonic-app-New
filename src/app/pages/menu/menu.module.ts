@@ -8,12 +8,14 @@ import { MenuPageRoutingModule } from './menu-routing.module';
 
 import { MenuPage } from './menu.page';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    AmplifyUIAngularModule,
     MenuPageRoutingModule,
     SharedModule
   ],

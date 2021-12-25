@@ -4,7 +4,11 @@
 
 export const environment = {
   production: false,
-  baseUrl: ""
+  baseUrl: "",
+  COGNITO_IDENTITY_POOL_ID: "ap-south-1:19ff8828-ee7e-4155-b99a-5d490d83f246",
+  AWS_REGION: "ap-south-1",
+  COGNITO_USER_POOL_ID: "ap-south-1_Oj7GfEVr1",
+  COGNITO_USER_POOL_CLIENT_ID:"7r09ln3dhgo52u5csglok841ld"
 };
 
 /*

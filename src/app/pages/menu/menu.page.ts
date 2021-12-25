@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { Auth } from 'aws-amplify';
 
 @Component({
   selector: 'app-menu',
@@ -21,6 +22,11 @@ export class MenuPage implements OnInit {
 
   viewTransactions() {
     this.navCtrl.navigateForward('/dashboard/transaction-list');
+  }
+  signOut() {
+    localStorage.clear();
+    Auth.signOut();
+    this.navCtrl.navigateBack('/login');
   }
 
   onBack() {

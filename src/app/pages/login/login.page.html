@@ -1,26 +1,8 @@
 <ion-content>
-  <div class="login-container">
-    <div class="app-logo">
-      <!-- <img src="../../../assets/icon/logo.svg" class="logo" alt="app-logo"> -->
-      <span>Coinstation</span>
-    </div>
-    <div class="login-form" [formGroup]="loginForm">
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Email Id</mat-label>
-        <input matInput placeholder="Email Id" formControlName="email" required>
-      </mat-form-field>
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Password</mat-label>
-        <input matInput type="password" placeholder="Password" formControlName="password" required>
-      </mat-form-field>
-      <div class="flex-row align-center items-end mb-large">
-        <a class="link">Forgot Password?</a>
-      </div>
-      <button mat-flat-button color="primary" class="w-100" (click)="onLogin()">Log In</button>
-      <div class="flex-row w-100 mt-large items-center">
-        <div class="gray-text">Don't have an account?</div>
-        <a class="link" routerLink="/sign-up">Sign up</a>
-      </div>
-    </div>
-  </div>
+  <amplify-auth-container>
+    <amplify-authenticator *ngIf="authState !== 'signedin'" username-alias="email">
+      <amplify-sign-up slot="sign-up" header-text="SignUp to Coinstation" usernameAlias="email" [formFields]="formFields"></amplify-sign-up>
+      <amplify-sign-in slot="sign-in" header-text="SignIn to Coinstation" usernameAlias="email"></amplify-sign-in>
+    </amplify-authenticator>
+  </amplify-auth-container>
 </ion-content>

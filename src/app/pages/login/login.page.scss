@@ -1,8 +1,7 @@
-.login-container {
+amplify-authenticator {
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  height: 100%;
-  padding: 1rem;
+  align-items: center;
+  flex: 1;
+  height: 100vh;
 }
