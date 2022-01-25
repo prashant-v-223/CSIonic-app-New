@@ -1,0 +1,45 @@
+.page-container {
+  padding-bottom: 0;
+}
+
+.page-header-container {
+  padding-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.page-body {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  padding-top: 1rem;
+  flex-grow: 1;
+  overflow: auto;
+
+  .verify_doc {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    margin-bottom: 1.5rem;
+  }
+
+  .camera_btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    background-color: rgba($color: #22A599, $alpha: 0.1);
+    height: 200px;
+
+    .camera_icon {
+      font-size: 45px;
+      line-height: 45px;
+      width: 45px;
+      height: 45px;
+    }
+  }
+}
+
+.uploadFile {
+  display: none;
+}

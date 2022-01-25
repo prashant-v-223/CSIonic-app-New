@@ -22,7 +22,7 @@
           </div>
         </div>
       </div>
-      <div class="menu-item" matRipple>
+      <div class="menu-item" matRipple (click)="onBankDetails()">
         <div class="menu-icon-container">
           <fa-icon class="fa-icon color-primary" icon="university"></fa-icon>
         </div>
@@ -30,6 +30,17 @@
           <div class="flex-column align-stretch">
             <h2 class="mb-1">Bank details</h2>
             <span class="gray-text">Banks & AutoPay mandates</span>
+          </div>
+        </div>
+      </div>
+      <div class="menu-item" matRipple (click)="onKYCDocument()">
+        <div class="menu-icon-container">
+          <fa-icon class="fa-icon color-primary" icon="address-card"></fa-icon>
+        </div>
+        <div class="flex-row align-center">
+          <div class="flex-column align-stretch">
+            <h2 class="mb-1">Personal Verification</h2>
+            <span class="gray-text">Verify Document</span>
           </div>
         </div>
       </div>

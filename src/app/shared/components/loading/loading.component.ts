@@ -1,0 +1,17 @@
+import { Component, OnInit } from '@angular/core';
+import { COPY } from '../../helper/const';
+
+@Component({
+  selector: 'app-loading',
+  templateUrl: './loading.component.html',
+  styleUrls: ['./loading.component.scss'],
+})
+export class LoadingComponent implements OnInit {
+
+  loadingMessage: any = COPY.PLEASE_WAIT_LABEL;
+
+  constructor() { }
+
+  ngOnInit() { }
+
+}

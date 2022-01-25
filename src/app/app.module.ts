@@ -12,6 +12,7 @@ import Amplify from 'aws-amplify';
 import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
+import { ApiConfiguration } from './services/apis/configuration';
 
 Amplify.configure({
   Auth: {
@@ -33,7 +34,10 @@ Amplify.configure({
     CommonModule,
     AmplifyUIAngularModule
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    ApiConfiguration
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

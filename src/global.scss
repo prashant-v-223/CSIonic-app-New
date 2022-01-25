@@ -27,7 +27,7 @@
 @import "../node_modules/flex-css-classes/css/flex-prefixed.css";
 @import "./theme/general.scss";
 
-:root{
+:root {
   --amplify-primary-color: var(--ion-color-primary);
   --amplify-primary-tint: var(--ion-color-primary-tint);
   --amplify-primary-shade: var(--ion-color-primary-shade);
@@ -50,6 +50,7 @@
   align-items: stretch;
   height: 100%;
   padding: 1rem;
+  position: relative;
 }
 
 .app-logo {
@@ -182,4 +183,29 @@
   border: none;
   outline: none;
   text-align: center;
+}
+
+.amplify-authenticator {
+  --box-shadow: none;
+  height: 400px !important;
+  --container-height: 400px;
+  --padding: 0;
+
+}
+
+amplify-sign-up {
+  margin-top: 14rem;
+}
+
+.page-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  flex-shrink: 0;
+
+  .back-btn {
+    position: absolute;
+    left: 0;
+  }
 }

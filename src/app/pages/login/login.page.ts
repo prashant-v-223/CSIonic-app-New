@@ -1,8 +1,7 @@
 import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
-
+import { UserService } from 'src/app/shared/services/user.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
@@ -42,11 +41,13 @@ export class LoginPage implements OnInit {
 
   constructor(
     private router: Router,
-    private ref: ChangeDetectorRef
+    private ref: ChangeDetectorRef,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
     onAuthUIStateChange((authState, authData) => {
+      console.log('Auth state changed to ', authState, authData);
       this.authState = authState;
       this.user = authData as CognitoUserInterface;
       this.ref.detectChanges();
@@ -54,10 +55,24 @@ export class LoginPage implements OnInit {
     })
   }
 
-  onLogin() {
-    if(this.authState === 'signedin'){
-      this.router.navigateByUrl('/choose-plan');
+  async onLogin() {
+    try {
+      if (this.authState === 'signedin') {
+        await this.userService.setHeaderToken();
+        this.getUser();
+        // this.router.navigateByUrl('/choose-plan');
+      }
+    } catch {
+      console.error('Error logging in');
     }
+  }
+
+  getUser() {
+    this.userService.getUser().then(res => {
+      console.log("Get user : ", res);
+    }).catch(error => {
+      console.error("Cannot get user : ", error);
+    });
   }
 
   ngOnDestroy() {

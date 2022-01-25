@@ -1,0 +1,48 @@
+<ion-content>
+  <div class="page-container">
+    <div class="page-header-container">
+      <button mat-icon-button class="back-btn" (click)="onBack()">
+        <fa-icon class="fa-icon color-primary" icon="chevron-left"></fa-icon>
+      </button>
+      <h2 class="m-0 color-primary">{{CONSTANT.DOCUMENT_VERIFY_LABEL}}</h2>
+    </div>
+    <div class="page-body">
+      <div class="verify_doc" *ngIf="verifyType==='selfie'">
+        <p class="gray-text mt-3">Selfie with Location</p>
+        <div class="camera_btn">
+          <fa-icon class="fa-icon color-primary camera_icon" icon="camera"></fa-icon>
+          <p class="gray-text mt-3">Take a photo</p>
+        </div>
+      </div>
+      <div class="flex-column align-stretch mt-4 mb-4" *ngIf="verifyType==='id-verify' || verifyType==='PAN'">
+        <mat-form-field appearance="outline" *ngIf="verifyType==='id-verify'">
+          <mat-label>Select Document</mat-label>
+          <mat-select>
+            <mat-option value="Aadhaar Card">Aadhaar Card</mat-option>
+            <mat-option value="Driving License">Driving License</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field appearance="outline">
+          <mat-label>Enter Number</mat-label>
+          <input matInput placeholder="Enter Number" required>
+        </mat-form-field>
+        <p class="gray-text mt-3">Front Side</p>
+        <div class="camera_btn">
+          <fa-icon class="fa-icon color-primary camera_icon" icon="camera"></fa-icon>
+          <p class="gray-text mt-3">Take a photo</p>
+        </div>
+        <input type="file" class="uploadFile" (change)="browse($event,'frontSide')" #frontSide>
+        <button mat-stroked-button color="primary" class="mt-3" (click)="frontSide.click()">Attache File</button>
+        <p class="gray-text mt-4">Back Side</p>
+        <div class="camera_btn">
+          <fa-icon class="fa-icon color-primary camera_icon" icon="camera"></fa-icon>
+          <p class="gray-text mt-3">Take a photo</p>
+        </div>
+        <input type="file" class="uploadFile" (change)="browse($event,'backSide')" #backSide>
+        <button mat-stroked-button color="primary" class="mt-3" (click)="backSide.click()">Attache File</button>
+      </div>
+      <button mat-flat-button color="primary" class="mb-3">Verify</button>
+    </div>
+  </div>
+
+</ion-content>

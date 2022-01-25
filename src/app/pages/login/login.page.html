@@ -1,8 +1,12 @@
 <ion-content>
+  <div class="flex-row align-center items-center" *ngIf="authState !== 'signedin'">
+    <img src="../../../assets/logo.svg" width="200" height="200" alt="app-logo">
+  </div>
   <amplify-auth-container>
-    <amplify-authenticator *ngIf="authState !== 'signedin'" username-alias="email">
-      <amplify-sign-up slot="sign-up" header-text="SignUp to Coinstation" usernameAlias="email" [formFields]="formFields"></amplify-sign-up>
-      <amplify-sign-in slot="sign-in" header-text="SignIn to Coinstation" usernameAlias="email"></amplify-sign-in>
+    <amplify-authenticator class="amplify-authenticator" *ngIf="authState !== 'signedin'" username-alias="email">
+      <amplify-sign-up slot="sign-up" header-text="Sign Up to Prosprr" usernameAlias="email" [formFields]="formFields">
+      </amplify-sign-up>
+      <amplify-sign-in slot="sign-in" header-text="Sign In to Prosprr" usernameAlias="email"></amplify-sign-in>
     </amplify-authenticator>
   </amplify-auth-container>
 </ion-content>

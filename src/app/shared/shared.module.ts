@@ -11,11 +11,13 @@ import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatRippleModule } from '@angular/material/core';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { PieChartComponent } from './components/pie-chart/pie-chart.component';
 import { LineChartComponent } from './components/line-chart/line-chart.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PlanListComponent } from './components/plan-list/plan-list.component';
+import { LoadingComponent } from './components/loading/loading.component';
 
 const MODULES = [
   MatFormFieldModule,
@@ -30,12 +32,14 @@ const MODULES = [
   MatProgressBarModule,
   MatRippleModule,
   FontAwesomeModule,
+  MatProgressSpinnerModule
 ];
 const COMPONENTS = [
   PieChartComponent,
   LineChartComponent,
   CalendarComponent,
-  PlanListComponent
+  PlanListComponent,
+  LoadingComponent,
 ];
 
 @NgModule({

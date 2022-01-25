@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="page-container">
+    <div class="page-header-container">
+      <button mat-icon-button class="back-btn" (click)="onBack()">
+        <fa-icon class="fa-icon color-primary" icon="chevron-left"></fa-icon>
+      </button>
+      <h2 class="m-0 color-primary">{{CONSTANT.BANK_DETAILS_LABEL}}</h2>
+    </div>
+    <div class="page-body">
+      <div class="card" *ngIf="bankDetails">
+        <div class="mb-4 mt-2">
+          <label for="holder name" class="gray-text">Account holder name</label>
+          <p class="mt-1">{{bankDetails.holderName}}</p>
+        </div>
+        <div class="mb-4">
+          <label for="account number" class="gray-text">Account Number</label>
+          <p class="mt-1">{{bankDetails.accountNumber}}</p>
+        </div>
+        <div class="mb-4">
+          <label for="IFSC code" class="gray-text">IFSC Code</label>
+          <p class="mt-1">{{bankDetails.IFSC}}</p>
+        </div>
+        <label for="Account type" class="gray-text">Account type</label>
+        <p class="mt-1">{{bankDetails.accountType}}</p>
+        <div class="flex-row align-center mt-4">
+          <img class="mr-3" src="../../../assets/icon/verified.svg" width="25" height="25" alt="verified">
+          <p class="m-0">verified</p>
+        </div>
+      </div>
+      <button mat-flat-button color="primary" class="mt-4" (click)="onUpdateDetails()">Update Details</button>
+    </div>
+    <app-loading></app-loading>
+  </div>
+</ion-content>

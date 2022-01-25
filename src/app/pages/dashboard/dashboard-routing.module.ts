@@ -28,6 +28,18 @@ const routes: Routes = [
   {
     path: 'transaction-list',
     loadChildren: () => import('../transaction-list/transaction-list.module').then(m => m.TransactionListPageModule)
+  },
+  {
+    path: 'bank-details',
+    loadChildren: () => import('../bank-details/bank-details.module').then(m => m.BankDetailsPageModule)
+  },
+  {
+    path: 'bank-verification',
+    loadChildren: () => import('../bank-verification/bank-verification.module').then(m => m.BankVerificationPageModule)
+  },
+  {
+    path: 'kyc-document',
+    loadChildren: () => import('../kyc-document/kyc-document.module').then(m => m.KYCDocumentPageModule)
   }
 ];
 

@@ -1,0 +1,19 @@
+<ion-content>
+  <div class="page-container">
+    <div class="page-header-container">
+      <button mat-icon-button class="back-btn" (click)="onBack()">
+        <fa-icon class="fa-icon color-primary" icon="chevron-left"></fa-icon>
+      </button>
+      <h2 class="m-0 color-primary">{{CONSTANT.KYC_DOCUMENT_LABEL}}</h2>
+    </div>
+    <div class="page-body">
+      <button mat-stroked-button color="primary" class="mb-5" (click)="onIDVerify('selfie')">Selfie With
+        Location</button>
+      <button mat-stroked-button color="primary" class="mb-5" (click)="onIDVerify('PAN')">Verify PAN Card</button>
+      <button mat-stroked-button color="primary" class="mb-5" (click)="onIDVerify('id-verify')">Verify Aadhaar Card /
+        Driving License</button>
+
+    </div>
+  </div>
+
+</ion-content>

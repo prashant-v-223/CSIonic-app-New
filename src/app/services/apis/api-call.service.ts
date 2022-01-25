@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { HttpClient, HttpEventType } from '@angular/common/http';
 import { ApiConfiguration } from './configuration';
-
+import Auth from '@aws-amplify/auth';
 @Injectable({
     providedIn: 'root'
 })
@@ -15,18 +15,20 @@ export class ApiCallService extends ApiConfiguration {
         super();
         const token = localStorage.getItem('token');
         this.token = token ? token : null;
-        // console.log('token', this.token);
     }
 
-    setHeaderToken(token) {
-        this.token = token;
-        localStorage.setItem('token', token);
+    setHeaderToken() {
+        Auth.currentSession().then(res => {
+            this.token = res.getAccessToken().getJwtToken();
+        }).catch(error => {
+            console.error("Error : ", error);
+        });
     }
 
     getHeader() {
         return {
             headers: {
-                Authorization: this.token
+                Authorization: 'Bearer ' + this.token
             }
         };
     }
@@ -34,7 +36,6 @@ export class ApiCallService extends ApiConfiguration {
     public getData(subUrl: string, token = true): Promise<any> {
         return new Promise((resolve, reject) => {
             const request: string = this.baseUrl + subUrl;
-            // console.log('data', request);
             this.http
                 .get(request,
                     token ? this.getHeader() : {})
@@ -47,8 +48,6 @@ export class ApiCallService extends ApiConfiguration {
 
     public postData(subUrl: string, data: any, token = true): Promise<any> {
         return new Promise((resolve, reject) => {
-            console.log('Token :', token);
-            console.log('Data :', this.getHeader());
             const request: string = this.baseUrl + subUrl;
             this.http.post(request, data, token ? this.getHeader() : {})
                 .subscribe(
@@ -56,7 +55,6 @@ export class ApiCallService extends ApiConfiguration {
                         resolve(res);
                     },
                     error => {
-                        console.log('Main Error :', error);
                         reject(error);
                     }
                 );
