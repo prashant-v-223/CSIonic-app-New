@@ -94,14 +94,6 @@ export class LoginPage implements OnInit {
     }
   }
 
-  getUser() {
-    this.userService.getUser().then(res => {
-      console.log("Get user : ", res);
-    }).catch(error => {
-      console.error("Cannot get user : ", error);
-    });
-  }
-
   ngOnDestroy() {
     return onAuthUIStateChange;
   }

@@ -9,8 +9,5 @@
       "showSpinner": true,
       "backgroundColor": "#ffffffff"
     }
-  },
-  "server": {
-    "cleartext": true
   }
 }
