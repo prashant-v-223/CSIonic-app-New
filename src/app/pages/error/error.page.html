@@ -1,0 +1,28 @@
+<ion-content>
+
+  <div class="h-100 flex-column ion-text-center ion-justify-content-center ion-align-items-center">
+    <div *ngIf="errorMessage.image || errorMessage.icon" class="ion-margin-bottom">
+      <ion-img [src]="errorMessage.image" *ngIf="errorMessage.image else placeholderIconTmlpt" class="error-img"></ion-img>
+  
+      <ng-template #placeholderIconTmlpt>
+        <fa-icon class="fa-icon color-medium size-very-large" [icon]="errorMessage.icon"></fa-icon>
+      </ng-template>
+    </div>
+    <div [class.ion-margin-top]="errorMessage.image || errorMessage.icon">
+      <h2>
+        {{ errorMessage.title }}
+      </h2>
+      <p>
+        {{ errorMessage.desc }}
+      </p>
+
+      <div class="ion-margin-top ion-padding-top" *ngIf="errorMessage.showActionButton">
+        <button mat-raised-button color="primary" (click)="handleButtonClick()">
+          {{ errorMessage.actionButtonText }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <app-loading *ngIf="isLoading"></app-loading>
+</ion-content>

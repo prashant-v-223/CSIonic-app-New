@@ -4,8 +4,14 @@
       <h2 class="m-0">Prosprr</h2>
     </div>
     <div class="body-container">
-      <app-plan-list [planList]="planList" viewType="dashboard" *ngIf="selectedTab==='planList'"></app-plan-list>
-      <app-home *ngIf="selectedTab==='home'"></app-home>
+  
+      <div *ngIf="!showLoader">
+        <app-plan-list [planList]="planList" viewType="dashboard" *ngIf="selectedTab==='planList'"></app-plan-list>
+        <app-home *ngIf="selectedTab==='home'"></app-home>
+      </div>
+
+      <app-loading *ngIf="showLoader"></app-loading>
+
     </div>
     <div class="page-footer">
       <button mat-icon-button routerLink="/dashboard/menu" routerLinkActive="active">
@@ -18,5 +24,6 @@
         <fa-icon class="tab-icons" [ngClass]="{active: selectedTab==='home'}" icon="wallet"></fa-icon>
       </button>
     </div>
+
   </div>
 </ion-content>

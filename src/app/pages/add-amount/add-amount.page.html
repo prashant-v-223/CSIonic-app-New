@@ -7,14 +7,27 @@
       <h2 class="header-title color-primary mb-0">Add Amount</h2>
     </div>
     <div class="main-container">
-      <app-pie-chart></app-pie-chart>
-      <input type="number" class="amount-input" placeholder="&#8377; Amount">
+      <app-pie-chart [chartData]="chartData"></app-pie-chart>
+      
+      <div class="mb-3 ion-text-center">
+        <mat-form-field class="ion-text-center amount-input">
+          <mat-label>&#8377; Amount</mat-label>
+          <input type="number" name="amount" step="1" matInput [formControl]="amountCtrl">
+          <mat-error *ngIf="amountCtrl.touched && amountCtrl.hasError('pattern')">
+            Please enter valid amount in whole digit
+          </mat-error>
+        </mat-form-field>
+      </div>
+
       <div class="amt-list">
-        <span class="amt-chip">+ &#8377;1000</span>
-        <span class="amt-chip">+ &#8377;2000</span>
-        <span class="amt-chip">+ &#8377;5000</span>
+        <span class="amt-chip" (click)="setAmount(1000)">&#8377; 1000</span>
+        <span class="amt-chip" (click)="setAmount(2000)">&#8377; 2000</span>
+        <span class="amt-chip" (click)="setAmount(5000)">&#8377; 5000</span>
       </div>
     </div>
-    <button mat-flat-button color="primary" class="w-100 mt-4 no-shrink" (click)="onGoDashboard()">Next</button>
+    <button mat-flat-button color="primary" class="w-100 mt-4 no-shrink" [disabled]="!amountCtrl.valid" (click)="createSIP()">CREATE SIP</button>
   </div>
+
+  <app-loading *ngIf="showLoader"></app-loading>
+
 </ion-content>

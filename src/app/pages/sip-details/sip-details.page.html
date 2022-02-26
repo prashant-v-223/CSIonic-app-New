@@ -6,57 +6,73 @@
       </button>
       <h2 class="header-title color-primary mb-0">SIP details</h2>
     </div>
-    <h2>Bitcoin + Ethereum + BNB</h2>
-    <div class="flex-row align-center">
-      <h1 class="mr-3">43.24%</h1>
-      <span class="gray-text">3Y annualized</span>
-    </div>
-    <app-line-chart></app-line-chart>
-    <div class="flex-row align-center items-space-between">
-      <span class="times" [ngClass]="{active: selectedTime==='1m'}" (click)="onSelectTime('1m')">1M</span>
-      <span class="times" [ngClass]="{active: selectedTime==='6m'}" (click)="onSelectTime('6m')">6M</span>
-      <span class="times" [ngClass]="{active: selectedTime==='1y'}" (click)="onSelectTime('1y')">1Y</span>
-      <span class="times" [ngClass]="{active: selectedTime==='3y'}" (click)="onSelectTime('3y')">3Y</span>
-      <span class="times" [ngClass]="{active: selectedTime==='all'}" (click)="onSelectTime('all')">ALL</span>
-    </div>
-    <div class="invest-card mt-5">
-      <div class="flex-column align-stretch">
-        <label for="invested" class="gray-text text-m">Invested</label>
-        <span class="f-500 font-2 mt-2">&#8377; 34,590</span>
+
+    <div *ngIf="!showLoader">
+      <h2>{{ packageDetails.name }}</h2>
+      <div class="flex-row align-center" *ngIf="packageCalculatedDetails.returnPercentage !== null">
+        <h1>
+          <span class="mr-3">{{ packageCalculatedDetails.returnPercentage }}%</span>
+          <small class="gray-text">
+            <small>{{ packageCalculatedDetails.returnYears }}Y annualized</small>
+          </small>
+        </h1>
       </div>
-      <div class="flex-column align-end">
-        <label for="total returns" class="gray-text text-m">Total Returns</label>
-        <span class="f-500 font-2 mt-2 green-text">7.34%</span>
+      <app-line-chart></app-line-chart>
+      <div class="flex-row align-center items-space-between">
+        <span class="times" [ngClass]="{active: selectedTime==='1m'}" (click)="onSelectTime('1m')">1M</span>
+        <span class="times" [ngClass]="{active: selectedTime==='6m'}" (click)="onSelectTime('6m')">6M</span>
+        <span class="times" [ngClass]="{active: selectedTime==='1y'}" (click)="onSelectTime('1y')">1Y</span>
+        <span class="times" [ngClass]="{active: selectedTime==='3y'}" (click)="onSelectTime('3y')">3Y</span>
+        <span class="times" [ngClass]="{active: selectedTime==='all'}" (click)="onSelectTime('all')">ALL</span>
       </div>
-    </div>
-    <div class="flex-column align-stretch p-3 mt-4">
-      <div class="flex-row align-center mb-3">
-        <div class="flex-column w-50">
-          <label for="NAV" class="gray-text text-m">NAV: 12-Nov-2021</label>
-          <span class="mt-2">&#8377; 177.67</span>
+      
+      <!-- <div class="invest-card mt-5">
+        <div class="flex-column align-stretch">
+          <label for="invested" class="gray-text text-m">Invested</label>
+          <span class="f-500 font-2 mt-2">&#8377; 34,590</span>
         </div>
-        <div class="flex-column w-50">
-          <label for="Rating" class="gray-text text-m">Rating</label>
-          <span class="mt-2">NA</span>
+        <div class="flex-column align-end">
+          <label for="total returns" class="gray-text text-m">Total Returns</label>
+          <span class="f-500 font-2 mt-2 green-text">7.34%</span>
         </div>
+      </div> -->
+
+      <div class="flex-column align-stretch p-3 mt-4">
+        
+        <div class="flex-row align-center mb-3">
+          <!-- <div class="flex-column w-50">
+            <label for="NAV" class="gray-text text-m">NAV: 12-Nov-2021</label>
+            <span class="mt-2">&#8377; 177.67</span>
+          </div> -->
+          <div class="flex-column w-50">
+            <label for="amount" class="gray-text text-m">Min. SIP amount</label>
+            <span class="mt-2">&#8377; {{ packageDetails.totalMinimumDepositAmount }}</span>
+          </div>
+        </div>
+        
+        <!-- <div class="flex-row align-center mb-2">
+          <div class="flex-column w-50">
+            <label for="Rating" class="gray-text text-m">Rating</label>
+            <span class="mt-2">NA</span>
+          </div>
+          <div class="flex-column w-50">
+            <label for="fund" class="gray-text text-m">Fund Size</label>
+            <span class="mt-2">&#8377; 6,886 Cr</span>
+          </div>
+        </div> -->
       </div>
-      <div class="flex-row align-center mb-2">
-        <div class="flex-column w-50">
-          <label for="amount" class="gray-text text-m">Min. SIP amount</label>
-          <span class="mt-2">&#8377; 100</span>
-        </div>
-        <div class="flex-column w-50">
-          <label for="fund" class="gray-text text-m">Fund Size</label>
-          <span class="mt-2">&#8377; 6,886 Cr</span>
-        </div>
-      </div>
+
+      <!-- <div class="order-trend">
+        <h2>Monthly orders trend</h2>
+        <span class="gray-text text-m mb-2">SIP orders</span>
+        <span>85.36%</span>
+        <mat-progress-bar mode="determinate" class="mt-2 progress" color="primary" value="85.36"></mat-progress-bar>
+      </div> -->
+      
+      <button mat-flat-button color="primary" class="w-100 mt-4 no-shrink" (click)="onCreateSIP()">CREATE SIP</button>
     </div>
-    <div class="order-trend">
-      <h2>Monthly orders trend</h2>
-      <span class="gray-text text-m mb-2">SIP orders</span>
-      <span>85.36%</span>
-      <mat-progress-bar mode="determinate" class="mt-2 progress" color="primary" value="85.36"></mat-progress-bar>
-    </div>
-    <button mat-flat-button color="primary" class="w-100 mt-4 no-shrink" (click)="onGoDashboard()">MONTHLY SIP</button>
+
+    <app-loading *ngIf="showLoader"></app-loading>
+
   </div>
 </ion-content>

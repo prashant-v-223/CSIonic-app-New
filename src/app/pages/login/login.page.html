@@ -9,4 +9,7 @@
       <amplify-sign-in slot="sign-in" header-text="Sign In to Prosprr" usernameAlias="email"></amplify-sign-in>
     </amplify-authenticator>
   </amplify-auth-container>
+
+  <app-loading *ngIf="isLoading"></app-loading>
+
 </ion-content>

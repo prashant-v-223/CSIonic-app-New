@@ -8,6 +8,10 @@ export class ApiConfiguration {
     public login = `authentication/login`;
     public bankAccount = `bank/account`;
     public user = `auth/user`;
+    public verifyProof = `user/id-proof`;
+    public verifySelfie = `user/selfie`;
 
+    public packages = 'packages';
+    public sip = 'sip';
 }
 

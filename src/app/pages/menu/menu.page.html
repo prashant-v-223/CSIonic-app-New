@@ -6,10 +6,25 @@
       </button>
       <h2 class="m-0">Menu</h2>
     </div>
+    
     <div class="profile-section">
-      <img src="../../../assets/icon/user.jpg" class="avatar" alt="avatar">
-      <h2>Alexandra N. Ford</h2>
+      
+      <ng-container *ngIf="user?.kycDocuments?.selfie else avatarTmplt">
+        <ion-avatar class="mr-4">
+          <img [src]="user.kycDocuments.selfie" />
+        </ion-avatar>
+      </ng-container>
+      <ng-template #avatarTmplt>
+        <fa-icon class="fa-icon profile color-primary" icon="user"></fa-icon>
+      </ng-template>
+
+      <h2 class="mb-0 grow">
+        <ng-container *ngIf="user else loadingTmplt">
+          {{ user.firstName }} {{ user.lastName }}
+        </ng-container>
+      </h2>
     </div>
+
     <div class="menu-list pt-0">
       <div class="menu-item" matRipple (click)="viewTransactions()">
         <div class="menu-icon-container">
@@ -79,3 +94,8 @@
     </div>
   </div>
 </ion-content>
+
+
+<ng-template #loadingTmplt>
+  <ion-skeleton-text animated style="width: 50%"></ion-skeleton-text>
+</ng-template>

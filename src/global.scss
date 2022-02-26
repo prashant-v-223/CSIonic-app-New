@@ -87,6 +87,14 @@
   color: var(--ion-color-primary) !important;
 }
 
+.color-danger {
+  color: var(--ion-color-danger) !important;
+}
+
+.color-medium {
+  color: var(--ion-color-medium) !important;
+}
+
 .green-text {
   color: var(--ion-color-success);
 }
@@ -125,6 +133,7 @@
   flex-direction: column;
   align-items: stretch;
   overflow: auto;
+  flex-grow: 1;
 }
 
 .grow {
@@ -150,6 +159,10 @@
   border: none;
   outline: none;
   text-align: center;
+
+  mat-error {
+    font-size: .6rem;
+  }
 }
 
 .fa-icon {
@@ -158,6 +171,16 @@
   width: 22px;
   height: 22px;
   text-align: center;
+
+  &.size {
+    &-sm {
+      font-size: 15px;
+    }
+    &-very-large {
+      font-size: 200px;
+    }
+  }
+
 }
 
 .grow {
@@ -207,5 +230,13 @@ amplify-sign-up {
   .back-btn {
     position: absolute;
     left: 0;
+  }
+}
+
+.text-capitalize {
+  text-transform:lowercase;
+  
+  &:first-letter {
+   text-transform: uppercase;
   }
 }

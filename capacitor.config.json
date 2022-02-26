@@ -1,6 +1,16 @@
 {
-	"appId": "io.ionic.starter",
-	"appName": "coinstation",
-	"webDir": "www",
-	"bundledWebRuntime": false
+  "appId": "io.ionic.starter",
+  "appName": "Prosprr",
+  "webDir": "www",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false,
+      "showSpinner": true,
+      "backgroundColor": "#ffffffff"
+    }
+  },
+  "server": {
+    "cleartext": true
+  }
 }

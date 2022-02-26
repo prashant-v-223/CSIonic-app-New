@@ -1,34 +1,93 @@
 <ion-content>
-  <div class="page-container">
-    <div class="page-header-container">
+  <div class="page-container p-0">
+    <div class="page-header pl-3 pr-3">
       <button mat-icon-button class="back-btn" (click)="onBack()">
         <fa-icon class="fa-icon color-primary" icon="chevron-left"></fa-icon>
       </button>
       <h2 class="m-0 color-primary">{{CONSTANT.BANK_DETAILS_LABEL}}</h2>
     </div>
-    <div class="page-body">
-      <div class="card" *ngIf="bankDetails">
-        <div class="mb-4 mt-2">
-          <label for="holder name" class="gray-text">Account holder name</label>
-          <p class="mt-1">{{bankDetails.holderName}}</p>
-        </div>
+
+    <div class="page-body pl-3 pr-3 pt-4" *ngIf="!isLoading">
+      <div *ngIf="bankDetails && mode !== 'edit' else bankDetailsFormTmpl">
         <div class="mb-4">
-          <label for="account number" class="gray-text">Account Number</label>
-          <p class="mt-1">{{bankDetails.accountNumber}}</p>
+          <div class="mb-4 mt-2">
+            <label for="holder name" class="gray-text">Account holder name</label>
+            <p class="mt-1">{{bankDetails.holderName}}</p>
+          </div>
+          <div class="mb-4">
+            <label for="account number" class="gray-text">Account Number</label>
+            <p class="mt-1">{{bankDetails.accountNumber}}</p>
+          </div>
+          <div class="mb-4">
+            <label for="IFSC code" class="gray-text">IFSC Code</label>
+            <p class="mt-1">{{bankDetails.IFSC}}</p>
+          </div>
+          <label for="Account type" class="gray-text ">Account type</label>
+          <p class="mt-1">{{ accountTypeLabel }}</p>
+          <div class="flex-row align-center mt-4">
+            <img class="mr-3" src="assets/icon/verified.svg" width="25" height="25" alt="verified">
+            <p class="m-0">verified</p>
+          </div>
         </div>
-        <div class="mb-4">
-          <label for="IFSC code" class="gray-text">IFSC Code</label>
-          <p class="mt-1">{{bankDetails.IFSC}}</p>
-        </div>
-        <label for="Account type" class="gray-text">Account type</label>
-        <p class="mt-1">{{bankDetails.accountType}}</p>
-        <div class="flex-row align-center mt-4">
-          <img class="mr-3" src="../../../assets/icon/verified.svg" width="25" height="25" alt="verified">
-          <p class="m-0">verified</p>
-        </div>
+        <button mat-flat-button color="primary" class="mt-4" (click)="onEditDetails()">
+          Edit
+        </button>
       </div>
-      <button mat-flat-button color="primary" class="mt-4" (click)="onUpdateDetails()">Update Details</button>
+
+      <ng-template #bankDetailsFormTmpl>
+        <div>
+          <form *ngIf="bankDetailsForm" (ngSubmit)="save()" [formGroup]="bankDetailsForm">
+            
+            <mat-form-field class="d-block" appearance="outline">
+              <mat-label>Account holder name</mat-label>
+              <input matInput placeholder="Account holder name" formControlName="holderName" required>
+            </mat-form-field>
+          
+            <mat-form-field class="d-block" appearance="outline">
+              <mat-label>Account number</mat-label>
+              <input matInput type="number" placeholder="Account number" formControlName="accountNumber" required>
+              <mat-error
+                *ngIf="bankDetailsForm.controls.accountNumber.touched && !bankDetailsForm.controls.accountNumber.errors?.required && bankDetailsForm.controls.accountNumber.errors?.pattern">
+                Account number should contain 9 to 18 digits
+              </mat-error>
+            </mat-form-field>
+          
+            <mat-form-field class="d-block" appearance="outline">
+              <mat-label>IFSC Code</mat-label>
+              <input matInput placeholder="IFSC Code" formControlName="IFSC" required>
+              <fa-icon *ngIf="bankDetailsForm.controls.IFSC.touched && !bankDetailsForm.controls.IFSC.errors?.required && bankDetailsForm.controls.IFSC.errors?.pattern" matSuffix class="fa-icon size-sm" icon="info-circle" (click)="showInfoModal()"></fa-icon>
+              <mat-error
+                *ngIf="bankDetailsForm.controls.IFSC.touched && !bankDetailsForm.controls.IFSC.errors?.required && bankDetailsForm.controls.IFSC.errors?.pattern">
+                Please enter a valid IFSC code
+              </mat-error>
+            </mat-form-field>
+          
+            <mat-form-field class="d-block" appearance="outline">
+              <mat-label>Account Type</mat-label>
+              <mat-select formControlName="accountType">
+                <mat-option *ngFor="let type of accountTypes" [value]="type.value">
+                  {{type.label}}
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <button mat-flat-button color="primary" class="d-block w-100 mt-3 mb-3 p-2" type="submit">
+              <fa-icon class="fa-icon mr-2" icon="check"></fa-icon>
+              {{CONSTANT.VERIFY_LABEL}}
+            </button>
+        
+            <button mat-stroked-button color="dark" class="d-block w-100 mt-3 mb-3 p-2" *ngIf="bankDetails" (click)="onEditCancel()">
+              <fa-icon class="fa-icon mr-2" icon="times"></fa-icon>
+              {{CONSTANT.CANCEL_LABEL}}
+            </button>
+          </form>
+        </div>
+      </ng-template>
+
     </div>
-    <app-loading></app-loading>
+    
+    <app-loading *ngIf="isLoading"></app-loading>
   </div>
+
 </ion-content>
+

@@ -7,13 +7,65 @@
       <h2 class="m-0 color-primary">{{CONSTANT.KYC_DOCUMENT_LABEL}}</h2>
     </div>
     <div class="page-body">
-      <button mat-stroked-button color="primary" class="mb-5" (click)="onIDVerify('selfie')">Selfie With
-        Location</button>
-      <button mat-stroked-button color="primary" class="mb-5" (click)="onIDVerify('PAN')">Verify PAN Card</button>
-      <button mat-stroked-button color="primary" class="mb-5" (click)="onIDVerify('id-verify')">Verify Aadhaar Card /
-        Driving License</button>
+
+      <ion-list lines="full">
+        <ion-item class="mt-2 mb-2" (click)="!user || user.kycDocuments?.selfie || onIDVerify('selfie')">
+          <fa-icon class="fa-icon color-primary mr-3" icon="user"></fa-icon>
+          <ion-label class="pr-1">
+            <h2 class="m-0">{{CONSTANT.TAKE_PHOTO_LABEL}}</h2>
+            <p class="m-0">{{CONSTANT.TAKE_PHOTO_LABEL}}</p>
+          </ion-label>
+          <div class="ion-text-center" *ngIf="user">
+            <ng-container *ngIf="user.kycDocuments?.selfie else pendingTmplt">
+              <ng-container *ngTemplateOutlet="verifiedTmplt"></ng-container>
+            </ng-container>
+          </div>
+        </ion-item>
+        <ion-item class="mt-2 mb-2" (click)="!user || user.kycDocuments?.panCard || onIDVerify('PAN')">
+          <fa-icon class="fa-icon color-primary mr-3" icon="address-card"></fa-icon>
+          <ion-label class="pr-1">
+            <h2 class="m-0">{{CONSTANT.IDENTITY_PROOF}}</h2>
+            <p class="m-0">{{CONSTANT.VERIFY_PAN_CARD_LABEL}}</p>
+          </ion-label>
+          <div class="ion-text-center" *ngIf="user">
+            <ng-container *ngIf="user.kycDocuments?.panCard else pendingTmplt">
+              <ng-container *ngTemplateOutlet="verifiedTmplt"></ng-container>
+            </ng-container>
+          </div>
+        </ion-item>
+        <ion-item class="mt-2 mb-2" (click)="!user || user.kycDocuments?.adhaarCard || onIDVerify('id-verify')">
+          <fa-icon class="fa-icon color-primary mr-3" icon="address-card"></fa-icon>
+          <ion-label class="pr-1">
+            <h2 class="m-0">{{CONSTANT.ADDRESS_PROOF}}</h2>
+            <p class="m-0">{{ CONSTANT.VERIFY_ID_LABEL }}</p>
+          </ion-label>
+          <div class="ion-text-center" *ngIf="user">
+            <ng-container *ngIf="user.kycDocuments?.adhaarCard else pendingTmplt">
+              <ng-container *ngTemplateOutlet="verifiedTmplt"></ng-container>
+            </ng-container>
+          </div>
+        </ion-item>
+      </ion-list>
 
     </div>
   </div>
 
 </ion-content>
+
+<ng-template #verifiedTmplt>
+  <ion-text color="success">
+    <fa-icon class="fa-icon" icon="check"></fa-icon>
+    <br>
+    {{ CONSTANT.STATUS_VERIFIED }}
+  </ion-text>
+</ng-template>
+
+<ng-template #pendingTmplt>
+  <ion-text color="danger">
+    <small>
+      <fa-icon class="fa-icon size-sm" icon="circle"></fa-icon>
+    </small>
+    <br>
+    {{ CONSTANT.STATUS_PENDING }}
+  </ion-text>
+</ng-template>

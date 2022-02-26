@@ -8,7 +8,6 @@ import { BankDetailsPage } from './bank-details.page';
 import { RouterModule, Routes } from '@angular/router';
 import { SharedModule } from 'src/app/shared/shared.module';
 
-
 const routes: Routes = [
   {
     path: '',
@@ -16,15 +15,16 @@ const routes: Routes = [
   }
 ];
 
-
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
     RouterModule.forChild(routes),
-    SharedModule
+    SharedModule,
   ],
-  declarations: [BankDetailsPage]
+  declarations: [
+    BankDetailsPage  
+  ]
 })
 export class BankDetailsPageModule { }

@@ -1,9 +1,18 @@
-.page-container {
-  padding-bottom: 0;
-}
+.page-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  align-items: center;
+  padding: 1rem;
 
-.page-header-container {
-  padding-bottom: 1rem;
+  .back-btn {
+    position: absolute;
+    left: 1rem;
+    margin: 0 !important;
+  }
+
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
@@ -23,19 +32,48 @@
   }
 
   .camera_btn {
+    position: relative;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border-radius: 4px;
-    background-color: rgba($color: #22A599, $alpha: 0.1);
+    border-radius: 10px;
     height: 200px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    background-color: var(--ion-color-light);
+
+    &.selfie {
+      height: 350px;
+    }
+
+    &:before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='10' ry='10' stroke='%23757575FF' stroke-width='5' stroke-dasharray='4%2c06' stroke-dashoffset='4' stroke-linecap='round'/%3e%3c/svg%3e");
+      border-radius: 10px;
+    }
 
     .camera_icon {
       font-size: 45px;
       line-height: 45px;
       width: 45px;
       height: 45px;
+    }
+
+    .btn-delete {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+
+    .selection-preview {
+      background: red;
     }
   }
 }

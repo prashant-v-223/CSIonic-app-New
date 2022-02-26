@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { Auth } from 'aws-amplify';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-menu',
@@ -9,13 +10,13 @@ import { Auth } from 'aws-amplify';
 })
 export class MenuPage implements OnInit {
 
+  user: any;
+
   constructor(
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private userService: UserService
   ) {
-    const userData = {
-      userId: "61c6f8683f2c6a2b683c2744"
-    };
-    localStorage.setItem('userDetails', JSON.stringify(userData));
+    this.user = this.userService.getUserFromStorage();
   }
 
   ngOnInit() {
@@ -30,23 +31,16 @@ export class MenuPage implements OnInit {
   }
 
   onBankDetails() {
-    const userData = JSON.parse(localStorage.getItem("userDetails"));
-    console.log("userData", userData);
-
-    if (userData && userData.userId) {
-      this.navCtrl.navigateForward(['/dashboard/bank-details', { id: userData.userId }]);
-    } else {
-      this.navCtrl.navigateForward('/dashboard/bank-verification');
-    }
+    this.navCtrl.navigateForward(['/dashboard/bank-details']);
   }
 
   onKYCDocument() {
     this.navCtrl.navigateForward('/dashboard/kyc-document');
   }
 
-  signOut() {
+  async signOut() {
     localStorage.clear();
-    Auth.signOut();
+    await Auth.signOut();
     this.navCtrl.navigateBack('/login');
   }
 

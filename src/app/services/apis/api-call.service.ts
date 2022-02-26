@@ -17,12 +17,13 @@ export class ApiCallService extends ApiConfiguration {
         this.token = token ? token : null;
     }
 
-    setHeaderToken() {
-        Auth.currentSession().then(res => {
+    async setHeaderToken() {
+        await Auth.currentSession().then(res => {
             this.token = res.getAccessToken().getJwtToken();
         }).catch(error => {
             console.error("Error : ", error);
         });
+        return await this.token;
     }
 
     getHeader() {

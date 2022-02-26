@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from './guards/auth.guard';
 
 const routes: Routes = [
   {
@@ -17,19 +18,31 @@ const routes: Routes = [
   },
   {
     path: 'choose-plan',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/choose-plan/choose-plan.module').then(m => m.ChoosePlanPageModule)
   },
   {
     path: 'choose-plan-frequency',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/choose-plan-frequency/choose-plan-frequency.module').then(m => m.ChoosePlanFrequencyPageModule)
   },
   {
+    path: 'add-amount',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/add-amount/add-amount.module').then(m => m.AddAmountPageModule)
+  },
+  {
     path: 'dashboard',
+    canActivate: [AuthGuard],
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardPageModule)
   },
   {
-    path: 'add-amount',
-    loadChildren: () => import('./pages/add-amount/add-amount.module').then(m => m.AddAmountPageModule)
+    path: 'error',
+    loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
+  },
+  {
+    path: 'error/:errorType',
+    loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
   }
 ];
 

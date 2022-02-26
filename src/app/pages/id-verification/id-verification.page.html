@@ -1,48 +1,105 @@
 <ion-content>
-  <div class="page-container">
-    <div class="page-header-container">
+  <div class="page-container p-0">
+    <div class="page-header pl-3 pr-3">
       <button mat-icon-button class="back-btn" (click)="onBack()">
         <fa-icon class="fa-icon color-primary" icon="chevron-left"></fa-icon>
       </button>
       <h2 class="m-0 color-primary">{{CONSTANT.DOCUMENT_VERIFY_LABEL}}</h2>
     </div>
-    <div class="page-body">
-      <div class="verify_doc" *ngIf="verifyType==='selfie'">
-        <p class="gray-text mt-3">Selfie with Location</p>
-        <div class="camera_btn">
-          <fa-icon class="fa-icon color-primary camera_icon" icon="camera"></fa-icon>
-          <p class="gray-text mt-3">Take a photo</p>
+    <div class="page-body pl-3 pr-3">
+
+      <div class="verify_doc" *ngIf="verifyType===verifyTypeEnum.SELFIE">
+
+        <!-- Selfie -->
+        <div class="ion-text-center" [class.mt-3]="documentList?.length">
+          <p>
+            <b>{{ CONSTANT.SELFIE }}</b>
+          </p>
+          <p class="gray-text">
+            {{ CONSTANT.takeYourPhoto }}
+          </p>
+        </div>
+
+        <div class="camera_btn selfie"
+          [ngStyle]="{ 'background-image': 'url(' + attachments.frontImage.sourceFile?.webPath + ')' }"
+          (click)="getPhoto('frontPage')">
+          <ng-container *ngIf="attachments.frontImage.sourceFile?.webPath else takePhotoTmplt">
+            <button mat-icon-button class="btn-delete" (click)="removePhoto($event, 'frontPage')">
+              <small>
+                <fa-icon class="fa-icon color-danger" icon="trash"></fa-icon>
+              </small>
+            </button>
+          </ng-container>
         </div>
       </div>
-      <div class="flex-column align-stretch mt-4 mb-4" *ngIf="verifyType==='id-verify' || verifyType==='PAN'">
-        <mat-form-field appearance="outline" *ngIf="verifyType==='id-verify'">
-          <mat-label>Select Document</mat-label>
-          <mat-select>
-            <mat-option value="Aadhaar Card">Aadhaar Card</mat-option>
-            <mat-option value="Driving License">Driving License</mat-option>
+
+      <div class="flex-column align-stretch mt-3 mb-3"
+        *ngIf="verifyType===verifyTypeEnum.ID_VERIFY || verifyType===verifyTypeEnum.PAN">
+
+        <mat-form-field appearance="outline" *ngIf="documentList?.length">
+          <mat-label>{{CONSTANT.SELECT_DOCUMENT_LABEL}}</mat-label>
+          <mat-select [(ngModel)]="documentType" (ngModelChange)="updateValidity()" required>
+            <mat-option *ngFor="let doc of documentList" [value]="doc.value">{{doc.label}}</mat-option>
           </mat-select>
         </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Enter Number</mat-label>
-          <input matInput placeholder="Enter Number" required>
-        </mat-form-field>
-        <p class="gray-text mt-3">Front Side</p>
-        <div class="camera_btn">
-          <fa-icon class="fa-icon color-primary camera_icon" icon="camera"></fa-icon>
-          <p class="gray-text mt-3">Take a photo</p>
-        </div>
-        <input type="file" class="uploadFile" (change)="browse($event,'frontSide')" #frontSide>
-        <button mat-stroked-button color="primary" class="mt-3" (click)="frontSide.click()">Attache File</button>
-        <p class="gray-text mt-4">Back Side</p>
-        <div class="camera_btn">
-          <fa-icon class="fa-icon color-primary camera_icon" icon="camera"></fa-icon>
-          <p class="gray-text mt-3">Take a photo</p>
-        </div>
-        <input type="file" class="uploadFile" (change)="browse($event,'backSide')" #backSide>
-        <button mat-stroked-button color="primary" class="mt-3" (click)="backSide.click()">Attache File</button>
-      </div>
-      <button mat-flat-button color="primary" class="mb-3">Verify</button>
-    </div>
-  </div>
 
+        <div *ngIf="verifyType !== verifyTypeEnum.ID_VERIFY || documentType">
+          <!-- Front -->
+          <div class="ion-text-center" [class.mt-3]="documentList?.length">
+            <p>
+              <b>{{ CONSTANT.FRONT_SIDE_LABEL }}</b>
+            </p>
+            <p class="gray-text">
+              {{ CONSTANT.takePhotoLable('front', documentDisplayName) }}
+            </p>
+          </div>
+
+          <div class="camera_btn"
+            [ngStyle]="{ 'background-image': 'url(' + attachments.frontImage.sourceFile?.webPath + ')' }"
+            (click)="getPhoto('frontPage')">
+            <ng-container *ngIf="attachments.frontImage.sourceFile?.webPath else takePhotoTmplt">
+              <button mat-icon-button class="btn-delete" (click)="removePhoto($event, 'frontPage')">
+                <small>
+                  <fa-icon class="fa-icon color-danger" icon="trash"></fa-icon>
+                </small>
+              </button>
+            </ng-container>
+          </div>
+
+          <!-- Back -->
+          <div class="ion-text-center mt-5">
+            <p>
+              <b>{{ CONSTANT.BACK_SIDE_LABEL }}</b>
+            </p>
+            <p class="gray-text">
+              {{ CONSTANT.takePhotoLable('back', documentDisplayName) }}
+            </p>
+          </div>
+          <div class="camera_btn"
+            [ngStyle]="{ 'background-image': 'url(' + attachments.backImage.sourceFile?.webPath + ')' }"
+            (click)="getPhoto('backPage')">
+            <ng-container *ngIf="attachments.backImage.sourceFile?.webPath else takePhotoTmplt">
+              <button mat-icon-button class="btn-delete" (click)="removePhoto($event, 'backPage')">
+                <fa-icon class="fa-icon color-danger" icon="trash"></fa-icon>
+              </button>
+            </ng-container>
+          </div>
+        </div>
+
+      </div>
+      <button mat-flat-button color="primary" *ngIf="verifyType !== verifyTypeEnum.ID_VERIFY || documentType"
+        [disabled]="!isValid" class="mt-3 mb-3 p-2" (click)="submit()">
+        <fa-icon class="fa-icon mr-2" icon="check"></fa-icon>
+        {{CONSTANT.VERIFY_LABEL}}
+      </button>
+    </div>
+
+    <app-loading *ngIf="isSaving"></app-loading>
+
+  </div>
 </ion-content>
+
+
+<ng-template #takePhotoTmplt>
+  <fa-icon class="fa-icon color-primary camera_icon" icon="camera"></fa-icon>
+</ng-template>

@@ -1,5 +1,5 @@
 <div class="plan-list">
-  <div class="plan-item" *ngFor="let plan of planList" (click)="onSelectPlan()">
+  <div class="plan-item" *ngFor="let plan of planList" (click)="onSelectPlan(plan._id)">
     <div class="flex-row align-start">
       <h3 class="color-primary flex-item grow text-capitalize">{{plan.name}}</h3>
       <fa-icon class="fa-icon ml-2 color-primary" icon="chevron-right"></fa-icon>
@@ -7,13 +7,13 @@
     <div class="flex-row align-start items-space-between">
       <div class="flex-column align-stretch flex-item no-shrink">
         <span class="gray-text">Min. Invest</span>
-        <span>${{plan.minInvest}}</span>
+        <span>&#8377; {{plan.totalMinimumDepositAmount}}</span>
       </div>
-      <div class="flex-column align-stretch flex-item no-shrink">
+      <!-- <div class="flex-column align-stretch flex-item no-shrink">
         <span class="gray-text">Returns</span>
         <span
           [ngClass]="plan.returns > 0 ? 'green-text' : 'red-text'">{{plan.returns > 0 ? '+'+plan.returns : plan.returns}}%</span>
-      </div>
+      </div> -->
     </div>
   </div>
 </div>

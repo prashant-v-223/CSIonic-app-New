@@ -12,16 +12,16 @@ export class BankDetailsService {
     private apiConfig: ApiConfiguration
   ) { }
 
-  getAccountDetails(id) {
-    return this.api.getData(this.apiConfig.bankAccount + "/" + id);
+  getAccountDetails(userId: string) {
+    return this.api.getData(this.apiConfig.bankAccount + "/" + userId);
   }
 
-  addEditAccountDetails(data: any, userId: string) {
-    if (userId) {
-      return this.api.putData(this.apiConfig.bankAccount + "/" + userId, data);
-    } else {
-      return this.api.postData(this.apiConfig.bankAccount, data);
-    }
+  addAccountDetails(data: any) {
+    return this.api.postData(this.apiConfig.bankAccount, data);
+  }
+
+  updateAccountDetails(accountId: string, data: any) {
+    return this.api.putData(this.apiConfig.bankAccount + "/" + accountId, data);
   }
 
 }

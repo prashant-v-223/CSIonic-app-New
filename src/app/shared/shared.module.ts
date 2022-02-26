@@ -18,6 +18,7 @@ import { CalendarComponent } from './components/calendar/calendar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PlanListComponent } from './components/plan-list/plan-list.component';
 import { LoadingComponent } from './components/loading/loading.component';
+import { AllowableExtensions } from './helper/allowableExtension';
 
 const MODULES = [
   MatFormFieldModule,
@@ -57,6 +58,7 @@ const COMPONENTS = [
   providers: [
     MatDatepickerModule,
     MatNativeDateModule,
+    AllowableExtensions,
     { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
   ]
 })

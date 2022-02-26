@@ -17,11 +17,11 @@ export class PlanListComponent implements OnInit {
 
   ngOnInit() { }
 
-  onSelectPlan() {
+  onSelectPlan(planId: string) {
     if (this.viewType === 'planList') {
       this.navCtrl.navigateForward('/choose-plan-frequency');
     } else {
-      this.navCtrl.navigateForward('/dashboard/sip-details');
+      this.navCtrl.navigateForward(`/dashboard/sip-details/${planId}`);
     }
   }
 

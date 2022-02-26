@@ -2,12 +2,19 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { Router } from '@angular/router';
 import { onAuthUIStateChange, CognitoUserInterface, AuthState } from '@aws-amplify/ui-components';
 import { UserService } from 'src/app/shared/services/user.service';
+
+import { SplashScreen } from '@capacitor/splash-screen';
+import { COPY } from 'src/app/shared/helper/const';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.page.html',
   styleUrls: ['./login.page.scss'],
 })
 export class LoginPage implements OnInit {
+  CONSTANT: any = COPY;
+
+  isLoading = false;
 
   title = 'amplify-angular-auth';
   user: CognitoUserInterface | undefined;
@@ -46,11 +53,12 @@ export class LoginPage implements OnInit {
   ) { }
 
   ngOnInit() {
-    onAuthUIStateChange((authState, authData) => {
+    onAuthUIStateChange(async (authState, authData) => {
       console.log('Auth state changed to ', authState, authData);
       this.authState = authState;
       this.user = authData as CognitoUserInterface;
       this.ref.detectChanges();
+      await SplashScreen.hide();
       this.onLogin();
     })
   }
@@ -58,12 +66,31 @@ export class LoginPage implements OnInit {
   async onLogin() {
     try {
       if (this.authState === 'signedin') {
+        this.isLoading = true;
         await this.userService.setHeaderToken();
-        this.getUser();
-        // this.router.navigateByUrl('/choose-plan');
+        const user = await this.getUser();
+        if (user)
+          this.router.navigateByUrl('/dashboard');
       }
     } catch {
       console.error('Error logging in');
+    } finally {
+      this.isLoading = false;
+    }
+  }
+
+  async getUser() {
+    try {
+      const userRes = await this.userService.getUser();
+      console.log("Get user : ", userRes);
+      
+      if (userRes.status === this.CONSTANT.SUCCESS){
+        this.userService.setUserToStorage(userRes.data);
+        return userRes.data;
+      }
+    } catch (e) {
+      console.log('Error in fetching user data', e);
+      return null;
     }
   }
 

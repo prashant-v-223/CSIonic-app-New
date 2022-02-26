@@ -18,7 +18,7 @@ const routes: Routes = [
     loadChildren: () => import('../menu/menu.module').then(m => m.MenuPageModule)
   },
   {
-    path: 'sip-details',
+    path: 'sip-details/:packageId',
     loadChildren: () => import('../sip-details/sip-details.module').then(m => m.SipDetailsPageModule)
   },
   {
@@ -32,10 +32,6 @@ const routes: Routes = [
   {
     path: 'bank-details',
     loadChildren: () => import('../bank-details/bank-details.module').then(m => m.BankDetailsPageModule)
-  },
-  {
-    path: 'bank-verification',
-    loadChildren: () => import('../bank-verification/bank-verification.module').then(m => m.BankVerificationPageModule)
   },
   {
     path: 'kyc-document',

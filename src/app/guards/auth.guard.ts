@@ -1,21 +1,29 @@
 import { Injectable } from '@angular/core';
-import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
-import { Observable } from 'rxjs';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { UserService } from '../shared/services/user.service';
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthGuard implements CanActivate {
-    user: any;
+    token: any;
+    
     constructor(
         private router: Router,
-        public navCtrl: NavController) { }
+        public navCtrl: NavController,
+        private userService: UserService
+    ) {}
 
-    canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-        if (this.user.value) {
+    async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean | UrlTree> {
+        if (this.token) {
             return true;
         }
-        return false;
+        this.token = await this.userService.setHeaderToken();
+
+        if (this.token)
+            return true;
+        
+        return this.router.parseUrl('/login');
     }
 }

@@ -1,17 +1,31 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import Chart from 'chart.js/auto'
 @Component({
   selector: 'app-pie-chart',
   templateUrl: './pie-chart.component.html',
   styleUrls: ['./pie-chart.component.scss'],
 })
-export class PieChartComponent implements OnInit {
+export class PieChartComponent implements OnInit, OnChanges {
+
+  @Input() chartData: {
+    labels: string[];
+    datasets: {
+      data: number[];
+      backgroundColor: string[];
+    }[]
+  };
 
   @ViewChild('pieChart') pieCanvas: ElementRef;
 
   pieChart: any;
 
   constructor() { }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes?.chartData) {
+      this.initPieChart();
+    }
+  }
 
   ngOnInit() { }
 
@@ -20,20 +34,12 @@ export class PieChartComponent implements OnInit {
   }
 
   initPieChart() {
+    if (!this.chartData || !this.pieCanvas?.nativeElement)
+      return;
+
     this.pieChart = new Chart(this.pieCanvas.nativeElement, {
       type: 'pie',
-      data: {
-        labels: ['Bitcoin', 'Ethereum', 'BNB'],
-        datasets: [{
-          label: 'Pie chart',
-          data: [270, 150, 50],
-          backgroundColor: [
-            '#1c0c5b',
-            '#88E0EF',
-            '#FF5151'
-          ],
-        }]
-      },
+      data: this.chartData,
       options: {
         responsive: true,
         plugins: {
