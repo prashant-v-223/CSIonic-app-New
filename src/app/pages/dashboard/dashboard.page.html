@@ -6,7 +6,18 @@
     <div class="body-container">
   
       <div *ngIf="!showLoader">
-        <app-plan-list [planList]="planList" viewType="dashboard" *ngIf="selectedTab==='planList'"></app-plan-list>
+        <ng-container *ngIf="selectedTab==='planList'">
+          <ng-container *ngIf="planList.length else noPackagesTmplt">
+            <app-plan-list [planList]="planList" viewType="dashboard"></app-plan-list>
+          </ng-container>
+
+          <ng-template #noPackagesTmplt>
+            <div class="mt-5 ion-text-center">
+              No packages available
+            </div>
+          </ng-template>
+
+        </ng-container>
         <app-home *ngIf="selectedTab==='home'"></app-home>
       </div>
 

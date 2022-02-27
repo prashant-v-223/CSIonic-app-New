@@ -62,7 +62,10 @@ export class BankDetailsPage implements OnInit {;
   }
 
   setAccountTypeLabel() {
-    if (this.bankDetails?.accountType) this.accountTypeLabel = "";
+    if (!this.bankDetails?.accountType) {
+      this.accountTypeLabel = "";
+      return;
+    }
     const found = this.accountTypes.find(acType => acType.value === this.bankDetails.accountType);
     if (!found) this.accountTypeLabel = "";
     this.accountTypeLabel = found.label;
