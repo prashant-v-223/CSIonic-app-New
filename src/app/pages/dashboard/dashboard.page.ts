@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewEncapsulation  } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { PackagesService } from 'src/app/shared/services/packages.service';
 
@@ -6,6 +6,7 @@ import { PackagesService } from 'src/app/shared/services/packages.service';
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
   styleUrls: ['./dashboard.page.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class DashboardPage implements OnInit {
 

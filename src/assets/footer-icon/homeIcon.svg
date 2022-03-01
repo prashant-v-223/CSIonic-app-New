@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="27" height="27" viewBox="0 0 27 27">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_19034" data-name="Rectangle 19034" width="27" height="27" fill="#fff" stroke="#102e28" stroke-width="1.5"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_20" data-name="Mask Group 20" clip-path="url(#clip-path)">
+    <g id="tabler-icon-home">
+      <path id="Path_9290" data-name="Path 9290" d="M0,0H27V27H0Z" fill="none"/>
+      <path id="Path_9291" data-name="Path 9291" d="M5.625,13.5H3.375L13.5,3.375,23.625,13.5h-2.25" fill="none" stroke="#102e28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Path_9292" data-name="Path 9292" d="M5.625,13.5v7.875a2.25,2.25,0,0,0,2.25,2.25h11.25a2.25,2.25,0,0,0,2.25-2.25V13.5" fill="none" stroke="#102e28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+      <path id="Path_9293" data-name="Path 9293" d="M10.125,23.625v-6.75a2.25,2.25,0,0,1,2.25-2.25h2.25a2.25,2.25,0,0,1,2.25,2.25v6.75" fill="none" stroke="#102e28" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"/>
+    </g>
+  </g>
+</svg>

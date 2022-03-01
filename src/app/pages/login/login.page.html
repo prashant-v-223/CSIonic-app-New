@@ -1,15 +1,24 @@
 <ion-content>
-  <div class="flex-row align-center items-center" *ngIf="authState !== 'signedin'">
-    <img src="../../../assets/logo.svg" width="200" height="200" alt="app-logo">
+<div class="login-content">
+  <div class="login-inner">
+    <div class="appLogo" *ngIf="authState !== 'signedin'">
+      <img src="../../../assets/logo.png" alt="app-logo">
+    </div>
+    <div class="small-text">
+      WELCOME
+    </div>
+    <h2 class="heading">Login using your Email!</h2>
+    <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p>
+    <amplify-auth-container>
+      <amplify-authenticator class="amplify-authenticator" *ngIf="authState !== 'signedin'" username-alias="email">
+        <amplify-sign-up slot="sign-up" header-text="Sign Up to Prosprr" usernameAlias="email" [formFields]="formFields">
+        </amplify-sign-up>
+        <amplify-sign-in slot="sign-in" header-text="Sign In to Prosprr" usernameAlias="email"></amplify-sign-in>
+      </amplify-authenticator>
+    </amplify-auth-container>
   </div>
-  <amplify-auth-container>
-    <amplify-authenticator class="amplify-authenticator" *ngIf="authState !== 'signedin'" username-alias="email">
-      <amplify-sign-up slot="sign-up" header-text="Sign Up to Prosprr" usernameAlias="email" [formFields]="formFields">
-      </amplify-sign-up>
-      <amplify-sign-in slot="sign-in" header-text="Sign In to Prosprr" usernameAlias="email"></amplify-sign-in>
-    </amplify-authenticator>
-  </amplify-auth-container>
 
   <app-loading *ngIf="isLoading"></app-loading>
+</div>
 
 </ion-content>

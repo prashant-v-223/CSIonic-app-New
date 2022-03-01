@@ -9,6 +9,7 @@ import { DashboardPageRoutingModule } from './dashboard-routing.module';
 import { DashboardPage } from './dashboard.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { HomePage } from '../home/home.page';
+import { SwiperModule } from 'swiper/angular';
 
 @NgModule({
   imports: [
@@ -16,7 +17,8 @@ import { HomePage } from '../home/home.page';
     FormsModule,
     IonicModule,
     SharedModule,
-    DashboardPageRoutingModule
+    DashboardPageRoutingModule,
+    SwiperModule
   ],
   declarations: [DashboardPage, HomePage]
 })

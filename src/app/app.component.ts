@@ -22,7 +22,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private userService: UserService,
     private router: Router
   ) {
-    library.addIconPacks(fas, fab, far);
+    library.addIconPacks(fas as any, fab as any, far as any);
   }
   
   async ngOnInit() {

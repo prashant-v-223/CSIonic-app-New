@@ -1,10 +1,9 @@
-<ion-content>
+<!-- <ion-content>
   <div class="page-container p-0">
     <div class="page-header">
       <h2 class="m-0">Prosprr</h2>
     </div>
-    <div class="body-container">
-  
+    <div class="body-container">  
       <div *ngIf="!showLoader">
         <ng-container *ngIf="selectedTab==='planList'">
           <ng-container *ngIf="planList.length else noPackagesTmplt">
@@ -37,4 +36,284 @@
     </div>
 
   </div>
+</ion-content>   -->
+<!-- Header Section Start -->
+<ion-header class="themeHeader bg-white">
+  <ion-menu-toggle id="main">
+    <button class="menuLeft">
+      <img src="../../../assets/menu.svg" alt="menu">
+    </button>
+  </ion-menu-toggle>
+  <ion-avatar class="userProfile">
+    <img src="../../../assets/icon/user.jpg" alt="profile">
+  </ion-avatar>
+</ion-header>
+<!-- Header Section End -->
+<!-- Left Menu Section Start -->
+<ion-menu side="start" menuId="first" contentId="main">
+  <ion-header>
+    <ion-toolbar color="secondary">
+      <ion-title>Example Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item>Menu Item</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<!-- Left Menu Section Ent -->
+<!-- Body Section Start -->
+<ion-content class="dashboard">
+  <ion-list class="ion-list">
+    <h1 class="userName">Hello, Ellen!</h1>
+    <p class="userInfo">Invest more to earn more, check out your portfolio,</p>
+    <div class="myPortfolio">
+      <div class="card-body">
+        <div>
+          <span class="label">My Portfolio</span>
+          <h4 class="myPrice">₹19,006</h4>
+        </div>
+        <div>
+          <span class="label">Profit</span>
+          <div class="small-text"><img src="../../../assets/up-icon.png" alt="icon"> 0.7%</div>
+          <div class="small-text">₹8,595.00</div>
+        </div>
+      </div>
+    </div>
+    <div class="themeHeading">
+      <h6>POPULAR COINS</h6>
+      <a href="#" class="link-dark">View All</a>
+    </div>
+    <div class="popularSection mb-3">
+      <swiper [slidesPerView]="1.9" [loop]="false">
+        <ng-template swiperSlide>
+          <div class="card bg-theme">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="coinTag bg-dark">
+                  <img src="../../../assets/bit-icon.png" alt="bit-icon">
+                </div>
+                <div class="small-text bg-white text-dark"><img src="../../../assets/up-icon.png" alt="icon"> 0.7%</div>
+              </div>
+              <div class="small-label text-white">Bitcoin</div>
+              <div class="d-flex align-end">
+                <h4 class="Price text-white">₹19,006</h4>
+                <span class="small-label text-white ml-2">BTC</span>
+              </div>
+            </div>
+            <div class="mt-1">
+              <img src="../../../assets/area-line-white.png" alt="line">
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="coinTag bg-greenLighter">
+                  <img src="../../../assets/et-icon.png" alt="et-icon">
+                </div>
+                <div class="small-text bg-theme text-white"><img src="../../../assets/up-icon-white.png" alt="icon"> 0.7%</div>
+              </div>
+              <div class="small-label text-dark">Etherium</div>
+              <div class="d-flex align-end">
+                <h4 class="Price text-dark">₹19,006</h4>
+                <span class="small-label text-dark ml-2">ETH</span>
+              </div>
+            </div>
+            <div class="mt-1">
+              <img src="../../../assets/area-line-theme.png" alt="line">
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="coinTag bg-greenLighter">
+                  <img src="../../../assets/et-icon.png" alt="et-icon">
+                </div>
+                <div class="small-text bg-theme text-white"><img src="../../../assets/up-icon-white.png" alt="icon"> 0.7%</div>
+              </div>
+              <div class="small-label text-dark">Etherium</div>
+              <div class="d-flex align-end">
+                <h4 class="Price text-dark">₹19,006</h4>
+                <span class="small-label text-dark ml-2">ETH</span>
+              </div>
+            </div>
+            <div class="mt-1">
+              <img src="../../../assets/area-line-theme.png" alt="line">
+            </div>
+          </div>
+        </ng-template>
+        <ng-template swiperSlide>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="coinTag bg-greenLighter">
+                  <img src="../../../assets/et-icon.png" alt="et-icon">
+                </div>
+                <div class="small-text bg-theme text-white"><img src="../../../assets/up-icon-white.png" alt="icon"> 0.7%</div>
+              </div>
+              <div class="small-label text-dark">Etherium</div>
+              <div class="d-flex align-end">
+                <h4 class="Price text-dark">₹19,006</h4>
+                <span class="small-label text-dark ml-2">ETH</span>
+              </div>
+            </div>
+            <div class="mt-1">
+              <img src="../../../assets/area-line-theme.png" alt="line">
+            </div>
+          </div>
+        </ng-template>
+      </swiper>
+    </div>   
+    <div class="themeHeading">
+      <h6>POPULAR BASKETS</h6>
+      <a href="../home" class="link-dark">View All</a>
+      <ion-col class="cards" routerLink="/leads-dashboard" >
+        <div class="icon-image ">Lorem</div> 
+      </ion-col>
+    </div>
+    <div class="popularSection basket">
+      <swiper [slidesPerView]="1.5" [loop]="false"> 
+        <ng-template swiperSlide>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="d-flex">
+                  <div class="coinTag bg-blue">
+                    <img src="../../../assets/bit-icon.png" alt="bit-icon">
+                  </div>
+                  <div class="coinTag bg-greenLighter">
+                    <img src="../../../assets/et-icon.png" alt="et-icon">
+                  </div>
+                  <div class="coinTag bg-grey">
+                    <img src="../../../assets/viacoin-icon.png" alt="viacoin-icon">
+                  </div>
+                </div>
+               <a href="#">
+                 <img src="../../../assets/left-icon.png" alt="icon">
+               </a>
+              </div>
+              <div class="small-label text-dark">Bitcoin + Etherium + Viacoin</div>
+              <div class="d-flex align-start justify-between mt-2">
+                <div>
+                  <div class="small-label text-dark">Min Invest</div>
+                  <h4 class="Price text-dark">₹70.00</h4>
+                </div>
+                <div> 
+                  <div class="d-flex align-center">
+                    <img src="../../../assets/small-line.svg" alt="icon"> 
+                  </div>
+                </div>
+                <div>
+                  <div class="small-label text-dark">Returns</div>
+                  <div class="small-text bg-theme text-white"><img src="../../../assets/up-icon-white.png" alt="icon"> 45%</div>
+                </div> 
+              </div>
+            </div> 
+          </div>
+        </ng-template>    
+        <ng-template swiperSlide>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="d-flex">
+                  <div class="coinTag bg-blue">
+                    <img src="../../../assets/bit-icon.png" alt="bit-icon">
+                  </div>
+                  <div class="coinTag bg-greenLighter">
+                    <img src="../../../assets/et-icon.png" alt="et-icon">
+                  </div>
+                  <div class="coinTag bg-grey">
+                    <img src="../../../assets/viacoin-icon.png" alt="viacoin-icon">
+                  </div>
+                </div>
+               <a href="#">
+                 <img src="../../../assets/left-icon.png" alt="icon">
+               </a>
+              </div>
+              <div class="small-label text-dark">Bitcoin + Etherium + Viacoin</div>
+              <div class="d-flex align-start justify-between mt-2">
+                <div>
+                  <div class="small-label text-dark">Min Invest</div>
+                  <h4 class="Price text-dark">₹70.00</h4>
+                </div>
+                <div> 
+                  <div class="d-flex align-center">
+                    <img src="../../../assets/small-line.svg" alt="icon"> 
+                  </div>
+                </div>
+                <div>
+                  <div class="small-label text-dark">Returns</div>
+                  <div class="small-text bg-theme text-white"><img src="../../../assets/up-icon-white.png" alt="icon"> 45%</div>
+                </div> 
+              </div>
+            </div> 
+          </div>
+        </ng-template>  
+        <ng-template swiperSlide>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="d-flex">
+                  <div class="coinTag bg-blue">
+                    <img src="../../../assets/bit-icon.png" alt="bit-icon">
+                  </div>
+                  <div class="coinTag bg-greenLighter">
+                    <img src="../../../assets/et-icon.png" alt="et-icon">
+                  </div>
+                  <div class="coinTag bg-grey">
+                    <img src="../../../assets/viacoin-icon.png" alt="viacoin-icon">
+                  </div>
+                </div>
+               <a href="#">
+                 <img src="../../../assets/left-icon.png" alt="icon">
+               </a>
+              </div>
+              <div class="small-label text-dark">Bitcoin + Etherium + Viacoin</div>
+              <div class="d-flex align-start justify-between mt-2">
+                <div>
+                  <div class="small-label text-dark">Min Invest</div>
+                  <h4 class="Price text-dark">₹70.00</h4>
+                </div>
+                <div> 
+                  <div class="d-flex align-center">
+                    <img src="../../../assets/small-line.svg" alt="icon"> 
+                  </div>
+                </div>
+                <div>
+                  <div class="small-label text-dark">Returns</div>
+                  <div class="small-text bg-theme text-white"><img src="../../../assets/up-icon-white.png" alt="icon"> 45%</div>
+                </div> 
+              </div>
+            </div> 
+          </div>
+        </ng-template>      
+      </swiper>
+    </div> 
+  </ion-list>
 </ion-content>
+<!-- Body Section Start -->
+<!-- Footer Section Start -->
+<ion-footer class="themeFooter">
+  <button class="footerTab" (click)="onSelectTab('planList')" [ngClass]="{active: selectedTab==='planList'}">
+    <img class="tab-icons" src="../../../assets/footer-icon/homeIcon.svg" alt="Home">
+    <span class="tab-text">Home</span>
+  </button>
+  <button class="footerTab" routerLink="/home">
+    <img class="tab-icons" src="../../../assets/footer-icon/portfolioIcon.svg" alt="Home">
+    <span class="tab-text">Portfolio</span>
+  </button>
+  <button class="footerTab">
+    <img class="tab-icons" src="../../../assets/footer-icon/investIcon.svg" alt="Home">
+    <span class="tab-text">Invest</span>
+  </button>
+  <button class="footerTab" routerLink="/dashboard/menu" routerLinkActive="active">
+    <img class="tab-icons" src="../../../assets/footer-icon/profileIcon.svg" alt="Home">
+    <span class="tab-text">Profile</span>
+  </button>
+</ion-footer>
+<!-- Footer Section End -->

@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="60.309" height="40.809" viewBox="0 0 60.309 40.809">
+  <defs>
+    <linearGradient id="linear-gradient" x1="0.5" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
+      <stop offset="0" stop-color="#8ac680" stop-opacity="0.322"/>
+      <stop offset="1" stop-color="#fff" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g id="Group_23885" data-name="Group 23885" transform="translate(-188.242 -26.506)">
+    <path id="Path_26054" data-name="Path 26054" d="M247.506,33.765l-10.242,2.727L229.3,27.943l-4.791.884L221.2,31.554l-3.611.737-3.979,6.19L210.82,44.9h-3.736l-3.066-.384-1.437-3.161-2.3-1.342h-2.875s-3.158,2.108-3.543,2.3-3.928,1.532-3.928,1.532l-1.055,2.013V67.314h58.625Z" fill="url(#linear-gradient)"/>
+    <path id="Area_2_Copy_3" data-name="Area_2 Copy 3" d="M58.985,5.6a17.978,17.978,0,0,1-9.93,3.3C44.131,8.9,44.131,0,39.207,0S34.283,4.15,29.36,4.15c-4.741,0-4.741,13.487-9.665,13.487s-4.924-5.291-9.847-5.291S0,18.363,0,18.363" transform="translate(189.016 27.506)" fill="none" stroke="#8ac680" stroke-width="2"/>
+  </g>
+</svg>

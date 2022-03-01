@@ -1,7 +1,57 @@
-amplify-authenticator {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex: 1;
-  height: 100vh;
+.auth-container{
+  display: inherit;
 }
+.login-content{
+  position: relative;
+  padding: 1.5rem ; 
+  height: 100%;
+  &::after,
+  &::before{
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background-color: rgba($color: #fff, $alpha: .5);
+    border-radius: 100%;
+  }
+  &::after {
+    top: 20px;
+    right: -90px;
+  }
+  &::before{
+    bottom: 20px;
+    left: -90px;
+  }
+  .login-inner{
+    z-index: 1;
+    position: relative;
+    text-align: center;    
+  .appLogo{
+    display: flex;
+    justify-content: center; 
+    margin-bottom: 5px;
+    img{
+      width: 90px;
+    }
+  }
+  .small-text{
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--blackColor);
+    font-family: var(--f-Poppins);
+  }
+  .heading{
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 28px;
+    font-family: var(--f-Raleway);
+    color: var(--blackColor);
+    margin-bottom: 5px;
+  }
+  p{
+    margin-bottom: 10px;
+  }
+  }
+}
+ 
+ 
