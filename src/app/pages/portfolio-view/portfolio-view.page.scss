@@ -1,0 +1,133 @@
+.themeHeader {  
+
+  ion-button {
+    margin: 0px;
+    line-height: 0px;
+    height: 36px;
+    font-size: 14px;
+    --border-radius: 6px;
+    font-weight: 400;
+    font-family: var(--f-Poppins);
+    --ion-color-base: #2F4858 !important;
+    letter-spacing: .08px;
+  }
+}
+
+.portfolio-view {
+ 
+  .portfolio-price {
+    span {
+      display: inline-block;
+      width: 100%;
+    }
+
+    .Price {
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 36px;
+      letter-spacing: -1.08px;
+      margin-bottom: 0px;
+      margin-top: 5px;
+    }
+
+    .small-label,
+    .small-text {
+      font-size: 14px;
+      line-height: 16px;
+      text-align: left;
+      color: #102E28;
+    }
+
+    .small-label {
+      font-family: var(--f-Poppins);
+      font-weight: 400;
+    }
+
+    .small-text {
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 500;
+      color: var(--blackColor);
+    }
+  }
+
+  .tabbingTheme {
+    background-color: var(--bg-lighter);
+    padding: 8px;
+    border-radius: 12px;
+
+    ion-segment-button {
+      font-size: 13px;
+      color: rgba($color: #102E28, $alpha: .8);
+      min-width: 20px;
+      font-family: var(--f-Poppins);
+      --padding-end: 10px;
+      --padding-start: 10px; 
+      text-transform: inherit;  
+      --border-radius: 10px;
+      height: 40px;  
+      min-height: 40px;
+      --indicator-color: #102E28;
+      --indicator-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    
+      &.segment-button-checked {
+        font-size: 15px;        
+        color: #fff;
+        &.md{
+          background-color: #102E28;
+         --indicator-color: inherit;
+        }
+      }
+
+      &::before {
+        display: none;
+      }
+    }
+  }
+
+  .portfolio-details {
+    border-radius: 30px 30px 0px 0px; 
+    padding: 1.5rem;
+    .small-label {
+      font-size: 13px;
+      line-height: 16px;
+      font-family: var(--f-Poppins);
+      font-weight: 400;
+      text-align: left;
+      opacity: .8;
+      color: var(--blackColor);
+    }
+    .heading-label {
+      font-size: 18px;
+      line-height: 20px;
+      font-weight: 500;
+      letter-spacing: -0.08px;
+      opacity: 0.8;
+      margin-bottom: 0px;
+    }
+    .smallHeading-label{
+      font-size: 16px;
+      line-height: 20px;
+      font-weight: 500;
+      letter-spacing: -.08px; 
+      margin-bottom: 0px;
+    }
+    .line{
+      width: 100%;
+      height: 1px;
+      background-color: #DCDCDC;
+    }
+  }
+
+  ion-button {
+    margin: 0px;
+    line-height: 0px;
+    height: 60px;
+    font-size: 16px;
+    --border-radius: 12px;
+    font-weight: 500;
+    font-family: var(--f-Poppins); 
+    letter-spacing: .08px;
+    --box-shadow: inherit;
+  }
+}

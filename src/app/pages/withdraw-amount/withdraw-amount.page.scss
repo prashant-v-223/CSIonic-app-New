@@ -1,0 +1,32 @@
+ 
+.portfolio-view {  
+    .header-title { 
+      font-size: 22px;
+      font-family: var(--f-Poppins);
+      font-weight: 400;
+      margin-bottom: 0rem;
+      line-height: 26px;
+      text-align: center;
+    }
+    .small-label {
+      font-size: 16px;
+      line-height: 12px;
+      font-weight: 400;
+      color: var(--blackColor); 
+      margin-bottom: 15px;
+    }
+   
+    ion-input{ 
+      --padding-start: 10px;
+      font-size: 20px;
+      font-family: var(--f-Poppins);
+      font-weight: 400;
+      margin-top: .5rem;
+      color: #000;
+      &.has-value{
+        background-color: var( --bg-lighter);
+      }
+    }
+   
+  }
+ 

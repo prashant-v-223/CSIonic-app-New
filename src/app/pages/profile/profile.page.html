@@ -1,0 +1,101 @@
+ 
+ <!-- Header Section Start --> 
+ <ion-header translucent class="themeHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button  mat-icon-button class="back-btn" defaultHref="/dashboard"> 
+      </ion-back-button>
+    </ion-buttons> 
+  </ion-toolbar>
+</ion-header>
+<!-- Header Section End -->
+<!-- Body Section Start -->
+<ion-content class="profile">
+  <div class="user-profile">
+    <div class="card">
+      <div class="card-body">
+        <div class="user-avatar">
+          <img src="../../../assets/avtar.png" alt="image">
+        </div>
+        <div class="user-details">
+          <h6>Joachim Meyer</h6>
+          <div class="small-text">
+            <ion-icon src="../../../assets/profile/icon-device-mobile.svg"></ion-icon> +317 213 512 2134
+          </div>
+          <div class="small-text">
+            <ion-icon src="../../../assets/profile/icon-language.svg"></ion-icon> Speaks Hindi
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <ion-list class="ion-list">
+    <ion-item routerLink="/my-wallet">
+      <div class="item-inner">
+        <ion-icon src="../../../assets/profile/icon-wallet.svg"></ion-icon>
+        <ion-label>
+          <h6>My wallet</h6>
+          <span>₹19,006</span>
+        </ion-label>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="item-inner">
+        <ion-icon src="../../../assets/profile/icon-wallet.svg"></ion-icon>
+        <ion-label>
+          <h6>Bank accounts</h6>
+          <span>Manage your your bank accounts</span>
+        </ion-label>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="item-inner">
+        <ion-icon src="../../../assets/profile/icon-help.svg"></ion-icon>
+        <ion-label>
+          <h6>Help</h6>
+          <span>Our support team is here 24/7</span>
+        </ion-label>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="item-inner">
+        <ion-icon src="../../../assets/profile/icon-setting.svg"></ion-icon>
+        <ion-label>
+          <h6>Settings</h6>
+          <span>Manage profile settings</span>
+        </ion-label>
+      </div>
+    </ion-item>
+    <ion-item>
+      <div class="item-inner" (click)="signOut()">
+        <ion-icon src="../../../assets/profile/icon-logout.svg"></ion-icon>
+        <ion-label>
+          <h6>logout</h6>
+          <span>You will be missed</span>
+        </ion-label>
+      </div>
+    </ion-item>
+
+  </ion-list>
+</ion-content>
+<!-- Body Section End -->
+<!-- Footer Section Start -->
+<ion-footer class="themeFooter">
+  <button class="footerTab" routerLink="/dashboard">
+    <ion-icon class="tab-icons" src="../../../assets/footer-icon/homeIcon.svg"></ion-icon>
+    <span class="tab-text">Home</span>
+  </button>
+  <button class="footerTab" routerLink="/portfolio">
+    <ion-icon class="tab-icons" src="../../../assets/footer-icon/portfolioIcon.svg"></ion-icon>
+    <span class="tab-text">Portfolio</span>
+  </button>
+  <button class="footerTab" routerLink="/invest">
+    <ion-icon class="tab-icons" src="../../../assets/footer-icon/investIcon.svg"></ion-icon>
+    <span class="tab-text">Invest</span>
+  </button>
+  <button class="footerTab" routerLink="/profile" [ngClass]="{active: selectedTab==='profileList'}">
+    <ion-icon class="tab-icons" src="../../../assets/footer-icon/profileIcon.svg"></ion-icon>
+    <span class="tab-text">Profile</span>
+  </button>
+</ion-footer>
+<!-- Footer Section End -->

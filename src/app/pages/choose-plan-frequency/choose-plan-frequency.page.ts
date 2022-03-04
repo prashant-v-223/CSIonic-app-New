@@ -10,70 +10,79 @@ import { SIPService } from 'src/app/shared/services/sip.service';
 })
 export class ChoosePlanFrequencyPage implements OnInit {
 
-  selectFrequency: any;
-  selectedDay: any;
-  week: any[] = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
-  startOfMonth = moment().startOf('month').format();
-  endOfMonth = moment().endOf('month').format();
-  fifteenDays: Date;
-  isOpened: boolean = true;
+  // selectFrequency: any;
+  // selectedDay: any;
+  // week: any[] = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+  // startOfMonth = moment().startOf('month').format();
+  // endOfMonth = moment().endOf('month').format();
+  // fifteenDays: Date;
+  // isOpened: boolean = true;
 
-  frequencyObject?: {
-    type: 'daily' | 'weekly' | 'monthly';
-    weekDay?:
-      | 'SUNDAY'
-      | 'MONDAY'
-      | 'TUESDAY'
-      | 'WEDNESDAY'
-      | 'THURSDAY'
-      | 'FRIDAY'
-      | 'SATURDAY';
-    monthDay?: number;
-  };
-  isFrequencyValid = false;
+  // frequencyObject?: {
+  //   type: 'daily' | 'weekly' | 'monthly';
+  //   weekDay?:
+  //     | 'SUNDAY'
+  //     | 'MONDAY'
+  //     | 'TUESDAY'
+  //     | 'WEDNESDAY'
+  //     | 'THURSDAY'
+  //     | 'FRIDAY'
+  //     | 'SATURDAY';
+  //   monthDay?: number;
+  // };
+  // isFrequencyValid = false;
 
-  constructor(
-    private navCtrl: NavController,
-    private sipService: SIPService,
-    private cdr: ChangeDetectorRef
-  ) {}
-
+  // constructor(
+  //   private navCtrl: NavController,
+  //   private sipService: SIPService,
+  //   private cdr: ChangeDetectorRef
+  // ) {}
+  customYearValues = [2020, 2016, 2008, 2004, 2000, 1996]; 
+  customPickerOptions: any;
+  constructor() { 
+  }
   ngOnInit() {
   }
 
-  onSelectFrequency(type) {
-    this.selectFrequency = type;
-    this.frequencyObject = {
-      type: this.selectFrequency
-    };
-    this.updateValidity();
-  }
+  // onSelectFrequency(type) {
+  //   this.selectFrequency = type;
+  //   this.frequencyObject = {
+  //     type: this.selectFrequency
+  //   };
+  //   this.updateValidity();
+  // }
 
-  onSelectDay(day) {
-    this.selectedDay = day;
-    this.frequencyObject.weekDay = day;
-    console.log('this.frequencyObject: ', this.frequencyObject);
-    this.updateValidity();
-  }
+  // onSelectDay(day) {
+  //   this.selectedDay = day;
+  //   this.frequencyObject.weekDay = day;
+  //   console.log('this.frequencyObject: ', this.frequencyObject);
+  //   this.updateValidity();
+  // }
 
-  onSelectDate(date: number) {
-    this.frequencyObject.monthDay = date;
-    this.updateValidity();
-  }
+  // onSelectDate(date: number) {
+  //   this.frequencyObject.monthDay = date;
+  //   this.updateValidity();
+  // }
 
-  updateValidity() {
-    this.isFrequencyValid = this.sipService.isSIPFrequencyValid(this.frequencyObject);
-    console.log('this.frequencyObject: ', this.frequencyObject);
-    this.cdr.detectChanges();
-  }
+  // updateValidity() {
+  //   this.isFrequencyValid = this.sipService.isSIPFrequencyValid(this.frequencyObject);
+  //   console.log('this.frequencyObject: ', this.frequencyObject);
+  //   this.cdr.detectChanges();
+  // }
 
-  onBack() {
-    this.navCtrl.back();
-  }
+  // onBack() {
+  //   this.navCtrl.back();
+  // }
 
-  onNext() {
-    this.sipService.setSIPData('plan-frequency', this.frequencyObject);
-    this.navCtrl.navigateRoot('/add-amount');
+  // onNext() {
+  //   this.sipService.setSIPData('plan-frequency', this.frequencyObject);
+  //   this.navCtrl.navigateRoot('/add-amount');
+  // }
+
+  public segment: string = "week";  
+
+  segmentChanged(ev: any) {
+    this.segment = ev.detail.value;
   }
 
 }

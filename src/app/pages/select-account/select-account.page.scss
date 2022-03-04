@@ -1,0 +1,126 @@
+ 
+.themeHeader {  
+    ion-button {
+      margin: 0px;
+      line-height: 0px;
+      height: 36px;
+      font-size: 14px;
+      --border-radius: 6px;
+      font-weight: 400;
+      font-family: var(--f-Poppins);
+      --ion-color-base: #2F4858 !important;
+      letter-spacing: .08px;
+    }
+  }
+.account-view {  
+    .header-title { 
+      font-size: 22px;
+      font-family: var(--f-Poppins);
+      font-weight: 400;
+      margin-bottom: 0rem;
+      line-height: 26px;
+      text-align: center;
+    }
+    .small-label {
+      font-size: 16px;
+      line-height: 12px;
+      font-weight: 400;
+      color: var(--blackColor); 
+      margin-bottom: 15px;
+    }
+    .themeProgress{
+      --progress-background:var(--theme-color); 
+      --buffer-background: #E6E6E6;
+      border-radius: 10px;
+      height: 10px;
+    }
+    ion-input{ 
+      --padding-start: 10px;
+      font-size: 20px;
+      font-family: var(--f-Poppins);
+      font-weight: 400;
+      margin-top: .5rem;
+      color: #000;
+      &.has-value{
+        background-color: var( --bg-lighter);
+      }
+    }
+   .account-list{
+  ion-list{
+    padding-top: 0rem;
+    }  
+    ion-button{
+      margin: 0px;
+      line-height: 0px;
+      height:50px;
+      font-size: 16px;  
+      --border-radius: 8px; 
+      font-weight: 400;
+      font-family: var(--f-Poppins);
+      letter-spacing: .08px; 
+      width: 100%; 
+    
+  } 
+  ion-item{
+    --min-height: 85px; 
+    --inner-border-width: 0px;
+    --border-color: inherit; 
+      --padding-start: 15px; 
+      --background: var(--bg-lighter);
+      border-radius: 15px;
+      margin-bottom: 15px;
+      .account-logo{
+        width: 60px;
+        height: 60px;
+        border-radius: 15px;
+        margin-right: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+        img{
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+
+      }
+      .list-md{
+           padding-bottom: 0px;
+      } 
+      .ion-title{
+        font-size: 20px;
+        font-family: var(--f-Poppins);
+        letter-spacing: .08px; 
+        margin-bottom: 0px;
+        font-weight: 500;
+        color: #1C4A47;
+        line-height: 20px;
+        margin-bottom: 0px;
+        display: flex;
+        align-items: center;
+      
+      }
+      .digi-round{
+        width: 6px;
+        height: 6px;
+        border-radius: 100%;
+        background-color: #1C4A47;
+        margin-right: 3px;
+       
+      }
+      .small-label{
+        margin-bottom: 8px;
+        font-size: 14px;
+        font-family: var(--f-Poppins);
+        color: var(--blackColor);
+        display: inline-block;
+        margin-right: 2px;
+      } 
+      ion-label{
+        margin-inline: 0px;
+        margin:0px;       
+      }
+    }
+  }
+}

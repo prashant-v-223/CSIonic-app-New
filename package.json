@@ -13,6 +13,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/core": "^12.2.16",
     "@angular/animations": "~12.1.1",
     "@angular/cdk": "^12.2.12",
     "@angular/common": "~12.1.1",
@@ -44,6 +45,7 @@
     "capacitor-native-settings": "^0.1.0",
     "chart.js": "^3.6.1",
     "flex-css-classes": "^1.1.0",
+    "ionicons": "^6.0.1",
     "moment": "^2.29.1",
     "rxjs": "~6.6.0",
     "swiper": "^8.0.6",

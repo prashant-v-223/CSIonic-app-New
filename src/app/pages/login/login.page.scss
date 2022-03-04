@@ -30,8 +30,9 @@
     display: flex;
     justify-content: center; 
     margin-bottom: 5px;
-    img{
-      width: 90px;
+    .logo{
+      font-size: 110px;
+      margin-bottom: 10px;
     }
   }
   .small-text{
@@ -41,9 +42,9 @@
     font-family: var(--f-Poppins);
   }
   .heading{
-    font-size: 28px;
+    font-size: 24px;
     font-weight: 800;
-    line-height: 28px;
+    line-height: 24px;
     font-family: var(--f-Raleway);
     color: var(--blackColor);
     margin-bottom: 5px;

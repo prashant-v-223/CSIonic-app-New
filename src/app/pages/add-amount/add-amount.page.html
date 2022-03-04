@@ -1,4 +1,4 @@
-<ion-content>
+<!-- <ion-content>
   <div class="page-container">
     <div class="flex-row w-100 align-center items-center no-shrink p-relative mb-5">
       <button mat-icon-button class="back-btn" (click)="onBack()">
@@ -30,4 +30,83 @@
 
   <app-loading *ngIf="showLoader"></app-loading>
 
+</ion-content> -->
+<!-- <ion-content>
+  <div class="page-container">
+    <div class="flex-row w-100 align-center no-shrink p-relative mb-5">
+      <button mat-icon-button class="back-btn" (click)="onBack()">
+        <fa-icon class="fa-icon color-primary" icon="chevron-left"></fa-icon>
+      </button>
+      <h2 class="header-title color-primary mb-0">Choose Your Plan Frequency</h2>
+    </div>
+    <div class="frequency-container">
+      <div class="flex-row align-center items-space-between b-b-light pb-5">
+        <div class="chip-btn" [ngClass]="{active: selectFrequency==='daily'}" (click)="onSelectFrequency('daily')">Daily
+        </div>
+        <div class="chip-btn" [ngClass]="{active: selectFrequency==='weekly'}" (click)="onSelectFrequency('weekly')">
+          Weekly</div>
+       <div class="chip-btn" [ngClass]="{active: selectFrequency==='15Day'}" (click)="onSelectFrequency('15Day')">15Day</div> 
+        <div class="chip-btn" [ngClass]="{active: selectFrequency==='monthly'}" (click)="onSelectFrequency('monthly')">
+          Monthly</div>
+      </div>
+      <div class="week" *ngIf="selectFrequency==='weekly'">
+        <div class="col-4" *ngFor="let day of week">
+          <div class="chip-btn m-2 text-capitalize" [ngClass]="{'green-bg': selectedDay===day}" (click)="onSelectDay(day)">{{day}}</div>
+        </div>
+      </div>
+      <app-calendar *ngIf="selectFrequency==='monthly'" (onSelectedDateChange)="onSelectDate($event)"></app-calendar>
+    </div>
+    <button mat-flat-button color="primary" class="w-100 mt-4 no-shrink" (click)="onNext()" [disabled]="!isFrequencyValid">NEXT</button>
+  </div>
+</ion-content> -->
+  <!-- Header Section Start --> 
+ <ion-header translucent class="themeHeader">
+  <ion-toolbar>
+    <ion-list class="d-flex justify-between">
+    <ion-buttons slot="start">
+      <ion-back-button  mat-icon-button class="back-btn" defaultHref="/choose-plan-frequency"> 
+      </ion-back-button>
+    </ion-buttons> 
+  </ion-list>
+  </ion-toolbar>
+</ion-header>
+<!-- Header Section End -->
+<ion-content class="portfolio-view">  
+  <ion-list class="ion-list bg-white">
+    <ion-row>
+      <ion-col class="p-0" size="12" size-md>
+        <ion-list class="d-flex justify-center">
+          <div class="coinTag-inner">
+            <div class="coinTag bg-blue">
+              <ion-icon class="coin-icon" src="../../../assets/icon-bitc.svg"></ion-icon>
+            </div>
+            <div class="coinTag bg-greenLighter">
+              <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+            </div>
+            <div class="coinTag bg-grey">
+              <ion-icon class="coin-icon" src="../../../assets/icon-vi.svg"></ion-icon>
+            </div>
+          </div>
+        </ion-list>
+        <h2 class="header-title mt-3">Add amount</h2>
+        <ion-list class="mt-3 mb-3">
+          <div class="small-label text-center">step 2 of 2</div>
+          <ion-progress-bar class="themeProgress" value="1"></ion-progress-bar>
+        </ion-list>
+        <ion-list class="mt-3 text-center"> 
+            <ion-text class="small-label">
+              ₹ INR
+            </ion-text>
+            <ion-input type="number" placeholder="Type here"></ion-input> 
+        </ion-list> 
+      </ion-col>
+    </ion-row>
+  </ion-list>
 </ion-content>
+<!-- Footer Section Start -->
+<ion-footer class="bottomBtn">
+  <ion-button class="footerTab ion-button-theme" expand="full" shape="round" routerLink="/sip-created">
+    Next
+  </ion-button>
+</ion-footer>
+<!-- Footer Section End -->

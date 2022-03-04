@@ -43,7 +43,63 @@ const routes: Routes = [
   {
     path: 'error/:errorType',
     loadChildren: () => import('./pages/error/error.module').then( m => m.ErrorPageModule)
+  },
+  {
+    path: 'portfolio',
+    loadChildren: () => import('./pages/portfolio/portfolio.module').then( m => m.PortfolioPageModule)
+  },
+  {
+    path: 'portfolio-details',
+    loadChildren: () => import('./pages/portfolio-details/portfolio-details.module').then( m => m.PortfolioDetailsPageModule)
+  },
+  {
+    path: 'portfolio-view',
+    loadChildren: () => import('./pages/portfolio-view/portfolio-view.module').then( m => m.PortfolioViewPageModule)
+  },
+  {
+    path: 'invest',
+    loadChildren: () => import('./pages/invest/invest.module').then( m => m.InvestPageModule)
+  },
+  {
+    path: 'profile',
+    loadChildren: () => import('./pages/profile/profile.module').then( m => m.ProfilePageModule)
+  },   {
+    path: 'popular-coins',
+    loadChildren: () => import('./pages/popular-coins/popular-coins.module').then( m => m.PopularCoinsPageModule)
+  },
+  {
+    path: 'popular-baskets',
+    loadChildren: () => import('./pages/popular-baskets/popular-baskets.module').then( m => m.PopularBasketsPageModule)
+  },  {
+    path: 'analytics',
+    loadChildren: () => import('./pages/analytics/analytics.module').then( m => m.AnalyticsPageModule)
+  },
+  {
+    path: 'sip-created',
+    loadChildren: () => import('./pages/sip-created/sip-created.module').then( m => m.SipCreatedPageModule)
+  },
+  {
+    path: 'my-wallet',
+    loadChildren: () => import('./pages/my-wallet/my-wallet.module').then( m => m.MyWalletPageModule)
+  },
+  {
+    path: 'withdraw-amount',
+    loadChildren: () => import('./pages/withdraw-amount/withdraw-amount.module').then( m => m.WithdrawAmountPageModule)
+  },
+  {
+    path: 'select-account',
+    loadChildren: () => import('./pages/select-account/select-account.module').then( m => m.SelectAccountPageModule)
+  },
+  {
+    path: 'amount-withdrawn',
+    loadChildren: () => import('./pages/amount-withdrawn/amount-withdrawn.module').then( m => m.AmountWithdrawnPageModule)
   }
+
+  
+
+
+
+
 ];
 
 @NgModule({

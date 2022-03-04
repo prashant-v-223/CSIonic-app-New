@@ -35,8 +35,10 @@
   --amplify-primary-tint:#5ebd4e;
   --amplify-primary-shade: #41a930;
   --theme-color:#8AC680;
+  --theme-d-color: #67BA59;
   --bg-lighter:#EFF7ED; 
   --blackColor:#102E28;
+  --lighter-b-Color:#2F4858;
   --f-Poppins:'Poppins', sans-serif;
   --f-Raleway:'Raleway', sans-serif;
   --amplify-font-family: 'Poppins', sans-serif;
@@ -48,6 +50,60 @@
   --amplify-secondary-contrast:  var(--bg-lighter); 
   ---border:10px;
 }
+.f-Poppins{
+  font-family: var(--f-Poppins) !important;
+}
+ion-button{
+    &.md{
+      text-transform: inherit;
+    }
+}
+ .ion-button-theme{ 
+  --color:var(--blackColor);
+  --background: var(--theme-color);
+  --background-activated: var(--theme-d-color);
+    --background-focused: var(--theme-d-color);
+    --background-hover: var(--theme-d-color);
+    --background-activated-opacity: 1;
+    --background-focused-opacity: 1;
+    --background-hover-opacity: 1;
+    color:#fff;
+ }
+ .ion-button-white{
+  --background:#fff;
+  --background-activated: var(--theme-color);
+    --background-focused: var(--theme-color);
+    --background-hover: var(--theme-color);
+    --background-activated-opacity: 1;
+    --background-focused-opacity: 1;
+    --background-hover-opacity: 1;    
+    --ion-color-base:var(--blackColor) !important;
+    --box-shadow:inherit;
+    text-transform: inherit;
+    color:var(--blackColor);
+    &.ion-activated{
+      color: #fff;
+      --background-activated:var(--theme-color); 
+      ion-icon{
+        stroke:#fff !important; 
+      }
+    }  
+ }
+ .ion-button-theme-outline{
+  --border-color: var(--theme-d-color);
+  --background: transparent;
+  --color:var(--theme-d-color);
+  --background-activated: var(--theme-d-color);
+  --background-focused: var(--theme-d-color);
+  --background-hover: var(--theme-d-color);
+  --background-activated-opacity: 1;
+  --background-focused-opacity: 1;
+  --background-hover-opacity: 1;
+  &.ion-activated{
+    color: #fff;
+    --background-activated:var(--theme-d-color); 
+  }
+ }
 .bg-lighter{
   background-color: var(--bg-lighter); 
 }
@@ -59,12 +115,15 @@
 }
 .bg-greenLighter{
   background-color: #91b9b3;
-}
+} 
 .bg-blue{
   background-color: #4f8ab7;
 }
 .bg-grey{
   background-color: #b1d2db;
+}
+.bg-danger{
+  background-color: #FF8080;
 }
 .d-flex{  
   display: flex;
@@ -90,14 +149,29 @@
 .align-end{
   align-items: flex-end;
 }
+.text-center{
+  text-align: center !important;
+}
 .w-100{
   width: 100%;
 }
 .text-white{
   color: #fff;
 }
+.text-theme{
+  color: var(--theme-color);
+}
 .text-dark{
   color: var(--blackColor);
+}
+.text-d-theme{
+  color: var(--theme-d-color);
+}
+.text-danger{
+  color: #FF8080;
+}
+.text-right{
+  text-align: right;
 }
 ion-content{
   --ion-background-color:#fff;
@@ -126,7 +200,9 @@ p{
 .gray-text {
   color: var(--ion-color-medium);
 }
-
+.icon-up{
+  font-size: 20px;
+}
 .page-container {
   display: flex;
   flex-direction: column;
@@ -155,17 +231,7 @@ p{
   }
 }
 
-.back-btn {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-left: -7px !important;
-
-  mat-icon {
-    color: var(--ion-color-primary) !important;
-  }
-}
-
+ 
 .color-primary {
   color: var(--ion-color-primary) !important;
 }
@@ -321,22 +387,137 @@ p{
 .ion-content{
   padding: 1rem;
 }
+
+// Theme Banner Section Star
+.theme-banner{
+  padding: 1rem 1rem 2.5rem 1rem;
+  position: relative;
+  &::after{
+    content: '';
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    height: 25px;
+    background-color: #fff;
+    width: 100%;
+    border-radius: 25px 25px 0px 0px;
+  
+}
+.ion-title{
+    font-size: 24px;
+    font-family: var(--f-Poppins);
+    font-weight: 400;
+    margin: 0rem;
+    line-height: 28px; 
+}
+.Price {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 32px;
+    letter-spacing: -1.08px;
+    margin-bottom: 0px; 
+    font-weight: 400;   
+    margin-top: 20px;   
+  }
+  .small-label {
+    font-size: 13px; 
+    line-height: 16px;
+    font-family: var(--f-Poppins);
+    font-weight: 400;
+    text-align: left; 
+  }
+  .invest-list {
+      padding: 0px;
+      margin-top: 15px;
+  }
+  .invest-list h6{
+    font-size: 17px;
+    line-height: 20px;  
+    font-weight: 500;
+    letter-spacing: -.08px;
+    color: var(--blackColor);
+      margin-bottom: 0px;
+  }
+  .plant-img{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      ion-icon{
+        font-size: 135px;
+      }
+  }
+  &.bg-theme{
+      .ion-title,
+      .small-label,
+      .Price,
+      .invest-list h6{
+          color: #fff;
+      }
+  } 
+}
+// Theme Banner Section End
 // Theme Header Start
-.themeHeader{
-  padding: 1rem;
+.themeHeader{ 
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  &::after{
+    display: none;
+  }
+  .list-header{
+    min-height: 55px;
+    padding: 0px .5rem;
+  }
+  ion-toolbar{
+    --min-height: 55px;
+    padding: 0px .8rem;
+    --border-width: 0px;
+    --opacity: 1;
+  }
   .menuLeft{
     width: 36px;
     height: 36px;
     border-radius: 6px;
     background-color: var(--bg-lighter);
+    font-size:20px;
   }
   .userProfile{
     width: 36px;
     height: 36px;
     --border-radius: 6px;  
+  } 
+  ion-back-button{ 
+    --icon-margin-end: 0;
+    color: var(--blackColor);
+    --color:  var(--blackColor); 
+    font-family: var(--f-Poppins); 
+    --icon-font-size: 28px;
+    --min-height: 32px;
+    font-size: 16px;
+    &.md{
+      
+       width: 40px;
+    height: 40px;
+    --min-height: 40px;
+    --min-width: 40px;
+    min-width: 40px;
+    border-radius: 10px;
+    background-color: var(--bg-lighter);
+    font-size: 24px;
+    line-height: 0px;
+    --padding-start: 0;
+    --padding-end: 0;
+    --icon-font-size: 22px;
+    .button-native{
+      padding-left:0px;
+      padding-right:0px;
+    }
+    }
+  } 
+  .list-md{
+    padding-top: 10px;
+    padding-bottom: 10px;
   }
 }
 // Theme Header End
@@ -359,6 +540,295 @@ p{
     margin-bottom: 0px;
   }
 }
+//  Popular Coin Card Start
+.popularSection {
+  .card {
+    display: flex;
+    width: 100%;
+    border-radius: 15px;
+    margin-right: 15px;
+    flex-flow: column;
+    .card-body {
+      padding: 12px;
+      display: inline-block;
+      width: 100%;
+
+      .coinTag {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 36px;
+        height: 36px;
+        border-radius: 12px;
+       .coin-icon{
+          font-size: 20px;
+        }
+      }
+      .small-text {
+        border-radius: 5px;
+        padding: 2px 5px 2px 2px;
+        display: flex;
+        align-items: center; 
+        font-size: 14px;
+        line-height: 12px;
+        font-weight: 400;
+        img {
+          margin-right: 2px;
+        }
+      }
+      .small-label {
+        font-size: 13px;
+        opacity: 0.9;
+        line-height: 16px;
+        font-family: var(--f-Poppins);
+        font-weight: 300;
+        text-align: left;
+      }
+      .Price {
+        font-size: 22px;
+        font-weight: 400;
+        line-height: 22px;
+        letter-spacing: -1.08px;
+        margin-bottom: 0px;
+        margin-top: 2px;
+      }
+     
+    }
+    .large-line{
+      font-size: 165px;
+      height: 57px;
+      margin: 0 auto;
+    }
+  }
+  &.basket {
+    .card {
+      .card-body {
+        .view-icon{
+          ion-icon{
+            font-size: 22px;
+            color: #999;
+          }
+        }
+        .coinTag {
+          margin-left: -18px;
+          border: solid 1px #fff;
+          z-index: 1;
+          &:first-child{
+            margin-left: 0px;
+          }
+        }
+        .line-draw{
+            font-size: 50px;
+        }
+        .small-price {
+          font-size: 16px;
+          line-height: 16px;
+          letter-spacing: -.05px;
+          margin-bottom: 0px;
+          margin-top: 2px;
+        }
+
+        .line-draw {
+          font-size: 55px;
+        }
+
+        .right-section {
+          .small-label {
+            text-align: right;
+            line-height: 14px;
+          }
+        }
+        .small-label {
+          opacity: 1;
+          line-height: 20px;
+          margin-bottom: 2px;
+          font-weight: 400;
+          line-height: 14px;
+        }
+      }
+    }
+  }
+}
+ 
+  .coinTag-inner {
+    border: solid 2px var(--theme-color);
+    padding: 2px;
+    display: flex;
+    border-radius: 20px;
+
+    .coinTag {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+      margin-left: -25px;
+      border: solid 1px #fff;
+      z-index: 1;
+
+      &:first-child {
+        margin-left: 0px;
+      }
+
+      .coin-icon {
+        font-size: 25px;
+      }
+    }
+  } 
+.themeProgress{
+  --progress-background:var(--theme-color); 
+  --progress-border-radius:50px;
+  --buffer-background: transparent;
+  border-radius: 8px;
+  height: 8px;
+  position: relative;
+  &::after{
+    content: '';
+    position: absolute;
+    top: 0px;
+    bottom: 0px;
+    margin: auto;
+    width: 100%;
+    height: 2px;
+    background-color: #e6e6e6;
+  }
+}
+.portfolio-price {
+  span {
+      display: inline-block;
+      width: 100%;
+  }
+
+  .Price {
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 36px;
+      letter-spacing: -1.08px;
+      margin-bottom: 0px;
+      margin-top: 5px;
+  }
+
+  .small-label,
+  .small-text {
+      font-size: 14px;
+      line-height: 16px;
+      text-align: left;
+      color: #102E28;
+  }
+
+  .small-label {
+      font-family: var(--f-Poppins);
+      font-weight: 400;
+  }
+
+  .small-text {
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 500;
+      color: var(--blackColor);
+  }
+}
+//  Popular Coin Card End
+// Create Sip Start
+ 
+  
+.sip-created {
+  --ion-background-color: var(--lighter-b-Color);
+ .ion-list{
+  padding-top: 3rem;
+ }
+  .sip-done {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 135px;
+      height: 135px;
+      border-radius: 100%;
+      background-color: var(--theme-color);
+      border: solid 10px #fff;
+      position: relative;
+
+      &::after {
+          content: "";
+          position: absolute;
+          top: -18px;
+          left: -18px;
+          border: solid 1px #fff;
+          width: 150px;
+          height: 150px;
+          border-radius: 50%;
+      }
+
+      ion-icon {
+          font-size: 40px;
+      }
+  }
+
+  .header-title {
+      font-size: 24px;
+      font-weight: 400;
+      margin-top: 0rem;
+      line-height: 32px;
+      color: #fff;
+      letter-spacing: -0.08px;
+      margin-bottom: 0px;
+  }
+
+  .small-label {
+      font-size: 14px;
+      line-height: 16px;
+      font-family: var(--f-Poppins);
+      font-weight: 300;
+      text-align: left;
+      opacity: .6;
+      color: #fff;
+  }
+}
+
+
+.view-sip {
+border-radius: 18px;
+background-color: #fff;
+width: 100%; 
+.portfolio-price {
+  span {
+      display: inline-block;
+      width: 100%;
+  }
+
+  .Price {
+      font-size: 34px;
+      font-weight: 400;
+      line-height: 36px;
+      letter-spacing: -1.08px;
+      margin-bottom: 0px;
+      margin-top: 5px;
+  }
+
+  .small-label,
+  .small-text {
+      font-size: 14px;
+      line-height: 16px;
+      text-align: left;
+      color: #102E28;
+  }
+
+  .small-label {
+      font-family: var(--f-Poppins);
+      font-weight: 400;
+  }
+
+  .small-text {
+      font-size: 15px;
+      line-height: 20px;
+      font-weight: 500;
+      color: var(--blackColor);
+  }
+}
+}
+
+// Create Sip End
 // Theme Footer Start
 .themeFooter {
   display: flex;
@@ -370,6 +840,9 @@ p{
   -moz-box-shadow: 0px -2px 13px 0px rgba(0,0,0,0.03);
   box-shadow: 0px -2px 13px 0px rgba(0,0,0,0.03); 
   z-index: 2;
+  &::before{
+    display: none;
+  }
   .footerTab{
     display: flex;
     flex-flow: column;
@@ -380,8 +853,7 @@ p{
     background-color: transparent;
     opacity: .5;   
     .tab-icons { 
-      width: 28px;
-      height: 28px;   
+      font-size: 28px; 
       margin-bottom: 2px; 
     }
     .tab-text{
@@ -396,5 +868,19 @@ p{
     }
   }  
 }
+.bottomBtn{
+  .footerTab{
+    margin: 0px;
+    line-height: 0px;
+    height: 60px;
+    font-size: 18px;
+    --border-radius: 0px;
+    font-weight: 500;
+    font-family: var(--f-Poppins); 
+    letter-spacing: .08px;  
+    text-transform: inherit;
+  }
+}
+
 
 // Theme Footer End

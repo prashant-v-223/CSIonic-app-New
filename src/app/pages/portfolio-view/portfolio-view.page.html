@@ -1,0 +1,145 @@
+  <!-- Header Section Start --> 
+ <ion-header translucent class="themeHeader">
+  <ion-toolbar>
+    <ion-list class="d-flex justify-between">
+      <ion-buttons slot="start">
+        <ion-back-button  mat-icon-button class="back-btn" defaultHref="/portfolio-details"> 
+        </ion-back-button>
+      </ion-buttons> 
+      <ion-button color="dark" routerLink="/withdraw-amount">
+        <ion-icon class="mr-1" name="arrow-up"></ion-icon> Withdraw
+      </ion-button>
+    </ion-list>
+  </ion-toolbar>
+</ion-header>
+<!-- Header Section End -->
+<ion-content class="portfolio-view">
+  <ion-grid class="p-0 bg-white">
+    <ion-row>
+      <ion-col size="12" class="pt-4" size-md>
+        <ion-list class="d-flex justify-center">
+          <div class="coinTag-inner">
+            <div class="coinTag bg-blue">
+              <ion-icon class="coin-icon" src="../../../assets/icon-bitc.svg"></ion-icon>
+            </div>
+            <div class="coinTag bg-greenLighter">
+              <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+            </div>
+            <div class="coinTag bg-grey">
+              <ion-icon class="coin-icon" src="../../../assets/icon-vi.svg"></ion-icon>
+            </div>
+          </div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+    <ion-list class="ion-list portfolio-price pt-2">
+      <ion-row>
+        <!-- <ion-col size="12" class="p-0" size-md>
+            <div class="Price text-center">₹19,006</div>
+            <span class="small-text text-center">Etherium (ETH)</span>
+        </ion-col> -->
+        <ion-col size="4" class="p-0" size-md>
+          <span class="small-label">Coin</span>
+          <span class="small-text">Bitcoin (BTC)</span>
+          <span class="small-text">Etherium (ETH)</span>
+          <span class="small-text">Viacoin (VIA)</span>
+        </ion-col>
+        <ion-col size="5" class="p-0 pl-3" size-md>
+          <span class="small-label">Price</span>
+          <span class="small-text">₹19,032406.00</span>
+          <span class="small-text">₹19,03406.00</span>
+          <span class="small-text">₹19,006.00</span>
+        </ion-col>
+        <ion-col size="3" class="p-0 pl-2" size-md>
+          <span class="small-label">Weight</span>
+          <span class="small-text">50%</span>
+          <span class="small-text">22.5%</span>
+          <span class="small-text">22.5%</span>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+    <ion-list *ngIf="segment === 'day'">
+      <img src="../../../assets/demo-graph.png" width="100%" alt="img">
+    </ion-list>
+    <ion-list *ngIf="segment === 'week'">
+      week
+    </ion-list>
+    <ion-list *ngIf="segment === 'month'">
+      month
+    </ion-list>
+    <ion-list *ngIf="segment === 'year'">
+      Year
+    </ion-list>
+    <ion-list *ngIf="segment === 'all'">
+      All
+    </ion-list>
+    <ion-list class="ion-list">
+      <ion-segment class="tabbingTheme" (ionChange)="segmentChanged($event)" value="day">
+        <ion-segment-button value="day">
+          <ion-label>
+            Day
+          </ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="week">
+          <ion-label>
+            week
+          </ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="month">
+          <ion-label>
+            Month
+          </ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="year">
+          <ion-label>
+            Year
+          </ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="all">
+          <ion-label>
+            All
+          </ion-label>
+        </ion-segment-button>
+      </ion-segment>
+    </ion-list>
+    <ion-list class="ion-list portfolio-details bg-lighter">
+      <ion-row>
+        <ion-col size="6" size-md>
+          <h4 class="heading-label text-dark">₹19,006.00</h4>
+          <span class="small-label">Current</span>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <h4 class="heading-label text-dark">₹19,006.00</h4>
+          <span class="small-label">Invested</span>
+        </ion-col> 
+        <ion-col size="6" size-md>
+          <h4 class="heading-label text-dark">₹2,000.00</h4>
+          <span class="small-label">Return</span>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <h4 class="heading-label text-d-theme">+24%</h4>
+          <span class="small-label">Total Return</span>
+        </ion-col>
+        <ion-col size="12"  size-md>
+          <div class="line"></div>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <h6 class="smallHeading-label text-dark">₹70.00/Weekly</h6>
+          <span class="small-label">Interval</span>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <h6 class="smallHeading-label text-dark">21 Jun, 2021</h6>
+          <span class="small-label">Next Investment</span>
+        </ion-col>
+      </ion-row>
+      <ion-row class="mt-2">
+        <ion-col size="6" size-md>
+          <ion-button class="ion-button-theme"  expand="full" shape="round" routerLink="/choose-plan-frequency">Add funds</ion-button>  
+        </ion-col>
+        <ion-col size="6" size-md>
+          <ion-button class="ion-button-theme-outline" fill="outline" shape="round"  expand="full" >Edit SIP</ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-list>
+  </ion-grid>
+</ion-content>

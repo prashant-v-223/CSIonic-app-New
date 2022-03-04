@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="28" height="28" viewBox="0 0 28 28">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_20837" data-name="Rectangle 20837" width="28" height="28" transform="translate(46 835)" fill="#fff" stroke="#2f4858" stroke-width="1.8"/>
+    </clipPath>
+  </defs>
+  <g id="Mask_Group_110" data-name="Mask Group 110" transform="translate(-46 -835)" clip-path="url(#clip-path)">
+    <g id="tabler-icon-help_3_" data-name="tabler-icon-help (3)" transform="translate(46 835)">
+      <path id="Path_25001" data-name="Path 25001" d="M0,0H28V28H0Z" fill="none"/>
+      <circle id="Ellipse_456" data-name="Ellipse 456" cx="10.5" cy="10.5" r="10.5" transform="translate(3.5 3.5)" fill="none" stroke="#2f4858" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+      <line id="Line_244" data-name="Line 244" y2="0.012" transform="translate(14 19.833)" fill="none" stroke="#2f4858" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+      <path id="Path_25002" data-name="Path 25002" d="M13.167,15.169a1.75,1.75,0,0,1,1.167-1.75,3.033,3.033,0,1,0-3.5-4.667" transform="translate(0.833 0.581)" fill="none" stroke="#2f4858" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8"/>
+    </g>
+  </g>
+</svg>

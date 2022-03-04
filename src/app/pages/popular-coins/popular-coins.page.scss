@@ -1,0 +1,37 @@
+ 
+.topHeader{ 
+  ion-title{
+    position: inherit;
+    text-align: left;
+    height: inherit;
+    left: inherit;
+    padding-right: 0px;
+    padding-inline: 0;
+    font-size: 24px;
+    font-family: var(--f-Poppins);
+    font-weight: 400;
+    margin-bottom: .8rem;
+    line-height: 28px; 
+}
+ion-searchbar{
+    padding: 0px;
+    --background: var(--bg-lighter);
+    height: 36px; 
+    --border-radius:10px;
+    --color:#000;
+    --placeholder-color:#444;
+    font-family: var(--f-Poppins); 
+    --box-shadow:none; 
+
+}
+}
+//  Popular Coin Card Start
+.popularSection { 
+    ion-list{
+        padding:.5rem .8rem 1rem .8rem;
+      }
+  }
+  //  Popular Coin Card End
+  
+ 
+ 
