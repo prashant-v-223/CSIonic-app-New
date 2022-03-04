@@ -70,7 +70,8 @@ const routes: Routes = [
   {
     path: 'popular-baskets',
     loadChildren: () => import('./pages/popular-baskets/popular-baskets.module').then( m => m.PopularBasketsPageModule)
-  },  {
+  },
+  {
     path: 'analytics',
     loadChildren: () => import('./pages/analytics/analytics.module').then( m => m.AnalyticsPageModule)
   },
@@ -93,13 +94,11 @@ const routes: Routes = [
   {
     path: 'amount-withdrawn',
     loadChildren: () => import('./pages/amount-withdrawn/amount-withdrawn.module').then( m => m.AmountWithdrawnPageModule)
+  },
+  {
+    path: 'sign-in',
+    loadChildren: () => import('./pages/sign-in/sign-in.module').then( m => m.SignInPageModule)
   }
-
-  
-
-
-
-
 ];
 
 @NgModule({
