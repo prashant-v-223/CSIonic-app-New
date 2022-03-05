@@ -14,24 +14,28 @@
           <h4 class="header-title text-white">₹19,006.00</h4>
           <span class="small-label ">Amount</span>
         </ion-col> 
-       <ion-list class="view-sip mt-3">
-        <ion-col size="12" class="pt-4 d-flex justify-center" size-md> 
-            <div class="coinTag-inner">
-              <div class="coinTag bg-blue">
-                <ion-icon class="coin-icon" src="../../../assets/icon-bitc.svg"></ion-icon>
-              </div>
-              <div class="coinTag bg-greenLighter">
-                <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-              </div>
-              <div class="coinTag bg-grey">
-                <ion-icon class="coin-icon" src="../../../assets/icon-vi.svg"></ion-icon>
-              </div>
-            </div> 
-        </ion-col>       
-        <ion-row class="ion-list portfolio-price pt-2">
-            55
-        </ion-row>
+       <ion-list class="view-sip card-view mt-3">  
+         <div class="card-body">
+          <span class="small-label">Send To</span>
+          <ion-item class="card-details">
+            <ion-list class="account-logo" slot="start">
+              <img src="../../../assets/chaselogo.png" alt="icon">
+            </ion-list>
+            <ion-label>
+              <span class="small-label">Chase Bank</span>      
+               <h2 class="ion-title"><div class="digi-round"></div><div class="digi-round"></div><div class="digi-round"></div><div class="digi-round"></div>5668</h2>             
+            </ion-label>
+          </ion-item>    
+          <ion-col size="12" size-md class="small-text p-0">22 Dec, 2021, 02:03pm</ion-col>
+        </div>
+          <ion-col class="p-0" size="12" size-md>
+            <div class="line-dash"></div>
+        </ion-col>     
+        <div class="card-body">
+          <ion-icon class="code" src="../../../assets/code.svg"></ion-icon>
+        </div>    
        </ion-list>
+     
       </ion-row>
     </ion-grid>
   </ion-list>
@@ -39,7 +43,7 @@
 <!-- Footer Section Start -->
 <ion-footer class="bottomBtn">
   <ion-button class="footerTab ion-button-theme" expand="full" shape="round" routerLink="/portfolio-view">
-    Back Home
+    Back home
   </ion-button>
 </ion-footer>
 <!-- Footer Section End -->

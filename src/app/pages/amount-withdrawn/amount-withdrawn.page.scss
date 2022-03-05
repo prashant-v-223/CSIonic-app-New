@@ -1,0 +1,104 @@
+.card-view {
+    .card-body{
+    padding: 15px;
+    .small-label{
+        margin-bottom: 8px;
+        font-size: 14px;
+        font-family: var(--f-Poppins);
+        color: var(--blackColor);
+        display: inline-block;
+        margin-right: 2px;
+        font-weight: 400;
+        opacity: .8;
+    }
+    .card-details {
+        --min-height: auto; 
+        --inner-border-width: 0px;
+        --border-color: inherit; 
+        --padding-start: 0;
+        --background: transparent;
+        .account-logo {
+            width: 60px;
+            height: 60px;
+            border-radius: 15px;
+            margin-right: 1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: #fff;
+            img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+            }
+        }
+        .list-md {
+            padding-bottom: 0px;
+        }
+        .ion-title {
+            font-size: 20px;
+            font-family: var(--f-Poppins);
+            letter-spacing: 0.08px;
+            margin-bottom: 0px;
+            font-weight: 500;
+            color: #1c4a47;
+            line-height: 20px;
+            margin-bottom: 0px;
+            display: flex;
+            align-items: center;
+        }
+        .digi-round {
+            width: 6px;
+            height: 6px;
+            border-radius: 100%;
+            background-color: #1c4a47;
+            margin-right: 3px;
+        }
+        .small-label {
+            margin-bottom: 8px;
+            font-size: 14px;
+            font-family: var(--f-Poppins);
+            color: var(--blackColor);
+            display: inline-block;
+            margin-right: 2px;
+            opacity: 1;
+        }
+    }
+    .small-text{
+        margin-top: 8px;
+        font-size: 14px;
+        font-family: var(--f-Poppins);
+        color: var(--blackColor);
+        display: inline-block; 
+        display: inline-block;
+            text-align: center;
+            width: 100%;
+    }
+}
+    .line-dash{
+        width: 100%; 
+        border: dashed 1px #ddd;
+        position: relative;
+        &::after,
+        &::before{
+            content: "";
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            background-color: var(--lighter-b-Color);
+            border-radius: 100%;
+            top: -9px;
+        }
+        &::after{
+            left: -10px;
+        }
+        &::before{
+            right: -10px;
+        }
+    }
+    .code{
+        width: 100%;
+        height: 50px;
+    }
+}

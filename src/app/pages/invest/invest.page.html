@@ -1,9 +1,482 @@
-<ion-header>
+ 
+<!-- Header Section Start --> 
+<ion-header translucent class="themeHeader bg-lighter">
   <ion-toolbar>
-    <ion-title>invest</ion-title>
+    <ion-list class="d-flex justify-between">
+      <ion-menu-toggle  id="main">
+        <button class="menuLeft">
+          <ion-icon src="../../../assets/menu.svg"></ion-icon>
+        </button>
+      </ion-menu-toggle>
+      <ion-avatar class="userProfile">
+        <img src="../../../assets/icon/user.jpg" alt="profile">
+      </ion-avatar>
+    </ion-list>
   </ion-toolbar>
 </ion-header>
+<!-- Header Section End -->
+<!-- Left Menu Section Start -->
+<ion-menu side="start" menuId="first" contentId="main">
+   <ion-content>
+    <ion-list>
+      <ion-item>Menu Item</ion-item> 
+      <ion-item>Menu Item</ion-item> 
+      <ion-item>Menu Item</ion-item> 
+      <ion-item>Menu Item</ion-item> 
+      <ion-item>Menu Item</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+<!-- Left Menu Section End -->
+<!-- Body Section Start -->
+<ion-content class="invest popularSection basket">
+  <div class="theme-banner bg-lighter">
+    <ion-grid class="p-0">
+      <ion-row>
+        <ion-col size="12" class="p-0" size-md>
+          <h2 class="ion-title">Invest</h2>
+          <span class="small-label">Find out best options to invest and earn</span>
+        </ion-col>
+        <ion-segment class="tabbingTheme" (ionChange)="segmentChanged($event)" value="Coins">
+          <ion-segment-button value="Coins">
+            <ion-label>
+              Coins
+            </ion-label>
+          </ion-segment-button>
+          <ion-segment-button value="Baskets">
+            <ion-label>
+              Baskets
+            </ion-label>
+          </ion-segment-button>
+        </ion-segment>
+      </ion-row>
+    </ion-grid>
+  </div>
+  <ion-list class="ion-list">
+    <ion-grid class="p-0">
 
-<ion-content>
+      <ion-row *ngIf="segment === 'Coins'">
+        <ion-col size="6" size-md>
+          <div class="card bg-theme">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="coinTag bg-dark">
+                  <ion-icon class="coin-icon" src="../../../assets/icon-bitc.svg"></ion-icon>
+                </div>
+                <div class="small-text bg-white text-dark">
+                  <ion-icon class="text-d-theme icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon>
+                  0.7%
+                </div>
+              </div>
+              <div class="small-label text-white">Bitcoin</div>
+              <div class="d-flex align-end">
+                <h4 class="Price text-white">₹19,006</h4>
+                <span class="small-label text-white ml-2">BTC</span>
+              </div>
+            </div>
+            <div class="mt-1">
+              <ion-icon class="large-line" src="../../../assets/area-line-white.svg"></ion-icon>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="coinTag bg-greenLighter">
+                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+                </div>
+                <div class="small-text bg-danger text-white">
+                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropdown.svg"></ion-icon> 0.7%
+                </div>
+              </div>
+              <div class="small-label text-dark">Etherium</div>
+              <div class="d-flex align-end">
+                <h4 class="Price text-dark">₹19,006</h4>
+                <span class="small-label text-dark ml-2">ETH</span>
+              </div>
+            </div>
+            <div class="mt-1">
+              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="coinTag bg-greenLighter">
+                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+                </div>
+                <div class="small-text bg-theme text-white">
+                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon>
+                  0.7%
+                </div>
+              </div>
+              <div class="small-label text-dark">Etherium</div>
+              <div class="d-flex align-end">
+                <h4 class="Price text-dark">₹19,006</h4>
+                <span class="small-label text-dark ml-2">ETH</span>
+              </div>
+            </div>
+            <div class="mt-1">
+              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="coinTag bg-greenLighter">
+                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+                </div>
+                <div class="small-text bg-danger text-white">
+                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropdown.svg"></ion-icon> 0.7%
+                </div>
+              </div>
+              <div class="small-label text-dark">Etherium</div>
+              <div class="d-flex align-end">
+                <h4 class="Price text-dark">₹19,006</h4>
+                <span class="small-label text-dark ml-2">ETH</span>
+              </div>
+            </div>
+            <div class="mt-1">
+              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="coinTag bg-greenLighter">
+                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+                </div>
+                <div class="small-text bg-theme text-white">
+                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon>
+                  0.7%
+                </div>
+              </div>
+              <div class="small-label text-dark">Etherium</div>
+              <div class="d-flex align-end">
+                <h4 class="Price text-dark">₹19,006</h4>
+                <span class="small-label text-dark ml-2">ETH</span>
+              </div>
+            </div>
+            <div class="mt-1">
+              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="coinTag bg-greenLighter">
+                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+                </div>
+                <div class="small-text bg-danger text-white">
+                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropdown.svg"></ion-icon> 0.7%
+                </div>
+              </div>
+              <div class="small-label text-dark">Etherium</div>
+              <div class="d-flex align-end">
+                <h4 class="Price text-dark">₹19,006</h4>
+                <span class="small-label text-dark ml-2">ETH</span>
+              </div>
+            </div>
+            <div class="mt-1">
+              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="6" size-md>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="coinTag bg-greenLighter">
+                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+                </div>
+                <div class="small-text bg-danger text-white">
+                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropdown.svg"></ion-icon> 0.7%
+                </div>
+              </div>
+              <div class="small-label text-dark">Etherium</div>
+              <div class="d-flex align-end">
+                <h4 class="Price text-dark">₹19,006</h4>
+                <span class="small-label text-dark ml-2">ETH</span>
+              </div>
+            </div>
+            <div class="mt-1">
+              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="segment === 'Baskets'">
+        <ion-col size="12" size-md>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="d-flex">
+                  <div class="coinTag bg-blue">
+                    <ion-icon class="coin-icon" src="../../../assets/icon-bitc.svg"></ion-icon>
+                  </div>
+                  <div class="coinTag bg-greenLighter">
+                    <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+                  </div>
+                  <div class="coinTag bg-grey">
+                    <ion-icon class="coin-icon" src="../../../assets/icon-vi.svg"></ion-icon>
+                  </div>
+                </div>
+                <div class="d-flex align-center">
+                  <a href="#" class="view-icon" routerLink="/portfolio-view">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="small-label text-dark">Bitcoin + Etherium + Viacoin</div>
+              <div class="d-flex align-center justify-between mt-2">
+                <div>
+                  <div class="small-label text-dark">Total Invested</div>
+                  <h4 class="Price text-dark">₹70.00</h4>
+                </div>
 
+                <div class="d-flex align-center">
+                  <div class="d-flex align-center mr-2">
+                    <ion-icon class="line-draw" src="../../../assets/small-line-theme.svg"></ion-icon>
+                  </div>
+                  <div>
+                    <div class="small-label text-dark">Returns</div>
+                    <div class="small-text bg-theme text-white">
+                      <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon> 45%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="12" size-md>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="d-flex">
+                  <div class="coinTag bg-greenLighter">
+                    <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+                  </div>
+                </div>
+                <div class="d-flex align-center">
+                  <a href="#" class="view-icon" routerLink="/portfolio-view">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="small-label text-dark">Etherium</div>
+              <div class="d-flex align-center justify-between mt-2">
+                <div>
+                  <div class="small-label text-dark">Total Invested</div>
+                  <h4 class="Price text-dark">₹70.00</h4>
+                </div>
+
+                <div class="d-flex align-center">
+                  <div class="d-flex align-center mr-2">
+                    <ion-icon class="line-draw" src="../../../assets/small-line-danger.svg"></ion-icon>
+                  </div>
+                  <div>
+                    <div class="small-label text-dark">Returns</div>
+                    <div class="small-text bg-danger text-white">
+                      <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon> 45%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="12" size-md>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="d-flex">
+                  <div class="coinTag bg-blue">
+                    <ion-icon class="coin-icon" src="../../../assets/icon-bitc.svg"></ion-icon>
+                  </div>
+                  <div class="coinTag bg-greenLighter">
+                    <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+                  </div>
+                  <div class="coinTag bg-grey">
+                    <ion-icon class="coin-icon" src="../../../assets/icon-vi.svg"></ion-icon>
+                  </div>
+                </div>
+                <div class="d-flex align-center">
+                  <a href="#" class="view-icon" routerLink="/portfolio-view">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="small-label text-dark">Bitcoin + Etherium + Viacoin</div>
+              <div class="d-flex align-center justify-between mt-2">
+                <div>
+                  <div class="small-label text-dark">Total Invested</div>
+                  <h4 class="Price text-dark">₹70.00</h4>
+                </div>
+
+                <div class="d-flex align-center">
+                  <div class="d-flex align-center mr-2">
+                    <ion-icon class="line-draw" src="../../../assets/small-line-theme.svg"></ion-icon>
+                  </div>
+                  <div>
+                    <div class="small-label text-dark">Returns</div>
+                    <div class="small-text bg-theme text-white">
+                      <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon> 45%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="12" size-md>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="d-flex">
+                  <div class="coinTag bg-greenLighter">
+                    <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+                  </div>
+                </div>
+                <div class="d-flex align-center">
+                  <a href="#" class="view-icon" routerLink="/portfolio-view">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="small-label text-dark">Etherium</div>
+              <div class="d-flex align-center justify-between mt-2">
+                <div>
+                  <div class="small-label text-dark">Total Invested</div>
+                  <h4 class="Price text-dark">₹70.00</h4>
+                </div>
+
+                <div class="d-flex align-center">
+                  <div class="d-flex align-center mr-2">
+                    <ion-icon class="line-draw" src="../../../assets/small-line-danger.svg"></ion-icon>
+                  </div>
+                  <div>
+                    <div class="small-label text-dark">Returns</div>
+                    <div class="small-text bg-danger text-white">
+                      <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon> 45%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="12" size-md>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="d-flex">
+                  <div class="coinTag bg-blue">
+                    <ion-icon class="coin-icon" src="../../../assets/icon-bitc.svg"></ion-icon>
+                  </div>
+                  <div class="coinTag bg-greenLighter">
+                    <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+                  </div>
+                  <div class="coinTag bg-grey">
+                    <ion-icon class="coin-icon" src="../../../assets/icon-vi.svg"></ion-icon>
+                  </div>
+                </div>
+                <div class="d-flex align-center">
+                  <a href="#" class="view-icon" routerLink="/portfolio-view">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="small-label text-dark">Bitcoin + Etherium + Viacoin</div>
+              <div class="d-flex align-center justify-between mt-2">
+                <div>
+                  <div class="small-label text-dark">Total Invested</div>
+                  <h4 class="Price text-dark">₹70.00</h4>
+                </div>
+
+                <div class="d-flex align-center">
+                  <div class="d-flex align-center mr-2">
+                    <ion-icon class="line-draw" src="../../../assets/small-line-theme.svg"></ion-icon>
+                  </div>
+                  <div>
+                    <div class="small-label text-dark">Returns</div>
+                    <div class="small-text bg-theme text-white">
+                      <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon> 45%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+        <ion-col size="12" size-md>
+          <div class="card bg-lighter">
+            <div class="card-body">
+              <div class="d-flex align-center justify-between w-100 mb-3">
+                <div class="d-flex">
+                  <div class="coinTag bg-greenLighter">
+                    <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
+                  </div>
+                </div>
+                <div class="d-flex align-center">
+                  <a href="#" class="view-icon" routerLink="/portfolio-view">
+                    <ion-icon name="chevron-forward-outline"></ion-icon>
+                  </a>
+                </div>
+              </div>
+              <div class="small-label text-dark">Etherium</div>
+              <div class="d-flex align-center justify-between mt-2">
+                <div>
+                  <div class="small-label text-dark">Total Invested</div>
+                  <h4 class="Price text-dark">₹70.00</h4>
+                </div>
+
+                <div class="d-flex align-center">
+                  <div class="d-flex align-center mr-2">
+                    <ion-icon class="line-draw" src="../../../assets/small-line-danger.svg"></ion-icon>
+                  </div>
+                  <div>
+                    <div class="small-label text-dark">Returns</div>
+                    <div class="small-text bg-danger text-white">
+                      <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon> 45%
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
 </ion-content>
+<!-- Body Section End -->
+<!-- Footer Section Start -->
+<ion-footer class="themeFooter">
+  <button class="footerTab" routerLink="/dashboard">
+    <ion-icon class="tab-icons" src="../../../assets/footer-icon/homeIcon.svg"></ion-icon>
+    <span class="tab-text">Home</span>
+  </button>
+  <button class="footerTab" routerLink="/portfolio">
+    <ion-icon class="tab-icons" src="../../../assets/footer-icon/portfolioIcon.svg"></ion-icon>
+    <span class="tab-text">Portfolio</span>
+  </button>
+  <button class="footerTab" routerLink="/invest" [ngClass]="{active: selectedTab==='investList'}">
+    <ion-icon class="tab-icons" src="../../../assets/footer-icon/investIcon.svg"></ion-icon>
+    <span class="tab-text">Invest</span>
+  </button>
+  <button class="footerTab" routerLink="/profile">
+    <ion-icon class="tab-icons" src="../../../assets/footer-icon/profileIcon.svg"></ion-icon>
+    <span class="tab-text">Profile</span>
+  </button>
+</ion-footer>
+<!-- Footer Section End -->

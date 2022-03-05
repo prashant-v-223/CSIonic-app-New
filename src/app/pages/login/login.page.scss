@@ -3,8 +3,10 @@
 }
 .login-content{
   position: relative;
-  padding: 1.5rem ; 
+  padding: 1.5rem;
   height: 100%;
+  display: flex;   
+  width: 100%; 
   &::after,
   &::before{
     content: '';
@@ -32,7 +34,7 @@
     margin-bottom: 5px;
     .logo{
       font-size: 110px;
-      margin-bottom: 10px;
+      margin-bottom: 15px;
     }
   }
   .small-text{
@@ -40,6 +42,7 @@
     font-weight: 600;
     color: var(--blackColor);
     font-family: var(--f-Poppins);
+    margin-bottom: 5px;
   }
   .heading{
     font-size: 24px;
@@ -47,7 +50,7 @@
     line-height: 24px;
     font-family: var(--f-Raleway);
     color: var(--blackColor);
-    margin-bottom: 5px;
+    margin-bottom: 10px;
   }
   p{
     margin-bottom: 10px;

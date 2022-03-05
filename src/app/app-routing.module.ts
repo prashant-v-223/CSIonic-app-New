@@ -98,7 +98,11 @@ const routes: Routes = [
   {
     path: 'sign-in',
     loadChildren: () => import('./pages/sign-in/sign-in.module').then( m => m.SignInPageModule)
+  },  {
+    path: 'add-new-bank',
+    loadChildren: () => import('./pages/add-new-bank/add-new-bank.module').then( m => m.AddNewBankPageModule)
   }
+
 ];
 
 @NgModule({

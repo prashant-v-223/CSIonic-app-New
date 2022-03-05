@@ -1,0 +1,45 @@
+
+  <!-- Header Section Start --> 
+  <ion-header translucent class="themeHeader">
+    <ion-toolbar>
+      <ion-list>
+        <ion-buttons slot="start">
+          <ion-back-button  mat-icon-button class="back-btn" defaultHref="/select-account"> 
+          </ion-back-button>
+        </ion-buttons>  
+      </ion-list>
+    </ion-toolbar>
+  </ion-header>
+  <!-- Header Section End -->
+<ion-content class="addBank">
+  <ion-list class="ion-list">
+  <ion-grid class="topHeader bg-white p-0">
+    <ion-title>Add new bank</ion-title> 
+  </ion-grid>
+    <form action="" class="w-100">
+      <ion-item class="customForm">
+        <ion-label position="stacked" >CHOOSE BANK</ion-label>
+        <ion-select value="Chasebank" interface="action-sheet" cancel-text="Add bank account"> 
+          <ion-select-option value="Chasebank">Chase bank</ion-select-option>
+           <ion-select-option value="CitiBank">Citi Bank</ion-select-option>
+          <ion-select-option value="StandardCharteredBank">Standard Chartered Bank</ion-select-option> 
+        </ion-select>
+      </ion-item>
+      <ion-item class="customForm">
+        <ion-label position="stacked" >ACCOUNT HOLDER NAME</ion-label>
+        <ion-input placeholder="Type here"></ion-input>
+      </ion-item>
+      <ion-item class="customForm">
+        <ion-label position="stacked" >BANK ACCOUNT NUMBER</ion-label>
+        <ion-input placeholder="Type here"></ion-input>
+      </ion-item>
+    </form>
+  </ion-list> 
+</ion-content>
+<!-- Footer Section Start -->
+<ion-footer class="bottomBtn">
+  <ion-button class="footerTab ion-button-theme" expand="full" shape="round" routerLink="/amount-withdrawn">
+    Add bank account
+  </ion-button>
+</ion-footer>
+<!-- Footer Section End -->

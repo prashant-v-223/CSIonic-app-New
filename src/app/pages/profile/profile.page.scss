@@ -69,12 +69,13 @@
                 align-items: flex-start;
                 justify-content: center;
                 h6{
-                    font-size: 22px;
-                    line-height: 22px;
+                    font-size: 20px;
+                    line-height: 20px;
                     font-weight: 500;
                     font-family: var(--f-Poppins);
                     margin-bottom: 5px;
                     color: var(--blackColor);
+                    letter-spacing: -0.72px;
                 }
                 .small-text{
                     font-size: 14px;
@@ -117,7 +118,7 @@
                 }
                 ion-label{
                     h6{
-                        font-size: 18px;
+                        font-size: 16px;
                         color: var(--blackColor);
                         font-family: var(--f-Poppins);
                         margin-bottom: 0px;

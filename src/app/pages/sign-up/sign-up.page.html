@@ -1,35 +1,58 @@
+<!-- Header Section Start -->
+<ion-header translucent class="themeHeader">
+  <ion-toolbar>
+    <ion-list class="d-flex justify-between">
+      <ion-buttons slot="start">
+        <ion-back-button mat-icon-button class="back-btn" defaultHref="/sign-in">
+        </ion-back-button>
+      </ion-buttons>
+    </ion-list>
+  </ion-toolbar>
+</ion-header>
+<!-- Header Section End -->
 <ion-content>
-  <div class="page-container">
-    <div class="flex-row w-100">
-      <button mat-icon-button class="back-btn" (click)="onBack()">
-        <mat-icon>arrow_back_ios</mat-icon>
-      </button>
-    </div>
-      <div class="app-logo sign-up">
-        <span>Sign Up</span>
-      </div>
-      <mat-form-field appearance="outline" class="w-100">
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Name">
-      </mat-form-field>
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Email</mat-label>
-          <input matInput placeholder="Email Id">
-        </mat-form-field>
-        <mat-form-field appearance="outline" class="w-100">
-          <mat-label>Password</mat-label>
-          <input matInput type="password" placeholder="Password">
-        </mat-form-field>
-        <mat-form-field appearance="outline">
-          <mat-label>Date of Birth</mat-label>
-          <input matInput [matDatepicker]="picker">
-          <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-          <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
-        <button mat-flat-button color="primary" class="w-100">Sign Up</button>    
-        <div class="flex-row w-100 mt-large items-center">
-          <div class="gray-text">Already have an account?</div>
-          <a class="link">Log In</a>
-        </div>  
+  <div class="signin-content">
+    <h2 class="heading">Create your account</h2>
+    <p class="small-label">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p>
+    <form action="" class="w-100 mt-3">
+      <ion-item class="customForm"> 
+        <ion-input type="text" placeholder="Name"></ion-input>
+      </ion-item>
+      <ion-item class="customForm"> 
+        <ion-input type="email" placeholder="Email"></ion-input>
+      </ion-item>
+      <ion-item class="customForm"> 
+        <ion-input type="password" placeholder="Password"></ion-input>
+      </ion-item>
+      <ion-item class="customForm custom-select"> 
+        <ion-select  value="+91" interface="popover" >
+          <ion-select-option value="+91">+91</ion-select-option>
+          <ion-select-option value="+92">+92</ion-select-option>
+          <ion-select-option value="+93">+93</ion-select-option>
+          <ion-select-option value="+94">+94</ion-select-option>
+          <ion-select-option value="+95">+95</ion-select-option>
+           <ion-select-option value="+96">+96</ion-select-option>
+          <!-- <ion-select-option value="n64">Nintendo64</ion-select-option>
+          <ion-select-option value="ps">PlayStation</ion-select-option>
+          <ion-select-option value="genesis">Sega Genesis</ion-select-option>
+          <ion-select-option value="saturn">Sega Saturn</ion-select-option>
+          <ion-select-option value="snes">SNES</ion-select-option> -->
+        </ion-select>
+        <ion-input type="number" placeholder="XXXX XXXX XXXX XXXX"></ion-input>
+      </ion-item>
+      <ion-item class="custom-check">
+        <ion-checkbox class="check-theme" slot="start"></ion-checkbox>
+        <ion-label>I agree to the terms and conditions</ion-label>
+      </ion-item>
+   
+      <ion-list class="p-0 mt-6">
+        <ion-list class="p-0 text-center small-text">
+          Already have an account? <ion-router-link class="link-dark" routerLink="/sign-in">Sign in!</ion-router-link>
+        </ion-list>
+        <ion-button class="ion-button-theme" expand="full" shape="round">
+          Sign Up
+        </ion-button>
+      </ion-list>
+    </form>
   </div>
 </ion-content>

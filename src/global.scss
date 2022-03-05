@@ -66,9 +66,24 @@ ion-button{
     --background-hover: var(--theme-d-color);
     --background-activated-opacity: 1;
     --background-focused-opacity: 1;
-    --background-hover-opacity: 1;
+    --background-hover-opacity: 1;  
     color:#fff;
  }
+ .ion-button-theme-lighter{ 
+  --color:var(--blackColor);
+  color:var(--blackColor);
+  --background: var(--bg-lighter);
+  --background-activated: var(--theme-color);
+    --background-focused: var(--theme-color);
+    --background-hover: var(--theme-color);
+    --background-activated-opacity: 1;
+    --background-focused-opacity: 1;
+    --background-hover-opacity: 1;
+    &.ion-activated{
+      color: #fff;
+    }
+ }
+ 
  .ion-button-white{
   --background:#fff;
   --background-activated: var(--theme-color);
@@ -191,10 +206,9 @@ p{
 }
 
 .link-dark{
-  font-size: 12px;
+  font-size: 16px;
   color: #000;
-  font-family: var(--f-Poppins);
-  text-transform: uppercase;
+  font-family: var(--f-Poppins); 
   text-decoration: inherit;
 }
 .gray-text {
@@ -471,9 +485,10 @@ p{
   }
   ion-toolbar{
     --min-height: 55px;
-    padding: 0px .8rem;
+    padding: 0rem 0.8rem 0rem .5rem;
     --border-width: 0px;
     --opacity: 1;
+    --border-color:transparent;
   }
   .menuLeft{
     width: 36px;
@@ -649,6 +664,15 @@ p{
     }
   }
 }
+.popularSection  {
+ 
+    &.basket {
+      .card .card-body .Price{
+        margin-top: 5px;
+      }
+    } 
+
+}
  
   .coinTag-inner {
     border: solid 2px var(--theme-color);
@@ -730,8 +754,40 @@ p{
   }
 }
 //  Popular Coin Card End
+.topHeader{ 
+ion-searchbar{
+  padding: 0px;
+  --background: var(--bg-lighter);
+  height: 45px;
+  --border-radius:10px;
+  --color:#000;
+  --placeholder-color:#444;
+  font-family: var(--f-Poppins); 
+  --box-shadow:none; 
+  .searchbar-input-container.sc-ion-searchbar-ios {
+    height: 100%;  
+}
+.searchbar-search-icon.sc-ion-searchbar-ios { 
+  left: 12px;  
+  width: 20px; 
+}
+.searchbar-search-icon.sc-ion-searchbar-md {
+  left: 9px; 
+}
+&.searchbar-left-aligned .sc-ion-searchbar-md input{
+  -webkit-padding-start: 40px;
+  padding-inline-start: 40px;
+  -webkit-padding-end: 30px;
+  padding-inline-end: 30px;
+}
+&.searchbar-left-aligned.sc-ion-searchbar-ios-h .searchbar-input.sc-ion-searchbar-ios{
+  -webkit-padding-start: 40px;
+  padding-inline-start: 40px;
+  font-size: 16px;
+}
+}
+}
 // Create Sip Start
- 
   
 .sip-created {
   --ion-background-color: var(--lighter-b-Color);
@@ -829,6 +885,126 @@ width: 100%;
 }
 
 // Create Sip End
+// Custom Form Start
+.customForm,
+.custom-check{
+  --min-height: auto;
+  --padding-start: 0px;
+  --inner-padding-end: 0px;
+  --inner-border-width: 0px;
+  margin-bottom: 1.5rem;
+  --border-color:transparent !important;
+  --background-activated: transparent !important;
+  --background-focused: transparent !important;
+  --background-hover: currentColor !important;
+  --color-activated: var(--theme-color);
+    --color-focused: var(--theme-color);
+    --color-hover: var(--theme-color);
+    --full-highlight-height: transparent;
+    --inset-highlight-height: transparent;
+    --highlight-color-focused: var(--theme-color);
+    --background-activated-opacity: 0 !important;
+    --background-focused-opacity: 0 !important;
+    --background-hover-opacity: 0 !important;
+    --background:  transparent;
+  
+  }
+  .custom-check{
+    ion-checkbox{
+      margin: 0px 10px 0px 0px;
+    }
+    .check-theme{
+      --background-checked: var(--theme-color);
+      --border-color-checked: var(--theme-color); 
+    }
+    ion-label{ 
+      font-family: var(--f-Poppins);
+    }
+  }
+  .custom-select{
+    ion-select{
+      border-radius:15px 0px 0px 15px !important;
+      border-right: 0px !important;
+    }
+    ion-input{
+      border-radius:0px 15px 15px 0px !important;
+      border-left:0px !important; 
+    }
+    .flag-icon{
+      width: 15px;
+      height: 10px;
+      background-color: red;
+      border-radius: 5px;
+    }
+  }
+.customForm { 
+   .sc-ion-input-ios{
+        border-radius: 12px;
+    } 
+    .sc-ion-input-ios:-webkit-autofill,
+    .sc-ion-input-ios:-webkit-autofill:hover, 
+    .sc-ion-input-ios:-webkit-autofill:focus, 
+    .sc-ion-input-ios:-webkit-autofill:active{
+      -webkit-box-shadow: 0 0 0 30px var(--bg-lighter) inset !important;
+      border: solid 1px var(--theme-color);
+    } 
+    &.item-has-focus{
+      .label-stacked.sc-ion-label-md-h:not(.ion-color){
+        color:  var(--theme-d-color);
+      }
+      ion-input,
+      ion-select     {
+        border-color: var(--theme-d-color);
+      }
+    } 
+  ion-label{
+    margin: 0px 0px 10px 0px !important; 
+    font-size: 13px !important;
+    color: #000;
+    text-transform: uppercase;
+    line-height: 16px;
+    font-family: var(--f-Poppins);
+    font-weight: 500;
+    margin-bottom: 0px;
+    --highlight-color-focused: red;
+    &.sc-ion-label-md-h{
+      -webkit-transform: inherit;
+       transform: inherit;
+    }
+  }
+  ion-input,
+  ion-select{
+    background: var(--bg-lighter);
+    --padding-top: 15px !important;
+    --padding-bottom: 15px !important;
+    --padding-start: 15px !important;
+    --padding-end: 15px !important;
+    border-radius: 12px;
+    font-size: 14px;
+    font-family: var(--f-Poppins);
+    font-weight: 400;
+    --placeholder-opacity: .9;
+    border: solid 1px transparent;
+  }
+}
+// Custom Form End
+// Dial Pad Start
+.dial-pad{
+  padding: 0rem 2rem;
+  ion-button{
+    width: 62px;
+    height: 62px;
+    --border-radius: 100%;
+    margin: 0px;
+    font-family: var(--f-Poppins);
+    font-size: 20px;
+    font-weight: 600;
+    &.ion-button-white{
+      stroke:#000; 
+    }
+  }
+}
+// Dial Pad End
 // Theme Footer Start
 .themeFooter {
   display: flex;
@@ -875,7 +1051,7 @@ width: 100%;
     height: 60px;
     font-size: 18px;
     --border-radius: 0px;
-    font-weight: 500;
+    font-weight: 400;
     font-family: var(--f-Poppins); 
     letter-spacing: .08px;  
     text-transform: inherit;
@@ -884,3 +1060,78 @@ width: 100%;
 
 
 // Theme Footer End
+ion-select-popover{
+  ion-item{
+    --min-height: auto;
+    --border-color: #ddd;
+    ion-radio{
+      --color-checked: var(--theme-d-color);
+      &.radio-checked{
+        label{
+          color:  var(--theme-d-color);
+        }
+      }
+      
+    }
+  }
+}
+ion-action-sheet{ 
+  -webkit-padding-start:0px;
+  padding-inline-start: 0px;
+  -webkit-padding-end: 0px;
+  padding-inline-end: 0px;  
+  &.sc-ion-action-sheet-ios-h,
+ .sc-ion-action-sheet-md{
+    --button-color:#000;  
+    font-family: var(--f-Poppins); 
+    font-weight: 400; 
+  }
+  .action-sheet-selected.sc-ion-action-sheet-md,
+  .action-sheet-selected.sc-ion-action-sheet-ios{
+    color: var(--theme-color);   
+  }
+  .action-sheet-button.sc-ion-action-sheet-ios { 
+    padding-top: 15px;
+    padding-bottom: 15px;
+    height: 55px;
+    font-size: 16px !important;
+    contain: strict;
+}
+.action-sheet-button-inner.sc-ion-action-sheet-md{
+  justify-content: center;
+}
+.action-sheet-cancel.sc-ion-action-sheet-ios{
+  --button-color:#fff !important; 
+}
+.action-sheet-cancel.sc-ion-action-sheet-ios::after,
+.action-sheet-group.sc-ion-action-sheet-md:last-child{
+  background: var(--theme-color);
+  color: #fff !important; 
+}
+.action-sheet-container.sc-ion-action-sheet-ios{
+  -webkit-padding-start: 0px;
+    padding-inline-start: 0px;
+    -webkit-padding-end: 0px;
+    padding-inline-end: 0px;
+}
+.action-sheet-group.sc-ion-action-sheet-ios,
+.action-sheet-group.sc-ion-action-sheet-md{
+  border-radius: 15px 15px 0px 0px;
+}
+.action-sheet-group.sc-ion-action-sheet-ios:first-child{
+  margin-bottom: 0px;
+}
+.action-sheet-group.sc-ion-action-sheet-ios:last-child button,
+.action-sheet-group.sc-ion-action-sheet-md:last-child button{
+  height: 60px;
+}
+.action-sheet-group.sc-ion-action-sheet-md:last-child button{
+  color: #fff; 
+}
+.action-sheet-group.sc-ion-action-sheet-ios:last-child,
+.action-sheet-group.sc-ion-action-sheet-md:last-child{
+  margin-bottom: 0px;
+  border-radius: 0px;
+ 
+}
+} 
