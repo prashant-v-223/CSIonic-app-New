@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, OnInit, ViewEncapsulation  } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { PackagesService } from 'src/app/shared/services/packages.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -63,11 +64,15 @@ export class DashboardPage implements OnInit {
     //   low: 27,
     //   high: 67,
     // },
-  ]
+  ];
+  user: any;
 
   constructor(
-    private packagesService: PackagesService
-  ) { }
+    private packagesService: PackagesService,
+    private userService: UserService
+  ) {
+    this.user = this.userService.getUserFromStorage();
+  }
   
   ionViewWillEnter(): void {
     this.showLoader = true;

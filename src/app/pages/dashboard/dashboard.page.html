@@ -43,11 +43,11 @@
     <ion-list class="d-flex justify-between">
       <ion-menu-toggle  id="main">
         <button class="menuLeft">
-          <ion-icon src="../../../assets/menu.svg"></ion-icon>
+          <ion-icon src="assets/menu.svg"></ion-icon>
         </button>
       </ion-menu-toggle>
       <ion-avatar class="userProfile">
-        <img src="../../../assets/icon/user.jpg" alt="profile">
+        <img [src]="user?.kycDocuments?.selfie ? user.kycDocuments.selfie : 'assets/avatar.jpeg'" alt="profile">
       </ion-avatar>
     </ion-list>
   </ion-toolbar>
@@ -69,7 +69,7 @@
 <!-- Body Section Start -->
 <ion-content class="dashboard">
   <ion-list class="ion-list">
-    <h1 class="userName">Hello, Ellen!</h1>
+    <h1 class="userName ion-text-capitalize">Hello, {{ user.firstName }}!</h1>
     <p class="userInfo">Invest more to earn more, check out your portfolio,</p>
     <ion-col size="12" class="p-0 myPortfolio">
       <div class="card-body">
@@ -418,23 +418,3 @@
   </ion-list>
 </ion-content>
 <!-- Body Section End -->
-<!-- Footer Section Start -->
-<ion-footer class="themeFooter">
-  <button class="footerTab" routerLink="/dashboard" [ngClass]="{active: selectedTab==='planList'}">
-    <ion-icon class="tab-icons" src="../../../assets/footer-icon/homeIcon.svg"></ion-icon>
-    <span class="tab-text">Home</span>
-  </button>
-  <button class="footerTab" routerLink="/portfolio">
-    <ion-icon class="tab-icons" src="../../../assets/footer-icon/portfolioIcon.svg"></ion-icon>
-    <span class="tab-text">Portfolio</span>
-  </button>
-  <button class="footerTab" routerLink="/invest">
-    <ion-icon class="tab-icons" src="../../../assets/footer-icon/investIcon.svg"></ion-icon>
-    <span class="tab-text">Invest</span>
-  </button>
-  <button class="footerTab" routerLink="/profile">
-    <ion-icon class="tab-icons" src="../../../assets/footer-icon/profileIcon.svg"></ion-icon>
-    <span class="tab-text">Profile</span>
-  </button>
-</ion-footer>
-<!-- Footer Section End -->

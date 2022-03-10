@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-invest',
@@ -7,12 +8,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class InvestPage implements OnInit {
   selectedTab: string = 'investList'; 
-  portfolioList: any[] = [
-  ]
-  constructor() { }
+  portfolioList: any[] = []
+
+  user: any;
+
+  constructor(
+    private userService: UserService
+  ) {
+    this.user = this.userService.getUserFromStorage();
+  }
 
   ngOnInit() {
   }
+
   public segment: string = "Coins";  
 
   segmentChanged(ev: any) {
