@@ -16,7 +16,7 @@ export class TransactionListPage implements OnInit {
   }
 
   onBack() {
-    this.navCtrl.navigateBack('/dashboard');
+    this.navCtrl.navigateBack('/tabs/dashboard');
   }
 
 }

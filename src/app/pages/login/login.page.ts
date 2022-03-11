@@ -70,7 +70,7 @@ export class LoginPage implements OnInit {
         await this.userService.setHeaderToken();
         const user = await this.getUser();
         if (user)
-          this.router.navigateByUrl('/dashboard');
+          this.router.navigateByUrl('/tabs/dashboard');
       }
     } catch {
       console.error('Error logging in');

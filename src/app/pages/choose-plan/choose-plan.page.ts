@@ -68,7 +68,7 @@ export class ChoosePlanPage implements OnInit {
   }
 
   skipPlan() {
-    this.navCtrl.navigateForward('/dashboard');
+    this.navCtrl.navigateForward('/tabs/dashboard');
   }
 
 
