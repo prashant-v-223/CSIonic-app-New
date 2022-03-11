@@ -19,8 +19,11 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { PlanListComponent } from './components/plan-list/plan-list.component';
 import { LoadingComponent } from './components/loading/loading.component';
 import { AllowableExtensions } from './helper/allowableExtension';
+import { PackageCardComponent } from './components/package-card/package-card.component';
+import { IonicModule } from '@ionic/angular';
 
 const MODULES = [
+  IonicModule,
   MatFormFieldModule,
   MatInputModule,
   MatSelectModule,
@@ -41,6 +44,8 @@ const COMPONENTS = [
   CalendarComponent,
   PlanListComponent,
   LoadingComponent,
+
+  PackageCardComponent
 ];
 
 @NgModule({
