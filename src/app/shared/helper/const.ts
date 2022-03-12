@@ -76,3 +76,18 @@ export const COLORS = [
     '#ff6e54',
     '#ffa600'
 ];
+
+export const COINS = {
+    BTC: {
+        fullName: "Bitcoin",
+        icon: "assets/icon-bitc.svg",
+    },
+    ETH: {
+        fullName: "Ethereum",
+        icon: "assets/icon-et.svg",
+    },
+    VI: {
+        fullName: "Viacoin",
+        icon: "assets/icon-vi.svg",
+    }
+}

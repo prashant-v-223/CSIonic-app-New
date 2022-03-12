@@ -21,8 +21,12 @@ import { LoadingComponent } from './components/loading/loading.component';
 import { AllowableExtensions } from './helper/allowableExtension';
 import { PackageCardComponent } from './components/package-card/package-card.component';
 import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
+import { CoinStackComponent } from './components/coin-stack/coin-stack.component';
 
 const MODULES = [
+  CommonModule,
+  RouterModule,
   IonicModule,
   MatFormFieldModule,
   MatInputModule,
@@ -45,7 +49,8 @@ const COMPONENTS = [
   PlanListComponent,
   LoadingComponent,
 
-  PackageCardComponent
+  PackageCardComponent,
+  CoinStackComponent
 ];
 
 @NgModule({

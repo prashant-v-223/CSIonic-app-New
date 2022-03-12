@@ -22,16 +22,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/choose-plan/choose-plan.module').then(m => m.ChoosePlanPageModule)
   },
   {
-    path: 'choose-plan-frequency',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./pages/choose-plan-frequency/choose-plan-frequency.module').then(m => m.ChoosePlanFrequencyPageModule)
-  },
-  {
-    path: 'add-amount',
-    canActivate: [AuthGuard],
-    loadChildren: () => import('./pages/add-amount/add-amount.module').then(m => m.AddAmountPageModule)
-  },
-  {
     path: 'dashboard',
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/dashboard/dashboard.module').then(m => m.DashboardPageModule)
@@ -53,7 +43,7 @@ const routes: Routes = [
     loadChildren: () => import('./pages/portfolio-details/portfolio-details.module').then( m => m.PortfolioDetailsPageModule)
   },
   {
-    path: 'portfolio-view',
+    path: 'packages/:packageId',
     loadChildren: () => import('./pages/portfolio-view/portfolio-view.module').then( m => m.PortfolioViewPageModule)
   },
   {
@@ -74,10 +64,6 @@ const routes: Routes = [
   {
     path: 'analytics',
     loadChildren: () => import('./pages/analytics/analytics.module').then( m => m.AnalyticsPageModule)
-  },
-  {
-    path: 'sip-created',
-    loadChildren: () => import('./pages/sip-created/sip-created.module').then( m => m.SipCreatedPageModule)
   },
   {
     path: 'my-wallet',

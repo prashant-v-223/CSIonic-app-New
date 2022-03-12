@@ -1,0 +1,7 @@
+<div 
+  *ngFor="let coin of coins; index as i"
+  class="coinTag" 
+  [ngClass]="{ 'bg-blue' : i === 0, 'bg-greenLighter': i === 1, 'bg-grey': i > 1 }"
+  >
+  <ion-icon class="coin-icon" [src]="COINS[coin.code]?.icon || 'assets/icon-coin.svg'"></ion-icon>
+</div>

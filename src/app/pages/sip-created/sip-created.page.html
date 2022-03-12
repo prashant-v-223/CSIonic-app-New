@@ -2,68 +2,66 @@
   <ion-list class="ion-list">
     <ion-grid class="p-0">
       <ion-row>
-      <ion-col class="d-flex justify-center p-0" size="12" size-md>
+        <ion-col class="d-flex justify-center p-0" size="12" size-md>
           <div class="sip-done">
-            <ion-icon  src="../../../assets/icon-checked.svg"></ion-icon>
+            <ion-icon src="assets/icon-checked.svg"></ion-icon>
           </div>
-      </ion-col>
-      <ion-col class="mt-5 mb-2" size="12" size-md>
-        <h2 class="header-title  f-Poppins text-center">SIP Created</h2>
-      </ion-col>    
+        </ion-col>
+        <ion-col class="mt-5 mb-2" size="12" size-md>
+          <h2 class="header-title  f-Poppins text-center">SIP Created</h2>
+        </ion-col>
         <ion-col size="6" class="pl-5" size-md>
-          <h4 class="header-title text-white">₹70.00</h4>
+          <h4 class="header-title text-white">&#8377;{{ sipData.installmentAmount }}</h4>
           <span class="small-label ">Amount</span>
         </ion-col>
         <ion-col size="6" class="pl-5" size-md>
-          <h4 class="header-title text-white f-Poppins">Weekly</h4>
+          <h4 class="header-title text-white f-Poppins text-capitalize">{{ sipData.interval.type }}</h4>
           <span class="small-label ">Interval</span>
-        </ion-col> 
-       <ion-list class="view-sip mt-3">
-        <ion-col size="12" class="pt-4 d-flex justify-center" size-md> 
+        </ion-col>
+        <ion-list class="view-sip mt-3">
+          <ion-col size="12" class="pt-4 d-flex justify-center" size-md>
             <div class="coinTag-inner">
-              <div class="coinTag bg-blue">
-                <ion-icon class="coin-icon" src="../../../assets/icon-bitc.svg"></ion-icon>
-              </div>
-              <div class="coinTag bg-greenLighter">
-                <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-              </div>
-              <div class="coinTag bg-grey">
-                <ion-icon class="coin-icon" src="../../../assets/icon-vi.svg"></ion-icon>
-              </div>
-            </div> 
-        </ion-col>       
-        <ion-row class="ion-list portfolio-price pt-2">
-          <!-- <ion-col size="12" class="p-0" size-md>
+              <app-coin-stack [coins]="coins"></app-coin-stack>
+            </div>
+          </ion-col>
+          <ion-row class="ion-list portfolio-price pt-2">
+            <!-- <ion-col size="12" class="p-0" size-md>
               <div class="Price text-center">₹19,006</div>
               <span class="small-text text-center">Etherium (ETH)</span>
           </ion-col> -->
-          <ion-col size="4" class="p-0" size-md>
-            <span class="small-label">Coin</span>
-            <span class="small-text">Bitcoin (BTC)</span>
-            <span class="small-text">Etherium (ETH)</span>
-            <span class="small-text">Viacoin (VIA)</span>
-          </ion-col>
-          <ion-col size="5" class="p-0 pl-3" size-md>
-            <span class="small-label">Price</span>
-            <span class="small-text">₹19,032406.00</span>
-            <span class="small-text">₹19,03406.00</span>
-            <span class="small-text">₹19,006.00</span>
-          </ion-col>
-          <ion-col size="3" class="p-0 pl-2" size-md>
-            <span class="small-label">Weight</span>
-            <span class="small-text">50%</span>
-            <span class="small-text">22.5%</span>
-            <span class="small-text">22.5%</span>
-          </ion-col>
-        </ion-row>
-       </ion-list>
+            <ion-col size="4" class="p-0" size-md>
+              <span class="small-label">Coin</span>
+
+              <span *ngFor="let coin of sipData.package.coins" class="small-text">
+                {{ coin.currencyId.fullName }} ({{ coin.currencyId.code }})
+              </span>
+            </ion-col>
+
+            <!-- TODO: amount per currency -->
+            <ion-col size="5" class="p-0 pl-3" size-md>
+              <span class="small-label ion-text-right">Price</span>
+
+              <span *ngFor="let coin of sipData.package.coins" class="small-text ion-text-right">
+                &#8377;{{ (sipData.installmentAmount * coin.allocation / 100) | number: '1.2-2' }}
+              </span>
+            </ion-col>
+            
+            <ion-col size="3" class="p-0 pl-2" size-md>
+              <span class="small-label ion-text-right">Weight</span>
+              
+              <span *ngFor="let coin of sipData.package.coins" class="small-text ion-text-right">
+                {{ coin.allocation }}%
+              </span>
+            </ion-col>
+          </ion-row>
+        </ion-list>
       </ion-row>
     </ion-grid>
   </ion-list>
 </ion-content>
 <!-- Footer Section Start -->
 <ion-footer class="bottomBtn">
-  <ion-button class="footerTab ion-button-theme" expand="full" shape="round" routerLink="/portfolio-view">
+  <ion-button class="footerTab ion-button-theme m-0" expand="full" routerLink="/tabs/dashboard" (click)="onBackHomeClick()">
     Back home
   </ion-button>
 </ion-footer>

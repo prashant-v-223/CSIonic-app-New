@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
+import { SIPService } from 'src/app/shared/services/sip.service';
 
 @Component({
   selector: 'app-sip-created',
@@ -7,9 +9,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SipCreatedPage implements OnInit {
 
-  constructor() { }
+  sipData: any = null;
+  coins = [];
+
+  constructor(
+    private sipService: SIPService,
+    private modalController: ModalController
+  ) {
+    this.sipData = this.sipService.getSIPData();
+    this.coins = this.sipData.package.coins.map(coin => coin.currencyId);
+  }
 
   ngOnInit() {
+  }
+
+  onBackHomeClick() {
+    this.modalController.dismiss(null, '', 'SuccessModal');
   }
 
 }

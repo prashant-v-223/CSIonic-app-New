@@ -1,33 +1,27 @@
-  <!-- Header Section Start --> 
- <ion-header translucent class="themeHeader">
+<!-- Header Section Start -->
+<ion-header translucent class="themeHeader">
   <ion-toolbar>
     <ion-list class="d-flex justify-between">
       <ion-buttons slot="start">
-        <ion-back-button  mat-icon-button class="back-btn" defaultHref="/portfolio-details"> 
+        <ion-back-button mat-icon-button class="back-btn" defaultHref="/tabs/dashboard">
         </ion-back-button>
-      </ion-buttons> 
-      <ion-button color="dark" routerLink="/withdraw-amount">
+      </ion-buttons>
+
+      <!-- TODO: implement withdraw action -->
+      <!-- <ion-button color="dark" routerLink="/withdraw-amount">
         <ion-icon class="mr-1" name="arrow-up"></ion-icon> Withdraw
-      </ion-button>
+      </ion-button> -->
     </ion-list>
   </ion-toolbar>
 </ion-header>
 <!-- Header Section End -->
 <ion-content class="portfolio-view">
-  <ion-grid class="p-0 bg-white">
+  <ion-grid class="p-0 bg-white" *ngIf="!showLoader else loadingTmplt">
     <ion-row>
       <ion-col size="12" class="pt-4" size-md>
         <ion-list class="d-flex justify-center">
           <div class="coinTag-inner">
-            <div class="coinTag bg-blue">
-              <ion-icon class="coin-icon" src="../../../assets/icon-bitc.svg"></ion-icon>
-            </div>
-            <div class="coinTag bg-greenLighter">
-              <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-            </div>
-            <div class="coinTag bg-grey">
-              <ion-icon class="coin-icon" src="../../../assets/icon-vi.svg"></ion-icon>
-            </div>
+            <app-coin-stack [coins]="packageCalculatedDetails.coins"></app-coin-stack>
           </div>
         </ion-list>
       </ion-col>
@@ -38,41 +32,34 @@
             <div class="Price text-center">₹19,006</div>
             <span class="small-text text-center">Etherium (ETH)</span>
         </ion-col> -->
-        <ion-col size="4" class="p-0" size-md>
+        <ion-col size="6" class="p-0" size-md>
           <span class="small-label">Coin</span>
-          <span class="small-text">Bitcoin (BTC)</span>
-          <span class="small-text">Etherium (ETH)</span>
-          <span class="small-text">Viacoin (VIA)</span>
+
+          <span *ngFor="let coin of packageDetails.coins" class="small-text">
+            {{ coin.currencyId.fullName }} ({{ coin.currencyId.code }})
+          </span>
         </ion-col>
-        <ion-col size="5" class="p-0 pl-3" size-md>
+        <!-- TODO: show the current price/invested amount -->
+        <!-- <ion-col size="5" class="p-0 pl-3" size-md>
           <span class="small-label">Price</span>
           <span class="small-text">₹19,032406.00</span>
           <span class="small-text">₹19,03406.00</span>
           <span class="small-text">₹19,006.00</span>
-        </ion-col>
-        <ion-col size="3" class="p-0 pl-2" size-md>
-          <span class="small-label">Weight</span>
-          <span class="small-text">50%</span>
-          <span class="small-text">22.5%</span>
-          <span class="small-text">22.5%</span>
+        </ion-col> -->
+        <ion-col size="6" class="p-0 pl-2" size-md>
+          <span class="small-label ion-text-right">Weight</span>
+
+          <span *ngFor="let coin of packageDetails.coins" class="small-text ion-text-right">{{ coin.allocation
+            }}%</span>
         </ion-col>
       </ion-row>
     </ion-list>
-    <ion-list *ngIf="segment === 'day'">
+
+    <ion-list>
+      <!-- Show the graph based on selected period -->
       <img src="../../../assets/demo-graph.png" width="100%" alt="img">
     </ion-list>
-    <ion-list *ngIf="segment === 'week'">
-      week
-    </ion-list>
-    <ion-list *ngIf="segment === 'month'">
-      month
-    </ion-list>
-    <ion-list *ngIf="segment === 'year'">
-      Year
-    </ion-list>
-    <ion-list *ngIf="segment === 'all'">
-      All
-    </ion-list>
+
     <ion-list class="ion-list">
       <ion-segment class="tabbingTheme" (ionChange)="segmentChanged($event)" value="day">
         <ion-segment-button value="day">
@@ -104,42 +91,71 @@
     </ion-list>
     <ion-list class="ion-list portfolio-details bg-lighter">
       <ion-row>
+
+        <!-- TODO -->
         <ion-col size="6" size-md>
           <h4 class="heading-label text-dark">₹19,006.00</h4>
           <span class="small-label">Current</span>
         </ion-col>
+
+        <!-- TODO -->
         <ion-col size="6" size-md>
           <h4 class="heading-label text-dark">₹19,006.00</h4>
           <span class="small-label">Invested</span>
-        </ion-col> 
+        </ion-col>
+
+        <!-- TODO -->
         <ion-col size="6" size-md>
           <h4 class="heading-label text-dark">₹2,000.00</h4>
           <span class="small-label">Return</span>
         </ion-col>
+
+        <!-- TODO -->
         <ion-col size="6" size-md>
           <h4 class="heading-label text-d-theme">+24%</h4>
           <span class="small-label">Total Return</span>
         </ion-col>
-        <ion-col size="12"  size-md>
+        <ion-col size="12" size-md>
           <div class="line"></div>
         </ion-col>
-        <ion-col size="6" size-md>
+
+        <!-- <ion-col size="6" size-md>
           <h6 class="smallHeading-label text-dark">₹70.00/Weekly</h6>
           <span class="small-label">Interval</span>
+        </ion-col> -->
+        <ion-col size="6" size-md>
+          <h6 class="smallHeading-label text-dark">₹{{ packageDetails.totalMinimumDepositAmount }}</h6>
+          <span class="small-label">Minimum SIP Amt</span>
         </ion-col>
+
+        <!-- TODO -->
         <ion-col size="6" size-md>
           <h6 class="smallHeading-label text-dark">21 Jun, 2021</h6>
           <span class="small-label">Next Investment</span>
         </ion-col>
       </ion-row>
+
       <ion-row class="mt-2">
         <ion-col size="6" size-md>
-          <ion-button class="ion-button-theme"  expand="full" shape="round" routerLink="/choose-plan-frequency">Add funds</ion-button>  
+          <!-- TODO -->
+          <ion-button class="ion-button-theme" expand="full" shape="round" routerLink="/choose-plan-frequency">Add funds
+          </ion-button>
         </ion-col>
         <ion-col size="6" size-md>
-          <ion-button class="ion-button-theme-outline" fill="outline" shape="round"  expand="full" >Edit SIP</ion-button>
+          <!-- TODO:  provide edit SIP option -->
+          <ion-button class="ion-button-theme-outline" fill="outline" shape="round" expand="full" (click)="openSIPStep()">Add SIP</ion-button>
         </ion-col>
       </ion-row>
     </ion-list>
   </ion-grid>
+
+  <ng-template #loadingTmplt>
+    <div class="ion-padding">
+      <ion-skeleton-text animated class="ion-margin-top ion-margin-bottom" style="width: 60%"></ion-skeleton-text>
+      <ion-skeleton-text animated class="ion-margin-top ion-margin-bottom"></ion-skeleton-text>
+      <ion-skeleton-text animated class="ion-margin-top ion-margin-bottom" style="width: 88%"></ion-skeleton-text>
+      <ion-skeleton-text animated class="ion-margin-top ion-margin-bottom" style="width: 70%"></ion-skeleton-text>
+      <ion-skeleton-text animated class="ion-margin-top ion-margin-bottom" style="width: 60%"></ion-skeleton-text>
+    </div>
+  </ng-template>
 </ion-content>

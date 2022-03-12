@@ -1,91 +1,23 @@
-<!-- <ion-content>
-  <div class="page-container">
-    <div class="flex-row w-100 align-center items-center no-shrink p-relative mb-5">
-      <button mat-icon-button class="back-btn" (click)="onBack()">
-        <fa-icon class="fa-icon color-primary" icon="chevron-left"></fa-icon>
-      </button>
-      <h2 class="header-title color-primary mb-0">Add Amount</h2>
-    </div>
-    <div class="main-container">
-      <app-pie-chart [chartData]="chartData"></app-pie-chart>
-      
-      <div class="mb-3 ion-text-center">
-        <mat-form-field class="ion-text-center amount-input">
-          <mat-label>&#8377; Amount</mat-label>
-          <input type="number" name="amount" step="1" matInput [formControl]="amountCtrl">
-          <mat-error *ngIf="amountCtrl.touched && amountCtrl.hasError('pattern')">
-            Please enter valid amount in whole digit
-          </mat-error>
-        </mat-form-field>
-      </div>
-
-      <div class="amt-list">
-        <span class="amt-chip" (click)="setAmount(1000)">&#8377; 1000</span>
-        <span class="amt-chip" (click)="setAmount(2000)">&#8377; 2000</span>
-        <span class="amt-chip" (click)="setAmount(5000)">&#8377; 5000</span>
-      </div>
-    </div>
-    <button mat-flat-button color="primary" class="w-100 mt-4 no-shrink" [disabled]="!amountCtrl.valid" (click)="createSIP()">CREATE SIP</button>
-  </div>
-
-  <app-loading *ngIf="showLoader"></app-loading>
-
-</ion-content> -->
-<!-- <ion-content>
-  <div class="page-container">
-    <div class="flex-row w-100 align-center no-shrink p-relative mb-5">
-      <button mat-icon-button class="back-btn" (click)="onBack()">
-        <fa-icon class="fa-icon color-primary" icon="chevron-left"></fa-icon>
-      </button>
-      <h2 class="header-title color-primary mb-0">Choose Your Plan Frequency</h2>
-    </div>
-    <div class="frequency-container">
-      <div class="flex-row align-center items-space-between b-b-light pb-5">
-        <div class="chip-btn" [ngClass]="{active: selectFrequency==='daily'}" (click)="onSelectFrequency('daily')">Daily
-        </div>
-        <div class="chip-btn" [ngClass]="{active: selectFrequency==='weekly'}" (click)="onSelectFrequency('weekly')">
-          Weekly</div>
-       <div class="chip-btn" [ngClass]="{active: selectFrequency==='15Day'}" (click)="onSelectFrequency('15Day')">15Day</div> 
-        <div class="chip-btn" [ngClass]="{active: selectFrequency==='monthly'}" (click)="onSelectFrequency('monthly')">
-          Monthly</div>
-      </div>
-      <div class="week" *ngIf="selectFrequency==='weekly'">
-        <div class="col-4" *ngFor="let day of week">
-          <div class="chip-btn m-2 text-capitalize" [ngClass]="{'green-bg': selectedDay===day}" (click)="onSelectDay(day)">{{day}}</div>
-        </div>
-      </div>
-      <app-calendar *ngIf="selectFrequency==='monthly'" (onSelectedDateChange)="onSelectDate($event)"></app-calendar>
-    </div>
-    <button mat-flat-button color="primary" class="w-100 mt-4 no-shrink" (click)="onNext()" [disabled]="!isFrequencyValid">NEXT</button>
-  </div>
-</ion-content> -->
-  <!-- Header Section Start --> 
- <ion-header translucent class="themeHeader">
+<!-- Header Section Start -->
+<ion-header translucent class="themeHeader">
   <ion-toolbar>
     <ion-list class="d-flex justify-between">
-    <ion-buttons slot="start">
-      <ion-back-button  mat-icon-button class="back-btn" defaultHref="/choose-plan-frequency"> 
-      </ion-back-button>
-    </ion-buttons> 
-  </ion-list>
+      <ion-buttons slot="start">
+        <ion-button class="back-button" (click)="closeModal('dismissed')">
+          <ion-icon name="arrow-back-outline"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-list>
   </ion-toolbar>
 </ion-header>
 <!-- Header Section End -->
-<ion-content class="portfolio-view">  
+<ion-content class="portfolio-view">
   <ion-list class="ion-list bg-white">
     <ion-row>
       <ion-col class="p-0" size="12" size-md>
         <ion-list class="d-flex justify-center">
           <div class="coinTag-inner">
-            <div class="coinTag bg-blue">
-              <ion-icon class="coin-icon" src="../../../assets/icon-bitc.svg"></ion-icon>
-            </div>
-            <div class="coinTag bg-greenLighter">
-              <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-            </div>
-            <div class="coinTag bg-grey">
-              <ion-icon class="coin-icon" src="../../../assets/icon-vi.svg"></ion-icon>
-            </div>
+            <app-coin-stack [coins]="coins"></app-coin-stack>
           </div>
         </ion-list>
         <h2 class="header-title mt-2">Add amount</h2>
@@ -93,62 +25,48 @@
           <div class="small-label text-center">step 2 of 2</div>
           <ion-progress-bar class="themeProgress" value="1"></ion-progress-bar>
         </ion-list>
-        <ion-list class="mt-2 text-center"> 
-            <ion-text class="small-label">
-              ₹ INR
-            </ion-text>
-            <ion-input type="number" placeholder="Type here"></ion-input>
-        </ion-list> 
-        <ion-list class="mt-2 text-center dial-pad"> 
-            <ion-row>
-              <ion-col size="4" size-md>
-                <ion-button class="ion-button-theme-lighter">1</ion-button>
-              </ion-col>
-              <ion-col size="4" size-md>
-                <ion-button class="ion-button-theme-lighter">2</ion-button>
-              </ion-col>
-              <ion-col size="4" size-md>
-                <ion-button class="ion-button-theme-lighter">3</ion-button>
-              </ion-col>
-              <ion-col size="4" size-md>
-                <ion-button class="ion-button-theme-lighter">4</ion-button>
-              </ion-col>
-              <ion-col size="4" size-md>
-                <ion-button class="ion-button-theme-lighter">5</ion-button>
-              </ion-col>
-              <ion-col size="4" size-md>
-                <ion-button class="ion-button-theme-lighter">6</ion-button>
-              </ion-col>
-              <ion-col size="4" size-md>
-                <ion-button class="ion-button-theme-lighter">7</ion-button>
-              </ion-col>
-              <ion-col size="4" size-md>
-                <ion-button class="ion-button-theme-lighter">8</ion-button>
-              </ion-col>
-              <ion-col size="4" size-md>
-                <ion-button class="ion-button-theme-lighter">9</ion-button>
-              </ion-col>
-              <ion-col size="4" size-md>
-               
-              </ion-col>
-              <ion-col size="4" size-md>
-                <ion-button class="ion-button-theme-lighter">0</ion-button>
-              </ion-col>
-              <ion-col size="4" size-md>
-                <ion-button class="ion-button-white">
-                    <ion-icon src="../../../assets/dial-back.svg"></ion-icon>
-                </ion-button>
-              </ion-col>
-            </ion-row>
-       </ion-list>
+        <ion-list class="mt-2 text-center">
+          <ion-text class="small-label">
+            &#8377; INR
+          </ion-text>
+          <h1 *ngIf="amount else amountPlaceholderTmplt">
+            {{ amount | number : '1.0-0' }}
+          </h1>
+          <ng-template #amountPlaceholderTmplt>
+            <h1 class="gray-text">
+              Enter Amount
+            </h1>
+          </ng-template>
+        </ion-list>
+        <ion-list class="mt-2 text-center dial-pad">
+          <ion-row>
+            <ion-col *ngFor="let digit of [1,2,3,4,5,6,7,8,9]" size="4" size-md>
+              <ion-button class="ion-button-theme-lighter" (click)="setAmount(digit)">{{ digit }}</ion-button>
+            </ion-col>
+            <ion-col size="4" size-md>
+
+            </ion-col>
+            <ion-col size="4" size-md>
+              <ion-button class="ion-button-theme-lighter" (click)="setAmount(0)">0</ion-button>
+            </ion-col>
+            <ion-col size="4" size-md>
+              <ion-button class="ion-button-white" (click)="setAmount('remove')">
+                <ion-icon src="assets/dial-back.svg"></ion-icon>
+              </ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-list>
       </ion-col>
     </ion-row>
   </ion-list>
+
+  <app-loading *ngIf="showLoader"></app-loading>
+
 </ion-content>
 <!-- Footer Section Start -->
 <ion-footer class="bottomBtn">
-  <ion-button class="footerTab ion-button-theme" expand="full" shape="round" routerLink="/sip-created">
-    Next
+  <ion-button class="footerTab ion-button-theme m-0" expand="full" (click)="createSIP()" [disabled]="!isAmountValid">
+    Create SIP
   </ion-button>
 </ion-footer>
 <!-- Footer Section End -->

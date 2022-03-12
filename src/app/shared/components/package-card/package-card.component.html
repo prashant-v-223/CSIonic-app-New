@@ -1,18 +1,10 @@
 <div class="card bg-lighter">
   <div class="card-body">
     <div class="d-flex align-center justify-between w-100 mb-3">
-      <div class="d-flex">
-        <div class="coinTag bg-blue">
-          <ion-icon class="coin-icon" src="assets/icon-bitc.svg"></ion-icon>
-        </div>
-        <div class="coinTag bg-greenLighter">
-          <ion-icon class="coin-icon" src="assets/icon-et.svg"></ion-icon>
-        </div>
-        <div class="coinTag bg-grey">
-          <ion-icon class="coin-icon" src="assets/icon-vi.svg"></ion-icon>
-        </div>
-      </div>
-      <a href="#" class="view-icon" routerLink="/portfolio-view">
+      <app-coin-stack
+        [coins]="coins"
+      ></app-coin-stack>
+      <a class="view-icon" [routerLink]="navigationLink">
         <ion-icon name="chevron-forward-outline"></ion-icon>
       </a>
     </div>
