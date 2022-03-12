@@ -23,6 +23,7 @@ import { PackageCardComponent } from './components/package-card/package-card.com
 import { IonicModule } from '@ionic/angular';
 import { RouterModule } from '@angular/router';
 import { CoinStackComponent } from './components/coin-stack/coin-stack.component';
+import { LoadingSkeletonComponent } from './components/loading-skeleton/loading-skeleton.component';
 
 const MODULES = [
   CommonModule,
@@ -50,7 +51,8 @@ const COMPONENTS = [
   LoadingComponent,
 
   PackageCardComponent,
-  CoinStackComponent
+  CoinStackComponent,
+  LoadingSkeletonComponent
 ];
 
 @NgModule({
