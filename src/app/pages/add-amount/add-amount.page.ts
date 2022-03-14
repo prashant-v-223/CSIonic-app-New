@@ -89,7 +89,6 @@ export class AddAmountPage {
     try {
       this.showLoader = true;
       const sipRes = await this.sipService.addSIP();
-      console.log('sipRes: ', sipRes);
       if (sipRes.status === this.CONSTANT.SUCCESS){
 
         // this.sipService.setSIPData('reset', null);

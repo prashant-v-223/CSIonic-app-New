@@ -59,7 +59,8 @@
           </ion-grid>
         </ion-list>
         <ion-list class="mt-2" *ngIf="selectFrequency === 'monthly'">
-          <ion-datetime [(ngModel)]="monthlyDate" (ionChange)="onSelectDate($event)" class="ion-text-center">
+          <ion-datetime presentation="date" [min]="startOfMonth" [max]="endOfMonth" [(ngModel)]="monthlyDate"
+            (ionChange)="onSelectDate($event)" class="ion-text-center">
           </ion-datetime>
         </ion-list>
       </ion-col>

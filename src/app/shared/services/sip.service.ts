@@ -62,7 +62,6 @@ export class SIPService {
         this.sipDataToCreate = null;
         break;
     }
-    console.log('this.sipDataToCreate: ', this.sipDataToCreate);
   }
 
   isSIPDataValid(): boolean {

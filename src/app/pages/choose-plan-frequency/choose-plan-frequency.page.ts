@@ -10,14 +10,23 @@ import { AddAmountPage } from '../add-amount/add-amount.page';
   styleUrls: ['./choose-plan-frequency.page.scss'],
 })
 export class ChoosePlanFrequencyPage implements OnInit {
-
   package: any;
   coins = [];
 
   selectFrequency: 'daily' | 'weekly' | 'monthly' = 'daily';
   selectedDay: any;
-  week: any[] = ["SUNDAY", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"];
+  week: any[] = [
+    'SUNDAY',
+    'MONDAY',
+    'TUESDAY',
+    'WEDNESDAY',
+    'THURSDAY',
+    'FRIDAY',
+    'SATURDAY',
+  ];
   monthlyDate = new Date().toISOString();
+  startOfMonth = moment().startOf('month').format('YYYY-MM-DD');
+  endOfMonth = moment().endOf('month').format('YYYY-MM-DD');
   isOpened: boolean = true;
 
   frequencyObject?: {
@@ -41,27 +50,23 @@ export class ChoosePlanFrequencyPage implements OnInit {
   ) {
     this.package = this.sipService.getSIPData()?.package;
 
-    if (!this.package)
-      this.closeModal('error');
+    if (!this.package) this.closeModal('error');
   }
 
   ngOnInit() {
-    this.coins = this.package.coins.map(coin => coin.currencyId);
+    this.coins = this.package.coins.map((coin) => coin.currencyId);
     this.onSelectFrequency('daily');
   }
 
   onSelectFrequency(type) {
     this.selectFrequency = type?.detail?.value || type;
     this.frequencyObject = {
-      type: this.selectFrequency
+      type: this.selectFrequency,
     };
-    
-    if (this.selectFrequency === 'weekly')
-      this.onSelectDay(this.selectedDay);
-    else if (this.selectFrequency === 'monthly')
-      this.onSelectDate(new Date());
-    else
-      this.updateValidity();
+
+    if (this.selectFrequency === 'weekly') this.onSelectDay(this.selectedDay);
+    else if (this.selectFrequency === 'monthly') this.onSelectDate(new Date());
+    else this.updateValidity();
   }
 
   onSelectDay(day) {
@@ -71,12 +76,16 @@ export class ChoosePlanFrequencyPage implements OnInit {
   }
 
   onSelectDate(date) {
-    this.frequencyObject.monthDay = (date.detail?.value ? new Date(date.detail.value) : new Date()).getDate();
+    this.frequencyObject.monthDay = (
+      date.detail?.value ? new Date(date.detail.value) : new Date()
+    ).getDate();
     this.updateValidity();
   }
 
   updateValidity() {
-    this.isFrequencyValid = this.sipService.isSIPFrequencyValid(this.frequencyObject);
+    this.isFrequencyValid = this.sipService.isSIPFrequencyValid(
+      this.frequencyObject
+    );
     this.cdr.detectChanges();
   }
 
@@ -85,20 +94,23 @@ export class ChoosePlanFrequencyPage implements OnInit {
 
     const amountModal = await this.modalController.create({
       component: AddAmountPage,
-      id: 'AddMountModal'
+      id: 'AddMountModal',
     });
     await amountModal.present();
 
     const amountModalResult = await amountModal.onDidDismiss();
-    console.log('amountModalResult: ', amountModalResult);
 
     if (['success', 'error'].indexOf(amountModalResult?.data.status) !== -1)
       this.closeModal(amountModalResult?.data.status);
   }
 
-  closeModal(status: 'dismissed'|'success'|'error') {
-    this.modalController.dismiss({
-      status
-    }, '', 'FrequencyModal');
+  closeModal(status: 'dismissed' | 'success' | 'error') {
+    this.modalController.dismiss(
+      {
+        status,
+      },
+      '',
+      'FrequencyModal'
+    );
   }
 }
