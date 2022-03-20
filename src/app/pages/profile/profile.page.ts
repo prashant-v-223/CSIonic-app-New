@@ -22,9 +22,13 @@ export class ProfilePage implements OnInit {
   ngOnInit() {
   }
   
-  async signOut() {
+  signOut() {
     localStorage.clear();
-    await Auth.signOut();
-    this.navCtrl.navigateBack('/login');
+    setTimeout(async () => {
+      await Auth.signOut({
+        global: true
+      });
+      this.navCtrl.navigateRoot('/sign-in');
+    }, 500);
   }
 }

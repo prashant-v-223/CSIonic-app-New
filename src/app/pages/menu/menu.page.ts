@@ -41,7 +41,7 @@ export class MenuPage implements OnInit {
   async signOut() {
     localStorage.clear();
     await Auth.signOut();
-    this.navCtrl.navigateBack('/login');
+    this.navCtrl.navigateBack('/sign-in');
   }
 
   onBack() {

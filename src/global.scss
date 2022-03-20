@@ -499,7 +499,8 @@ p {
     height: 36px;
     --border-radius: 6px;
   }
-  ion-back-button, .back-button {
+  ion-back-button,
+  .back-button {
     --icon-margin-end: 0;
     color: var(--blackColor);
     --color: var(--blackColor);
@@ -978,6 +979,15 @@ p {
     --placeholder-opacity: 0.9;
     border: solid 1px transparent;
   }
+  & + div.error-message {
+    --padding-start: 15px !important;
+    --padding-end: 15px !important;
+    margin-top: -1rem;
+    margin-bottom: 1rem;
+    padding-left: var(--padding-start);
+    padding-right: var(--padding-end);
+    color: var(--ion-color-danger);
+  }
 }
 // Custom Form End
 // Dial Pad Start
@@ -1077,4 +1087,9 @@ ion-action-sheet {
   ion-button {
     height: 100%;
   }
+}
+
+/* ion-spinner */
+ion-spinner.size-sm {
+  width: 20px;
 }

@@ -1,12 +1,13 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router, UrlTree } from '@angular/router';
 import { NavController } from '@ionic/angular';
+import { Auth } from 'aws-amplify';
 import { UserService } from '../shared/services/user.service';
 
 @Injectable({
     providedIn: 'root'
 })
-export class AuthGuard implements CanActivate {
+export class NonAuthGuard implements CanActivate {
     token: any;
     
     constructor(
@@ -16,14 +17,13 @@ export class AuthGuard implements CanActivate {
     ) {}
 
     async canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Promise<boolean | UrlTree> {
-        if (this.token) {
+        try {
+            await Auth.currentAuthenticatedUser();
+            if (this.userService.getUserFromStorage())
+                return this.router.parseUrl('/tabs/dashboard');
+            return true;
+        } catch (e) {
             return true;
         }
-        this.token = await this.userService.setHeaderToken();
-
-        if (this.token)
-            return true;
-        
-        return this.router.parseUrl('/sign-in');
     }
 }
