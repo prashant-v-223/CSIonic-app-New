@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { NavController, ToastController } from '@ionic/angular';
 import { Auth } from 'aws-amplify';
-import { passwordValidator } from 'src/app/shared/validators/password-validator';
+import { passwordRequirementMessage, passwordValidator } from 'src/app/shared/validators/password-validator';
 
 @Component({
   selector: 'app-reset-password',
@@ -13,6 +13,8 @@ import { passwordValidator } from 'src/app/shared/validators/password-validator'
 export class ResetPasswordPage implements OnInit {
   email: string;
   isLoading = false;
+
+  readonly passwordRequirementMessage = passwordRequirementMessage;
 
   resetPasswordForm = new FormGroup({
     code: new FormControl('', [

@@ -4,10 +4,6 @@ import { AuthGuard } from './guards/auth.guard';
 import { NonAuthGuard } from './guards/non-auth.guard';
 
 const routes: Routes = [
-  // {
-  //   path: 'login',
-  //   loadChildren: () => import('./pages/login/login.module').then(m => m.LoginPageModule)
-  // },
   {
     path: 'sign-in',
     loadChildren: () =>

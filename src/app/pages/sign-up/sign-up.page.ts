@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavController, ToastController } from '@ionic/angular';
 import { Auth } from 'aws-amplify';
 import { COPY } from 'src/app/shared/helper/const';
-import { passwordValidator } from 'src/app/shared/validators/password-validator';
+import { passwordRequirementMessage, passwordValidator } from 'src/app/shared/validators/password-validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -13,6 +13,8 @@ import { passwordValidator } from 'src/app/shared/validators/password-validator'
 export class SignUpPage {
   CONSTANT: any = COPY;
   isLoading = false;
+
+  readonly passwordRequirementMessage = passwordRequirementMessage;
 
   phoneNumberCountryCodes = [
     {

@@ -38,8 +38,7 @@
       </ion-item>
       <div class="error-message"
         *ngIf="signUpForm.get('password').dirty && !signUpForm.get('password').errors?.required && signUpForm.get('password').errors?.password">
-        Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number
-        and one special character
+        {{ passwordRequirementMessage }}
       </div>
 
       <ion-item class="customForm custom-select">

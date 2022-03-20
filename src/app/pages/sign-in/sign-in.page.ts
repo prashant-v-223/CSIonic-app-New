@@ -5,7 +5,7 @@ import { NavController, ToastController } from '@ionic/angular';
 import { Auth } from 'aws-amplify';
 import { COPY } from 'src/app/shared/helper/const';
 import { UserService } from 'src/app/shared/services/user.service';
-import { passwordValidator } from 'src/app/shared/validators/password-validator';
+import { passwordRequirementMessage, passwordValidator } from 'src/app/shared/validators/password-validator';
 import {
   onAuthUIStateChange,
   CognitoUserInterface,
@@ -20,6 +20,8 @@ import { SplashScreen } from '@capacitor/splash-screen';
 export class SignInPage {
   CONSTANT: any = COPY;
   isLoading = false;
+
+  readonly passwordRequirementMessage = passwordRequirementMessage;
 
   signInForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.email]),
