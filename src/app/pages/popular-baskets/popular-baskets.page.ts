@@ -23,7 +23,7 @@ export class PopularBasketsPage implements OnInit {
     try {
       const planListRes = await this.packagesService.getPackages();
       if (planListRes?.data?.data) {
-        this.packageList = planListRes?.data?.data;
+        this.packageList = this.packagesService.separatePackagesAndCoins(planListRes?.data?.data).packages;
         this.showLoader = false;
       }
     } catch (e) {

@@ -1,5 +1,4 @@
-import { AfterViewInit, Component, OnInit, ViewEncapsulation  } from '@angular/core';
-import { NavController } from '@ionic/angular';
+import { Component, OnInit, ViewEncapsulation  } from '@angular/core';
 import { PackagesService } from 'src/app/shared/services/packages.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -13,6 +12,7 @@ export class DashboardPage implements OnInit {
 
   showLoader = true;
   packageList: any[] = [];
+  coinList: any[] = [];
   user: any;
 
   constructor(
@@ -21,19 +21,20 @@ export class DashboardPage implements OnInit {
   ) {
     this.user = this.userService.getUserFromStorage();
   }
-  
-  ionViewWillEnter(): void {
-    this.showLoader = true;
+
+  ngOnInit(): void {
     this.getPackages();
   }
-
-  ngOnInit() {}
   
   async getPackages() {
+    this.showLoader = true;
+
     try {
       const planListRes = await this.packagesService.getPackages();
       if (planListRes?.data?.data) {
-        this.packageList = planListRes?.data?.data;
+        const separated = this.packagesService.separatePackagesAndCoins(planListRes?.data?.data);
+        this.packageList = separated.packages;
+        this.coinList = separated.coins;
         this.showLoader = false;
       }
     } catch (e) {

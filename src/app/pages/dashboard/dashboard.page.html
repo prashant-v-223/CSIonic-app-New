@@ -87,128 +87,66 @@
         </div>
       </div>
     </ion-col>
+    
     <ion-col size="12" class="themeHeading p-0">
       <h6>POPULAR COINS</h6>
       <a href="#" class="link-dark" routerLink="/popular-coins">View All</a>
     </ion-col>
     <ion-col size="12" class="p-0 popularSection mb-3">
-      <swiper [slidesPerView]="1.9" [loop]="false">
-        <ng-template swiperSlide>
-          <div class="card bg-theme">
-            <div class="card-body">
-              <div class="d-flex align-center justify-between w-100 mb-3">
-                <div class="coinTag bg-dark">
-                  <ion-icon class="coin-icon" src="../../../assets/icon-bitc.svg"></ion-icon>
-                </div>
-                <div class="small-text bg-white text-dark">
-                  <ion-icon class="text-d-theme icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon>
-                  0.7%
-                </div>
-              </div>
-              <div class="small-label text-white">Bitcoin</div>
-              <div class="d-flex align-end">
-                <h4 class="Price text-white">₹19,006</h4>
-                <span class="small-label text-white ml-2">BTC</span>
-              </div>
-            </div>
-            <div class="mt-1">
-              <ion-icon class="large-line" src="../../../assets/area-line-white.svg"></ion-icon>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="card bg-lighter">
-            <div class="card-body">
-              <div class="d-flex align-center justify-between w-100 mb-3">
-                <div class="coinTag bg-greenLighter">
-                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-                </div>
 
-                <div class="small-text bg-danger text-white">
-                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropdown.svg"></ion-icon> 0.7%
-                </div>
-              </div>
-              <div class="small-label text-dark">Etherium</div>
-              <div class="d-flex align-end">
-                <h4 class="Price text-dark">₹19,006</h4>
-                <span class="small-label text-dark ml-2">ETH</span>
-              </div>
-            </div>
-            <div class="mt-1">
-              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
-            </div>
+      <ng-container *ngIf="!showLoader else loadingTmplt">
+        <ng-container *ngIf="coinList?.length else noCoinsTmplt">
+  
+          <swiper [slidesPerView]="1.9" [loop]="false">
+            <ng-template swiperSlide *ngFor="let coin of coinList">
+              <app-package-card [package]="coin" view="coin"></app-package-card>
+            </ng-template>
+          </swiper>
+  
+        </ng-container>
+  
+        <ng-template #noCoinsTmplt>
+          <div class="ion-text-center mt-5">
+            No coins available
           </div>
         </ng-template>
-        <ng-template swiperSlide>
-          <div class="card bg-lighter">
-            <div class="card-body">
-              <div class="d-flex align-center justify-between w-100 mb-3">
-                <div class="coinTag bg-greenLighter">
-                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-                </div>
-                <div class="small-text bg-theme text-white">
-                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon> 0.7%
-                </div>
-              </div>
-              <div class="small-label text-dark">Etherium</div>
-              <div class="d-flex align-end">
-                <h4 class="Price text-dark">₹19,006</h4>
-                <span class="small-label text-dark ml-2">ETH</span>
-              </div>
-            </div>
-            <div class="mt-1">
-              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
-            </div>
-          </div>
-        </ng-template>
-        <ng-template swiperSlide>
-          <div class="card bg-lighter">
-            <div class="card-body">
-              <div class="d-flex align-center justify-between w-100 mb-3">
-                <div class="coinTag bg-greenLighter">
-                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-                </div>
-                <div class="small-text bg-danger text-white">
-                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropdown.svg"></ion-icon> 0.7%
-                </div>
-              </div>
-              <div class="small-label text-dark">Etherium</div>
-              <div class="d-flex align-end">
-                <h4 class="Price text-dark">₹19,006</h4>
-                <span class="small-label text-dark ml-2">ETH</span>
-              </div>
-            </div>
-            <div class="mt-1">
-              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
-            </div>
-          </div>
-        </ng-template>
-      </swiper>
+      </ng-container>
+
+
     </ion-col>
+    
     <ion-col size="12" class="themeHeading p-0">
       <h6>POPULAR BASKETS</h6>
       <a href="#" class="link-dark" routerLink="/popular-baskets">View All</a>
     </ion-col>
     <ion-col size="12" class="p-0 popularSection basket">
-      <ng-container *ngIf="packageList?.length else noPackagesTmplt">
 
-        <swiper [slidesPerView]="1.5" [loop]="false">
-
-          <ng-template swiperSlide *ngFor="let package of packageList">
-            <app-package-card [package]="package" [navigationLink]="'/packages/' + package._id"></app-package-card>
-          </ng-template>
-          
-        </swiper>
-
+      <ng-container *ngIf="!showLoader else loadingTmplt">
+        <ng-container *ngIf="packageList?.length else noPackagesTmplt">
+  
+          <swiper [slidesPerView]="1.5" [loop]="false">
+  
+            <ng-template swiperSlide *ngFor="let package of packageList">
+              <app-package-card [package]="package" [navigationLink]="'/packages/' + package._id"></app-package-card>
+            </ng-template>
+            
+          </swiper>
+  
+        </ng-container>
+  
+        <ng-template #noPackagesTmplt>
+          <div class="ion-text-center mt-5">
+            No packages available
+          </div>
+        </ng-template>
       </ng-container>
-
-      <ng-template #noPackagesTmplt>
-        <div class="ion-text-center mt-5">
-          No packages available
-        </div>
-      </ng-template>
 
     </ion-col>
   </ion-list>
 </ion-content>
 <!-- Body Section End -->
+
+
+<ng-template #loadingTmplt>
+  <app-loading-skeleton></app-loading-skeleton>
+</ng-template>

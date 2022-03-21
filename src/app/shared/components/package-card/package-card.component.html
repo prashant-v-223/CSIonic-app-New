@@ -1,30 +1,80 @@
-<div class="card bg-lighter">
-  <div class="card-body">
-    <div class="d-flex align-center justify-between w-100 mb-3">
-      <app-coin-stack
-        [coins]="coins"
-      ></app-coin-stack>
-      <a class="view-icon" [routerLink]="navigationLink">
-        <ion-icon name="chevron-forward-outline"></ion-icon>
-      </a>
-    </div>
-    <div class="small-label text-dark">{{ package.name }}</div>
-    <div class="d-flex align-center justify-between mt-2">
-      <div>
-        <div class="small-label text-dark">Min Invest</div>
-        <h4 class="Price text-dark">&#8377;{{ package.totalMinimumDepositAmount }}</h4>
+<ng-container [ngSwitch]="view">
+
+  <div class="card bg-lighter" *ngSwitchCase="'package'">
+    <div class="card-body">
+      <div class="d-flex align-center justify-between w-100 mb-3">
+        <app-coin-stack [coins]="coins"></app-coin-stack>
+        <a class="view-icon" [routerLink]="navigationLink">
+          <ion-icon name="chevron-forward-outline"></ion-icon>
+        </a>
       </div>
-      <div>
-        <div class="d-flex align-center">
-          <ion-icon class="line-draw" src="assets/small-line-theme.svg"></ion-icon>
+      <div class="small-label text-dark">{{ package.name }}</div>
+      <div class="d-flex align-center justify-between mt-2">
+        <div>
+          <div class="small-label text-dark">Min Invest</div>
+          <h4 class="Price text-dark">&#8377;{{ package.totalMinimumDepositAmount }}</h4>
         </div>
-      </div>
-      <div>
-        <div class="small-label text-dark">Returns</div>
-        <div class="small-text bg-theme text-white">
-          <ion-icon class="text-white icon-up" src="assets/md-arrow-dropup.svg"></ion-icon> 45%
+        <div>
+          <div class="d-flex align-center">
+            <ion-icon class="line-draw" src="assets/small-line-theme.svg"></ion-icon>
+          </div>
+        </div>
+        <div>
+          <div class="small-label text-dark">Returns</div>
+          <div class="small-text bg-theme text-white">
+            <ion-icon class="text-white icon-up" src="assets/md-arrow-dropup.svg"></ion-icon> 45%
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+
+  <!-- 
+    classes for card color
+    bg-theme text-white
+    bg-lighter
+  -->
+  <div class="card bg-lighter" *ngSwitchCase="'coin'">
+    <div class="card-body">
+      <div class="d-flex align-center justify-between w-100 mb-3">
+
+        <app-coin-stack [coins]="coins"></app-coin-stack>
+
+        <!-- <div class="coinTag bg-dark">
+          <ion-icon class="coin-icon" src="assets/icon-bitc.svg"></ion-icon>
+        </div> -->
+
+        <!-- 
+          classes for different up-down status
+          bg-white text-dark
+          bg-danger text-white
+          bg-theme text-white
+        -->
+        <div class="small-text bg-white text-dark">
+          <!-- 
+            src arrows
+            assets/md-arrow-dropup.svg
+            assets/md-arrow-dropdown.svg
+          -->
+          <ion-icon class="text-d-theme icon-up" src="assets/md-arrow-dropup.svg"></ion-icon>
+          0.7%
+        </div>
+      </div>
+      <div class="small-label">{{ package.coins[0].currencyId.fullName }}</div>
+      <div class="d-flex align-end">
+        <h4 class="Price">₹19,006</h4>
+        <span class="small-label ml-2">{{ package.coins[0].currencyId.code }}</span>
+      </div>
+    </div>
+    <div class="mt-1">
+      <!-- 
+        src line with color options
+        assets/area-line-white.svg
+        assets/area-line-theme.svg
+      -->
+      <ion-icon class="large-line" src="assets/area-line-theme.svg"></ion-icon>
+    </div>
+  </div>
+
+
+</ng-container>

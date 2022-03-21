@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PopularCoinsPageRoutingModule } from './popular-coins-routing.module';
 
 import { PopularCoinsPage } from './popular-coins.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PopularCoinsPageRoutingModule
+    PopularCoinsPageRoutingModule,
+    SharedModule
   ],
   declarations: [PopularCoinsPage]
 })

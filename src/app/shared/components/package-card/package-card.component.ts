@@ -7,6 +7,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 })
 export class PackageCardComponent implements OnInit, OnChanges {
 
+  @Input() view: 'package'|'coin' = 'package';
   @Input() package: any;
   @Input() navigationLink = '/';
 
