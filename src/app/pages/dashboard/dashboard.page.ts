@@ -39,6 +39,5 @@ export class DashboardPage implements OnInit {
     } catch (e) {
       console.log('Error while getting packages list: ', e);
     }
-  }
-
+  } 
 }

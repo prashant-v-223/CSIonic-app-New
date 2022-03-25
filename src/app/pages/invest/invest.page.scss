@@ -28,7 +28,10 @@
         .theme-banner{
           padding-bottom: 0rem;
             .small-label{
-                opacity: .6;
+              opacity: 0.6;
+              margin-top: 10px;
+              display: block;
+              color: #000;
             }
             &::after { 
               height: 35px;

@@ -20,21 +20,21 @@
             <app-coin-stack [coins]="coins"></app-coin-stack>
           </div>
         </ion-list>
-        <h2 class="header-title mt-2">Add amount</h2>
-        <ion-list class="mt-2 mb-2">
-          <div class="small-label text-center">step 2 of 2</div>
+        <h2 class="header-title mt-2">Add Amount</h2>
+        <ion-list class="mt-3 mb-3 ">
+          <div class="small-label text-center">Step 2 of 2</div>
           <ion-progress-bar class="themeProgress" value="1"></ion-progress-bar>
         </ion-list>
         <ion-list class="mt-2 text-center">
-          <ion-text class="small-label">
+          <ion-text class="small-label mt-3">
             &#8377; INR
           </ion-text>
-          <h1 *ngIf="amount else amountPlaceholderTmplt">
+          <h1 class="text-dark  mt-3 " *ngIf="amount else amountPlaceholderTmplt">
             {{ amount | number : '1.0-0' }}
           </h1>
           <ng-template #amountPlaceholderTmplt>
-            <h1 class="gray-text">
-              Enter Amount
+            <h1 class="gray-text  mt-3 ">
+              Type Amount
             </h1>
           </ng-template>
         </ion-list>

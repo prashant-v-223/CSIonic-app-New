@@ -56,46 +56,46 @@
       } 
  
       .small-label {
-        font-size: 14px;
+        font-size: 16px;
         opacity: 0.6;
         line-height: 16px;
         font-family: var(--f-Poppins);
-        font-weight: 400;
+        font-weight: 500;
         text-align: left;
+        color: #000;
       }
       .myPrice {
         font-size: 30px;
-        font-weight: 400;
+        font-weight: 500;
         line-height: 30px;
         letter-spacing: -1.08px; 
-        margin-bottom: 2px; 
+        margin-bottom: 5px; 
       }
       .invest-list {
         padding: 0px;
         margin-top: 10px;
     }
     .invest-list h6{
-      font-size: 16px;
-      line-height: 16px;  
-      font-weight: 500;
-      letter-spacing: -.08px; 
-        margin-bottom: 0px;
+      font-size: 18px;
+      line-height: 24px;
+      font-weight: 500; 
+      margin-bottom: 0px;
     }
     }
   }
 }
 .topHeader{  
-    position: inherit;
-    text-align: left;
-    height: inherit;
-    left: inherit;
-    padding-right: 0px;
-    padding-inline: 0;
-    font-size: 24px;
-    font-family: var(--f-Poppins);
-    font-weight: 400;
-    margin-bottom: .8rem;
-    line-height: 28px;  
+  position: inherit;
+  text-align: left;
+  height: inherit;
+  left: inherit;
+  padding-right: 0px;
+  padding-inline: 0;
+  font-size: 26px;
+  font-family: var(--f-Poppins);
+  font-weight: 500;
+  margin-bottom: 0.8rem;
+  line-height: 28px;
 }
 //  Popular Coin Card Start
 .popularSection {

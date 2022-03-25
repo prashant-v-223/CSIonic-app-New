@@ -36,36 +36,7 @@
     </div>
 
   </div>
-</ion-content>   -->
-<!-- Header Section Start -->
-<ion-header translucent class="themeHeader">
-  <ion-toolbar>
-    <ion-list class="d-flex justify-between">
-      <ion-menu-toggle id="main">
-        <button class="menuLeft">
-          <ion-icon src="assets/menu.svg"></ion-icon>
-        </button>
-      </ion-menu-toggle>
-      <ion-avatar class="userProfile">
-        <img [src]="user?.kycDocuments?.selfie ? user.kycDocuments.selfie : 'assets/avatar.jpeg'" alt="profile">
-      </ion-avatar>
-    </ion-list>
-  </ion-toolbar>
-</ion-header>
-<!-- Header Section End -->
-<!-- Left Menu Section Start -->
-<ion-menu side="start" menuId="first" contentId="main">
-  <ion-content>
-    <ion-list>
-      <ion-item>Menu Item</ion-item>
-      <ion-item>Menu Item</ion-item>
-      <ion-item>Menu Item</ion-item>
-      <ion-item>Menu Item</ion-item>
-      <ion-item>Menu Item</ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-<!-- Left Menu Section End -->
+</ion-content>   -->  
 <!-- Body Section Start -->
 <ion-content class="dashboard">
   <ion-list class="ion-list">
@@ -91,7 +62,7 @@
       <h6>POPULAR COINS</h6>
       <a href="#" class="link-dark" routerLink="/popular-coins">View All</a>
     </ion-col>
-    <ion-col size="12" class="p-0 popularSection mb-3">
+    <ion-col size="12" class="p-0 popularSection mb-3"> 
       <swiper [slidesPerView]="1.9" [loop]="false">
         <ng-template swiperSlide>
           <div class="card bg-theme">

@@ -1,4 +1,4 @@
-<ion-content>
+  <!-- <ion-content>
   <div class="page-container p-0">
     <div class="page-header pl-3 pr-3">
       <button mat-icon-button class="back-btn" (click)="onBack()">
@@ -90,4 +90,58 @@
   </div>
 
 </ion-content>
+  -->
 
+  <!-- Header Section Start --> 
+  <ion-header translucent class="themeHeader">
+    <ion-toolbar>
+      <ion-list>
+        <ion-buttons slot="start">
+          <ion-back-button  mat-icon-button class="back-btn" defaultHref="/profile"> 
+          </ion-back-button>
+        </ion-buttons>  
+      </ion-list>
+    </ion-toolbar>
+  </ion-header>
+  <!-- Header Section End -->
+<ion-content class="addBank">
+  <ion-list class="ion-list">
+  <ion-grid class="topHeader bg-white p-0">
+    <ion-title>Bank Account</ion-title> 
+  </ion-grid>
+    <form action="" class="w-100">
+      <ion-item class="customForm">
+        <ion-label position="stacked" >ACCOUNT HOLDER NAME</ion-label>
+        <ion-input placeholder="Type here"></ion-input>
+      </ion-item>
+      <ion-item class="customForm">
+        <ion-label position="stacked" >BANK ACCOUNT NUMBER</ion-label>
+        <ion-input placeholder="Type here"></ion-input>
+      </ion-item>
+      <ion-item class="customForm">
+        <ion-label position="stacked" >IFSC Code<span class="text-danger f-16">*</span></ion-label>
+        <ion-input placeholder="Type here"></ion-input>
+      </ion-item>
+      <ion-item class="customForm">
+        <ion-label position="stacked" >Account Type</ion-label>
+        <ion-select value="Current" interface="action-sheet" cancel-text="Account Type"> 
+          <ion-select-option value="Current">Current account</ion-select-option>
+           <ion-select-option value="Savings">Savings account</ion-select-option>
+          <ion-select-option value="Salery">Salery account</ion-select-option> 
+          <ion-select-option value="Fixed">Fixed account</ion-select-option> 
+          <ion-select-option value="Recurring">Recurring deposit account</ion-select-option> 
+          <ion-select-option value="Nri">Nri account</ion-select-option> 
+        </ion-select>
+      </ion-item>
+    
+   
+    </form>
+  </ion-list> 
+</ion-content>
+<!-- Footer Section Start -->
+<ion-footer class="bottomBtn">
+  <ion-button class="footerTab ion-button-theme" expand="full" shape="round" routerLink="/profile">
+   Verify
+  </ion-button>
+</ion-footer>
+<!-- Footer Section End -->

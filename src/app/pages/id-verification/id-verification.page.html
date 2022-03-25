@@ -1,23 +1,36 @@
+<!-- Header Section Start -->
+<ion-header translucent class="themeHeader">
+  <ion-toolbar>
+    <ion-list>
+      <ion-buttons slot="start">
+        <ion-back-button mat-icon-button class="back-btn" defaultHref="/kyc-document">
+        </ion-back-button>
+      </ion-buttons>
+    </ion-list>
+  </ion-toolbar>
+</ion-header>
+<!-- Header Section End -->
+
 <ion-content>
-  <div class="page-container p-0">
-    <div class="page-header pl-3 pr-3">
-      <button mat-icon-button class="back-btn" (click)="onBack()">
-        <fa-icon class="fa-icon color-primary" icon="chevron-left"></fa-icon>
-      </button>
-      <h2 class="m-0 color-primary">{{CONSTANT.DOCUMENT_VERIFY_LABEL}}</h2>
-    </div>
-    <div class="page-body pl-3 pr-3">
+  <ion-list class="ion-list">
+    <ion-grid class="topHeader bg-white p-0">
+      <ion-title>{{CONSTANT.DOCUMENT_VERIFY_LABEL}}</ion-title>
+    </ion-grid>
+
+ 
+
+ 
 
       <div class="verify_doc" *ngIf="verifyType===verifyTypeEnum.SELFIE">
 
         <!-- Selfie -->
-        <div class="ion-text-center" [class.mt-3]="documentList?.length">
-          <p>
-            <b>{{ CONSTANT.SELFIE }}</b>
-          </p>
-          <p class="gray-text">
+        <div class="ion-text-header" [class.mt-3]="documentList?.length">
+          <h6>
+             {{ CONSTANT.SELFIE }} 
+          </h6>
+          <span class="gray-text">
             {{ CONSTANT.takeYourPhoto }}
-          </p>
+          </span>
         </div>
 
         <div class="camera_btn selfie"
@@ -45,13 +58,13 @@
 
         <div *ngIf="verifyType !== verifyTypeEnum.ID_VERIFY || documentType">
           <!-- Front -->
-          <div class="ion-text-center" [class.mt-3]="documentList?.length">
-            <p>
-              <b>{{ CONSTANT.FRONT_SIDE_LABEL }}</b>
-            </p>
-            <p class="gray-text">
+          <div class="ion-text-header" [class.mt-3]="documentList?.length">
+            <h6>
+              {{ CONSTANT.FRONT_SIDE_LABEL }} 
+            </h6>
+            <span class="gray-text">
               {{ CONSTANT.takePhotoLable('front', documentDisplayName) }}
-            </p>
+            </span>
           </div>
 
           <div class="camera_btn"
@@ -67,13 +80,13 @@
           </div>
 
           <!-- Back -->
-          <div class="ion-text-center mt-5">
-            <p>
-              <b>{{ CONSTANT.BACK_SIDE_LABEL }}</b>
-            </p>
-            <p class="gray-text">
+          <div class="ion-text-header mt-5">
+            <h6>
+              {{ CONSTANT.BACK_SIDE_LABEL }} 
+            </h6>
+            <span class="gray-text">
               {{ CONSTANT.takePhotoLable('back', documentDisplayName) }}
-            </p>
+            </span>
           </div>
           <div class="camera_btn"
             [ngStyle]="{ 'background-image': 'url(' + attachments.backImage.sourceFile?.webPath + ')' }"
@@ -86,19 +99,24 @@
           </div>
         </div>
 
-      </div>
-      <button mat-flat-button color="primary" *ngIf="verifyType !== verifyTypeEnum.ID_VERIFY || documentType"
-        [disabled]="!isValid" class="mt-3 mb-3 p-2" (click)="submit()">
-        <fa-icon class="fa-icon mr-2" icon="check"></fa-icon>
-        {{CONSTANT.VERIFY_LABEL}}
-      </button>
-    </div>
+      </div> 
+  
 
     <app-loading *ngIf="isSaving"></app-loading>
 
-  </div>
+ 
+</ion-list>
 </ion-content>
 
+<!-- Footer Section Start -->
+<ion-footer class="bottomBtn">
+  <ion-button class="footerTab ion-button-theme" expand="full" shape="round"  *ngIf="verifyType !== verifyTypeEnum.ID_VERIFY || documentType"
+  [disabled]="!isValid" (click)="submit()">
+  <fa-icon class="fa-icon mr-2" icon="check"></fa-icon>
+  {{CONSTANT.VERIFY_LABEL}}
+  </ion-button>
+</ion-footer>
+<!-- Footer Section End -->
 
 <ng-template #takePhotoTmplt>
   <fa-icon class="fa-icon color-primary camera_icon" icon="camera"></fa-icon>

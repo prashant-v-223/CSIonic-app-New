@@ -1,8 +1,8 @@
  .portfolio-view {  
   .header-title { 
-    font-size: 22px;
+    font-size: 24px;
     font-family: var(--f-Poppins);
-    font-weight: 400;
+    font-weight: 500;
     margin-bottom: 0rem;
     line-height: 26px;
     text-align: center;
@@ -76,13 +76,13 @@
           --background-hover: var(--lighter-b-Color); 
       }
   }
-  ion-datetime {
-    height: auto;
-    width: auto;
+  ion-datetime { 
+    max-width: 100%;
+    background-color: var( --bg-lighter);
+    border-radius: 15px; 
   
-    max-width: 350px;
   }
-  
+
   .grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(288px, 1fr));

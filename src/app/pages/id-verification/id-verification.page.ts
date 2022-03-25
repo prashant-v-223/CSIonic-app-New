@@ -159,6 +159,7 @@ export class IdVerificationPage implements OnInit {
       else {
         const photoSourceActionSheet = await this.actionSheetCtrl.create({
           header: 'Select photo from',
+          cssClass: 'custom-actionSheet',
           buttons: [
             {
               text: 'Gallery',

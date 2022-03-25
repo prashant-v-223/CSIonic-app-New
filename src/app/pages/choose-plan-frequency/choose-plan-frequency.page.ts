@@ -16,13 +16,14 @@ export class ChoosePlanFrequencyPage implements OnInit {
   selectFrequency: 'daily' | 'weekly' | 'monthly' = 'daily';
   selectedDay: any;
   week: any[] = [
-    'SUNDAY',
+   
     'MONDAY',
     'TUESDAY',
     'WEDNESDAY',
     'THURSDAY',
     'FRIDAY',
     'SATURDAY',
+    'SUNDAY',
   ];
   monthlyDate = new Date().toISOString();
   startOfMonth = moment().startOf('month').format('YYYY-MM-DD');
@@ -31,14 +32,14 @@ export class ChoosePlanFrequencyPage implements OnInit {
 
   frequencyObject?: {
     type: 'daily' | 'weekly' | 'monthly';
-    weekDay?:
-      | 'SUNDAY'
+    weekDay?:      
       | 'MONDAY'
       | 'TUESDAY'
       | 'WEDNESDAY'
       | 'THURSDAY'
       | 'FRIDAY'
-      | 'SATURDAY';
+      | 'SATURDAY'
+      | 'SUNDAY';
     monthDay?: number;
   };
   isFrequencyValid = false;
