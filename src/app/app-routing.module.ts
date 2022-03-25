@@ -86,12 +86,14 @@ const routes: Routes = [
     canActivate: [AuthGuard],
   },
   {
-    path: 'packages/:packageId',
-    loadChildren: () =>
-      import('./pages/portfolio-view/portfolio-view.module').then(
-        (m) => m.PortfolioViewPageModule
-      ),
+    path: 'packages/:id',
     canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/portfolio-view/portfolio-view.module').then( m => m.PortfolioViewPageModule)
+  },
+  {
+    path: 'sip/:id',
+    canActivate: [AuthGuard],
+    loadChildren: () => import('./pages/portfolio-view/portfolio-view.module').then( m => m.PortfolioViewPageModule)
   },
   {
     path: 'invest',

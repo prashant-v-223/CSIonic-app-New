@@ -1,18 +1,32 @@
-<ng-container [ngSwitch]="view">
+<ng-container [ngSwitch]="true">
 
-  <div class="card bg-lighter" *ngSwitchCase="'package'">
+  <div class="card bg-lighter" *ngSwitchCase="view === 'package' || view === 'sip'">
     <div class="card-body">
       <div class="d-flex align-center justify-between w-100 mb-3">
         <app-coin-stack [coins]="coins"></app-coin-stack>
-        <a class="view-icon" [routerLink]="navigationLink">
-          <ion-icon name="chevron-forward-outline"></ion-icon>
-        </a>
+
+        <div class="d-flex align-center">
+          <div class="text-right mr-2 right-section" *ngIf="view === 'sip'">
+            <div class="small-label text-dark">Interval</div>
+            <h4 class="small-price text-dark">
+              &#8377;{{ package.installmentAmount | number }}/<span
+                class="ion-text-capitalize">{{ package.interval.type }}</span></h4>
+          </div>
+          
+          <a class="view-icon" [routerLink]="navigationLink">
+            <ion-icon name="chevron-forward-outline"></ion-icon>
+          </a>
+        </div>
       </div>
-      <div class="small-label text-dark">{{ package.name }}</div>
+      <div class="small-label text-dark">{{ packageObj.name }}</div>
       <div class="d-flex align-center justify-between mt-2">
         <div>
-          <div class="small-label text-dark">Min Invest</div>
-          <h4 class="Price text-dark">&#8377;{{ package.totalMinimumDepositAmount }}</h4>
+          <div class="small-label text-dark">
+            {{ view === 'package' ? 'Min Invest' : 'Total Invested' }}
+          </div>
+          <h4 class="Price text-dark ion-text-left">
+            &#8377;{{ (view === 'package' ? packageObj.totalMinimumDepositAmount : package.totalAmount) | number }}
+          </h4>
         </div>
         <div>
           <div class="d-flex align-center">
@@ -34,7 +48,7 @@
     bg-theme text-white
     bg-lighter
   -->
-  <div class="card bg-lighter" *ngSwitchCase="'coin'">
+  <div class="card bg-lighter" *ngSwitchCase="view === 'coin'" [routerLink]="navigationLink">
     <div class="card-body">
       <div class="d-flex align-center justify-between w-100 mb-3">
 

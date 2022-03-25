@@ -99,7 +99,7 @@
   
           <swiper [slidesPerView]="1.9" [loop]="false">
             <ng-template swiperSlide *ngFor="let coin of coinList">
-              <app-package-card [package]="coin" view="coin"></app-package-card>
+              <app-package-card [package]="coin" view="coin" [navigationLink]="'/packages/' + coin._id"></app-package-card>
             </ng-template>
           </swiper>
   

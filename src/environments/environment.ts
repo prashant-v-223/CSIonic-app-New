@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseUrl: "https://prosprr.in/api/v1/", //server - https://prosprr.in/api/v1/  Labhu - 192.168.43.135
+  baseUrl: "http://192.168.1.106:3000/api/v1/", //server - https://prosprr.in/api/v1/  Labhu - 192.168.43.135
   COGNITO_IDENTITY_POOL_ID: "ap-south-1:19ff8828-ee7e-4155-b99a-5d490d83f246",
   AWS_REGION: "ap-south-1",
   COGNITO_USER_POOL_ID: "ap-south-1_Oj7GfEVr1",
