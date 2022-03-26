@@ -420,7 +420,7 @@ p {
     font-weight: 500;
     margin: 0rem;
     line-height: 28px;
-    color: #102E28;
+    color: #102e28;
   }
   .Price {
     font-size: 30px;
@@ -484,7 +484,7 @@ p {
   ion-toolbar {
     --min-height: 55px;
     padding: 0rem 0.8rem 0rem 0.5rem;
-    --background:#fff;
+    --background: #fff;
     --border-width: 0px;
     --opacity: 1;
     --border-color: transparent;
@@ -556,7 +556,7 @@ p {
 }
 //  Popular Coin Card Start
 .popularSection {
-  app-package-card{
+  app-package-card {
     width: 100%;
     margin-right: 15px;
   }
@@ -834,7 +834,7 @@ p {
     margin-bottom: 5px;
   }
 
-  .small-label { 
+  .small-label {
     font-size: 16px;
     line-height: 16px;
     font-family: var(--f-Poppins);
@@ -1017,7 +1017,7 @@ p {
       width: 70px;
       height: 70px;
       &.ion-activated {
-        color: #fff; 
+        color: #fff;
         fill: #fff;
       }
     }
@@ -1100,80 +1100,84 @@ ion-action-sheet {
 
 .bottomBtn {
   height: 60px;
-  .footerTab{
+  .footerTab {
     margin: 0px;
     line-height: 0px;
     height: 60px;
     font-size: 18px;
     --border-radius: 0px;
     font-weight: 500;
-    font-family: var(--f-Poppins); 
-    letter-spacing: .08px;  
+    font-family: var(--f-Poppins);
+    letter-spacing: 0.08px;
     text-transform: inherit;
   }
   ion-button {
     height: 100%;
   }
 }
-.custom-actionSheet{
+.custom-actionSheet {
   .action-sheet-container.sc-ion-action-sheet-md,
-  .action-sheet-container.sc-ion-action-sheet-ios{
-  -webkit-padding-start: 0px;
-  padding-inline-start: 0px;
-  -webkit-padding-end: 0px;
-  padding-inline-end: 0px;}
-  .action-sheet-container.sc-ion-action-sheet-md .action-sheet-group.sc-ion-action-sheet-md:last-child,
-  .action-sheet-group.sc-ion-action-sheet-ios:last-child {
-      margin-bottom: 0px;
+  .action-sheet-container.sc-ion-action-sheet-ios {
+    -webkit-padding-start: 0px;
+    padding-inline-start: 0px;
+    -webkit-padding-end: 0px;
+    padding-inline-end: 0px;
   }
-  .action-sheet-container.sc-ion-action-sheet-md .action-sheet-group.sc-ion-action-sheet-md,
-  .action-sheet-group.sc-ion-action-sheet-ios{
-      border-radius: 13px 13px 0px 0px !important; 
-      &:last-child{
-        background-color: #fff;
-    
-      }
+  .action-sheet-container.sc-ion-action-sheet-md
+    .action-sheet-group.sc-ion-action-sheet-md:last-child,
+  .action-sheet-group.sc-ion-action-sheet-ios:last-child {
+    margin-bottom: 0px;
+  }
+  .action-sheet-container.sc-ion-action-sheet-md
+    .action-sheet-group.sc-ion-action-sheet-md,
+  .action-sheet-group.sc-ion-action-sheet-ios {
+    border-radius: 13px 13px 0px 0px !important;
+    &:last-child {
+      background-color: #fff;
+    }
   }
   .action-sheet-group.sc-ion-action-sheet-md:last-child button {
     color: #000;
   }
-       .action-sheet-title.sc-ion-action-sheet-md,
-      .action-sheet-title.sc-ion-action-sheet-ios{
-      text-align: center;
-      color: #000;
-      font-weight: 600;
-      font-size: 18px;
-      padding-top: 14px;
-      padding-bottom: 10px;    
-      min-height: auto; 
-      font-family: var(--f-Poppins);
-      border-bottom: solid 1px #ddd;
-  } 
-  .action-sheet-button .sc-ion-action-sheet-md, .action-sheet-button-inner.sc-ion-action-sheet-ios{
-      justify-content: flex-start;  
+  .action-sheet-title.sc-ion-action-sheet-md,
+  .action-sheet-title.sc-ion-action-sheet-ios {
+    text-align: center;
+    color: #000;
+    font-weight: 600;
+    font-size: 18px;
+    padding-top: 14px;
+    padding-bottom: 10px;
+    min-height: auto;
+    font-family: var(--f-Poppins);
+    border-bottom: solid 1px #ddd;
   }
-  .action-sheet-button.sc-ion-action-sheet-md, .action-sheet-button.sc-ion-action-sheet-ios{
-      margin-left: 25px;
-      padding-inline-start: 0px; 
-      padding-inline-end: 0px;
-      border-bottom: solid 1px #ddd;
-      &:last-child{
-          border-bottom: 0px;
-      }
+  .action-sheet-button .sc-ion-action-sheet-md,
+  .action-sheet-button-inner.sc-ion-action-sheet-ios {
+    justify-content: flex-start;
+  }
+  .action-sheet-button.sc-ion-action-sheet-md,
+  .action-sheet-button.sc-ion-action-sheet-ios {
+    margin-left: 25px;
+    padding-inline-start: 0px;
+    padding-inline-end: 0px;
+    border-bottom: solid 1px #ddd;
+    &:last-child {
+      border-bottom: 0px;
+    }
   }
 }
-ion-datetime{
-.calendar-days-of-week {
-  padding: 0px 8px;
-  color: red;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
-  text-transform: uppercase;
-}
+ion-datetime {
+  .calendar-days-of-week {
+    padding: 0px 8px;
+    color: red;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-transform: uppercase;
+  }
 }
 ::ng-deep body .calendar-day.calendar-day-today.calendar-day-active::after {
-  background:red !important;
+  background: red !important;
   opacity: 1;
 }
 

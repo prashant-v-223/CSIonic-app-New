@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { AlertController, NavController, ToastController } from '@ionic/angular';
+import {
+  AlertController,
+  NavController,
+  ToastController,
+} from '@ionic/angular';
 import { BANK_ACCOUNT_TYPE, COPY } from 'src/app/shared/helper/const';
 import { UserService } from 'src/app/shared/services/user.service';
 import { BankDetailsService } from './bank-details.service';
@@ -11,15 +15,15 @@ import { BankDetailsService } from './bank-details.service';
   templateUrl: './bank-details.page.html',
   styleUrls: ['./bank-details.page.scss'],
 })
-export class BankDetailsPage implements OnInit {;
+export class BankDetailsPage implements OnInit {
   userId: string;
-  
+
   bankDetails: any;
-  accountTypeLabel = "";
+  accountTypeLabel = '';
   isLoading: boolean = false;
   CONSTANT: any = COPY;
 
-  mode: 'view'|'edit' = 'view';
+  mode: 'view' | 'edit' = 'view';
 
   accountTypes: any = BANK_ACCOUNT_TYPE;
   bankDetailsForm: FormGroup;
@@ -37,8 +41,7 @@ export class BankDetailsPage implements OnInit {;
 
   ngOnInit() {
     const user = this.userService.getUserFromStorage();
-    if (!user)
-      this.onBack();
+    if (!user) this.onBack();
 
     this.userId = user._id;
     this.getBankDetails();
@@ -46,57 +49,61 @@ export class BankDetailsPage implements OnInit {;
 
   getBankDetails() {
     this.isLoading = true;
-    this.bankService.getAccountDetails(this.userId).then(res => {
-      if (res.status === this.CONSTANT.SUCCESS) {
-        this.bankDetails = res.data;
-        this.mode = 'view';
-      } else
+    this.bankService
+      .getAccountDetails(this.userId)
+      .then((res) => {
+        if (res.status === this.CONSTANT.SUCCESS) {
+          this.bankDetails = res.data;
+          this.mode = 'view';
+        } else this.mode = 'edit';
+      })
+      .catch((error) => {
+        console.log(
+          'There was some error while getting bank account details',
+          error
+        );
         this.mode = 'edit';
-    }).catch(error => {
-      console.log('There was some error while getting bank account details', error);
-      this.mode = 'edit';
-    }).finally(() => {
-      this.setAccountTypeLabel();
-      this.isLoading = false;
-    });
+      })
+      .finally(() => {
+        this.setAccountTypeLabel();
+        this.isLoading = false;
+      });
   }
 
   setAccountTypeLabel() {
     if (!this.bankDetails?.accountType) {
-      this.accountTypeLabel = "";
+      this.accountTypeLabel = '';
       return;
     }
-    const found = this.accountTypes.find(acType => acType.value === this.bankDetails.accountType);
-    if (!found) this.accountTypeLabel = "";
+    const found = this.accountTypes.find(
+      (acType) => acType.value === this.bankDetails.accountType
+    );
+    if (!found) this.accountTypeLabel = '';
     this.accountTypeLabel = found.label;
   }
-  
-  onEditDetails() {
-    if (this.bankDetails)
-      this.patchFormValue();
-    this.mode = 'edit';
-  }
 
-  onEditCancel() {
-    if (this.bankDetails)
-      this.bankDetailsForm.reset();
-    this.mode = 'view';
+  toggleMode() {
+    if (this.mode === 'view') {
+      if (this.bankDetails) this.patchFormValue();
+      this.mode = 'edit';
+    } else {
+      if (this.bankDetails) this.bankDetailsForm.reset();
+      this.mode = 'view';
+    }
   }
 
   initForm() {
     this.bankDetailsForm = new FormGroup({
-      holderName: new FormControl("", [
-        Validators.required
-      ]),
-      accountNumber: new FormControl("", [
+      holderName: new FormControl('', [Validators.required]),
+      accountNumber: new FormControl('', [
         Validators.required,
-        Validators.pattern('^\\d{9,18}$')
+        Validators.pattern('^\\d{9,18}$'),
       ]),
-      IFSC: new FormControl("", [
+      IFSC: new FormControl('', [
         Validators.required,
-        Validators.pattern('^[A-Z]{4}0[A-Z0-9]{6}$') // reference: https://www.geeksforgeeks.org/how-to-validate-ifsc-code-using-regular-expression/
+        Validators.pattern('^[A-Z]{4}0[A-Z0-9]{6}$'), // reference: https://www.geeksforgeeks.org/how-to-validate-ifsc-code-using-regular-expression/
       ]),
-      accountType: new FormControl("", [Validators.required]),
+      accountType: new FormControl('', [Validators.required]),
     });
   }
 
@@ -109,44 +116,50 @@ export class BankDetailsPage implements OnInit {;
     });
   }
 
-  save() {
-    if (this.bankDetailsForm.valid) {
-      this.isLoading = true;
-      const data = this.bankDetailsForm.value;
+  async save() {
+    if (this.bankDetailsForm.invalid) return;
 
-      let addUpdateRequest = null;
+    this.bankDetailsForm.disable();
+    const data = this.bankDetailsForm.value;
+
+    let addUpdateResponse = null;
+    try {
       if (this.bankDetails?._id) {
-        addUpdateRequest = this.bankService.updateAccountDetails(this.bankDetails._id, data);
+        addUpdateResponse = await this.bankService.updateAccountDetails(
+          this.bankDetails._id,
+          data
+        );
       } else {
-        addUpdateRequest = this.bankService.addAccountDetails(data);
+        addUpdateResponse = await this.bankService.addAccountDetails(data);
       }
 
-      addUpdateRequest.then(async res => {
-        if (res.status === this.CONSTANT.SUCCESS && res.data) {
-          this.getBankDetails();
-          this.mode = 'view';
+      if (
+        addUpdateResponse.status === this.CONSTANT.SUCCESS &&
+        addUpdateResponse.data
+      ) {
+        this.getBankDetails();
+        this.mode = 'view';
 
-          const toast = await this.toastController.create({
-            message: 'Verification successful.',
-            duration: 2000
-          });
-          toast.present();
-          // this.isLoading = false;
-        }
-      }).catch(async error => {
-        const errorInfo = await this.alertCtrl.create({
-          header: 'Verification unsuccessful',
-          message: `There was some problem in verification process. Please check the details again, correctify (if required) and try again.`,
-          buttons: [
-            {
-              text: 'Ok',
-              role: 'cancel'
-            }
-          ]
+        const toast = await this.toastController.create({
+          message: 'Verification successful.',
+          duration: 2000,
         });
-        await errorInfo.present();
-        this.isLoading = false;
+        toast.present();
+      }
+    } catch (e) {
+      const errorInfo = await this.alertCtrl.create({
+        header: 'Verification unsuccessful',
+        message: `There was some problem in verification process. Please check the details again, correctify (if required) and try again.`,
+        buttons: [
+          {
+            text: 'Ok',
+            role: 'cancel',
+          },
+        ],
       });
+      await errorInfo.present();
+    } finally {
+      this.bankDetailsForm.enable();
     }
   }
 
@@ -162,16 +175,16 @@ export class BankDetailsPage implements OnInit {;
       buttons: [
         {
           text: 'Ok',
-          role: 'cancel'
-        }
+          role: 'cancel',
+        },
       ],
-      backdropDismiss: false
+      backdropDismiss: false,
     });
     await accessInfoAlert.present();
   }
 
   onBack() {
-    this.navCtrl.navigateBack('/dashboard/menu');
+    this.navCtrl.navigateBack('/tabs/profile');
   }
 
   ngOnDestroy() {}

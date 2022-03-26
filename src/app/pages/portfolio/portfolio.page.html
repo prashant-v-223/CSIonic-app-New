@@ -1,12 +1,7 @@
- <!-- Header Section Start --> 
+<!-- Header Section Start -->
 <ion-header translucent class="themeHeader">
   <ion-toolbar>
-    <ion-list class="d-flex     justify-end">
-      <!-- <ion-menu-toggle  id="main">
-        <button class="menuLeft">
-          <ion-icon src="../../../assets/menu.svg"></ion-icon>
-        </button>
-      </ion-menu-toggle> -->
+    <ion-list class="d-flex justify-end">
       <ion-button color="dark" routerLink="/analytics">
         Analytics
       </ion-button>
@@ -14,66 +9,53 @@
   </ion-toolbar>
 </ion-header>
 <!-- Header Section End -->
-<!-- Left Menu Section Start -->
-<ion-menu side="start" menuId="first" contentId="main">
-   <ion-content>
-    <ion-list>
-      <ion-item>Menu Item</ion-item> 
-      <ion-item>Menu Item</ion-item> 
-      <ion-item>Menu Item</ion-item> 
-      <ion-item>Menu Item</ion-item> 
-      <ion-item>Menu Item</ion-item>
-    </ion-list>
-  </ion-content>
-</ion-menu>
-<!-- Left Menu Section End -->
 <!-- Body Section Start -->
-<ion-content class="portfolio popularSection basket"> 
+<ion-content class="portfolio popularSection basket">
 
   <ion-list class="ion-list">
     <ion-title class="topHeader">My portfolio</ion-title>
     <ion-col size="12" class="p-0 myPortfolio">
       <div class="card-body">
-          <div class="d-flex justify-between">
-            <div>        
-              <h4 class="myPrice text-d-theme">₹19,006</h4>
-              <span class="small-label">Current</span>
-            </div>
-            <div class="">
-              <ion-icon class="line-draw" src="../../../assets/small-line-theme.svg"></ion-icon>
-            </div>
+        <div class="d-flex justify-between">
+          <div>
+            <h4 class="myPrice text-d-theme">₹19,006</h4>
+            <span class="small-label">Current</span>
           </div>
-          <ion-grid class="invest-list">
-            <ion-row class="w-100">
-              <ion-col size="4" class="p-0" size-md>
-                <h6 class="text-dark">₹19,206.00</h6>
-                <span class="small-label">Invested</span>
-              </ion-col>
-              <ion-col size="4" class="p-0" size-md>
-                <h6 class="text-dark">₹2,000.00</h6>
-                <span class="small-label">Return</span>
-              </ion-col>
-              <ion-col size="4" class="p-0" size-md>
-                <h6 class="text-d-theme">+24%</h6>
-                <span class="small-label">Total Return</span>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
+          <div class="">
+            <ion-icon class="line-draw" src="../../../assets/small-line-theme.svg"></ion-icon>
+          </div>
+        </div>
+        <ion-grid class="invest-list">
+          <ion-row class="w-100">
+            <ion-col size="4" class="p-0" size-md>
+              <h6 class="text-dark">₹19,206.00</h6>
+              <span class="small-label">Invested</span>
+            </ion-col>
+            <ion-col size="4" class="p-0" size-md>
+              <h6 class="text-dark">₹2,000.00</h6>
+              <span class="small-label">Return</span>
+            </ion-col>
+            <ion-col size="4" class="p-0" size-md>
+              <h6 class="text-d-theme">+24%</h6>
+              <span class="small-label">Total Return</span>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </div>
     </ion-col>
     <ion-col size="12" class="themeHeading p-0">
       <h6>MY INVESTMENTS</h6>
     </ion-col>
     <ion-col size="12" class="p-0">
-      
+
       <ng-container *ngIf="!showLoader else loadingTmplt">
 
         <ion-row *ngIf="sipList?.length else noSIPsTmplt">
-          
+
           <ion-col *ngFor="let sip of sipList" size="12" size-md>
             <app-package-card [package]="sip" [view]="'sip'" [navigationLink]="'/sip/' + sip._id"></app-package-card>
           </ion-col>
-          
+
           <!-- <ion-col size="12" size-md>
             <div class="card bg-lighter">
               <div class="card-body">
@@ -121,9 +103,9 @@
               </div>
             </div>
           </ion-col> -->
-         
+
         </ion-row>
-      
+
 
         <ng-template #noSIPsTmplt>
           <div class="ion-text-center mt-5">
@@ -136,7 +118,7 @@
       <ng-template #loadingTmplt>
         <app-loading-skeleton></app-loading-skeleton>
       </ng-template>
-      
+
     </ion-col>
   </ion-list>
 </ion-content>

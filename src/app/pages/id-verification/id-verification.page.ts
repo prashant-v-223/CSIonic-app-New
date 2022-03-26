@@ -261,7 +261,7 @@ export class IdVerificationPage implements OnInit {
   }
 
   onBack() {
-    this.navCtrl.navigateBack('/dashboard/kyc-document');
+    this.navCtrl.navigateBack('/kyc-document');
   }
 
   isBackPageRequired() {

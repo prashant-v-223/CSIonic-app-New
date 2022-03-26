@@ -1,147 +1,115 @@
-  <!-- <ion-content>
-  <div class="page-container p-0">
-    <div class="page-header pl-3 pr-3">
-      <button mat-icon-button class="back-btn" (click)="onBack()">
-        <fa-icon class="fa-icon color-primary" icon="chevron-left"></fa-icon>
-      </button>
-      <h2 class="m-0 color-primary">{{CONSTANT.BANK_DETAILS_LABEL}}</h2>
-    </div>
+<!-- Header Section Start -->
+<ion-header translucent class="themeHeader">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button mat-icon-button class="back-btn" defaultHref="/tabs/profile">
+      </ion-back-button>
+    </ion-buttons>
 
-    <div class="page-body pl-3 pr-3 pt-4" *ngIf="!isLoading">
-      <div *ngIf="bankDetails && mode !== 'edit' else bankDetailsFormTmpl">
-        <div class="mb-4">
-          <div class="mb-4 mt-2">
-            <label for="holder name" class="gray-text">Account holder name</label>
-            <p class="mt-1">{{bankDetails.holderName}}</p>
-          </div>
-          <div class="mb-4">
-            <label for="account number" class="gray-text">Account Number</label>
-            <p class="mt-1">{{bankDetails.accountNumber}}</p>
-          </div>
-          <div class="mb-4">
-            <label for="IFSC code" class="gray-text">IFSC Code</label>
-            <p class="mt-1">{{bankDetails.IFSC}}</p>
-          </div>
-          <label for="Account type" class="gray-text ">Account type</label>
-          <p class="mt-1">{{ accountTypeLabel }}</p>
-          <div class="flex-row align-center mt-4">
-            <img class="mr-3" src="assets/icon/verified.svg" width="25" height="25" alt="verified">
-            <p class="m-0">verified</p>
-          </div>
-        </div>
-        <button mat-flat-button color="primary" class="mt-4" (click)="onEditDetails()">
-          Edit
-        </button>
-      </div>
-
-      <ng-template #bankDetailsFormTmpl>
-        <div>
-          <form *ngIf="bankDetailsForm" (ngSubmit)="save()" [formGroup]="bankDetailsForm">
-            
-            <mat-form-field class="d-block" appearance="outline">
-              <mat-label>Account holder name</mat-label>
-              <input matInput placeholder="Account holder name" formControlName="holderName" required>
-            </mat-form-field>
-          
-            <mat-form-field class="d-block" appearance="outline">
-              <mat-label>Account number</mat-label>
-              <input matInput type="number" placeholder="Account number" formControlName="accountNumber" required>
-              <mat-error
-                *ngIf="bankDetailsForm.controls.accountNumber.touched && !bankDetailsForm.controls.accountNumber.errors?.required && bankDetailsForm.controls.accountNumber.errors?.pattern">
-                Account number should contain 9 to 18 digits
-              </mat-error>
-            </mat-form-field>
-          
-            <mat-form-field class="d-block" appearance="outline">
-              <mat-label>IFSC Code</mat-label>
-              <input matInput placeholder="IFSC Code" formControlName="IFSC" required>
-              <fa-icon *ngIf="bankDetailsForm.controls.IFSC.touched && !bankDetailsForm.controls.IFSC.errors?.required && bankDetailsForm.controls.IFSC.errors?.pattern" matSuffix class="fa-icon size-sm" icon="info-circle" (click)="showInfoModal()"></fa-icon>
-              <mat-error
-                *ngIf="bankDetailsForm.controls.IFSC.touched && !bankDetailsForm.controls.IFSC.errors?.required && bankDetailsForm.controls.IFSC.errors?.pattern">
-                Please enter a valid IFSC code
-              </mat-error>
-            </mat-form-field>
-          
-            <mat-form-field class="d-block" appearance="outline">
-              <mat-label>Account Type</mat-label>
-              <mat-select formControlName="accountType">
-                <mat-option *ngFor="let type of accountTypes" [value]="type.value">
-                  {{type.label}}
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
-            
-            <button mat-flat-button color="primary" class="d-block w-100 mt-3 mb-3 p-2" type="submit">
-              <fa-icon class="fa-icon mr-2" icon="check"></fa-icon>
-              {{CONSTANT.VERIFY_LABEL}}
-            </button>
-        
-            <button mat-stroked-button color="dark" class="d-block w-100 mt-3 mb-3 p-2" *ngIf="bankDetails" (click)="onEditCancel()">
-              <fa-icon class="fa-icon mr-2" icon="times"></fa-icon>
-              {{CONSTANT.CANCEL_LABEL}}
-            </button>
-          </form>
-        </div>
-      </ng-template>
-
-    </div>
-    
-    <app-loading *ngIf="isLoading"></app-loading>
-  </div>
-
-</ion-content>
-  -->
-
-  <!-- Header Section Start --> 
-  <ion-header translucent class="themeHeader">
-    <ion-toolbar>
-      <ion-list>
-        <ion-buttons slot="start">
-          <ion-back-button  mat-icon-button class="back-btn" defaultHref="/profile"> 
-          </ion-back-button>
-        </ion-buttons>  
-      </ion-list>
-    </ion-toolbar>
-  </ion-header>
-  <!-- Header Section End -->
+    <ion-buttons slot="end">
+      <ion-button slot="end" (click)="toggleMode()">
+        <ion-icon [name]="mode === 'view' ? 'create' : 'close'" [class.text-d-theme]="mode === 'view'"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<!-- Header Section End -->
 <ion-content class="addBank">
   <ion-list class="ion-list">
-  <ion-grid class="topHeader bg-white p-0">
-    <ion-title>Bank Account</ion-title> 
-  </ion-grid>
-    <form action="" class="w-100">
-      <ion-item class="customForm">
-        <ion-label position="stacked" >ACCOUNT HOLDER NAME</ion-label>
-        <ion-input placeholder="Type here"></ion-input>
-      </ion-item>
-      <ion-item class="customForm">
-        <ion-label position="stacked" >BANK ACCOUNT NUMBER</ion-label>
-        <ion-input placeholder="Type here"></ion-input>
-      </ion-item>
-      <ion-item class="customForm">
-        <ion-label position="stacked" >IFSC Code<span class="text-danger f-16">*</span></ion-label>
-        <ion-input placeholder="Type here"></ion-input>
-      </ion-item>
-      <ion-item class="customForm">
-        <ion-label position="stacked" >Account Type</ion-label>
-        <ion-select value="Current" interface="action-sheet" cancel-text="Account Type"> 
-          <ion-select-option value="Current">Current account</ion-select-option>
-           <ion-select-option value="Savings">Savings account</ion-select-option>
-          <ion-select-option value="Salery">Salery account</ion-select-option> 
-          <ion-select-option value="Fixed">Fixed account</ion-select-option> 
-          <ion-select-option value="Recurring">Recurring deposit account</ion-select-option> 
-          <ion-select-option value="Nri">Nri account</ion-select-option> 
-        </ion-select>
-      </ion-item>
-    
-   
-    </form>
-  </ion-list> 
+    <ion-grid class="topHeader bg-white p-0">
+      <ion-title>Bank Account</ion-title>
+    </ion-grid>
+
+    <ng-container *ngIf="!isLoading else loadingTmplt">
+
+      <ng-container [ngSwitch]="mode">
+
+        <ng-container *ngSwitchCase="'edit'">
+          <form *ngIf="bankDetailsForm" (ngSubmit)="save()" [formGroup]="bankDetailsForm" class="w-100">
+
+            <ion-item class="customForm">
+              <ion-label position="stacked">ACCOUNT HOLDER NAME</ion-label>
+              <ion-input placeholder="Type here" formControlName="holderName"></ion-input>
+            </ion-item>
+
+            <ion-item class="customForm">
+              <ion-label position="stacked">BANK ACCOUNT NUMBER</ion-label>
+              <ion-input placeholder="Type here" formControlName="accountNumber"></ion-input>
+            </ion-item>
+            <div class="error-message"
+              *ngIf="bankDetailsForm.controls.accountNumber.touched && !bankDetailsForm.controls.accountNumber.errors?.required && bankDetailsForm.controls.accountNumber.errors?.pattern">
+              Account number should contain 9 to 18 digits
+            </div>
+
+            <ion-item class="customForm">
+              <ion-label position="stacked">IFSC CODE</ion-label>
+              <ion-input placeholder="Type here" formControlName="IFSC"></ion-input>
+            </ion-item>
+            <div class="error-message"
+              *ngIf="bankDetailsForm.controls.IFSC.touched && !bankDetailsForm.controls.IFSC.errors?.required && bankDetailsForm.controls.IFSC.errors?.pattern">
+              Please enter a valid IFSC code
+            </div>
+
+            <ion-item class="customForm">
+              <ion-label position="stacked">ACCOUNT TYPE</ion-label>
+              <ion-select interface="action-sheet" cancel-text="Account Type"
+                placeholder="Select account type.." formControlName="accountType">
+                <ion-select-option *ngFor="let type of accountTypes" [value]="type.value">
+                  {{ type.label }}
+                </ion-select-option>
+              </ion-select>
+            </ion-item>
+
+          </form>
+        </ng-container>
+
+        <ng-container *ngSwitchCase="'view'">
+
+          <ion-item class="customForm mb-0">
+            <ion-label>
+              ACCOUNT HOLDER NAME
+              <p>{{ bankDetails.holderName }}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item class="customForm mb-0">
+            <ion-label>
+              BANK ACCOUNT NUMBER
+              <p>{{ bankDetails.accountNumber }}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item class="customForm mb-0">
+            <ion-label>
+              IFSC CODE
+              <p>{{ bankDetails.IFSC }}</p>
+            </ion-label>
+          </ion-item>
+
+          <ion-item class="customForm mb-0">
+            <ion-label>
+              ACCOUNT TYPE
+              <p>{{ accountTypeLabel }}</p>
+            </ion-label>
+          </ion-item>
+
+        </ng-container>
+
+      </ng-container>
+
+    </ng-container>
+
+  </ion-list>
 </ion-content>
 <!-- Footer Section Start -->
-<ion-footer class="bottomBtn">
-  <ion-button class="footerTab ion-button-theme" expand="full" shape="round" routerLink="/profile">
-   Verify
+<ion-footer class="bottomBtn" *ngIf="mode === 'edit'">
+  <ion-button class="footerTab ion-button-theme" expand="full" shape="round" (click)="save()" [disabled]="bankDetailsForm.invalid || bankDetailsForm.disabled">
+    <ion-spinner *ngIf="bankDetailsForm.disabled" class="size-sm mr-2"></ion-spinner>
+    {{ bankDetailsForm.disabled ? 'Verifying..' : 'Verify' }}
   </ion-button>
 </ion-footer>
 <!-- Footer Section End -->
+
+<ng-template #loadingTmplt>
+  <app-loading-skeleton></app-loading-skeleton>
+</ng-template>
