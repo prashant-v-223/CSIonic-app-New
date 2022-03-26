@@ -7,13 +7,15 @@ import { IonicModule } from '@ionic/angular';
 import { PortfolioPageRoutingModule } from './portfolio-routing.module';
 
 import { PortfolioPage } from './portfolio.page';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
-    PortfolioPageRoutingModule
+    PortfolioPageRoutingModule,
+    SharedModule
   ],
   declarations: [PortfolioPage]
 })

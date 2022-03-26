@@ -55,7 +55,24 @@
     <ion-grid class="p-0">
 
       <ion-row *ngIf="segment === 'Coins'">
-        <ion-col size="6" size-md>
+
+        <ng-container *ngIf="!showLoader else loadingTmplt">
+
+          <ng-container *ngIf="coinList?.length else noCoinsTmplt">
+            <ion-col *ngFor="let coin of coinList" size="6" size-md>
+              <app-package-card [package]="coin" view="coin" [navigationLink]="'/packages/' + coin._id"></app-package-card>
+            </ion-col>
+          </ng-container>
+
+          <ng-template #noCoinsTmplt>
+            <div class="ion-text-center mt-5">
+              No coins available
+            </div>
+          </ng-template>
+
+        </ng-container>
+
+        <!-- <ion-col size="6" size-md>
           <div class="card bg-theme">
             <div class="card-body">
               <div class="d-flex align-center justify-between w-100 mb-3">
@@ -77,141 +94,7 @@
               <ion-icon class="large-line" src="../../../assets/area-line-white.svg"></ion-icon>
             </div>
           </div>
-        </ion-col>
-        <ion-col size="6" size-md>
-          <div class="card bg-lighter">
-            <div class="card-body">
-              <div class="d-flex align-center justify-between w-100 mb-3">
-                <div class="coinTag bg-greenLighter">
-                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-                </div>
-                <div class="small-text bg-danger text-white">
-                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropdown.svg"></ion-icon> 0.7%
-                </div>
-              </div>
-              <div class="small-label text-dark">Etherium</div>
-              <div class="d-flex align-end">
-                <h4 class="Price text-dark">₹19,006</h4>
-                <span class="small-label text-dark ml-2">ETH</span>
-              </div>
-            </div>
-            <div class="mt-1">
-              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
-            </div>
-          </div>
-        </ion-col>
-        <ion-col size="6" size-md>
-          <div class="card bg-lighter">
-            <div class="card-body">
-              <div class="d-flex align-center justify-between w-100 mb-3">
-                <div class="coinTag bg-greenLighter">
-                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-                </div>
-                <div class="small-text bg-theme text-white">
-                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon>
-                  0.7%
-                </div>
-              </div>
-              <div class="small-label text-dark">Etherium</div>
-              <div class="d-flex align-end">
-                <h4 class="Price text-dark">₹19,006</h4>
-                <span class="small-label text-dark ml-2">ETH</span>
-              </div>
-            </div>
-            <div class="mt-1">
-              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
-            </div>
-          </div>
-        </ion-col>
-        <ion-col size="6" size-md>
-          <div class="card bg-lighter">
-            <div class="card-body">
-              <div class="d-flex align-center justify-between w-100 mb-3">
-                <div class="coinTag bg-greenLighter">
-                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-                </div>
-                <div class="small-text bg-danger text-white">
-                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropdown.svg"></ion-icon> 0.7%
-                </div>
-              </div>
-              <div class="small-label text-dark">Etherium</div>
-              <div class="d-flex align-end">
-                <h4 class="Price text-dark">₹19,006</h4>
-                <span class="small-label text-dark ml-2">ETH</span>
-              </div>
-            </div>
-            <div class="mt-1">
-              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
-            </div>
-          </div>
-        </ion-col>
-        <ion-col size="6" size-md>
-          <div class="card bg-lighter">
-            <div class="card-body">
-              <div class="d-flex align-center justify-between w-100 mb-3">
-                <div class="coinTag bg-greenLighter">
-                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-                </div>
-                <div class="small-text bg-theme text-white">
-                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon>
-                  0.7%
-                </div>
-              </div>
-              <div class="small-label text-dark">Etherium</div>
-              <div class="d-flex align-end">
-                <h4 class="Price text-dark">₹19,006</h4>
-                <span class="small-label text-dark ml-2">ETH</span>
-              </div>
-            </div>
-            <div class="mt-1">
-              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
-            </div>
-          </div>
-        </ion-col>
-        <ion-col size="6" size-md>
-          <div class="card bg-lighter">
-            <div class="card-body">
-              <div class="d-flex align-center justify-between w-100 mb-3">
-                <div class="coinTag bg-greenLighter">
-                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-                </div>
-                <div class="small-text bg-danger text-white">
-                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropdown.svg"></ion-icon> 0.7%
-                </div>
-              </div>
-              <div class="small-label text-dark">Etherium</div>
-              <div class="d-flex align-end">
-                <h4 class="Price text-dark">₹19,006</h4>
-                <span class="small-label text-dark ml-2">ETH</span>
-              </div>
-            </div>
-            <div class="mt-1">
-              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
-            </div>
-          </div>
-        </ion-col>
-        <ion-col size="6" size-md>
-          <div class="card bg-lighter">
-            <div class="card-body">
-              <div class="d-flex align-center justify-between w-100 mb-3">
-                <div class="coinTag bg-greenLighter">
-                  <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-                </div>
-                <div class="small-text bg-danger text-white">
-                  <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropdown.svg"></ion-icon> 0.7%
-                </div>
-              </div>
-              <div class="small-label text-dark">Etherium</div>
-              <div class="d-flex align-end">
-                <h4 class="Price text-dark">₹19,006</h4>
-                <span class="small-label text-dark ml-2">ETH</span>
-              </div>
-            </div>
-            <div class="mt-1">
-              <ion-icon class="large-line" src="../../../assets/area-line-theme.svg"></ion-icon>
-            </div>
-          </div>
-        </ion-col>
+        </ion-col> -->
       </ion-row>
 
       <ion-row *ngIf="segment === 'Baskets'">
@@ -232,10 +115,6 @@
 
         </ng-container>
 
-
-        <ng-template #loadingTmplt>
-          <app-loading-skeleton></app-loading-skeleton>
-        </ng-template>
 
         <!-- <ion-col size="12" size-md>
           <div class="card bg-lighter">
@@ -280,3 +159,9 @@
   </ion-list>
 </ion-content>
 <!-- Body Section End -->
+
+
+
+<ng-template #loadingTmplt>
+  <app-loading-skeleton></app-loading-skeleton>
+</ng-template>

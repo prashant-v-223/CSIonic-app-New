@@ -95,4 +95,12 @@ export class SIPService {
     delete payload.package;
     return this.api.postData(this.apiConfig.sip, payload);
   }
+
+  getSIPs() {
+    return this.api.getData(`${this.apiConfig.sip}`);
+  }
+
+  getSIPDetails(id: string) {
+    return this.api.getData(`${this.apiConfig.sip}/${id}`);
+  }
 }

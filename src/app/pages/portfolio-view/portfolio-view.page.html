@@ -94,19 +94,19 @@
 
         <!-- TODO -->
         <ion-col size="6" size-md>
-          <h4 class="heading-label text-dark">₹19,006.00</h4>
+          <h4 class="heading-label text-dark">&#8377;19,006.00</h4>
           <span class="small-label">Current</span>
         </ion-col>
 
         <!-- TODO -->
         <ion-col size="6" size-md>
-          <h4 class="heading-label text-dark">₹19,006.00</h4>
+          <h4 class="heading-label text-dark">&#8377;{{ (view === 'sip' ? sipDetails.totalAmount : 19006) | number }}</h4>
           <span class="small-label">Invested</span>
         </ion-col>
 
         <!-- TODO -->
         <ion-col size="6" size-md>
-          <h4 class="heading-label text-dark">₹2,000.00</h4>
+          <h4 class="heading-label text-dark">&#8377;2,000.00</h4>
           <span class="small-label">Return</span>
         </ion-col>
 
@@ -124,8 +124,19 @@
           <span class="small-label">Interval</span>
         </ion-col> -->
         <ion-col size="6" size-md>
-          <h6 class="smallHeading-label text-dark">₹{{ packageDetails.totalMinimumDepositAmount }}</h6>
-          <span class="small-label">Minimum SIP Amt</span>
+          <ng-container *ngIf="view === 'package' else intervalTmplt">
+            <h6 class="smallHeading-label text-dark">&#8377;{{ packageDetails.totalMinimumDepositAmount }}</h6>
+            <span class="small-label">Minimum SIP Amt</span>
+          </ng-container>
+
+          <ng-template #intervalTmplt>
+            <h6 class="smallHeading-label text-dark">
+              &#8377;{{ sipDetails.installmentAmount | number }}/<span
+                class="ion-text-capitalize">{{ sipDetails.interval.type }}</span>
+            </h6>
+            <span class="small-label">Interval</span>
+          </ng-template>
+
         </ion-col>
 
         <!-- TODO -->
@@ -143,7 +154,9 @@
         </ion-col>
         <ion-col size="6" size-md>
           <!-- TODO:  provide edit SIP option -->
-          <ion-button class="ion-button-theme-outline" fill="outline" shape="round" expand="full" (click)="openSIPStep()">Add SIP</ion-button>
+          <ion-button class="ion-button-theme-outline" fill="outline" shape="round" expand="full" (click)="openSIPStep()">
+            {{ view === 'package' ? 'Add' : 'Edit' }} SIP
+          </ion-button>
         </ion-col>
       </ion-row>
     </ion-list>

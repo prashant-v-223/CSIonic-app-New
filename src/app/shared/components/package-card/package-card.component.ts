@@ -7,6 +7,7 @@ import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/cor
 })
 export class PackageCardComponent implements OnInit, OnChanges {
 
+  @Input() view: 'package'|'sip'|'coin' = 'package';
   @Input() package: any;
   @Input() navigationLink = '/';
 
@@ -19,9 +20,13 @@ export class PackageCardComponent implements OnInit, OnChanges {
       this.populateCoins();
   }
 
+  get packageObj() {
+    return ['package', 'coin'].includes(this.view) ? this.package : this.package.packageId;
+  }
+
   ngOnInit() {}
 
   populateCoins() {
-    this.coins = this.package.coins.map(coin => coin.currencyId);
+    this.coins = this.packageObj.coins.map(coin => coin.currencyId);
   }
 }

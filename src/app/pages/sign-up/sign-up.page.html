@@ -13,44 +13,60 @@
 <ion-content>
   <div class="signin-content">
     <h2 class="heading">Create your account</h2>
-    <p class="small-label">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p>
-    <form action="" class="w-100 mt-3">
-      <ion-item class="customForm"> 
-        <ion-input type="text" placeholder="Name"></ion-input>
+
+    <!-- TODO: add create account message -->
+    <!-- <p class="small-label">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p> -->
+    <form [formGroup]="signUpForm" (submit)="signUp()" class="w-100 mt-3">
+      <ion-item class="customForm">
+        <ion-input type="text" placeholder="First name" formControlName="given_name"></ion-input>
       </ion-item>
-      <ion-item class="customForm"> 
-        <ion-input type="email" placeholder="Email"></ion-input>
+
+      <ion-item class="customForm">
+        <ion-input type="text" placeholder="Last name" formControlName="family_name"></ion-input>
       </ion-item>
-      <ion-item class="customForm"> 
-        <ion-input type="password" placeholder="Password"></ion-input>
+
+      <ion-item class="customForm">
+        <ion-input type="email" placeholder="Email" formControlName="username"></ion-input>
       </ion-item>
-      <ion-item class="customForm custom-select"> 
-        <ion-select  value="+91" interface="popover" >
-          <ion-select-option value="+91">+91</ion-select-option>
-          <ion-select-option value="+92">+92</ion-select-option>
-          <ion-select-option value="+93">+93</ion-select-option>
-          <ion-select-option value="+94">+94</ion-select-option>
-          <ion-select-option value="+95">+95</ion-select-option>
-           <ion-select-option value="+96">+96</ion-select-option>
-          <!-- <ion-select-option value="n64">Nintendo64</ion-select-option>
-          <ion-select-option value="ps">PlayStation</ion-select-option>
-          <ion-select-option value="genesis">Sega Genesis</ion-select-option>
-          <ion-select-option value="saturn">Sega Saturn</ion-select-option>
-          <ion-select-option value="snes">SNES</ion-select-option> -->
+      <div class="error-message"
+        *ngIf="signUpForm.get('username').dirty && !signUpForm.get('username').errors?.required && signUpForm.get('username').errors?.email">
+        Enter valid email address
+      </div>
+
+      <ion-item class="customForm">
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
+      </ion-item>
+      <div class="error-message"
+        *ngIf="signUpForm.get('password').dirty && !signUpForm.get('password').errors?.required && signUpForm.get('password').errors?.password">
+        {{ passwordRequirementMessage }}
+      </div>
+
+      <ion-item class="customForm custom-select">
+        <ion-select formControlName="phone_number_country_code" interface="popover">
+          <ion-select-option *ngFor="let phoneNumberCountryCode of phoneNumberCountryCodes"
+            [value]="phoneNumberCountryCode.code">
+            {{ phoneNumberCountryCode.code }}
+          </ion-select-option>
         </ion-select>
-        <ion-input type="number" placeholder="XXXX XXXX XXXX XXXX"></ion-input>
+        <ion-input type="number" placeholder="XXXXX XXXXX" formControlName="phone_number"></ion-input>
       </ion-item>
+      <div class="error-message"
+        *ngIf="signUpForm.get('phone_number').dirty && !signUpForm.get('phone_number').errors?.required && signUpForm.get('phone_number').errors?.pattern">
+        Enter 10 digit mobile number
+      </div>
+
       <ion-item class="custom-check">
-        <ion-checkbox class="check-theme" slot="start"></ion-checkbox>
+        <ion-checkbox class="check-theme" slot="start" formControlName="agreeOnTermsAndConditions"></ion-checkbox>
         <ion-label>I agree to the terms and conditions</ion-label>
       </ion-item>
-   
+
       <ion-list class="p-0 mt-6">
         <ion-list class="p-0 text-center small-text">
           Already have an account? <ion-router-link class="link-dark" routerLink="/sign-in">Sign in!</ion-router-link>
         </ion-list>
-        <ion-button class="ion-button-theme" expand="full" shape="round">
-          Sign Up
+        <ion-button class="ion-button-theme" expand="full" shape="round" type="submit" [disabled]="signUpForm.invalid || isLoading">
+          <ion-spinner *ngIf="isLoading" class="size-sm mr-2"></ion-spinner>
+          {{ isLoading ? 'Signing up..' : 'Sign up'}}
         </ion-button>
       </ion-list>
     </form>

@@ -42,4 +42,19 @@ export class PackagesService {
   getPackageDetails(packageId: string) {
     return this.api.getData(`${this.apiConfig.packages}/${packageId}`);
   }
+
+  separatePackagesAndCoins(packages: any[]): { packages: any[], coins: any[] } {
+    const packageList = [];
+    const coinList = [];
+    packages.forEach(p => {
+      if (p.coins.length > 1)
+        packageList.push(p);
+      else
+        coinList.push(p);
+    });
+    return {
+      packages: packageList,
+      coins: coinList
+    };
+  }
 }

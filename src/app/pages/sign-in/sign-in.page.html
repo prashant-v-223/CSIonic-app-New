@@ -1,32 +1,46 @@
 <ion-content>
   <div class="signin-content">
     <div class="login-inner">
-      <div class="appLogo" *ngIf="authState !== 'signedin'">
+      <div class="appLogo">
         <ion-icon class="logo" src="../../../assets/logo.svg"></ion-icon>
       </div>
-      <div class="small-text">
+      <div class="small-text mb-2">
         WELCOME
       </div>
       <h2 class="heading">Login using your Email!</h2>
-      <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p>
+
+      <!-- TODO: add greeting text -->
+      <!-- <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p> -->
     </div>
-    <form action="" class="w-100 mt-3"> 
-      <ion-item class="customForm"> 
-        <ion-input type="email" placeholder="Email"></ion-input>
+    <form class="w-100 mt-3" [formGroup]="signInForm" (submit)="signIn()">
+      <ion-item class="customForm">
+        <ion-input type="email" placeholder="Email" formControlName="username"></ion-input>
       </ion-item>
-      <ion-item class="customForm"> 
-        <ion-input type="password" placeholder="Password" ></ion-input>
+      <div class="error-message"
+        *ngIf="signInForm.get('username').dirty && !signInForm.get('username').errors?.required && signInForm.get('username').errors?.email">
+        Enter valid email address
+      </div>
+
+      <ion-item class="customForm">
+        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
       </ion-item>
-      <ion-list class="p-0 text-right" >
-        <ion-router-link class="link-dark" href="#">Forgot Password</ion-router-link>
+      <div class="error-message"
+        *ngIf="signInForm.get('password').dirty && !signInForm.get('password').errors?.required && signInForm.get('password').errors?.password">
+        {{ passwordRequirementMessage }}
+      </div>
+
+      <ion-list class="p-0 text-right">
+        <a routerLink="/forgot-password" class="link-dark">Forgot Password</a>
       </ion-list>
-      <ion-list class="p-0 mt-6" >
-        <ion-list class="p-0 text-center small-text" >
+      <ion-list class="p-0 mt-6">
+        <ion-list class="p-0 text-center small-text">
           Don't have an account? <ion-router-link class="link-dark" routerLink="/sign-up">Sign up!</ion-router-link>
         </ion-list>
-      <ion-button class="ion-button-theme"  expand="full" shape="round">
-        Sign In
-      </ion-button>
+
+        <ion-button class="ion-button-theme" type="submit" expand="full" shape="round" [disabled]="signInForm.invalid || isLoading">
+          <ion-spinner *ngIf="isLoading" class="size-sm mr-2"></ion-spinner>
+          {{ isLoading ? 'Siging in..' : 'Sign in' }}
+        </ion-button>
       </ion-list>
     </form>
   </div>

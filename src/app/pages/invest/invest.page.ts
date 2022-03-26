@@ -15,6 +15,7 @@ export class InvestPage implements OnInit {
 
   showLoader = true;
   packageList: any[] = [];
+  coinList: any[] = [];
 
   constructor(
     private userService: UserService,
@@ -37,7 +38,9 @@ export class InvestPage implements OnInit {
     try {
       const planListRes = await this.packagesService.getPackages();
       if (planListRes?.data?.data) {
-        this.packageList = planListRes?.data?.data;
+        const separated = this.packagesService.separatePackagesAndCoins(planListRes?.data?.data);
+        this.packageList = separated.packages;
+        this.coinList = separated.coins;
         this.showLoader = false;
       }
     } catch (e) {

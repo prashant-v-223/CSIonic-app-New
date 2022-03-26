@@ -1,18 +1,12 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { RouterModule, Routes } from '@angular/router';
 
 import { IonicModule } from '@ionic/angular';
 
-import { SignInPage } from './sign-in.page';
+import { OtpPageRoutingModule } from './otp-routing.module';
 
-const routes: Routes = [
-  {
-    path: '',
-    component: SignInPage
-  }
-];
+import { OtpPage } from './otp.page';
 
 @NgModule({
   imports: [
@@ -20,8 +14,8 @@ const routes: Routes = [
     FormsModule,
     ReactiveFormsModule,
     IonicModule,
-    RouterModule.forChild(routes)
+    OtpPageRoutingModule
   ],
-  declarations: [SignInPage]
+  declarations: [OtpPage]
 })
-export class SignInPageModule {}
+export class OtpPageModule {}
