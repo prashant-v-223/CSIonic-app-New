@@ -1,36 +1,30 @@
-.page-header {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  align-items: center;
-  padding: 1rem;
-
-  .back-btn {
-    position: absolute;
-    left: 1rem;
-    margin: 0 !important;
-  }
-
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-}
-
-.page-body {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding-top: 1rem;
-  flex-grow: 1;
-  overflow: auto;
-
+ 
+ 
+ 
   .verify_doc {
     display: flex;
     flex-direction: column;
     align-items: stretch;
     margin-bottom: 1.5rem;
   }
+.ion-text-header{
+  margin-bottom: .5rem;
+  text-align: left;
+  width: 95%;
+  h6 {
+    font-size: 20px;
+    color: var(--blackColor);
+    font-family: var(--f-Poppins);
+    margin-bottom: 5px;
+    font-weight: 500;
+    line-height: 22px;
+  }
 
+  span {
+    font-size: 14px; 
+    font-weight: 400;
+  }
+}
   .camera_btn {
     position: relative;
     display: flex;
@@ -42,7 +36,7 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: contain;
-    background-color: var(--ion-color-light);
+    background-color: var(--bg-lighter);
 
     &.selfie {
       height: 350px;
@@ -63,21 +57,39 @@
       font-size: 45px;
       line-height: 45px;
       width: 45px;
-      height: 45px;
+      height: 45px; 
     }
 
     .btn-delete {
       position: absolute;
-      top: 0;
-      right: 0;
+      top: -48px;
+      right: -10px; 
     }
 
     .selection-preview {
       background: red;
     }
   }
-}
+ 
 
 .uploadFile {
   display: none;
+}
+
+
+
+.topHeader {
+  ion-title {
+    position: inherit;
+    text-align: left;
+    height: inherit;
+    left: inherit;
+    padding-right: 0px;
+    padding-inline: 0;
+    font-size: 24px;
+    font-family: var(--f-Poppins);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    line-height: 28px;
+  }
 }

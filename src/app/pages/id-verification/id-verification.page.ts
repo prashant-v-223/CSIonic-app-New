@@ -159,6 +159,7 @@ export class IdVerificationPage implements OnInit {
       else {
         const photoSourceActionSheet = await this.actionSheetCtrl.create({
           header: 'Select photo from',
+          cssClass: 'custom-actionSheet',
           buttons: [
             {
               text: 'Gallery',
@@ -260,7 +261,7 @@ export class IdVerificationPage implements OnInit {
   }
 
   onBack() {
-    this.navCtrl.navigateBack('/dashboard/kyc-document');
+    this.navCtrl.navigateBack('/kyc-document');
   }
 
   isBackPageRequired() {

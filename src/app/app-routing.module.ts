@@ -52,14 +52,6 @@ const routes: Routes = [
       ),
   },
   {
-    path: 'dashboard',
-    canActivate: [AuthGuard],
-    loadChildren: () =>
-      import('./pages/dashboard/dashboard.module').then(
-        (m) => m.DashboardPageModule
-      ),
-  },
-  {
     path: 'error',
     loadChildren: () =>
       import('./pages/error/error.module').then((m) => m.ErrorPageModule),
@@ -68,14 +60,6 @@ const routes: Routes = [
     path: 'error/:errorType',
     loadChildren: () =>
       import('./pages/error/error.module').then((m) => m.ErrorPageModule),
-  },
-  {
-    path: 'portfolio',
-    loadChildren: () =>
-      import('./pages/portfolio/portfolio.module').then(
-        (m) => m.PortfolioPageModule
-      ),
-    canActivate: [AuthGuard],
   },
   {
     path: 'portfolio-details',
@@ -94,16 +78,6 @@ const routes: Routes = [
     path: 'sip/:id',
     canActivate: [AuthGuard],
     loadChildren: () => import('./pages/portfolio-view/portfolio-view.module').then( m => m.PortfolioViewPageModule)
-  },
-  {
-    path: 'invest',
-    loadChildren: () =>
-      import('./pages/invest/invest.module').then((m) => m.InvestPageModule),
-  },
-  {
-    path: 'profile',
-    loadChildren: () =>
-      import('./pages/profile/profile.module').then((m) => m.ProfilePageModule),
   },
   {
     path: 'popular-coins',
@@ -167,6 +141,14 @@ const routes: Routes = [
       import('./pages/tabs/tabs.module').then((m) => m.TabsPageModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'bank-details',
+    loadChildren: () => import('./pages/bank-details/bank-details.module').then(m => m.BankDetailsPageModule)
+  },
+  {
+    path: 'kyc-document',
+    loadChildren: () => import('./pages/kyc-document/kyc-document.module').then(m => m.KYCDocumentPageModule)
+  }
 ];
 
 @NgModule({

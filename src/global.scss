@@ -206,7 +206,7 @@ p {
 }
 
 .link-dark {
-  font-size: 16px;
+  font-size: 14px;
   color: #000;
   font-family: var(--f-Poppins);
   text-decoration: inherit;
@@ -402,7 +402,7 @@ p {
 
 // Theme Banner Section Star
 .theme-banner {
-  padding: 1rem 1rem 2.5rem 1rem;
+  padding: 2rem 1rem 2.5rem 1rem;
   position: relative;
   &::after {
     content: "";
@@ -415,11 +415,12 @@ p {
     border-radius: 25px 25px 0px 0px;
   }
   .ion-title {
-    font-size: 24px;
+    font-size: 26px;
     font-family: var(--f-Poppins);
-    font-weight: 400;
+    font-weight: 500;
     margin: 0rem;
     line-height: 28px;
+    color: #102e28;
   }
   .Price {
     font-size: 30px;
@@ -442,7 +443,7 @@ p {
     margin-top: 15px;
   }
   .invest-list h6 {
-    font-size: 17px;
+    font-size: 18px;
     line-height: 20px;
     font-weight: 500;
     letter-spacing: -0.08px;
@@ -483,6 +484,7 @@ p {
   ion-toolbar {
     --min-height: 55px;
     padding: 0rem 0.8rem 0rem 0.5rem;
+    --background: #fff;
     --border-width: 0px;
     --opacity: 1;
     --border-color: transparent;
@@ -543,7 +545,7 @@ p {
   width: 100%;
   margin: 1rem 0rem 0.5rem;
   h6 {
-    font-size: 14px;
+    font-size: 16px;
     color: #000;
     text-transform: uppercase;
     line-height: 16px;
@@ -554,6 +556,10 @@ p {
 }
 //  Popular Coin Card Start
 .popularSection {
+  app-package-card {
+    width: 100%;
+    margin-right: 15px;
+  }
   .card {
     display: flex;
     width: 100%;
@@ -598,17 +604,19 @@ p {
       }
       .Price {
         font-size: 22px;
-        font-weight: 400;
+        font-weight: 500;
         line-height: 22px;
         letter-spacing: -1.08px;
         margin-bottom: 0px;
         margin-top: 2px;
+        text-align: left;
       }
     }
     .large-line {
       font-size: 165px;
       height: 57px;
       margin: 0 auto;
+      width: 100%;
     }
   }
   &.basket {
@@ -636,7 +644,7 @@ p {
           line-height: 16px;
           letter-spacing: -0.05px;
           margin-bottom: 0px;
-          margin-top: 2px;
+          margin-top: 5px;
         }
 
         .line-draw {
@@ -818,16 +826,16 @@ p {
 
   .header-title {
     font-size: 24px;
-    font-weight: 400;
+    font-weight: 500;
     margin-top: 0rem;
     line-height: 32px;
     color: #fff;
     letter-spacing: -0.08px;
-    margin-bottom: 0px;
+    margin-bottom: 5px;
   }
 
   .small-label {
-    font-size: 14px;
+    font-size: 16px;
     line-height: 16px;
     font-family: var(--f-Poppins);
     font-weight: 300;
@@ -858,7 +866,7 @@ p {
 
     .small-label,
     .small-text {
-      font-size: 14px;
+      font-size: 16px;
       line-height: 16px;
       text-align: left;
       color: #102e28;
@@ -866,11 +874,11 @@ p {
 
     .small-label {
       font-family: var(--f-Poppins);
-      font-weight: 400;
+      font-weight: 500;
     }
 
     .small-text {
-      font-size: 15px;
+      font-size: 16px;
       line-height: 20px;
       font-weight: 500;
       color: var(--blackColor);
@@ -994,15 +1002,24 @@ p {
 .dial-pad {
   padding: 0rem 2rem;
   ion-button {
-    width: 62px;
-    height: 62px;
+    width: 70px;
+    height: 70px;
     --border-radius: 100%;
     margin: 0px;
     font-family: var(--f-Poppins);
     font-size: 20px;
     font-weight: 600;
+    --padding-start: 0;
+    --padding-end: 0;
     &.ion-button-white {
       stroke: #000;
+      font-size: 20px;
+      width: 70px;
+      height: 70px;
+      &.ion-activated {
+        color: #fff;
+        fill: #fff;
+      }
     }
   }
 }
@@ -1083,10 +1100,85 @@ ion-action-sheet {
 
 .bottomBtn {
   height: 60px;
-
+  .footerTab {
+    margin: 0px;
+    line-height: 0px;
+    height: 60px;
+    font-size: 18px;
+    --border-radius: 0px;
+    font-weight: 500;
+    font-family: var(--f-Poppins);
+    letter-spacing: 0.08px;
+    text-transform: inherit;
+  }
   ion-button {
     height: 100%;
   }
+}
+.custom-actionSheet {
+  .action-sheet-container.sc-ion-action-sheet-md,
+  .action-sheet-container.sc-ion-action-sheet-ios {
+    -webkit-padding-start: 0px;
+    padding-inline-start: 0px;
+    -webkit-padding-end: 0px;
+    padding-inline-end: 0px;
+  }
+  .action-sheet-container.sc-ion-action-sheet-md
+    .action-sheet-group.sc-ion-action-sheet-md:last-child,
+  .action-sheet-group.sc-ion-action-sheet-ios:last-child {
+    margin-bottom: 0px;
+  }
+  .action-sheet-container.sc-ion-action-sheet-md
+    .action-sheet-group.sc-ion-action-sheet-md,
+  .action-sheet-group.sc-ion-action-sheet-ios {
+    border-radius: 13px 13px 0px 0px !important;
+    &:last-child {
+      background-color: #fff;
+    }
+  }
+  .action-sheet-group.sc-ion-action-sheet-md:last-child button {
+    color: #000;
+  }
+  .action-sheet-title.sc-ion-action-sheet-md,
+  .action-sheet-title.sc-ion-action-sheet-ios {
+    text-align: center;
+    color: #000;
+    font-weight: 600;
+    font-size: 18px;
+    padding-top: 14px;
+    padding-bottom: 10px;
+    min-height: auto;
+    font-family: var(--f-Poppins);
+    border-bottom: solid 1px #ddd;
+  }
+  .action-sheet-button .sc-ion-action-sheet-md,
+  .action-sheet-button-inner.sc-ion-action-sheet-ios {
+    justify-content: flex-start;
+  }
+  .action-sheet-button.sc-ion-action-sheet-md,
+  .action-sheet-button.sc-ion-action-sheet-ios {
+    margin-left: 25px;
+    padding-inline-start: 0px;
+    padding-inline-end: 0px;
+    border-bottom: solid 1px #ddd;
+    &:last-child {
+      border-bottom: 0px;
+    }
+  }
+}
+ion-datetime {
+  .calendar-days-of-week {
+    padding: 0px 8px;
+    color: red;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    text-transform: uppercase;
+  }
+}
+::ng-deep body .calendar-day.calendar-day-today.calendar-day-active::after {
+  background: red !important;
+  opacity: 1;
 }
 
 /* ion-spinner */

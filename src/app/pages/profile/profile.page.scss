@@ -62,7 +62,7 @@
               }
             }
             .user-details{
-                width: 80%;
+                width: 75%;
                 padding-left: .8rem;
                 display: flex;
                 flex-flow: column;
@@ -101,7 +101,8 @@
         ion-item {
             --padding-start: 0px;
             --inner-padding-start: 0px; 
-            --border-width:0px;
+            --padding-end: 0px;
+            --inner-padding-end: 0px; 
             --inner-border-width:0px;
             --background: var(--bg-lighter);
             border-radius: 10px;

@@ -25,15 +25,10 @@ export class KYCDocumentPage implements OnInit {
 
   ionViewDidEnter(): void {
     this.user = this.userService.getUserFromStorage();
-    console.log('this.user', this.user);
   }
 
   onIDVerify(type: string) {
-    this.navCtrl.navigateForward(['/dashboard/kyc-document/id-verification', { type: type }]);
-  }
-
-  onBack() {
-    this.navCtrl.navigateForward('/dashboard/menu');
+    this.navCtrl.navigateForward(['/kyc-document/id-verification', { type: type }]);
   }
 
 }
