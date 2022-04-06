@@ -9,6 +9,7 @@ import { UserService } from './shared/services/user.service';
 import { ConnectionStatus, Network } from '@capacitor/network';
 import { Router } from '@angular/router';
 import { ErrorEnum } from './shared/types/error';
+import { ConfigurationService } from './shared/services/configuration.service';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     library: FaIconLibrary,
     private userService: UserService,
+    private configurationService: ConfigurationService,
     private router: Router
   ) {
     library.addIconPacks(fas as any, fab as any, far as any);
@@ -35,12 +37,20 @@ export class AppComponent implements OnInit, OnDestroy {
         autoHide: false
       });
   
-      const userRes = this.userService.setHeaderToken()
+      const userToken = this.userService.setHeaderToken();
       
-      if (userRes)
-        await SplashScreen.hide();  // hiding the splash screen here is when the user lands on any other page then login
+      if (userToken){
+        const config = await this.configurationService.getConfiguration();
+        if (config)
+          await SplashScreen.hide();
+        else
+          throw new Error("Configuration not available");
+      } else {
+        throw new Error("UserToken not available");
+      }
     } catch (e) {
       console.log(e);
+      this.userService.signOut();
     }
   }
 

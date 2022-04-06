@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import {
+  AfterViewInit,
+  Component,
+  ElementRef,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import {
   IonInput,
   ModalController,
@@ -9,16 +15,17 @@ import { SIPService } from 'src/app/shared/services/sip.service';
 // import { FormControl, Validators } from '@angular/forms';
 import { COLORS, COPY } from 'src/app/shared/helper/const';
 import { SipCreatedPage } from '../sip-created/sip-created.page';
+import { ConfigurationService } from 'src/app/shared/services/configuration.service';
 
 @Component({
   selector: 'app-add-amount',
   templateUrl: './add-amount.page.html',
   styleUrls: ['./add-amount.page.scss'],
 })
-export class AddAmountPage {
+export class AddAmountPage implements OnInit {
+  @ViewChild('amountInput') amountInput: IonInput;
 
-  @ViewChild("amountInput") amountInput: IonInput;
-
+  config;
   sipData: any = null;
   coins = [];
   chartData: {
@@ -28,7 +35,7 @@ export class AddAmountPage {
       backgroundColor: string[];
     }[];
   };
-  
+
   CONSTANT: any = COPY;
 
   showLoader = false;
@@ -39,10 +46,15 @@ export class AddAmountPage {
   constructor(
     private sipService: SIPService,
     public toastController: ToastController,
-    private modalController: ModalController
+    private modalController: ModalController,
+    private configurationService: ConfigurationService
   ) {
     this.sipData = this.sipService.getSIPData();
     this.prepareChartData();
+  }
+
+  async ngOnInit() {
+    this.config = await this.configurationService.getConfiguration();
   }
 
   prepareChartData() {
@@ -71,14 +83,26 @@ export class AddAmountPage {
 
   setAmount(amountDigit: number | 'remove') {
     const amountString = String(this.amount);
-    if (amountDigit === 'remove'){
+    if (amountDigit === 'remove') {
       if (this.amount || this.amount === 0)
-        this.amount = Number(amountString.substring(0, amountString.length-1));
+        this.amount = Number(
+          amountString.substring(0, amountString.length - 1)
+        );
     } else {
-      this.amount = this.amount || this.amount === 0 ? Number(amountString + amountDigit) : amountDigit;
+      this.amount =
+        this.amount || this.amount === 0
+          ? Number(amountString + amountDigit)
+          : amountDigit;
     }
 
-    this.isAmountValid = this.amount && new RegExp('^\\d+$').test(String(this.amount));
+    this.isAmountValid =
+      this.amount &&
+      new RegExp('^\\d+$').test(String(this.amount)) &&
+      this.amount <= this.config.sip.maxInstallmentAmount;
+    console.log(
+      'this.config.sip.maxInstallmentAmount: ',
+      this.config.sip.maxInstallmentAmount
+    );
   }
 
   async createSIP() {
@@ -89,12 +113,11 @@ export class AddAmountPage {
     try {
       this.showLoader = true;
       const sipRes = await this.sipService.addSIP();
-      if (sipRes.status === this.CONSTANT.SUCCESS){
-
+      if (sipRes.status === this.CONSTANT.SUCCESS) {
         // this.sipService.setSIPData('reset', null);
         const toast = await this.toastController.create({
           message: 'SIP created successfully',
-          duration: 2000
+          duration: 2000,
         });
         toast.present();
         this.closeModal('success');
@@ -102,12 +125,11 @@ export class AddAmountPage {
         // show the success screen
         const successModal = await this.modalController.create({
           component: SipCreatedPage,
-          id: 'SuccessModal'
+          id: 'SuccessModal',
         });
         await successModal.present();
-      } else
-        this.handleSIPCreateError();
-    } catch(e) {
+      } else this.handleSIPCreateError();
+    } catch (e) {
       console.log('Error while creating SIP: ', e);
       this.handleSIPCreateError();
     } finally {
@@ -118,15 +140,19 @@ export class AddAmountPage {
   async handleSIPCreateError() {
     const toast = await this.toastController.create({
       message: 'There was issue while creating SIP, please try again',
-      duration: 2000
+      duration: 2000,
     });
     toast.present();
     this.closeModal('error');
   }
 
-  closeModal(status: 'dismissed'|'success'|'error') {
-    this.modalController.dismiss({
-      status
-    }, '', 'AddMountModal');
+  closeModal(status: 'dismissed' | 'success' | 'error') {
+    this.modalController.dismiss(
+      {
+        status,
+      },
+      '',
+      'AddMountModal'
+    );
   }
 }
