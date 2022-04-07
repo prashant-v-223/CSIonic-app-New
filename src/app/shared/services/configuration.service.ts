@@ -15,15 +15,14 @@ export class ConfigurationService {
 
   async getConfiguration(fetchFromServer = false) {
     if (fetchFromServer || !this.configuration) {
-      return {
-        sip: {
-          maxInstallmentAmount: 4000,
-        },
-      };
-      // return this.api.getData(this.apiConfig.configuration);
-    } else {
-      return this.configuration;
+      const configResult = await this.api.getData(this.apiConfig.configuration);
+      if (configResult?.status === 'SUCCESS') {
+        this.configuration = configResult.data;
+      } else {
+        throw new Error('Error in fetching configuration');
+      }
     }
+    return this.configuration;
   }
 
   clearConfiguration() {

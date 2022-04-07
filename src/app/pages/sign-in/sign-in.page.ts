@@ -88,6 +88,7 @@ export class SignInPage implements OnInit {
   async getConfiguration() {
     try {
       const config = await this.configurationService.getConfiguration(true);
+      return config;
     } catch (e) {
       console.log('Error in fetching configuration', e);
       this.userService.signOut();
