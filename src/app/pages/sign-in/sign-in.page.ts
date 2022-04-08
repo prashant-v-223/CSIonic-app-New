@@ -1,20 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import { NavController, ToastController } from '@ionic/angular';
+import { SplashScreen } from '@capacitor/splash-screen';
+
 import { Auth } from 'aws-amplify';
 
 import { COPY } from 'src/app/shared/helper/const';
 import { UserService } from 'src/app/shared/services/user.service';
 import { passwordRequirementMessage, passwordValidator } from 'src/app/shared/validators/password-validator';
+import { ConfigurationService } from 'src/app/shared/services/configuration.service';
 
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.page.html',
   styleUrls: ['./sign-in.page.scss'],
 })
-export class SignInPage {
+export class SignInPage implements OnInit {
   CONSTANT: any = COPY;
   isLoading = false;
 
@@ -29,8 +32,13 @@ export class SignInPage {
     private navCtrl: NavController,
     private router: Router,
     private toastController: ToastController,
-    private userService: UserService
+    private userService: UserService,
+    private configurationService: ConfigurationService
   ) {}
+
+  async ngOnInit() {
+    await SplashScreen.hide();
+  }
 
   async signIn() {
     if (this.signInForm.invalid) return;
@@ -42,7 +50,9 @@ export class SignInPage {
       await Auth.signIn(this.signInForm.value);
       await this.userService.setHeaderToken();
       const user = await this.getUser();
-      if (user) this.router.navigateByUrl('/tabs/dashboard');
+      const config = await this.getConfiguration();
+      if (user && config) this.router.navigateByUrl('/tabs/dashboard');
+      else this.userService.signOut();
     } catch (e) {
       if (e?.message === 'User is not confirmed.') {
         this.navCtrl.navigateForward(
@@ -71,6 +81,17 @@ export class SignInPage {
       }
     } catch (e) {
       console.log('Error in fetching user data', e);
+      return null;
+    }
+  }
+
+  async getConfiguration() {
+    try {
+      const config = await this.configurationService.getConfiguration(true);
+      return config;
+    } catch (e) {
+      console.log('Error in fetching configuration', e);
+      this.userService.signOut();
       return null;
     }
   }

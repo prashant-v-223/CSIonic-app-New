@@ -32,6 +32,13 @@
           <h1 class="text-dark  mt-3 " *ngIf="amount else amountPlaceholderTmplt">
             {{ amount | number : '1.0-0' }}
           </h1>
+
+          <div class="d-flex justify-center">
+            <div class="error-message" *ngIf="amount > config?.sip?.maxInstallmentAmount">
+              Installment amount should be less than or equal to &#8377; {{ config?.sip?.maxInstallmentAmount | number : '1.0-0' }}
+            </div>
+          </div>
+
           <ng-template #amountPlaceholderTmplt>
             <h1 class="gray-text  mt-3 ">
               Type Amount

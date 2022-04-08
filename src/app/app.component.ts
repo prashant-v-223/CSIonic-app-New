@@ -10,6 +10,7 @@ import { Router } from '@angular/router';
 
 import { UserService } from './shared/services/user.service';
 import { ErrorEnum } from './shared/types/error';
+import { ConfigurationService } from './shared/services/configuration.service';
 import { COPY } from 'src/app/shared/helper/const';
 
 @Component({
@@ -23,6 +24,7 @@ export class AppComponent implements OnInit, OnDestroy {
   constructor(
     library: FaIconLibrary,
     private userService: UserService,
+    private configurationService: ConfigurationService,
     private router: Router
   ) {
     library.addIconPacks(fas as any, fab as any, far as any);
@@ -38,13 +40,24 @@ export class AppComponent implements OnInit, OnDestroy {
         autoHide: false
       });
   
-      const userRes = this.userService.setHeaderToken();
-      if (userRes){
-        await this.getUser();
+      const userToken = this.userService.setHeaderToken();
+      
+      if (userToken){
+        const user = await this.getUser();
+        if (!user)
+          throw new Error("User not available");
+
+        const config = await this.configurationService.getConfiguration();
+        if (!config)
+          throw new Error("Configuration not available");
+      } else {
+        throw new Error("UserToken not available");
       }
-      await SplashScreen.hide();
     } catch (e) {
       console.log(e);
+      this.userService.signOut();
+    } finally {
+      await SplashScreen.hide();
     }
   }
 
