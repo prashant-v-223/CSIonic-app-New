@@ -5,10 +5,12 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 
 import { SplashScreen } from '@capacitor/splash-screen';
-import { UserService } from './shared/services/user.service';
 import { ConnectionStatus, Network } from '@capacitor/network';
 import { Router } from '@angular/router';
+
+import { UserService } from './shared/services/user.service';
 import { ErrorEnum } from './shared/types/error';
+import { COPY } from 'src/app/shared/helper/const';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +18,7 @@ import { ErrorEnum } from './shared/types/error';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
+  CONSTANT: any = COPY;
   
   constructor(
     library: FaIconLibrary,
@@ -35,10 +38,11 @@ export class AppComponent implements OnInit, OnDestroy {
         autoHide: false
       });
   
-      const userRes = this.userService.setHeaderToken()
-      
-      if (userRes)
-        await SplashScreen.hide();  // hiding the splash screen here is when the user lands on any other page then login
+      const userRes = this.userService.setHeaderToken();
+      if (userRes){
+        await this.getUser();
+      }
+      await SplashScreen.hide();
     } catch (e) {
       console.log(e);
     }
@@ -48,6 +52,19 @@ export class AppComponent implements OnInit, OnDestroy {
     if (!status.connected){
       this.router.navigateByUrl(`/error/${ErrorEnum.NO_INTERNET}?redirect=${this.router.url}`, { replaceUrl: true });
       await SplashScreen.hide();
+    }
+  }
+
+  async getUser() {
+    try {
+      const userRes = await this.userService.getUser();
+      if (userRes.status === this.CONSTANT.SUCCESS) {
+        this.userService.setUserToStorage(userRes.data);
+        return userRes.data;
+      }
+    } catch (e) {
+      console.log('Error in fetching user data', e);
+      return null;
     }
   }
 

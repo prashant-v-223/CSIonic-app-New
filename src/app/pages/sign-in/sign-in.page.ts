@@ -1,16 +1,13 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+
 import { NavController, ToastController } from '@ionic/angular';
 import { Auth } from 'aws-amplify';
+
 import { COPY } from 'src/app/shared/helper/const';
 import { UserService } from 'src/app/shared/services/user.service';
 import { passwordRequirementMessage, passwordValidator } from 'src/app/shared/validators/password-validator';
-import {
-  onAuthUIStateChange,
-  CognitoUserInterface,
-} from '@aws-amplify/ui-components';
-import { SplashScreen } from '@capacitor/splash-screen';
 
 @Component({
   selector: 'app-sign-in',

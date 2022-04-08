@@ -100,7 +100,8 @@
 
         <!-- TODO -->
         <ion-col size="6" size-md>
-          <h4 class="heading-label text-dark">&#8377;{{ (view === 'sip' ? sipDetails.totalAmount : 19006) | number }}</h4>
+          <h4 class="heading-label text-dark">&#8377;{{ (view === 'sip' ? sipDetails.totalAmount : 19006) | number }}
+          </h4>
           <span class="small-label">Invested</span>
         </ion-col>
 
@@ -131,8 +132,8 @@
 
           <ng-template #intervalTmplt>
             <h6 class="smallHeading-label text-dark">
-              &#8377;{{ sipDetails.installmentAmount | number }}/<span
-                class="ion-text-capitalize">{{ sipDetails.interval.type }}</span>
+              &#8377;{{ sipDetails.installmentAmount | number }}/<span class="ion-text-capitalize">{{
+                sipDetails.interval.type }}</span>
             </h6>
             <span class="small-label">Interval</span>
           </ng-template>
@@ -147,17 +148,29 @@
       </ion-row>
 
       <ion-row class="mt-2">
-        <ion-col size="6" size-md>
-          <!-- TODO -->
-          <ion-button class="ion-button-theme" expand="full" shape="round" routerLink="/choose-plan-frequency">Add funds
-          </ion-button>
-        </ion-col>
-        <ion-col size="6" size-md>
-          <!-- TODO:  provide edit SIP option -->
-          <ion-button class="ion-button-theme-outline" fill="outline" shape="round" expand="full" (click)="openSIPStep()">
-            {{ view === 'package' ? 'Add' : 'Edit' }} SIP
-          </ion-button>
-        </ion-col>
+
+        <ng-container *ngIf="canStartSIP else SIPPrerequisiteMessageTmplt">
+          <ion-col size="12" size-md>
+            <!-- TODO:  provide edit SIP option -->
+            <ion-button class="ion-button-theme" shape="round" expand="full" (click)="openSIPStep()">
+              {{ view === 'package' ? 'Add' : 'Edit' }} SIP
+            </ion-button>
+          </ion-col>
+        </ng-container>
+
+        <ng-template #SIPPrerequisiteMessageTmplt>
+          <div class="bg-danger-light p-4 prerequisite-message">
+            To create SIP, please complete
+            <span *ngFor="let pendingVerification of pendingVerificationList; let last = last;">
+              <a [routerLink]="pequiredVerificationData[pendingVerification].link"
+                [queryParams]="pequiredVerificationData[pendingVerification].queryParams"
+                class="text-dark verification-link"><b>{{ pendingVerification }}</b></a>
+              <ng-container *ngIf="!last">, </ng-container>
+            </span>
+            verification process
+          </div>
+        </ng-template>
+
       </ion-row>
     </ion-list>
   </ion-grid>
