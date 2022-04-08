@@ -99,10 +99,6 @@ export class AddAmountPage implements OnInit {
       this.amount &&
       new RegExp('^\\d+$').test(String(this.amount)) &&
       this.amount <= this.config.sip.maxInstallmentAmount;
-    console.log(
-      'this.config.sip.maxInstallmentAmount: ',
-      this.config.sip.maxInstallmentAmount
-    );
   }
 
   async createSIP() {
