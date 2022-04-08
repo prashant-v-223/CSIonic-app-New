@@ -5,6 +5,7 @@ import { ModalController, NavController } from '@ionic/angular';
 import { COPY, COINS } from 'src/app/shared/helper/const';
 import { PackagesService } from 'src/app/shared/services/packages.service';
 import { SIPService } from 'src/app/shared/services/sip.service';
+import { UserService } from 'src/app/shared/services/user.service';
 import { ChoosePlanFrequencyPage } from '../choose-plan-frequency/choose-plan-frequency.page';
 
 enum SIPSteps {
@@ -12,6 +13,15 @@ enum SIPSteps {
   AMOUNT,
   CREATED,
 }
+
+
+export enum RequiredVerificationEnum {
+  AADHAR_CARD = 'Aadhar card',
+  BANK_ACCOUNT = 'Bank details',
+  PAN_CARD = 'PAN card',
+  SELFIE = 'Photo'
+}
+
 @Component({
   selector: 'app-portfolio-view',
   templateUrl: './portfolio-view.page.html',
@@ -23,9 +33,31 @@ export class PortfolioViewPage implements OnInit {
 
   public segment: string = 'day';
   showLoader = true;
+  RequiredVerificationEnum = RequiredVerificationEnum;
+  pequiredVerificationData = {
+    [RequiredVerificationEnum.AADHAR_CARD]: {
+      link: '/kyc-document/id-verification',
+      queryParams: { type: 'id-verify' }
+    },
+    [RequiredVerificationEnum.PAN_CARD]: {
+      link: '/kyc-document/id-verification',
+      queryParams: { type: 'PAN' }
+    },
+    [RequiredVerificationEnum.BANK_ACCOUNT]: {
+      link: '/bank-details',
+      queryParams: {}
+    },
+    [RequiredVerificationEnum.SELFIE]: {
+      link: '/kyc-document/id-verification',
+      queryParams: { type: 'selfie' }
+    }
+  };
 
   id: string;
   view: 'sip' | 'package';
+  user: any;
+  canStartSIP = false;
+  pendingVerificationList: RequiredVerificationEnum[] = [];
 
   sipDetails: any;
   packageDetails: any;
@@ -44,8 +76,11 @@ export class PortfolioViewPage implements OnInit {
     private navCtrl: NavController,
     public modalController: ModalController,
     private packagesService: PackagesService,
-    private sipService: SIPService
-  ) {}
+    private sipService: SIPService,
+    private userService: UserService
+  ) {
+    this.user = this.userService.getUserFromStorage();
+  }
 
   ngOnInit() {
     this.activateRoute.params.subscribe((params: Params) => {
@@ -54,6 +89,32 @@ export class PortfolioViewPage implements OnInit {
 
       this.loadDetails();
     });
+  }
+
+  ngAfterViewInit() {
+    this.checkUserCanStartSIP();
+  }
+
+  checkUserCanStartSIP() {
+    this.canStartSIP = false;
+    this.pendingVerificationList = [];
+    if (this.view === 'sip'){
+      this.canStartSIP = true;
+      return;
+    }
+
+    const list: RequiredVerificationEnum[] = [];
+    if (!this.user.kycDocuments?.bankAccount)
+      list.push(RequiredVerificationEnum.BANK_ACCOUNT);
+    if (!this.user.kycDocuments?.adhaarCard)
+      list.push(RequiredVerificationEnum.AADHAR_CARD);
+    if (!this.user.kycDocuments?.panCard)
+      list.push(RequiredVerificationEnum.PAN_CARD);
+    if (!this.user.kycDocuments?.selfie)
+      list.push(RequiredVerificationEnum.SELFIE);
+
+    this.canStartSIP = !list.length;
+    this.pendingVerificationList = list;
   }
 
   async loadDetails() {

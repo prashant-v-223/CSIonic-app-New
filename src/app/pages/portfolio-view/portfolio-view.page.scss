@@ -133,4 +133,13 @@
     letter-spacing: .08px;
     --box-shadow: inherit;
   }
+
+  .prerequisite-message {
+    border-radius: 10px;
+  }
+
+  .verification-link {
+    text-underline-offset: 1px;
+    text-decoration-style: dotted;
+  }
 }

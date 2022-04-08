@@ -6,11 +6,12 @@
       </ion-back-button>
     </ion-buttons>
 
-    <ion-buttons slot="end">
+    <!-- don't allow use to edit the bank details once verified -->
+    <!-- <ion-buttons slot="end">
       <ion-button slot="end" (click)="toggleMode()">
         <ion-icon [name]="mode === 'view' ? 'create' : 'close'" [class.text-d-theme]="mode === 'view'"></ion-icon>
       </ion-button>
-    </ion-buttons>
+    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 <!-- Header Section End -->

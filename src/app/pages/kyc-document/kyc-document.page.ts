@@ -3,14 +3,12 @@ import { NavController } from '@ionic/angular';
 import { COPY } from 'src/app/shared/helper/const';
 import { UserService } from 'src/app/shared/services/user.service';
 
-
 @Component({
   selector: 'app-kyc-document',
   templateUrl: './kyc-document.page.html',
   styleUrls: ['./kyc-document.page.scss'],
 })
 export class KYCDocumentPage implements OnInit {
-
   CONSTANT: any = COPY;
   showIdCardList: boolean = false;
 
@@ -19,7 +17,7 @@ export class KYCDocumentPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private userService: UserService
-  ) { }
+  ) {}
 
   ngOnInit() {}
 
@@ -28,7 +26,8 @@ export class KYCDocumentPage implements OnInit {
   }
 
   onIDVerify(type: string) {
-    this.navCtrl.navigateForward(['/kyc-document/id-verification', { type: type }]);
+    this.navCtrl.navigateForward('/kyc-document/id-verification', {
+      queryParams: { type },
+    });
   }
-
 }

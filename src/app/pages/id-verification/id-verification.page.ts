@@ -79,7 +79,7 @@ export class IdVerificationPage implements OnInit {
     private alertCtrl: AlertController,
     private cdr: ChangeDetectorRef
   ) {
-    this.subscriptions.verifyType = this.route.params.subscribe((data) => {
+    this.subscriptions.verifyType = this.route.queryParams.subscribe((data) => {
       if (data && data.type) {
         this.verifyType = data.type;
 

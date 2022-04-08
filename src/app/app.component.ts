@@ -5,11 +5,13 @@ import { far } from '@fortawesome/free-regular-svg-icons'
 import { fab } from '@fortawesome/free-brands-svg-icons'
 
 import { SplashScreen } from '@capacitor/splash-screen';
-import { UserService } from './shared/services/user.service';
 import { ConnectionStatus, Network } from '@capacitor/network';
 import { Router } from '@angular/router';
+
+import { UserService } from './shared/services/user.service';
 import { ErrorEnum } from './shared/types/error';
 import { ConfigurationService } from './shared/services/configuration.service';
+import { COPY } from 'src/app/shared/helper/const';
 
 @Component({
   selector: 'app-root',
@@ -17,6 +19,7 @@ import { ConfigurationService } from './shared/services/configuration.service';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent implements OnInit, OnDestroy {
+  CONSTANT: any = COPY;
   
   constructor(
     library: FaIconLibrary,
@@ -40,10 +43,12 @@ export class AppComponent implements OnInit, OnDestroy {
       const userToken = this.userService.setHeaderToken();
       
       if (userToken){
+        const user = await this.getUser();
+        if (!user)
+          throw new Error("User not available");
+
         const config = await this.configurationService.getConfiguration();
-        if (config)
-          await SplashScreen.hide();
-        else
+        if (!config)
           throw new Error("Configuration not available");
       } else {
         throw new Error("UserToken not available");
@@ -51,6 +56,8 @@ export class AppComponent implements OnInit, OnDestroy {
     } catch (e) {
       console.log(e);
       this.userService.signOut();
+    } finally {
+      await SplashScreen.hide();
     }
   }
 
@@ -58,6 +65,19 @@ export class AppComponent implements OnInit, OnDestroy {
     if (!status.connected){
       this.router.navigateByUrl(`/error/${ErrorEnum.NO_INTERNET}?redirect=${this.router.url}`, { replaceUrl: true });
       await SplashScreen.hide();
+    }
+  }
+
+  async getUser() {
+    try {
+      const userRes = await this.userService.getUser();
+      if (userRes.status === this.CONSTANT.SUCCESS) {
+        this.userService.setUserToStorage(userRes.data);
+        return userRes.data;
+      }
+    } catch (e) {
+      console.log('Error in fetching user data', e);
+      return null;
     }
   }
 
