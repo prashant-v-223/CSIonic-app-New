@@ -1,14 +1,11 @@
 import {
-  AfterViewInit,
   Component,
-  ElementRef,
   OnInit,
   ViewChild,
 } from '@angular/core';
 import {
   IonInput,
   ModalController,
-  NavController,
   ToastController,
 } from '@ionic/angular';
 import { SIPService } from 'src/app/shared/services/sip.service';
@@ -44,7 +41,7 @@ export class AddAmountPage implements OnInit {
   isAmountValid = false;
 
   constructor(
-    private sipService: SIPService,
+    public sipService: SIPService,
     public toastController: ToastController,
     private modalController: ModalController,
     private configurationService: ConfigurationService
@@ -98,7 +95,8 @@ export class AddAmountPage implements OnInit {
     this.isAmountValid =
       this.amount &&
       new RegExp('^\\d+$').test(String(this.amount)) &&
-      this.amount <= this.config.sip.maxInstallmentAmount;
+      this.amount <= this.config.sip.maxInstallmentAmount &&
+      this.amount >= this.sipService?.getSIPData()?.package?.totalMinimumDepositAmount;
   }
 
   async createSIP() {

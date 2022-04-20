@@ -10,12 +10,12 @@ export const COPY: any = {
     SELECT_DOCUMENT_LABEL: "Select Document",
     ENTER_NUMBER_LABEL: "Enter Number",
     TAKE_PHOTO_LABEL: "Take a photo",
-    
+
     FRONT_SIDE_LABEL: "Scan the front",
     BACK_SIDE_LABEL: "Scan the back",
-    takePhotoLable: (side: 'front'|'back', documentLabel: string) => `Take/pick a photo of the ${side} of your ${documentLabel}`,
+    takePhotoLable: (side: 'front' | 'back', documentLabel: string) => `Take/pick a photo of the ${side} of your ${documentLabel}`,
     takeYourPhoto: "Take your photo",
-    
+
     ADDRESS_PROOF: 'Address proof',
     IDENTITY_PROOF: 'Identity proof',
     AADHAAR_CARD: "Aadhaar card",

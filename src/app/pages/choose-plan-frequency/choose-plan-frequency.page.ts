@@ -1,5 +1,6 @@
-import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
-import { ModalController, NavController } from '@ionic/angular';
+import { ConfigurationService } from 'src/app/shared/services/configuration.service';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import { SIPService } from 'src/app/shared/services/sip.service';
 import { AddAmountPage } from '../add-amount/add-amount.page';
@@ -15,8 +16,9 @@ export class ChoosePlanFrequencyPage implements OnInit {
 
   selectFrequency: 'daily' | 'weekly' | 'monthly' = 'daily';
   selectedDay: any;
+  selectedTenure: number;
   week: any[] = [
-   
+
     'MONDAY',
     'TUESDAY',
     'WEDNESDAY',
@@ -26,37 +28,49 @@ export class ChoosePlanFrequencyPage implements OnInit {
     'SUNDAY',
   ];
   monthlyDate = new Date().toISOString();
-  startOfMonth = moment().startOf('month').format('YYYY-MM-DD');
+  startOfMonth = moment().format('YYYY-MM-DD');
   endOfMonth = moment().endOf('month').format('YYYY-MM-DD');
   isOpened: boolean = true;
 
   frequencyObject?: {
     type: 'daily' | 'weekly' | 'monthly';
-    weekDay?:      
-      | 'MONDAY'
-      | 'TUESDAY'
-      | 'WEDNESDAY'
-      | 'THURSDAY'
-      | 'FRIDAY'
-      | 'SATURDAY'
-      | 'SUNDAY';
+    weekDay?:
+    | 'MONDAY'
+    | 'TUESDAY'
+    | 'WEDNESDAY'
+    | 'THURSDAY'
+    | 'FRIDAY'
+    | 'SATURDAY'
+    | 'SUNDAY';
     monthDay?: number;
   };
   isFrequencyValid = false;
+  tenureYears = [];
+  stepperSteps = "tenure";
+  selectedDate: Date;
+  config;
 
   constructor(
     private modalController: ModalController,
     private sipService: SIPService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private configurationService: ConfigurationService
   ) {
+    this.sipService.currentStepper.subscribe((currentStepper: string) => {
+      this.stepperSteps = currentStepper;
+      if (this.stepperSteps === "addAmount")
+        this.stepperSteps = "planFrequency";
+    });
     this.package = this.sipService.getSIPData()?.package;
 
     if (!this.package) this.closeModal('error');
   }
 
-  ngOnInit() {
+  async ngOnInit() {
     this.coins = this.package.coins.map((coin) => coin.currencyId);
-    this.onSelectFrequency('daily');
+    this.onSelectFrequency('monthly');
+    this.config = await this.configurationService.getConfiguration();
+    this.tenureYears = this.config.tenure;
   }
 
   onSelectFrequency(type) {
@@ -76,10 +90,16 @@ export class ChoosePlanFrequencyPage implements OnInit {
     this.updateValidity();
   }
 
+  onSelectTenure(index) {
+    this.selectedTenure = this.tenureYears[index];
+    this.updateValidity();
+  }
+
   onSelectDate(date) {
     this.frequencyObject.monthDay = (
       date.detail?.value ? new Date(date.detail.value) : new Date()
     ).getDate();
+    this.selectedDate = date.detail?.value ? new Date(date.detail.value) : new Date();
     this.updateValidity();
   }
 
@@ -91,27 +111,44 @@ export class ChoosePlanFrequencyPage implements OnInit {
   }
 
   async openNextStep() {
-    this.sipService.setSIPData('plan-frequency', this.frequencyObject);
+    if (this.stepperSteps === "tenure") {
+      this.stepperSteps = "planFrequency";
+    } else if (this.stepperSteps === "planFrequency") {
+      this.stepperSteps = "addAmount";
+    }
+    if (this.stepperSteps === "addAmount") {
+      this.sipService.setSIPData('tenure', this.selectedTenure);
+      this.sipService.setSIPData('plan-frequency', this.frequencyObject);
+      if(this.selectFrequency === 'monthly'){
+        this.sipService.setSIPData('selectedDate', this.selectedDate);
+      }
 
-    const amountModal = await this.modalController.create({
-      component: AddAmountPage,
-      id: 'AddMountModal',
-    });
-    await amountModal.present();
+      const amountModal = await this.modalController.create({
+        component: AddAmountPage,
+        id: 'AddMountModal',
+      });
+      await amountModal.present();
 
-    const amountModalResult = await amountModal.onDidDismiss();
+      const amountModalResult = await amountModal.onDidDismiss();
 
-    if (['success', 'error'].indexOf(amountModalResult?.data.status) !== -1)
-      this.closeModal(amountModalResult?.data.status);
+      if (['success', 'error'].indexOf(amountModalResult?.data.status) !== -1)
+        this.closeModal(amountModalResult?.data.status);
+    }
   }
 
   closeModal(status: 'dismissed' | 'success' | 'error') {
-    this.modalController.dismiss(
-      {
-        status,
-      },
-      '',
-      'FrequencyModal'
-    );
+    if (this.stepperSteps === "addAmount") {
+      this.stepperSteps = "planFrequency";
+    } else if (this.stepperSteps === "planFrequency") {
+      this.stepperSteps = "tenure";
+    } else {
+      this.modalController.dismiss(
+        {
+          status,
+        },
+        '',
+        'FrequencyModal'
+      );
+    }
   }
 }

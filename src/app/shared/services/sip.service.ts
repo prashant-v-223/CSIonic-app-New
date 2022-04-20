@@ -1,3 +1,4 @@
+import { Subject } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { ApiCallService } from 'src/app/services/apis/api-call.service';
 import { ApiConfiguration } from 'src/app/services/apis/configuration';
@@ -6,40 +7,48 @@ import { ApiConfiguration } from 'src/app/services/apis/configuration';
   providedIn: 'root',
 })
 export class SIPService {
+  currentStepper = new Subject();
+
   private sipDataToCreate?: {
+    tenure?: string;
     package?: any;
     interval?: {
       type: 'daily' | 'weekly' | 'monthly';
       weekDay?:
-        | 'SUNDAY'
-        | 'MONDAY'
-        | 'TUESDAY'
-        | 'WEDNESDAY'
-        | 'THURSDAY'
-        | 'FRIDAY'
-        | 'SATURDAY';
+      | 'SUNDAY'
+      | 'MONDAY'
+      | 'TUESDAY'
+      | 'WEDNESDAY'
+      | 'THURSDAY'
+      | 'FRIDAY'
+      | 'SATURDAY';
       monthDay?: number;
     };
     installmentAmount?: number;
+    selectedDate?: Date;
   };
 
   constructor(
     private api: ApiCallService,
     private apiConfig: ApiConfiguration
-  ) {}
+  ) { }
 
   getSIPData() {
     // returning a clone so that external cann't change this object
-    return JSON.parse(JSON.stringify(this.sipDataToCreate));;
+    return JSON.parse(JSON.stringify(this.sipDataToCreate));
   }
 
   setSIPData(
-    step: 'package' | 'plan-frequency' | 'amount' | 'reset',
+    step: 'tenure' | 'package' | 'plan-frequency' | 'amount' | 'reset' | 'selectedDate',
     data: any
   ) {
     if (!this.sipDataToCreate) this.sipDataToCreate = {};
 
     switch (step) {
+      case 'tenure':
+        this.sipDataToCreate.tenure = data;
+        break;
+
       case 'package':
         this.sipDataToCreate.package = data.package;
         break;
@@ -56,6 +65,10 @@ export class SIPService {
 
       case 'amount':
         this.sipDataToCreate.installmentAmount = data.installmentAmount;
+        break;
+
+      case 'selectedDate':
+        this.sipDataToCreate.selectedDate = data;
         break;
 
       case 'reset':
