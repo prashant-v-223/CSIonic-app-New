@@ -18,7 +18,6 @@ export class ChoosePlanFrequencyPage implements OnInit {
   selectedDay: any;
   selectedTenure: number;
   week: any[] = [
-
     'MONDAY',
     'TUESDAY',
     'WEDNESDAY',
@@ -71,6 +70,7 @@ export class ChoosePlanFrequencyPage implements OnInit {
     this.onSelectFrequency('monthly');
     this.config = await this.configurationService.getConfiguration();
     this.tenureYears = this.config.tenure;
+    this.onSelectTenure(0);
   }
 
   onSelectFrequency(type) {
@@ -131,13 +131,13 @@ export class ChoosePlanFrequencyPage implements OnInit {
 
       const amountModalResult = await amountModal.onDidDismiss();
 
-      if (['success', 'error'].indexOf(amountModalResult?.data.status) !== -1)
-        this.closeModal(amountModalResult?.data.status);
+      if (amountModalResult?.data?.status)
+        this.closeModal(amountModalResult.data.status);
     }
   }
 
   closeModal(status: 'dismissed' | 'success' | 'error') {
-    if (this.stepperSteps === "addAmount") {
+    if (this.stepperSteps === "addAmount" && status === 'dismissed') {
       this.stepperSteps = "planFrequency";
     } else if (this.stepperSteps === "planFrequency") {
       this.stepperSteps = "tenure";
