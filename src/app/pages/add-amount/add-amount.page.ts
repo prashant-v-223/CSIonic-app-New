@@ -119,6 +119,9 @@ export class AddAmountPage implements OnInit {
         // show the success screen
         const successModal = await this.modalController.create({
           component: SipCreatedPage,
+          componentProps: {
+            newSIP: sipRes.data
+          },
           id: 'SuccessModal',
         });
         await successModal.present();

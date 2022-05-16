@@ -3,6 +3,13 @@ import { Injectable } from '@angular/core';
 import { ApiCallService } from 'src/app/services/apis/api-call.service';
 import { ApiConfiguration } from 'src/app/services/apis/configuration';
 
+export enum SIPStatus {
+  REGISTRATION_FAILED = 'registrationFailed',
+  WAITING_FOR_ESIGN = 'waitingForESign',
+  SIGNING_SUCCESS = 'auth_success',
+  SIGNING_FAILED = 'auth_failed',
+}
+
 @Injectable({
   providedIn: 'root',
 })
@@ -15,13 +22,13 @@ export class SIPService {
     interval?: {
       type: 'daily' | 'weekly' | 'monthly';
       weekDay?:
-      | 'SUNDAY'
-      | 'MONDAY'
-      | 'TUESDAY'
-      | 'WEDNESDAY'
-      | 'THURSDAY'
-      | 'FRIDAY'
-      | 'SATURDAY';
+        | 'SUNDAY'
+        | 'MONDAY'
+        | 'TUESDAY'
+        | 'WEDNESDAY'
+        | 'THURSDAY'
+        | 'FRIDAY'
+        | 'SATURDAY';
       monthDay?: number;
     };
     installmentAmount?: number;
@@ -31,7 +38,7 @@ export class SIPService {
   constructor(
     private api: ApiCallService,
     private apiConfig: ApiConfiguration
-  ) { }
+  ) {}
 
   getSIPData() {
     // returning a clone so that external cann't change this object
@@ -39,7 +46,13 @@ export class SIPService {
   }
 
   setSIPData(
-    step: 'tenure' | 'package' | 'plan-frequency' | 'amount' | 'reset' | 'selectedDate',
+    step:
+      | 'tenure'
+      | 'package'
+      | 'plan-frequency'
+      | 'amount'
+      | 'reset'
+      | 'selectedDate',
     data: any
   ) {
     if (!this.sipDataToCreate) this.sipDataToCreate = {};
@@ -115,5 +128,13 @@ export class SIPService {
 
   getSIPDetails(id: string) {
     return this.api.getData(`${this.apiConfig.sip}/${id}`);
+  }
+
+  changeSIPStatus(id: string, statusObj: { status: SIPStatus }) {
+    return this.api.putData(`${this.apiConfig.sip}/${id}/change-status`, statusObj);
+  }
+
+  getMandateDetails(sipId: string) {
+    return this.api.getData(`${this.apiConfig.sip}/${sipId}/mandate`);
   }
 }
