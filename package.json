@@ -1,8 +1,8 @@
 {
   "name": "prosprr",
   "version": "0.0.2",
-  "author": "Ionic Framework",
-  "homepage": "https://ionicframework.com/",
+  "author": "Prosprr",
+  "homepage": "https://prosprr.in/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
