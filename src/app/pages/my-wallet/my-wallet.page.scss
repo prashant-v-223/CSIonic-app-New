@@ -1,41 +1,50 @@
-.themeHeader{ 
+.themeHeader{
     ion-toolbar{
-        --background:var(--bg-lighter); 
-        --border-color:var(--bg-lighter); 
+        --background:var(--bg-lighter);
+        --border-color:var(--bg-lighter);
       }
       ion-list{
         background: transparent;
-      } 
-      ion-back-button.md{ 
-        background-color:rgba($color: #fff, $alpha: 1); 
+      }
+      ion-back-button.md{
+        background-color:rgba($color: #fff, $alpha: 1);
         ion-icon{
           stroke: #2F4858;
         }
-      } 
-    }  
- 
+      }
+    }
+
     //  My Wallet Card Start
 .walletSection {
   padding-top: 0rem;
     ion-list{
       padding-top: 0rem;
-      }  
+        ion-icon{
+          font-size: 20px;
+          &.icon-theme{
+              stroke:#8AC680;
+          }
+          &.icon-dark{
+            stroke:#2F4858;
+        }
+      }
+      }
       ion-button{
         margin: 0px;
         line-height: 0px;
         height:50px;
-        font-size: 16px;  
-        --border-radius: 8px; 
+        font-size: 16px;
+        --border-radius: 8px;
         font-weight: 400;
         font-family: var(--f-Poppins);
-        letter-spacing: .08px; 
-        width: 100%; 
-      
-    } 
+        letter-spacing: .08px;
+        width: 100%;
+
+    }
     ion-item{
-      --min-height: 65px; 
+      --min-height: 65px;
       --inner-border-width: 0px;
-      --border-color: inherit; 
+      --border-color: inherit;
         --padding-start: 0px;
         .list-md{
              padding-bottom: 0px;
@@ -56,7 +65,7 @@
         .ion-title{
           font-size: 17px;
           font-family: var(--f-Poppins);
-          letter-spacing: .08px; 
+          letter-spacing: .08px;
           margin-bottom: 0px;
           font-weight: 600;
           color: #000;
@@ -71,7 +80,7 @@
         .priceTage{
           font-size: 18px;
           font-family: var(--f-Poppins);
-          letter-spacing: .08px; 
+          letter-spacing: .08px;
           margin-bottom: 0px;
           font-weight: 600;
           color: #000;
@@ -80,20 +89,20 @@
         }
         ion-label{
           margin-inline: 0px;
-          margin:0px;       
+          margin:0px;
         }
-        
+
     }
-   
+
   }
   ion-button{
     ion-icon{
       font-size: 20px;
-      &.icon-theme{ 
-          stroke:#8AC680; 
+      &.icon-theme{
+          stroke:#8AC680;
       }
-      &.icon-dark{ 
-        stroke:#2F4858; 
+      &.icon-dark{
+        stroke:#2F4858;
     }
     }
   }

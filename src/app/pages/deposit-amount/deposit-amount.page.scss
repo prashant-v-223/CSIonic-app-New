@@ -1,8 +1,8 @@
 .themeHeader{
-  ion-toolbar{
+  /* ion-toolbar{
       --background:var(--bg-lighter);
       --border-color:var(--bg-lighter);
-    }
+    } */
     ion-list{
       background: transparent;
     }
@@ -101,4 +101,18 @@ ion-button{
   }
   }
 }
-//  My Wallet Card End
+.topHeader {
+  ion-title {
+    position: inherit;
+    text-align: left;
+    height: inherit;
+    left: inherit;
+    padding-right: 0px;
+    padding-inline: 0;
+    font-size: 24px;
+    font-family: var(--f-Poppins);
+    font-weight: 400;
+    margin-bottom: 1.5rem;
+    line-height: 28px;
+  }
+}

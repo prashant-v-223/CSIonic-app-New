@@ -12,7 +12,7 @@
   <!-- Header Section End -->
   <!-- Body Section Start -->
   <ion-content class="walletSection">
-    <div class="theme-banner pb-0 pt0">
+    <div class="theme-banner pb-0 pt-2">
       <ion-grid class="p-0">
         <form [formGroup]="AmountForm" class="w-100">
           <ion-row>
@@ -95,7 +95,7 @@
       <ion-grid class="p-0">
         <ion-row>
           <ion-col size="12" class="p-0 plant-img" size-md>
-            <ion-button class="footerTab ion-button-theme" expand="full" shape="round" (click)="save()" [disabled]="AmountForm.invalid || AmountForm.disabled">Deposit
+            <ion-button class="footerTab ion-button-theme" expand="full" shape="round" (click)="AddDeposit()" [disabled]="AmountForm.invalid || AmountForm.disabled">Deposit
             </ion-button>
           </ion-col>
         </ion-row>

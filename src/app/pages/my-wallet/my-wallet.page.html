@@ -3,7 +3,7 @@
   <ion-toolbar>
     <ion-list class="d-flex justify-between">
     <ion-buttons slot="start">
-      <ion-back-button  mat-icon-button class="back-btn" defaultHref="/profile">
+      <ion-back-button  mat-icon-button class="back-btn" defaultHref="/tabs/profile">
       </ion-back-button>
     </ion-buttons>
   </ion-list>
@@ -54,86 +54,25 @@
     <ion-grid class="themeHeading mt-0 p-0">
       <h6>Transcation</h6>
     </ion-grid>
-    <ion-item>
-      <ion-list class="up-icon" slot="start">
-        <ion-icon src="../../../assets/icon-up-arrow-round.svg"></ion-icon>
-      </ion-list>
-      <ion-label>
-        <ion-row class="w-100">
-          <ion-col class="p-0" size="10"  size-md>
-            <h2 class="ion-title">Chase bank</h2>
-            <span class="small-label">19 Nov, 2022, 15:00</span>
-          </ion-col>
-          <ion-col class="p-0 align-center d-flex justify-end" size="2"  size-md>
-            <h4 class="priceTage">$36</h4>
-          </ion-col>
-        </ion-row>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-list class="up-icon" slot="start">
-        <ion-icon src="../../../assets/icon-up-arrow-round.svg"></ion-icon>
-      </ion-list>
-      <ion-label>
-        <ion-row class="w-100">
-          <ion-col class="p-0" size="10"  size-md>
-            <h2 class="ion-title">Chase bank</h2>
-            <span class="small-label">19 Nov, 2022, 15:00</span>
-          </ion-col>
-          <ion-col class="p-0 align-center d-flex justify-end" size="2"  size-md>
-            <h4 class="priceTage">$36</h4>
-          </ion-col>
-        </ion-row>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-list class="up-icon" slot="start">
-        <ion-icon src="../../../assets/icon-up-arrow-round.svg"></ion-icon>
-      </ion-list>
-      <ion-label>
-        <ion-row class="w-100">
-          <ion-col class="p-0" size="10"  size-md>
-            <h2 class="ion-title">Chase bank</h2>
-            <span class="small-label">19 Nov, 2022, 15:00</span>
-          </ion-col>
-          <ion-col class="p-0 align-center d-flex justify-end" size="2"  size-md>
-            <h4 class="priceTage">$36</h4>
-          </ion-col>
-        </ion-row>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-list class="up-icon" slot="start">
-        <ion-icon src="../../../assets/icon-up-arrow-round.svg"></ion-icon>
-      </ion-list>
-      <ion-label>
-        <ion-row class="w-100">
-          <ion-col class="p-0" size="10"  size-md>
-            <h2 class="ion-title">Chase bank</h2>
-            <span class="small-label">19 Nov, 2022, 15:00</span>
-          </ion-col>
-          <ion-col class="p-0 align-center d-flex justify-end" size="2"  size-md>
-            <h4 class="priceTage">$36</h4>
-          </ion-col>
-        </ion-row>
-      </ion-label>
-    </ion-item>
-    <ion-item>
-      <ion-list class="up-icon" slot="start">
-        <ion-icon src="../../../assets/icon-up-arrow-round.svg"></ion-icon>
-      </ion-list>
-      <ion-label>
-        <ion-row class="w-100">
-          <ion-col class="p-0" size="10"  size-md>
-            <h2 class="ion-title">Chase bank</h2>
-            <span class="small-label">19 Nov, 2022, 15:00</span>
-          </ion-col>
-          <ion-col class="p-0 align-center d-flex justify-end" size="2"  size-md>
-            <h4 class="priceTage">$36</h4>
-          </ion-col>
-        </ion-row>
-      </ion-label>
-    </ion-item>
+
+
+      <ion-item *ngFor="let transaction of transactionList; index as i">
+        <ion-list class="up-icon " slot="start">
+          <ion-icon *ngIf="transaction.type=='deposit'" class="icon-theme" src="../../../assets/icon-up-arrow.svg"></ion-icon>
+          <ion-icon *ngIf="transaction.type=='withdrawal'" class="icon-theme" src="../../../assets/icon-down-arrow.svg"></ion-icon>
+        </ion-list>
+        <ion-label>
+          <ion-row class="w-100">
+            <ion-col class="p-0" size="10"  size-md>
+              <h2 class="ion-title">{{ transaction.type | titlecase }}</h2>
+              <span class="small-label">{{ transaction.createdAt | date }}</span>
+            </ion-col>
+            <ion-col class="p-0 align-center d-flex justify-end" size="2"  size-md>
+              <h4 class="priceTage">{{ transaction.amount }}</h4>
+            </ion-col>
+          </ion-row>
+        </ion-label>
+      </ion-item>
   </ion-list>
 </ion-content>
 <!-- Body Section End -->
