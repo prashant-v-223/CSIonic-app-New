@@ -45,7 +45,7 @@
               Deposit</ion-button>
         </ion-col>
         <ion-col size="6"  size-md>
-          <ion-button class="ion-button-white"> <ion-icon class="mr-1 icon-dark" src="../../../assets/icon-down-arrow.svg"></ion-icon>Withdraw</ion-button>
+          <ion-button class="ion-button-white" routerLink="/withdrawal-amount"> <ion-icon class="mr-1 icon-dark" src="../../../assets/icon-down-arrow.svg"></ion-icon>Withdraw</ion-button>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -54,25 +54,23 @@
     <ion-grid class="themeHeading mt-0 p-0">
       <h6>Transcation</h6>
     </ion-grid>
-
-
-      <ion-item *ngFor="let transaction of transactionList; index as i">
-        <ion-list class="up-icon " slot="start">
-          <ion-icon *ngIf="transaction.type=='deposit'" class="icon-theme" src="../../../assets/icon-up-arrow.svg"></ion-icon>
-          <ion-icon *ngIf="transaction.type=='withdrawal'" class="icon-theme" src="../../../assets/icon-down-arrow.svg"></ion-icon>
-        </ion-list>
-        <ion-label>
-          <ion-row class="w-100">
-            <ion-col class="p-0" size="10"  size-md>
-              <h2 class="ion-title">{{ transaction.type | titlecase }}</h2>
-              <span class="small-label">{{ transaction.createdAt | date }}</span>
-            </ion-col>
-            <ion-col class="p-0 align-center d-flex justify-end" size="2"  size-md>
-              <h4 class="priceTage">{{ transaction.amount }}</h4>
-            </ion-col>
-          </ion-row>
-        </ion-label>
-      </ion-item>
+    <ion-item *ngFor="let transaction of transactionList; index as i">
+      <ion-list class="up-icon " slot="start">
+        <ion-icon *ngIf="transaction.type=='deposit'" class="icon-theme" src="../../../assets/icon-up-arrow.svg"></ion-icon>
+        <ion-icon *ngIf="transaction.type=='withdrawal'" class="icon-dark" src="../../../assets/icon-down-arrow.svg"></ion-icon>
+      </ion-list>
+      <ion-label>
+        <ion-row class="w-100">
+          <ion-col class="p-0" size="10"  size-md>
+            <h2 class="ion-title">{{ transaction.status | titlecase }}</h2>
+            <span class="small-label">{{ transaction.createdAt | date }}</span>
+          </ion-col>
+          <ion-col class="p-0 align-center d-flex justify-end" size="2"  size-md>
+            <h4 class="priceTage">{{ transaction.amount }}</h4>
+          </ion-col>
+        </ion-row>
+      </ion-label>
+    </ion-item>
   </ion-list>
 </ion-content>
 <!-- Body Section End -->

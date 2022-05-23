@@ -15,7 +15,9 @@ export class ApiConfiguration {
 
     public packages = 'packages';
     public sip = 'sip';
-    public depositAmount = `transactions/amount/deposit`;
+    public depositWithdrawalAmount = `transactions/amount/`;
     public transactionList = `transactions`;
+
+    public userBankDetails = `bank/account/`;
 }
 

@@ -3,7 +3,7 @@
     <ion-toolbar>
       <ion-list class="d-flex justify-between">
       <ion-buttons slot="start">
-        <ion-back-button  mat-icon-button class="back-btn" defaultHref="/my-wallet">
+        <ion-back-button  mat-icon-button class="back-btn" defaultHref="/my-wallet">sss
         </ion-back-button>
       </ion-buttons>
     </ion-list>
@@ -18,14 +18,8 @@
           <ion-row>
             <ion-col size="12" class="p-0" size-md>
               <ion-item class="customForm">
-                <ion-label position="stacked">Deposit Amount</ion-label>
-                <ion-input type="number" placeholder="Enter Deposit Amount" (keypress)="omit_special_char($event)" minlength="1" formControlName="depositAmount"></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col size="12" class="p-0" size-md>
-              <ion-item class="customForm">
-                <ion-label position="stacked">UTR No. / Reference No.</ion-label>
-                <ion-input type="text" placeholder="Enter UTR No. / Reference No." formControlName="utrNumber"></ion-input>
+                <ion-label position="stacked">Withdrawal Amount</ion-label>
+                <ion-input type="number" placeholder="Enter Withdrawal Amount" (keypress)="omit_special_char($event)" minlength="1" formControlName="withdrawalAmount"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -34,7 +28,7 @@
     </div>
     <ion-list class="ion-list pr-2">
       <ion-grid class="themeHeading mt-0 p-0">
-        <h6>Company Bank Details</h6>
+        <h6>Bank Details</h6>
       </ion-grid>
       <ion-item class="mb-2">
         <div class="bank-details-display w-100 p-2">
@@ -42,7 +36,7 @@
             <ion-row class="w-100">
               <ion-col class="px-2" size="10"  size-md>
                 <h2 class="ion-title">ACCOUNT HOLDER NAME</h2>
-                <span class="small-label">{{ BankDataResponse.name }}</span>
+                <span class="small-label">{{ BankDataResponse.holderName }}</span>
               </ion-col>
             </ion-row>
           </ion-label>
@@ -78,7 +72,7 @@
             <ion-row class="w-100">
               <ion-col class="px-2" size="10"  size-md>
                 <h2 class="ion-title">IFSC CODE</h2>
-                <span class="small-label">{{ BankDataResponse.ifscCode }}</span>
+                <span class="small-label">{{ BankDataResponse.IFSC }}</span>
               </ion-col>
             </ion-row>
           </ion-label>
@@ -90,7 +84,7 @@
             <ion-row class="w-100">
               <ion-col class="px-2" size="10"  size-md>
                 <h2 class="ion-title">ACCOUNT TYPE</h2>
-                <span class="small-label">{{ BankDataResponse.type }}</span>
+                <span class="small-label">{{ BankDataResponse.accountType }}</span>
               </ion-col>
             </ion-row>
           </ion-label>
@@ -101,7 +95,7 @@
       <ion-grid class="p-0">
         <ion-row>
           <ion-col size="12" class="p-0 plant-img" size-md>
-            <ion-button class="footerTab ion-button-theme" expand="full" shape="round" (click)="addDeposit()" [disabled]="amountForm.invalid || amountForm.disabled">Deposit
+            <ion-button class="footerTab ion-button-theme" expand="full" shape="round" (click)="withdrawalAmount()" [disabled]="amountForm.invalid || amountForm.disabled">Withdrawal
             </ion-button>
           </ion-col>
         </ion-row>

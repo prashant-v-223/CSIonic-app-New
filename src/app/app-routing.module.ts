@@ -152,6 +152,10 @@ const routes: Routes = [
   {
     path: 'deposit-amount',
     loadChildren: () => import('./pages/deposit-amount/deposit-amount.module').then(m => m.DepositAmountModule)
+  },
+  {
+    path: 'withdrawal-amount',
+    loadChildren: () => import('./pages/withdrawal-amount/withdrawal-amount.module').then(m => m.WithdrawalAmountModule)
   }
 
 ];

@@ -12,31 +12,31 @@ export class TransactionsService {
     private apiConfig: ApiConfiguration
   ) {}
 
-  async depositAmount(depositAmount:string) {
-    const depositAmountData = {depositAmount:depositAmount};
-      const depositData = await this.api.postData(this.apiConfig.depositAmount,depositAmountData);
-      if (depositData?.status === 'SUCCESS')
+  //Deposit/Withdrawal Amount API
+  async depositWithdrawalAmount(amount:string,type:string,utrNumber?:string) {
+      try
       {
-        return depositData;
+        const amountData = {depositAmount:amount,utrNumber:utrNumber};
+        const responseData = await this.api.postData(this.apiConfig.depositWithdrawalAmount+type,amountData);
+        return responseData;
       }
-      else
+      catch(e)
       {
-        throw new Error('Error in fetching configuration');
+        throw e;
       }
 
   }
 
+  //Transaction List API
   async transactionList() {
-
-      const transactionListData = await this.api.getData(this.apiConfig.transactionList);
-      if (transactionListData?.data!="")
+      try
       {
+        const transactionListData = await this.api.getData(this.apiConfig.transactionList);
         return transactionListData;
       }
-      else
+      catch(e)
       {
-        throw new Error('Error in fetching configuration');
+        throw e;
       }
-
   }
 }

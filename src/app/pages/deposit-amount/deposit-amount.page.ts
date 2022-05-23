@@ -35,8 +35,9 @@ export class DepositAmountPage implements OnInit {
     this.GetBankInfo();
   }
 
-  AmountForm = new FormGroup({
-    deposit_amount: new FormControl('',[Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
+  amountForm = new FormGroup({
+    depositAmount: new FormControl('',[Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
+    utrNumber: new FormControl('',[Validators.required]),
   });
 
   /* GetDeposit()
@@ -54,7 +55,7 @@ export class DepositAmountPage implements OnInit {
   }
 
   onBack() {
-    this.navCtrl.navigateBack('/tabs/profile');
+    this.navCtrl.navigateBack('/tabs/my-wallet');
   }
 
   async GetBankInfo()
@@ -74,40 +75,27 @@ export class DepositAmountPage implements OnInit {
     }
   }
 
-  async AddDeposit()
+  addDeposit()
   {
     this.isLoading = true;
-    this.transactionService.depositAmount(this.AmountForm.controls['deposit_amount'].value)
-      .then( async (res) => {
-        console.log(res.status);
+    var depositAmount = this.amountForm.controls['depositAmount'].value;
+    var utrNumber = this.amountForm.controls['utrNumber'].value;
+    this.transactionService.depositWithdrawalAmount(depositAmount,"deposit",utrNumber)
+      .then((res) => {
       if (res.status =="SUCCESS")
       {
-        //this.depositAmountResponse = res.data;
-        const toast = await this.toastController.create({
-          message : res.message,
-          duration : 2000,
-          color:"success",
-          cssClass:"text-center"
-        });
-        await toast.present();
+        this.isLoading = false;
+        this.amountForm.reset();
       }
       else
       {
-        const toast = await this.toastController.create({
-          message : res.message,
-          duration : 2000,
-          color:"danger",
-          cssClass:"text-center"
-        });
-        await toast.present();
+        console.error("Something went wrong");
+        this.isLoading = false;
       }
     })
     .catch( async (error) => {
-      const toast = await this.toastController.create({
-        message : error,
-        duration : 2000,
-      });
-      await toast.present();
+      console.error(error);
+      this.isLoading = false;
     })
     .finally(() => {
       this.isLoading = false;
