@@ -1,0 +1,106 @@
+  <!-- Header Section Start -->
+  <ion-header translucent class="themeHeader">
+    <ion-toolbar>
+      <ion-list class="d-flex justify-between">
+      <ion-buttons slot="start">
+        <ion-back-button  mat-icon-button class="back-btn" defaultHref="/my-wallet">sss
+        </ion-back-button>
+      </ion-buttons>
+    </ion-list>
+    </ion-toolbar>
+  </ion-header>
+  <!-- Header Section End -->
+  <!-- Body Section Start -->
+  <ion-content class="walletSection">
+    <div class="theme-banner pb-0 pt-2">
+      <ion-grid class="p-0">
+        <form [formGroup]="amountForm" class="w-100">
+          <ion-row>
+            <ion-col size="12" class="p-0" size-md>
+              <ion-item class="customForm">
+                <ion-label position="stacked">Withdrawal Amount</ion-label>
+                <ion-input type="number" placeholder="Enter Withdrawal Amount" (keypress)="omit_special_char($event)" minlength="1" formControlName="withdrawalAmount"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-grid>
+    </div>
+    <ion-list class="ion-list pr-2">
+      <ion-grid class="themeHeading mt-0 p-0">
+        <h6>Bank Details</h6>
+      </ion-grid>
+      <ion-item class="mb-2">
+        <div class="bank-details-display w-100 p-2">
+          <ion-label>
+            <ion-row class="w-100">
+              <ion-col class="px-2" size="10"  size-md>
+                <h2 class="ion-title">ACCOUNT HOLDER NAME</h2>
+                <span class="small-label">{{ BankDataResponse.holderName }}</span>
+              </ion-col>
+            </ion-row>
+          </ion-label>
+        </div>
+      </ion-item>
+      <ion-item class="mb-2">
+        <div class="bank-details-display w-100 p-2">
+          <ion-label>
+            <ion-row class="w-100">
+              <ion-col class="px-2" size="10"  size-md>
+                <h2 class="ion-title">BANK NAME</h2>
+                <span class="small-label">{{ BankDataResponse.bankName }}</span>
+              </ion-col>
+            </ion-row>
+          </ion-label>
+        </div>
+      </ion-item>
+      <ion-item class="mb-2">
+        <div class="bank-details-display w-100 p-2">
+          <ion-label>
+            <ion-row class="w-100">
+              <ion-col class="px-2" size="10"  size-md>
+                <h2 class="ion-title">BANK ACCOUNT NUMBER</h2>
+                <span class="small-label">{{ BankDataResponse.accountNumber }}</span>
+              </ion-col>
+            </ion-row>
+          </ion-label>
+        </div>
+      </ion-item>
+      <ion-item class="mb-2">
+        <div class="bank-details-display w-100 p-2">
+          <ion-label>
+            <ion-row class="w-100">
+              <ion-col class="px-2" size="10"  size-md>
+                <h2 class="ion-title">IFSC CODE</h2>
+                <span class="small-label">{{ BankDataResponse.IFSC }}</span>
+              </ion-col>
+            </ion-row>
+          </ion-label>
+        </div>
+      </ion-item>
+      <ion-item class="mb-2">
+        <div class="bank-details-display w-100 p-2">
+          <ion-label>
+            <ion-row class="w-100">
+              <ion-col class="px-2" size="10"  size-md>
+                <h2 class="ion-title">ACCOUNT TYPE</h2>
+                <span class="small-label">{{ BankDataResponse.accountType }}</span>
+              </ion-col>
+            </ion-row>
+          </ion-label>
+        </div>
+      </ion-item>
+    </ion-list>
+    <div class="theme-banner pt-0 mb-1">
+      <ion-grid class="p-0">
+        <ion-row>
+          <ion-col size="12" class="p-0 plant-img" size-md>
+            <ion-button class="footerTab ion-button-theme" expand="full" shape="round" (click)="withdrawalAmount()" [disabled]="amountForm.invalid || amountForm.disabled">Withdrawal
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+
+  <!-- Body Section End -->

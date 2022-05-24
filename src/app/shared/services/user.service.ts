@@ -19,7 +19,7 @@ export class UserService {
     private navCtrl: NavController,
     private configurationService: ConfigurationService,
   ) {
-    this.setHeaderToken();  
+    this.setHeaderToken();
   }
 
   setUserToStorage(user: any) {
@@ -33,7 +33,7 @@ export class UserService {
   setHeaderToken() {
     return this.api.setHeaderToken();
   }
-  
+
   getUser() {
     return this.api.getData(this.apiConfig.user);
   }
@@ -55,5 +55,20 @@ export class UserService {
       });
       this.navCtrl.navigateRoot('/sign-in');
     }, 500);
+  }
+
+  //User Bank Details Get API
+  async getUserBankDetails(userId:string)
+  {
+    try
+      {
+        const depositData = await this.api.getData(this.apiConfig.userBankDetails+userId);
+        return depositData;
+      }
+      catch(e)
+      {
+        throw e;
+      }
+    return this.api.getData(userId);
   }
 }
