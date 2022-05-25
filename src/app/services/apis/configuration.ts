@@ -18,6 +18,5 @@ export class ApiConfiguration {
     public depositWithdrawalAmount = `transactions/amount/`;
     public transactionList = `transactions`;
 
-    public userBankDetails = `bank/account/`;
 }
 

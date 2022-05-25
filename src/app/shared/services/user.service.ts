@@ -62,13 +62,12 @@ export class UserService {
   {
     try
       {
-        const depositData = await this.api.getData(this.apiConfig.userBankDetails+userId);
+        const depositData = await this.api.getData(this.apiConfig.bankAccount+'/'+userId);
         return depositData;
       }
       catch(e)
       {
         throw e;
       }
-    return this.api.getData(userId);
   }
 }

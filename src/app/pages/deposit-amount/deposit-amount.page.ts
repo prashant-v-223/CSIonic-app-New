@@ -36,7 +36,7 @@ export class DepositAmountPage implements OnInit {
   }
 
   amountForm = new FormGroup({
-    depositAmount: new FormControl('',[Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
+    depositAmount: new FormControl('',[Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/),Validators.min(1)]),
     utrNumber: new FormControl('',[Validators.required]),
   });
 
