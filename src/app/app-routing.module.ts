@@ -156,6 +156,10 @@ const routes: Routes = [
   {
     path: 'withdrawal-amount',
     loadChildren: () => import('./pages/withdrawal-amount/withdrawal-amount.module').then(m => m.WithdrawalAmountModule)
+  },
+  {
+    path: 'referral',
+    loadChildren: () => import('./pages/referral/referral.module').then(m => m.ReferralModule)
   }
 
 ];

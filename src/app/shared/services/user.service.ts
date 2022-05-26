@@ -70,4 +70,18 @@ export class UserService {
         throw e;
       }
   }
+
+  async addReferralCode(referralCode:string)
+  {
+    try
+      {
+        const referralCodeData = {referralCode:referralCode};
+        const referralData = await this.api.postData(this.apiConfig.referralCode,referralCodeData);
+        return referralData;
+      }
+      catch(e)
+      {
+        throw e;
+      }
+  }
 }
