@@ -160,6 +160,10 @@ const routes: Routes = [
   {
     path: 'referral',
     loadChildren: () => import('./pages/referral/referral.module').then(m => m.ReferralModule)
+  },
+  {
+    path: 'early-access',
+    loadChildren: () => import('./pages/early-access/early-access.module').then(m => m.EarlyAccessModule)
   }
 
 ];

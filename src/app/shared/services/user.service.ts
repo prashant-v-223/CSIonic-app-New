@@ -71,11 +71,11 @@ export class UserService {
       }
   }
 
-  async addReferralCode(referralCode:string)
+  async addReferralCode(referralCode:string,referralCheck:Boolean)
   {
     try
       {
-        const referralCodeData = {referralCode:referralCode};
+        const referralCodeData = {referralCode:referralCode,isReferalUsed:referralCheck};
         const referralData = await this.api.postData(this.apiConfig.referralCode,referralCodeData);
         return referralData;
       }
@@ -83,5 +83,17 @@ export class UserService {
       {
         throw e;
       }
+  }
+
+  async getEarlyAccessDetails(userId:string)
+  {
+    try
+    {
+      return await this.api.getData(this.apiConfig.earlyAccessCheck+'?_id='+userId);
+    }
+    catch(e)
+    {
+      throw e;
+    }
   }
 }

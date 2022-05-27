@@ -14,7 +14,7 @@
   <ion-content class="walletSection">
     <div class="theme-banner pb-0 pt-2">
       <ion-grid class="p-0">
-        <form [formGroup]="referralForm" class="w-100">
+        <form [formGroup]="referralForm" class="w-100" defaultHref="/tabs/dashboard">
           <ion-row>
             <ion-col size="12" class="p-0" size-md>
               <ion-item class="customForm">
@@ -29,8 +29,14 @@
     <div class="theme-banner pt-0 mb-1">
       <ion-grid class="p-0">
         <ion-row>
-          <ion-col size="12" class="p-0 plant-img" size-md>
-            <ion-button class="footerTab ion-button-theme" expand="full" shape="round" (click)="addDeposit()" [disabled]="referralForm.invalid || referralForm.disabled">Deposit
+          <ion-col size="12" class="plant-img" size-md>
+            <ion-button class="footerTab ion-button-theme" expand="full" shape="round" (click)="addReferral(true)" [disabled]="referralForm.invalid || referralForm.disabled">Referral
+            </ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col size="12" class="plant-img" size-md>
+            <ion-button class="footerTab ion-button-theme" expand="full" shape="round" (click)="addReferral(false)">Not Referral
             </ion-button>
           </ion-col>
         </ion-row>

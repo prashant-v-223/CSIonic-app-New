@@ -18,7 +18,8 @@ export class ApiConfiguration {
     public depositWithdrawalAmount = `transactions/amount/`;
     public transactionList = `transactions`;
 
-    public referralCode = `referral`;
+    public referralCode = `auth/verify/referral/user`;
+    public earlyAccessCheck = `early/access/user/`;
 
 }
 

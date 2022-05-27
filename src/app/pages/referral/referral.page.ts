@@ -16,20 +16,20 @@ export class ReferralPage implements OnInit {
   isLoading = false;
   ngOnInit() {}
   referralForm = new FormGroup({
-    referralCode: new FormControl('',[Validators.required]),
+    referralCode: new FormControl('',[Validators.required,Validators.max(6)]),
   });
 
-  addReferral()
+  addReferral(referralCheck:Boolean)
   {
     this.isLoading = true;
     var referralCode = this.referralForm.controls['referralCode'].value;
-    this.userService.addReferralCode(referralCode)
+    this.userService.addReferralCode(referralCode,referralCheck)
       .then((res) => {
       if (res.status =="SUCCESS")
       {
         this.isLoading = false;
         this.referralForm.reset();
-        this.navCtrl.navigateRoot('/')
+        this.navCtrl.navigateRoot('/tabs/dashboard')
       }
       else
       {
