@@ -20,7 +20,7 @@ import { COPY } from 'src/app/shared/helper/const';
 })
 export class AppComponent implements OnInit, OnDestroy {
   CONSTANT: any = COPY;
-  
+
   constructor(
     library: FaIconLibrary,
     private userService: UserService,
@@ -29,19 +29,19 @@ export class AppComponent implements OnInit, OnDestroy {
   ) {
     library.addIconPacks(fas as any, fab as any, far as any);
   }
-  
+
   async ngOnInit() {
     try {
       const status = await Network.getStatus();
       this.handleNetworkStatus(status);
       Network.addListener("networkStatusChange", status => this.handleNetworkStatus(status));
-  
+
       await SplashScreen.show({
         autoHide: false
       });
-  
+
       const userToken = this.userService.setHeaderToken();
-      
+
       if (userToken){
         const user = await this.getUser();
         if (!user)
