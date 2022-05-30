@@ -58,7 +58,7 @@ export class UserService {
   }
 
   //User Bank Details Get API
-  async getUserBankDetails(userId:string)
+ async getUserBankDetails(userId:string)
   {
     try
       {
@@ -85,7 +85,7 @@ export class UserService {
       }
   }
 
-  async getEarlyAccessDetails(userId:string)
+ async getEarlyAccessDetails(userId:string)
   {
     try
     {

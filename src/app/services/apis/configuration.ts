@@ -17,7 +17,7 @@ export class ApiConfiguration {
     public sip = 'sip';
     public depositWithdrawalAmount = `transactions/amount/`;
     public transactionList = `transactions`;
-
+  
     public referralCode = `auth/verify/referral/user`;
     public earlyAccessCheck = `early/access/user/`;
 

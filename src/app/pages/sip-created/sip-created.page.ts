@@ -53,10 +53,12 @@ export class SipCreatedPage implements AfterViewInit {
   }
 
   updateMandateStatus() {
-    this.mandateStatus =
-      this.newSIP.mandate.statusUpdates[
-        this.newSIP.mandate.statusUpdates.length - 1
-      ].status;
+    // TODO: change this initialization when eSignining needs to enabled
+    this.mandateStatus = SIPStatus.SIGNING_SUCCESS;
+    // this.mandateStatus =
+    //   this.newSIP.mandate.statusUpdates[
+    //     this.newSIP.mandate.statusUpdates.length - 1
+    //   ].status;
   }
 
   async initESign() {
