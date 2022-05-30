@@ -164,7 +164,15 @@ const routes: Routes = [
   {
     path: 'early-access',
     loadChildren: () => import('./pages/early-access/early-access.module').then(m => m.EarlyAccessModule)
+  },  {
+    path: 'support-model',
+    loadChildren: () => import('./pages/common-design/support-model/support-model.module').then( m => m.SupportModelPageModule)
+  },
+  {
+    path: 'support',
+    loadChildren: () => import('./pages/support/support.module').then( m => m.SupportPageModule)
   }
+
 
 ];
 

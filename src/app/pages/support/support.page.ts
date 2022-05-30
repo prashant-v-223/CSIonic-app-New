@@ -1,31 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from '@ionic/angular';
 import { ModalController } from '@ionic/angular';
-
-import { Auth } from 'aws-amplify';
-
-import { UserService } from 'src/app/shared/services/user.service';
 import { SupportModelPage } from '../common-design/support-model/support-model.page';
 
-@Component({
-  selector: 'app-profile',
-  templateUrl: './profile.page.html',
-  styleUrls: ['./profile.page.scss'],
-})
-export class ProfilePage {
 
-  user: any;
+@Component({
+  selector: 'app-support',
+  templateUrl: './support.page.html',
+  styleUrls: ['./support.page.scss'],
+})
+export class SupportPage {
+
   dataReturned: any;
 
   constructor(
-    private userService: UserService, public modalController: ModalController
-  ) {
-    this.user = this.userService.getUserFromStorage();
-  }
+    public modalController: ModalController
+  ) { }
 
-  signOut() {
-    this.userService.signOut();
-  }
   async openModal() {
     const modal = await this.modalController.create({
       component: SupportModelPage,
@@ -44,4 +34,5 @@ export class ProfilePage {
 
     return await modal.present();
   }
+
 }
