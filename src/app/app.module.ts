@@ -16,7 +16,6 @@ import { ApiConfiguration } from './services/apis/configuration';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { EmailComposer } from '@awesome-cordova-plugins/email-composer/ngx';
 import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
-
 Amplify.configure({
   Auth: {
     identityPoolId: environment.COGNITO_IDENTITY_POOL_ID,
