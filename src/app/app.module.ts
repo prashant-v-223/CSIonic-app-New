@@ -15,6 +15,7 @@ import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import { ApiConfiguration } from './services/apis/configuration';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
 import { EmailComposer } from '@awesome-cordova-plugins/email-composer/ngx';
+import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 
 Amplify.configure({
   Auth: {
@@ -40,7 +41,12 @@ Amplify.configure({
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    ApiConfiguration,EmailComposer
+    ApiConfiguration,EmailComposer,
+    AppVersion,
+    {
+      provide: RouteReuseStrategy,
+      useClass: IonicRouteStrategy
+    }
   ],
   bootstrap: [AppComponent],
 })

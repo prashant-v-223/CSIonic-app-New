@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-
 @Component({
   selector: 'app-maintenance-mode',
   templateUrl: './maintenance-mode.page.html',
@@ -7,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MaintenanceModePage implements OnInit {
 
-  constructor() { }
 
   ngOnInit() {
   }

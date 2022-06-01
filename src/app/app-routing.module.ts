@@ -176,7 +176,8 @@ const routes: Routes = [
   {
     path: 'maintenance-mode',
     loadChildren: () => import('./pages/maintenance-mode/maintenance-mode.module').then( m => m.MaintenanceModePageModule)
-  },  {
+  },
+  {
     path: 'force-app-update',
     loadChildren: () => import('./pages/force-app-update/force-app-update.module').then( m => m.ForceAppUpdatePageModule)
   }
