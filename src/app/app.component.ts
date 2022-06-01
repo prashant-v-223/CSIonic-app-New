@@ -12,7 +12,9 @@ import { UserService } from './shared/services/user.service';
 import { ErrorEnum } from './shared/types/error';
 import { ConfigurationService } from './shared/services/configuration.service';
 import { COPY } from 'src/app/shared/helper/const';
-
+import { MaintenanceService } from './shared/services/maintenance.service';
+import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
+import { Platform } from '@ionic/angular';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -20,18 +22,48 @@ import { COPY } from 'src/app/shared/helper/const';
 })
 export class AppComponent implements OnInit, OnDestroy {
   CONSTANT: any = COPY;
-
+  ionVersionNumber: string;
   constructor(
     library: FaIconLibrary,
     private userService: UserService,
     private configurationService: ConfigurationService,
-    private router: Router
-  ) {
+    private router: Router,
+    private maintenanceService: MaintenanceService,
+    private appVersion: AppVersion,
+    private platform: Platform
+    ) {
     library.addIconPacks(fas as any, fab as any, far as any);
   }
 
+
   async ngOnInit() {
-    try {
+    try
+    {
+      console.log(this.appVersion);
+      let maintenanceCheck = await this.maintenanceService.checkMaintenance();
+      if(maintenanceCheck.data.maintenance===true)
+      {
+        this.router.navigateByUrl('maintenance-mode');
+      }
+      else
+      {
+        const getLatestVersion = await this.maintenanceService.getLatestVersion();
+        if(getLatestVersion.data.mandatoryUpdate===true && getLatestVersion.data.latest>this.appVersion)
+        {
+          this.router.navigateByUrl('force-app-update');
+          throw new Error("Please update your app");
+        }
+      }
+    }
+    catch(error)
+    {
+        this.router.navigateByUrl('maintenance-mode');
+        throw new Error("UserToken not available");
+    }
+
+    try
+    {
+
       const status = await Network.getStatus();
       this.handleNetworkStatus(status);
       Network.addListener("networkStatusChange", status => this.handleNetworkStatus(status));
@@ -40,9 +72,11 @@ export class AppComponent implements OnInit, OnDestroy {
         autoHide: false
       });
 
+     // this.router.navigateByUrl('maintenance-mode');
       const userToken = this.userService.setHeaderToken();
+      if (userToken)
+      {
 
-      if (userToken){
         const user = await this.getUser();
         if (!user)
           throw new Error("User not available");
@@ -71,7 +105,8 @@ export class AppComponent implements OnInit, OnDestroy {
   async getUser() {
     try {
       const userRes = await this.userService.getUser();
-      if (userRes.status === this.CONSTANT.SUCCESS) {
+      if (userRes.status === this.CONSTANT.SUCCESS)
+      {
         this.userService.setUserToStorage(userRes.data);
         return userRes.data;
       }

@@ -2,6 +2,7 @@
   "appId": "com.constation.prosprr",
   "appName": "Prosprr",
   "webDir": "www",
+  "version":"0.0.2",
   "bundledWebRuntime": false,
   "plugins": {
     "SplashScreen": {

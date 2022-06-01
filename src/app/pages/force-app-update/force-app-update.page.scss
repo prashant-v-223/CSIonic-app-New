@@ -1,0 +1,39 @@
+.themeHeader{
+  ion-toolbar{
+    --background:var(--theme-color);
+    --border-color:var(--theme-color);
+  }
+  ion-list{
+    background: transparent;
+  }
+  ion-back-button.md{
+    background-color:rgba($color: #000, $alpha: .1);
+    ion-icon{
+      stroke: #2F4858;
+    }
+  }
+  ion-back-button,ion-title{
+    color: #fff;
+    letter-spacing: 1px;
+  }
+}
+.appLogo {
+  display: flex;
+  justify-content: center;
+  margin: 10% auto;
+  .logo {
+    font-size: 110px;
+    margin-bottom: 10px;
+  }
+}
+.app-link-btn
+{
+  ion-title{
+    font-size: 20px;
+    color:#8AC680;
+    line-height: 26px;
+  }
+  text-align: center;
+  width: 100%;
+  margin: 5% auto;
+}
