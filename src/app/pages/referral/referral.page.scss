@@ -81,9 +81,6 @@ padding-top: 0rem;
       ion-label{
         margin-inline: 0px;
         margin:0px;
-        .color-gray{
-          color:#9E9E9E;
-        }
       }
       .bank-details-display{
         background-color: var(--bg-lighter);
@@ -118,4 +115,10 @@ ion-button{
     margin-bottom: 1.5rem;
     line-height: 28px;
   }
+}
+.referral-code
+{
+  padding-left: 0.5em !important;
+  letter-spacing: 1em;
+  text-align: center;
 }

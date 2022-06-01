@@ -17,9 +17,10 @@
         <form [formGroup]="amountForm" class="w-100">
           <ion-row>
             <ion-col size="12" class="p-0" size-md>
-              <ion-item class="customForm">
+              <ion-item class="pb-0 customForm">
                 <ion-label position="stacked">Withdrawal Amount</ion-label>
-                <ion-input type="number" placeholder="Enter Withdrawal Amount" (keypress)="omit_special_char($event)" minlength="1" formControlName="withdrawalAmount"></ion-input>
+                <ion-input type="number" placeholder="Enter Withdrawal Amount" (keypress)="omit_special_char($event)" min="1" formControlName="withdrawalAmount"></ion-input>
+                <span position="stacked" class="pt-2 color-gray">Max withdrawal amount is {{ this.maxWithdrawalAmounts }}.</span>
               </ion-item>
             </ion-col>
           </ion-row>

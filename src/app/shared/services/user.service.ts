@@ -58,17 +58,42 @@ export class UserService {
   }
 
   //User Bank Details Get API
-  async getUserBankDetails(userId:string)
+ async getUserBankDetails(userId:string)
   {
     try
       {
-        const depositData = await this.api.getData(this.apiConfig.userBankDetails+userId);
+        const depositData = await this.api.getData(this.apiConfig.bankAccount+'/'+userId);
         return depositData;
       }
       catch(e)
       {
         throw e;
       }
-    return this.api.getData(userId);
+  }
+
+  async addReferralCode(referralCode:string,referralCheck:Boolean)
+  {
+    try
+      {
+        const referralCodeData = {referralCode:referralCode,isReferalUsed:referralCheck};
+        const referralData = await this.api.postData(this.apiConfig.referralCode,referralCodeData);
+        return referralData;
+      }
+      catch(e)
+      {
+        throw e;
+      }
+  }
+
+ async getEarlyAccessDetails(userId:string)
+  {
+    try
+    {
+      return await this.api.getData(this.apiConfig.earlyAccessCheck+'?_id='+userId);
+    }
+    catch(e)
+    {
+      throw e;
+    }
   }
 }

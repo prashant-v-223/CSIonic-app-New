@@ -18,19 +18,20 @@ export class WithdrawalAmountPage implements OnInit {
   BankDataResponse : [] = [];
   depositAmountResponse : [] = [];
   isLoading: boolean = false;
+  maxWithdrawalAmounts:number = 2000;
+  
   constructor(private navCtrl: NavController,private userService: UserService,private bankService: BankDetailsService,public toastController: ToastController,private alertCtrl: AlertController,private configurationService:ConfigurationService,private transactionService:TransactionsService) { }
-
-  ngOnInit() {
+   ngOnInit() {
     const user = this.userService.getUserFromStorage();
     if (!user) this.onBack();
     this.userId = user._id;
     this.GetBankInfo(this.userId);
+    this.maxWithdrawalAmounts;
   }
 
   amountForm = new FormGroup({
-    withdrawalAmount: new FormControl('',[Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/)]),
+    withdrawalAmount: new FormControl('',[Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/),Validators.min(1),Validators.max(this.maxWithdrawalAmounts)]),
   });
-
 
   omit_special_char(e) {
     var k;

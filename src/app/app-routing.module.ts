@@ -156,7 +156,23 @@ const routes: Routes = [
   {
     path: 'withdrawal-amount',
     loadChildren: () => import('./pages/withdrawal-amount/withdrawal-amount.module').then(m => m.WithdrawalAmountModule)
+  },
+  {
+    path: 'referral',
+    loadChildren: () => import('./pages/referral/referral.module').then(m => m.ReferralModule)
+  },
+  {
+    path: 'early-access',
+    loadChildren: () => import('./pages/early-access/early-access.module').then(m => m.EarlyAccessModule)
+  },  {
+    path: 'support-model',
+    loadChildren: () => import('./pages/common-design/support-model/support-model.module').then( m => m.SupportModelPageModule)
+  },
+  {
+    path: 'support',
+    loadChildren: () => import('./pages/support/support.module').then( m => m.SupportPageModule)
   }
+
 
 ];
 
