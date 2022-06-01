@@ -1,0 +1,54 @@
+.themeHeader{
+  ion-toolbar{
+    --background:var(--theme-color);
+    --border-color:var(--theme-color);
+  }
+  ion-list{
+    background: transparent;
+  }
+  ion-back-button.md{
+    background-color:rgba($color: #000, $alpha: .1);
+    ion-icon{
+      stroke: #2F4858;
+    }
+  }
+  ion-back-button,ion-title{
+    color: #fff;
+    letter-spacing: 1px;
+  }
+}
+ion-button{
+  ion-icon{
+    font-size: 20px;
+    &.icon-theme{
+        stroke:#8AC680;
+    }
+    &.icon-dark{
+      stroke:#2F4858;
+  }
+  }
+}
+
+
+.maintenance-mode
+{
+  ion-title{
+    font-size: 20px;
+    color:#8AC680;
+    line-height: 26px;
+  }
+  text-align: center;
+  width: 100%;
+  margin: 5% auto;
+}
+
+.appLogo {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 5px;
+  margin-top: 10%;
+  .logo {
+    width: 150px;
+    margin-bottom: 10px;
+  }
+}

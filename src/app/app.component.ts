@@ -12,7 +12,7 @@ import { UserService } from './shared/services/user.service';
 import { ErrorEnum } from './shared/types/error';
 import { ConfigurationService } from './shared/services/configuration.service';
 import { COPY } from 'src/app/shared/helper/const';
-
+import { MaintenanceService } from './shared/services/maintenance.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -25,13 +25,15 @@ export class AppComponent implements OnInit, OnDestroy {
     library: FaIconLibrary,
     private userService: UserService,
     private configurationService: ConfigurationService,
-    private router: Router
-  ) {
+    private router: Router,
+    private maintenanceService: MaintenanceService,
+    ) {
     library.addIconPacks(fas as any, fab as any, far as any);
   }
 
   async ngOnInit() {
-    try {
+    try
+    {
       const status = await Network.getStatus();
       this.handleNetworkStatus(status);
       Network.addListener("networkStatusChange", status => this.handleNetworkStatus(status));
@@ -40,9 +42,42 @@ export class AppComponent implements OnInit, OnDestroy {
         autoHide: false
       });
 
-      const userToken = this.userService.setHeaderToken();
+      const { version } = require('package.json');
+      try
+      {
+        let maintenanceCheck = await this.maintenanceService.checkMaintenance();
+        if(maintenanceCheck.data.maintenance===true)
+        {
+          this.router.navigateByUrl('maintenance-mode');
+        }
+        else
+        {
+          const getLatestVersion = await this.maintenanceService.getLatestVersion();
+          if(getLatestVersion.data.mandatoryUpdate===true && getLatestVersion.data.latest>version)
+          {
+            this.router.navigateByUrl('force-app-update');
+          }
+        }
+      }
+      catch(error)
+      {
+        if(error.status===503)
+        {
+          this.router.navigateByUrl('maintenance-mode');
+        }
+        else
+        {
+          throw new Error("Not found!");
+        }
+      }
 
-      if (userToken){
+
+
+
+      const userToken = this.userService.setHeaderToken();
+      if (userToken)
+      {
+
         const user = await this.getUser();
         if (!user)
           throw new Error("User not available");
@@ -71,7 +106,8 @@ export class AppComponent implements OnInit, OnDestroy {
   async getUser() {
     try {
       const userRes = await this.userService.getUser();
-      if (userRes.status === this.CONSTANT.SUCCESS) {
+      if (userRes.status === this.CONSTANT.SUCCESS)
+      {
         this.userService.setUserToStorage(userRes.data);
         return userRes.data;
       }

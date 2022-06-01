@@ -164,14 +164,23 @@ const routes: Routes = [
   {
     path: 'early-access',
     loadChildren: () => import('./pages/early-access/early-access.module').then(m => m.EarlyAccessModule)
-  },  {
+  },
+  {
     path: 'support-model',
     loadChildren: () => import('./pages/common-design/support-model/support-model.module').then( m => m.SupportModelPageModule)
   },
   {
     path: 'support',
     loadChildren: () => import('./pages/support/support.module').then( m => m.SupportPageModule)
+  },
+  {
+    path: 'maintenance-mode',
+    loadChildren: () => import('./pages/maintenance-mode/maintenance-mode.module').then( m => m.MaintenanceModePageModule)
+  },  {
+    path: 'force-app-update',
+    loadChildren: () => import('./pages/force-app-update/force-app-update.module').then( m => m.ForceAppUpdatePageModule)
   }
+
 
 
 ];
