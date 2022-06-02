@@ -11,13 +11,13 @@ export class EarlyAccessPage implements OnInit {
   constructor(private userService:UserService) { }
 
   ngOnInit() {
-    setTimeout(() => {
+   /*  setTimeout(() => {
       this.signOutUser();
-    }, 5000);
+    }, 5000); */
   }
 
-  signOutUser()
+  /* signOutUser()
   {
     this.userService.signOut();
-  }
+  } */
 }
