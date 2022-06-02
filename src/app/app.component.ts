@@ -37,18 +37,17 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   async ngOnInit() {
-    try
+    /* try
     {
       console.log(this.appVersion);
-      let maintenanceCheck = await this.maintenanceService.checkMaintenance();
+      let maintenanceCheck = await this.maintenanceService.getLatestVersion();
       if(maintenanceCheck.data.maintenance===true)
       {
         this.router.navigateByUrl('maintenance-mode');
       }
       else
       {
-        const getLatestVersion = await this.maintenanceService.getLatestVersion();
-        if(getLatestVersion.data.mandatoryUpdate===true && getLatestVersion.data.latest>this.appVersion)
+        if(maintenanceCheck.data.mandatoryUpdate===true && maintenanceCheck.data.latest>this.appVersion)
         {
           this.router.navigateByUrl('force-app-update');
           throw new Error("Please update your app");
@@ -57,35 +56,49 @@ export class AppComponent implements OnInit, OnDestroy {
     }
     catch(error)
     {
-        this.router.navigateByUrl('maintenance-mode');
         throw new Error("UserToken not available");
-    }
+    } */
 
     try
     {
-
-      const status = await Network.getStatus();
-      this.handleNetworkStatus(status);
-      Network.addListener("networkStatusChange", status => this.handleNetworkStatus(status));
-
-      await SplashScreen.show({
-        autoHide: false
-      });
-
-     // this.router.navigateByUrl('maintenance-mode');
-      const userToken = this.userService.setHeaderToken();
-      if (userToken)
+      let maintenanceCheck = await this.maintenanceService.getLatestVersion();
+      if(maintenanceCheck.data.maintenance===true)
       {
+        console.log('maintenance-mode');
+        this.router.navigateByUrl('maintenance-mode');
+      }
+      else
+      {
+        if(maintenanceCheck.data.mandatoryUpdate===true && maintenanceCheck.data.latest>this.appVersion)
+        {
+          console.log('force-app-update');
+          this.router.navigateByUrl('force-app-update');
+        }
+        else
+        {
+          const status = await Network.getStatus();
+          this.handleNetworkStatus(status);
+          Network.addListener("networkStatusChange", status => this.handleNetworkStatus(status));
 
-        const user = await this.getUser();
-        if (!user)
-          throw new Error("User not available");
+          await SplashScreen.show({
+            autoHide: false
+          });
 
-        const config = await this.configurationService.getConfiguration();
-        if (!config)
-          throw new Error("Configuration not available");
-      } else {
-        throw new Error("UserToken not available");
+        // this.router.navigateByUrl('maintenance-mode');
+          const userToken = this.userService.setHeaderToken();
+          if (userToken)
+          {
+            const user = await this.getUser();
+            if (!user)
+              throw new Error("User not available");
+
+            const config = await this.configurationService.getConfiguration();
+            if (!config)
+              throw new Error("Configuration not available");
+          } else {
+            throw new Error("UserToken not available");
+          }
+        }
       }
     } catch (e) {
       console.log(e);
