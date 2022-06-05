@@ -22,7 +22,8 @@ import { Platform } from '@ionic/angular';
 })
 export class AppComponent implements OnInit, OnDestroy {
   CONSTANT: any = COPY;
-  ionVersionNumber: string;
+  ionVersionNumber: any;
+  latestVersion: string;
   constructor(
     library: FaIconLibrary,
     private userService: UserService,
@@ -61,21 +62,19 @@ export class AppComponent implements OnInit, OnDestroy {
 
     try
     {
+      this.ionVersionNumber = await this.appVersion.getVersionNumber();
       let maintenanceCheck = await this.maintenanceService.getLatestVersion();
-      if(maintenanceCheck.data.maintenance===true)
+      if(maintenanceCheck.data.maintenance)
       {
-        console.log('maintenance-mode');
         this.router.navigateByUrl('maintenance-mode');
-      }
-      else
-      {
-        if(maintenanceCheck.data.mandatoryUpdate===true && maintenanceCheck.data.latest>this.appVersion)
+      } else{
+        this.latestVersion = maintenanceCheck.data.latest.split('.').join("");
+        console.log(this.latestVersion);
+        if(maintenanceCheck.data.mandatoryUpdate && this.latestVersion > this.ionVersionNumber.split('.').join(""))
         {
           console.log('force-app-update');
           this.router.navigateByUrl('force-app-update');
-        }
-        else
-        {
+        } else {
           const status = await Network.getStatus();
           this.handleNetworkStatus(status);
           Network.addListener("networkStatusChange", status => this.handleNetworkStatus(status));
