@@ -1,8 +1,8 @@
 {
-  "name": "prosprr",
+  "name": "prosppr",
   "version": "0.0.2",
-  "author": "Prosprr",
-  "homepage": "https://prosprr.in/",
+  "author": "Prosppr",
+  "homepage": "https://prosppr.in/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

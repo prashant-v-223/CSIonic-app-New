@@ -1,6 +1,6 @@
 {
-  "appId": "com.constation.prosprr",
-  "appName": "Prosprr",
+  "appId": "com.constation.prosppr",
+  "appName": "Prosppr",
   "webDir": "www",
   "version":"0.0.2",
   "bundledWebRuntime": false,
