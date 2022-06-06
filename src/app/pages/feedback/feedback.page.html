@@ -1,0 +1,206 @@
+  <!-- Header Section Start -->
+  <ion-header translucent class="themeHeader">
+    <ion-toolbar>
+      <ion-list class="d-flex justify-between">
+      <ion-buttons slot="start">
+        <ion-back-button  mat-icon-button class="back-btn" defaultHref="/my-wallet">
+        </ion-back-button>
+      </ion-buttons>
+      <ion-title>Feedback</ion-title>
+    </ion-list>
+    </ion-toolbar>
+  </ion-header>
+  <!-- Header Section End -->
+  <!-- Body Section Start -->
+  <ion-content [fullscreen]="true">
+    <div class="theme-banner pb-0 pt-2">
+      <form [formGroup]="feedbackForm" class="w-100">
+        <ion-grid class="p-0 mb-3 feedbackSection" >
+          <ion-radio-group class="queAnsdata" formControlName="question1">
+            <ion-label class="p-2 d-flex">1. Overall, How happy are you with the app</ion-label>
+            <ion-row class="que">
+              <ion-item>
+                <ion-label>1</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>2</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>3</ion-label>
+              </ion-item>
+              <ion-item>
+                    <ion-label>4</ion-label>
+                </ion-item>
+              <ion-item>
+                  <ion-label>5</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>6</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>7</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>8</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>9</ion-label>
+              </ion-item>
+              <ion-item>
+                  <ion-label>10</ion-label>
+              </ion-item>
+           </ion-row>
+           <ion-row class="ans">
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="1"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="2"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="3"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="4"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="5"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="6"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="7"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="8"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="9"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="10"></ion-radio>
+            </ion-item>
+          </ion-row>
+          </ion-radio-group>
+        </ion-grid>
+        <ion-grid class="feedbackSection p-0">
+          <ion-label class="p-2 d-flex">2. How easy (10 being the easiest) did you find starting you Crypto SIP using our app?</ion-label>
+          <ion-radio-group class="queAnsdata"  formControlName="question2">
+            <ion-row class="que">
+              <ion-item>
+                <ion-label>1</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>2</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>3</ion-label>
+              </ion-item>
+              <ion-item>
+                    <ion-label>4</ion-label>
+                </ion-item>
+              <ion-item>
+                  <ion-label>5</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>6</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>7</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>8</ion-label>
+              </ion-item>
+              <ion-item>
+                <ion-label>9</ion-label>
+              </ion-item>
+              <ion-item>
+                  <ion-label>10</ion-label>
+              </ion-item>
+           </ion-row>
+           <ion-row class="ans">
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="1"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="2"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="3"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="4"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="5"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="6"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="7"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="8"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="9"></ion-radio>
+            </ion-item>
+            <ion-item>
+              <ion-radio class="radio-button-feedback" mode="md" item-left value="10"></ion-radio>
+            </ion-item>
+          </ion-row>
+        </ion-radio-group>
+      </ion-grid>
+      <!-- <ion-row class="feedbackSection">
+        <ion-col>
+          <ion-item class="text-left difficult">
+            <ion-label>Difficult</ion-label>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item class="text-right">
+            <ion-label>Easy</ion-label>
+          </ion-item>
+        </ion-col>
+      </ion-row> -->
+      <ion-row class="feedbackSection">
+        <ion-col size="12" class="p-0" size-md>
+          <ion-label class="p-2 d-flex" position="stacked">3. What did you like most about the app?</ion-label>
+          <ion-item class="customForm">
+            <ion-textarea class="mr-3" placeholder="Enter Your Answer" formControlName="question3"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="feedbackSection">
+        <ion-col size="12" class="p-0" size-md>
+          <ion-label class="p-2 d-flex" position="stacked">4. What are the 3 things you don't like about the app?</ion-label>
+          <ion-item class="customForm">
+            <ion-textarea class="mr-3" placeholder="Enter Your Answer" formControlName="question4"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row class="feedbackSection">
+        <ion-col size="12" class="p-0" size-md>
+          <ion-label class="p-2 d-flex" position="stacked">5. What did you like most about the app?</ion-label>
+          <ion-item class="customForm">
+            <ion-textarea class="mr-3" placeholder="Enter Your Answer" formControlName="question5"></ion-textarea>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      </form>
+    </div>
+    <div class="theme-banner pt-2 mb-1">
+      <ion-grid class="p-0">
+        <ion-row>
+          <ion-col size="12" class="p-0 plant-img" size-md>
+            <ion-button class="footerTab ion-button-theme" expand="full" shape="round" (click)="feedbackSubmit()" [disabled]="feedbackForm.invalid || feedbackForm.disabled">Submit
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </ion-content>
+
+  <!-- Body Section End -->
