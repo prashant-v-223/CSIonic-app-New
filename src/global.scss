@@ -34,7 +34,7 @@
   --amplify-primary-color: #8ac685;
   --amplify-primary-tint: #5ebd4e;
   --amplify-primary-shade: #41a930;
-  --theme-color: #8ac680;
+  --theme-color: #2B7979;
   --theme-d-color: #67ba59;
   --bg-lighter: #eff7ed;
   --blackColor: #102e28;
@@ -49,6 +49,8 @@
   --amplify-background-color: rgba(0, 0, 0, 0) !important;
   --amplify-secondary-contrast: var(--bg-lighter);
   ---border: 10px;
+  --input-border: #ECF1F6;
+  --input-color: #FDFDFD;
 }
 .f-Poppins {
   font-family: var(--f-Poppins) !important;
@@ -191,6 +193,9 @@ ion-button {
 .text-right {
   text-align: right;
 }
+.text-left {
+  text-align: left;
+}
 ion-content {
   --ion-background-color: #fff;
 }
@@ -213,6 +218,15 @@ p {
   color: #000;
   font-family: var(--f-Poppins);
   text-decoration: inherit;
+}
+.link-primary {
+  font-size: 14px;
+  color: var(--theme-color);
+  font-family: var(--f-Poppins);
+  text-decoration: inherit;
+}
+.font-weight-600 {
+  font-weight: 600;
 }
 .gray-text {
   color: var(--ion-color-medium);
@@ -949,16 +963,15 @@ p {
   .sc-ion-input-ios:-webkit-autofill:hover,
   .sc-ion-input-ios:-webkit-autofill:focus,
   .sc-ion-input-ios:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px var(--bg-lighter) inset !important;
-    border: solid 1px var(--theme-color);
+    -webkit-box-shadow: 0 0 0 30px var(--input-border) inset !important;
+    border: solid 1px var(--input-border);
   }
   &.item-has-focus {
     .label-stacked.sc-ion-label-md-h:not(.ion-color) {
-      color: var(--theme-d-color);
+      color: var(--input-color);
     }
-    ion-input,
-    ion-select {
-      border-color: var(--theme-d-color);
+    ion-input,ion-select {
+      border-color: var(--input-border);
     }
   }
   ion-label {
@@ -978,7 +991,7 @@ p {
   }
   ion-input,ion-textarea,
   ion-select {
-    background: var(--bg-lighter);
+    background: var(--input-color);
     --padding-top: 15px !important;
     --padding-bottom: 15px !important;
     --padding-start: 15px !important;
@@ -988,7 +1001,7 @@ p {
     font-family: var(--f-Poppins);
     font-weight: 400;
     --placeholder-opacity: 0.9;
-    border: solid 1px transparent;
+    border: solid 2px var(--input-border);
   }
   & + div.error-message {
     --padding-start: 15px !important;
