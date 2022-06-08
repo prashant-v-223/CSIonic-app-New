@@ -23,6 +23,7 @@ import { Platform } from '@ionic/angular';
 export class AppComponent implements OnInit, OnDestroy {
   CONSTANT: any = COPY;
   versionNumber: string;
+
   constructor(
     library: FaIconLibrary,
     private userService: UserService,
@@ -74,16 +75,14 @@ export class AppComponent implements OnInit, OnDestroy {
     try
     {
       let maintenanceCheck = await this.maintenanceService.getLatestVersion();
-      //console.log(maintenanceCheck);
-      if(maintenanceCheck.data.maintenance===true)
+      if(maintenanceCheck.data.maintenance)
       {
-        console.log('maintenance-mode');
         this.router.navigateByUrl('maintenance-mode');
       }
       else
       {
         this.versionNumber = this.versionNumber.split('.').join("");
-        if(maintenanceCheck.data.mandatoryUpdate===true && maintenanceCheck.data.latest.split('.').join("")>this.versionNumber)
+        if(maintenanceCheck.data.mandatoryUpdate && maintenanceCheck.data.latest.split('.').join("")>this.versionNumber)
         {
           console.log('force-app-update');
           this.router.navigateByUrl('force-app-update');

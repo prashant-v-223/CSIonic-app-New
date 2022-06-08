@@ -66,7 +66,7 @@ export class SipCreatedPage implements AfterViewInit {
       this.newSIP.mandate.id
     }/${Date.now()}/${
       this.user.email
-    }?logo=https://prosprr.in/images/p-logo.svg`;
+    }?logo=https://prosppr.in/images/p-logo.svg`;
 
     this.isShowingMandateEsign = true;
 

@@ -1,5 +1,5 @@
 export const COPY: any = {
-    APP_NAME: 'Prosprr',
+    APP_NAME: 'Prosppr',
 
     SUCCESS: "SUCCESS",
     BANK_DETAILS_LABEL: "Bank Details",
