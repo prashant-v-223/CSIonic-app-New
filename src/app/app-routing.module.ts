@@ -182,11 +182,7 @@ const routes: Routes = [
     path: 'force-app-update',
     loadChildren: () => import('./pages/force-app-update/force-app-update.module').then( m => m.ForceAppUpdatePageModule),
     canActivate: [NonAuthGuard],
-  },  {
-    path: 'feedback',
-    loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
   }
-
 
 ];
 

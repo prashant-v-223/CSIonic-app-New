@@ -23,7 +23,6 @@ import { Platform } from '@ionic/angular';
 export class AppComponent implements OnInit, OnDestroy {
   CONSTANT: any = COPY;
   versionNumber: string;
-
   constructor(
     library: FaIconLibrary,
     private userService: UserService,
@@ -86,9 +85,7 @@ export class AppComponent implements OnInit, OnDestroy {
         {
           console.log('force-app-update');
           this.router.navigateByUrl('force-app-update');
-        }
-        else
-        {
+        } else {
           const status = await Network.getStatus();
           this.handleNetworkStatus(status);
           Network.addListener("networkStatusChange", status => this.handleNetworkStatus(status));
