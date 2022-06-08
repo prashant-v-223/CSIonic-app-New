@@ -19,7 +19,6 @@ export class WithdrawalAmountPage implements OnInit {
   depositAmountResponse : [] = [];
   isLoading: boolean = false;
   maxWithdrawalAmounts:number = 2000;
-  
   constructor(private navCtrl: NavController,private userService: UserService,private bankService: BankDetailsService,public toastController: ToastController,private alertCtrl: AlertController,private configurationService:ConfigurationService,private transactionService:TransactionsService) { }
    ngOnInit() {
     const user = this.userService.getUserFromStorage();

@@ -22,8 +22,7 @@ import { Platform } from '@ionic/angular';
 })
 export class AppComponent implements OnInit, OnDestroy {
   CONSTANT: any = COPY;
-  ionVersionNumber: any;
-  latestVersion: string;
+  versionNumber: string;
   constructor(
     library: FaIconLibrary,
     private userService: UserService,
@@ -34,10 +33,22 @@ export class AppComponent implements OnInit, OnDestroy {
     private platform: Platform
     ) {
     library.addIconPacks(fas as any, fab as any, far as any);
+
+
   }
 
 
   async ngOnInit() {
+
+    this.appVersion.getVersionNumber().then((res) => {
+      this.versionNumber = res;
+    })
+    .catch( async (error) => {
+      console.error(error);
+    })
+    .finally(() => {
+      console.log('finally');
+    });
     /* try
     {
       console.log(this.appVersion);
@@ -62,15 +73,15 @@ export class AppComponent implements OnInit, OnDestroy {
 
     try
     {
-      this.ionVersionNumber = await this.appVersion.getVersionNumber();
       let maintenanceCheck = await this.maintenanceService.getLatestVersion();
       if(maintenanceCheck.data.maintenance)
       {
         this.router.navigateByUrl('maintenance-mode');
-      } else{
-        this.latestVersion = maintenanceCheck.data.latest.split('.').join("");
-        console.log(this.latestVersion);
-        if(maintenanceCheck.data.mandatoryUpdate && this.latestVersion > this.ionVersionNumber.split('.').join(""))
+      }
+      else
+      {
+        this.versionNumber = this.versionNumber.split('.').join("");
+        if(maintenanceCheck.data.mandatoryUpdate && maintenanceCheck.data.latest.split('.').join("")>this.versionNumber)
         {
           console.log('force-app-update');
           this.router.navigateByUrl('force-app-update');

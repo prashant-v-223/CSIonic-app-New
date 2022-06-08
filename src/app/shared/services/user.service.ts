@@ -17,7 +17,7 @@ export class UserService {
     private api: ApiCallService,
     private apiConfig: ApiConfiguration,
     private navCtrl: NavController,
-    private configurationService: ConfigurationService,
+    private configurationService: ConfigurationService
   ) {
     this.setHeaderToken();
   }
