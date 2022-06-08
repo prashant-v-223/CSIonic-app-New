@@ -156,7 +156,38 @@ const routes: Routes = [
   {
     path: 'withdrawal-amount',
     loadChildren: () => import('./pages/withdrawal-amount/withdrawal-amount.module').then(m => m.WithdrawalAmountModule)
+  },
+  {
+    path: 'referral',
+    loadChildren: () => import('./pages/referral/referral.module').then(m => m.ReferralModule)
+  },
+  {
+    path: 'early-access',
+    loadChildren: () => import('./pages/early-access/early-access.module').then(m => m.EarlyAccessModule)
+  },
+  {
+    path: 'support-model',
+    loadChildren: () => import('./pages/common-design/support-model/support-model.module').then( m => m.SupportModelPageModule)
+  },
+  {
+    path: 'support',
+    loadChildren: () => import('./pages/support/support.module').then( m => m.SupportPageModule)
+  },
+  {
+    path: 'maintenance-mode',
+    loadChildren: () => import('./pages/maintenance-mode/maintenance-mode.module').then( m => m.MaintenanceModePageModule),
+    canActivate: [NonAuthGuard],
+  },
+  {
+    path: 'force-app-update',
+    loadChildren: () => import('./pages/force-app-update/force-app-update.module').then( m => m.ForceAppUpdatePageModule),
+    canActivate: [NonAuthGuard],
+  },
+  {
+    path: 'feedback',
+    loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
   }
+
 
 ];
 

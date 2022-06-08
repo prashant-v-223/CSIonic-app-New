@@ -942,7 +942,7 @@ p {
   }
 }
 .customForm {
-  .sc-ion-input-ios {
+  .sc-ion-input-ios,.so-ion-textarea-ios {
     border-radius: 12px;
   }
   .sc-ion-input-ios:-webkit-autofill,
@@ -976,7 +976,7 @@ p {
       transform: inherit;
     }
   }
-  ion-input,
+  ion-input,ion-textarea,
   ion-select {
     background: var(--bg-lighter);
     --padding-top: 15px !important;

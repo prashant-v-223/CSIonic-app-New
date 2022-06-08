@@ -12,7 +12,9 @@ import { UserService } from './shared/services/user.service';
 import { ErrorEnum } from './shared/types/error';
 import { ConfigurationService } from './shared/services/configuration.service';
 import { COPY } from 'src/app/shared/helper/const';
-
+import { MaintenanceService } from './shared/services/maintenance.service';
+import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
+import { Platform } from '@ionic/angular';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -20,38 +22,96 @@ import { COPY } from 'src/app/shared/helper/const';
 })
 export class AppComponent implements OnInit, OnDestroy {
   CONSTANT: any = COPY;
-  
+  versionNumber: string;
+
   constructor(
     library: FaIconLibrary,
     private userService: UserService,
     private configurationService: ConfigurationService,
-    private router: Router
-  ) {
+    private router: Router,
+    private maintenanceService: MaintenanceService,
+    private appVersion: AppVersion,
+    private platform: Platform
+    ) {
     library.addIconPacks(fas as any, fab as any, far as any);
-  }
-  
-  async ngOnInit() {
-    try {
-      const status = await Network.getStatus();
-      this.handleNetworkStatus(status);
-      Network.addListener("networkStatusChange", status => this.handleNetworkStatus(status));
-  
-      await SplashScreen.show({
-        autoHide: false
-      });
-  
-      const userToken = this.userService.setHeaderToken();
-      
-      if (userToken){
-        const user = await this.getUser();
-        if (!user)
-          throw new Error("User not available");
 
-        const config = await this.configurationService.getConfiguration();
-        if (!config)
-          throw new Error("Configuration not available");
-      } else {
+
+  }
+
+
+  async ngOnInit() {
+
+    this.appVersion.getVersionNumber().then((res) => {
+      this.versionNumber = res;
+    })
+    .catch( async (error) => {
+      console.error(error);
+    })
+    .finally(() => {
+      console.log('finally');
+    });
+    /* try
+    {
+      console.log(this.appVersion);
+      let maintenanceCheck = await this.maintenanceService.getLatestVersion();
+      if(maintenanceCheck.data.maintenance===true)
+      {
+        this.router.navigateByUrl('maintenance-mode');
+      }
+      else
+      {
+        if(maintenanceCheck.data.mandatoryUpdate===true && maintenanceCheck.data.latest>this.appVersion)
+        {
+          this.router.navigateByUrl('force-app-update');
+          throw new Error("Please update your app");
+        }
+      }
+    }
+    catch(error)
+    {
         throw new Error("UserToken not available");
+    } */
+
+    try
+    {
+      let maintenanceCheck = await this.maintenanceService.getLatestVersion();
+      if(maintenanceCheck.data.maintenance)
+      {
+        this.router.navigateByUrl('maintenance-mode');
+      }
+      else
+      {
+        this.versionNumber = this.versionNumber.split('.').join("");
+        if(maintenanceCheck.data.mandatoryUpdate && maintenanceCheck.data.latest.split('.').join("")>this.versionNumber)
+        {
+          console.log('force-app-update');
+          this.router.navigateByUrl('force-app-update');
+        }
+        else
+        {
+          const status = await Network.getStatus();
+          this.handleNetworkStatus(status);
+          Network.addListener("networkStatusChange", status => this.handleNetworkStatus(status));
+
+          await SplashScreen.show({
+            autoHide: false
+          });
+
+        // this.router.navigateByUrl('maintenance-mode');
+          const userToken = this.userService.setHeaderToken();
+          if (userToken)
+          {
+            const user = await this.getUser();
+            if (!user)
+              throw new Error("User not available");
+
+            const config = await this.configurationService.getConfiguration();
+            if (!config)
+              throw new Error("Configuration not available");
+          } else {
+            throw new Error("UserToken not available");
+          }
+        }
       }
     } catch (e) {
       console.log(e);
@@ -71,7 +131,8 @@ export class AppComponent implements OnInit, OnDestroy {
   async getUser() {
     try {
       const userRes = await this.userService.getUser();
-      if (userRes.status === this.CONSTANT.SUCCESS) {
+      if (userRes.status === this.CONSTANT.SUCCESS)
+      {
         this.userService.setUserToStorage(userRes.data);
         return userRes.data;
       }

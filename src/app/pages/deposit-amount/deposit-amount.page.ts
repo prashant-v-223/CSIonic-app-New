@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { BankDetailsService } from '../bank-details/bank-details.service';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
 import { TransactionsService } from 'src/app/shared/services/transactions.service';
-
+import { FormsModule } from '@angular/forms';
 import {
   AlertController,
   NavController,

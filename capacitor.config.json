@@ -1,7 +1,8 @@
 {
-  "appId": "com.constation.prosprr",
-  "appName": "Prosprr",
+  "appId": "com.coinstation.prosprr",
+  "appName": "Prosppr",
   "webDir": "www",
+  "version":"0.0.2",
   "bundledWebRuntime": false,
   "plugins": {
     "SplashScreen": {
@@ -9,5 +10,8 @@
       "showSpinner": true,
       "backgroundColor": "#ffffffff"
     }
+  },
+  "server": {
+    "cleartext": true
   }
 }

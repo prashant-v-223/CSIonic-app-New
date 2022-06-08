@@ -1,0 +1,123 @@
+.themeHeader{
+  ion-toolbar{
+    --background:var(--theme-color);
+    --border-color:var(--theme-color);
+  }
+  ion-list{
+    background: transparent;
+  }
+  ion-back-button.md{
+    background-color:rgba($color: #000, $alpha: .1);
+    ion-icon{
+      stroke: #2F4858;
+    }
+  }
+  ion-back-button,ion-title{
+    color: #fff;
+  }
+}
+.supportSection {
+  padding-top: 0rem;
+    .mailBodyHeight
+    {
+      min-height:55vh;
+    }
+    ion-list{
+      padding-top: 0rem;
+      }
+      ion-button{
+        margin: 0px;
+        line-height: 0px;
+        height:50px;
+        font-size: 16px;
+        --border-radius: 8px;
+        font-weight: 400;
+        font-family: var(--f-Poppins);
+        letter-spacing: .08px;
+        width: 100%;
+
+    }
+    ion-item{
+      --min-height: 65px;
+      --inner-border-width: 0px;
+      --border-color: inherit;
+        --padding-start: 0px;
+        .list-md{
+             padding-bottom: 0px;
+        }
+        .up-icon{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 50px;
+          height: 50px;
+          background-color: var(--bg-lighter);
+          border-radius: 15px;
+          margin-right: 1rem;
+          ion-icon{
+            font-size: 18px;
+          }
+        }
+        .ion-title{
+          font-size: 17px;
+          font-family: var(--f-Poppins);
+          letter-spacing: .08px;
+          margin-bottom: 0px;
+          font-weight: 600;
+          color: #000;
+          line-height: 20px;
+          margin-bottom: 2px;
+        }
+        .small-label{
+          font-size: 14px;
+          font-family: var(--f-Poppins);
+          color: var(--blackColor);
+        }
+        .priceTage{
+          font-size: 18px;
+          font-family: var(--f-Poppins);
+          letter-spacing: .08px;
+          margin-bottom: 0px;
+          font-weight: 600;
+          color: #000;
+          line-height: 18px;
+          margin-bottom: 0px;
+        }
+        ion-label{
+          margin-inline: 0px;
+          margin:0px;
+        }
+        .bank-details-display{
+          background-color: var(--bg-lighter);
+          border-radius: 15px;
+        }
+
+    }
+
+  }
+  ion-button{
+    ion-icon{
+      font-size: 20px;
+      &.icon-theme{
+          stroke:#8AC680;
+      }
+      &.icon-dark{
+        stroke:#2F4858;
+    }
+    }
+  }
+  .topHeader {
+    ion-title {
+      position: inherit;
+      text-align: left;
+      height: inherit;
+      left: inherit;
+      padding-right: 0px;
+      padding-inline: 0;
+      font-size: 24px;
+      font-family: var(--f-Poppins);
+      font-weight: 400;
+      margin-bottom: 1.5rem;
+      line-height: 28px;
+    }
+  }

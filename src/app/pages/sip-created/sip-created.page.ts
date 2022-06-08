@@ -53,10 +53,12 @@ export class SipCreatedPage implements AfterViewInit {
   }
 
   updateMandateStatus() {
-    this.mandateStatus =
-      this.newSIP.mandate.statusUpdates[
-        this.newSIP.mandate.statusUpdates.length - 1
-      ].status;
+    // TODO: change this initialization when eSignining needs to enabled
+    this.mandateStatus = SIPStatus.SIGNING_SUCCESS;
+    // this.mandateStatus =
+    //   this.newSIP.mandate.statusUpdates[
+    //     this.newSIP.mandate.statusUpdates.length - 1
+    //   ].status;
   }
 
   async initESign() {
@@ -64,7 +66,7 @@ export class SipCreatedPage implements AfterViewInit {
       this.newSIP.mandate.id
     }/${Date.now()}/${
       this.user.email
-    }?logo=https://prosprr.in/images/p-logo.svg`;
+    }?logo=https://prosppr.in/images/p-logo.svg`;
 
     this.isShowingMandateEsign = true;
 

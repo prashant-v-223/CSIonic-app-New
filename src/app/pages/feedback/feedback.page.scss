@@ -1,0 +1,141 @@
+.themeHeader{
+  /* ion-toolbar{
+      --background:var(--bg-lighter);
+      --border-color:var(--bg-lighter);
+    } */
+    ion-list{
+      background: transparent;
+    }
+    ion-back-button.md{
+      background-color:rgba($color: #fff, $alpha: 1);
+      ion-icon{
+        stroke: #2F4858;
+      }
+    }
+  }
+
+  //  Feedback
+.feedbackSection {
+    padding-top: 1rem;
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    background-color: #F3FCF2;
+    ion-textarea
+    {
+      min-height:10vh;
+      background-color: #fff;
+    }
+    ion-radio
+    {
+      --color-checked:#007261 !important;
+
+    }
+   ion-list{
+    padding-top: 0rem;
+    }
+    ion-button{
+      margin: 0px;
+      line-height: 0px;
+      height:50px;
+      font-size: 16px;
+      --border-radius: 8px;
+      font-weight: 400;
+      font-family: var(--f-Poppins);
+      letter-spacing: .08px;
+      width: 100%;
+
+  }
+  ion-item{
+    --min-height: 30px;
+    --inner-border-width: 0px;
+    --inner-padding-end: 0px;
+    --padding-start: 15px;
+    --background: #F3FCF2 !important;
+      .radio-button-feedback
+      {
+        width: 18px;
+        height: 18px;
+        margin-left: -1%;
+      }
+      .list-md{
+           padding-bottom: 0px;
+      }
+      .up-icon{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 50px;
+        height: 50px;
+        background-color: var(--bg-lighter);
+        border-radius: 15px;
+        margin-right: 1rem;
+        ion-icon{
+          font-size: 18px;
+        }
+      }
+      .ion-title{
+        font-size: 17px;
+        font-family: var(--f-Poppins);
+        letter-spacing: .08px;
+        margin-bottom: 0px;
+        font-weight: 600;
+        color: #000;
+        line-height: 20px;
+        margin-bottom: 2px;
+      }
+      .small-label{
+        font-size: 14px;
+        font-family: var(--f-Poppins);
+        color: var(--blackColor);
+      }
+      .priceTage{
+        font-size: 18px;
+        font-family: var(--f-Poppins);
+        letter-spacing: .08px;
+        margin-bottom: 0px;
+        font-weight: 600;
+        color: #000;
+        line-height: 18px;
+        margin-bottom: 0px;
+      }
+    }
+
+
+  .que{
+    display: flex;
+  }
+  .ans ion-item
+  {
+    --padding-start: 11px !important;
+    --padding-end: 4px;
+  }
+  .queAnsdata
+  {
+    --background:var(--bg-lighter);
+    --border-color:var(--bg-lighter);
+  }
+  .difficult
+  {
+    padding-left: 0px !important;
+    --padding-start:0px !important;
+  }
+
+}
+.theme-banner::after
+{
+  background-color: transparent !important;
+}
+ion-button{
+  margin: 0px;
+  line-height: 0px;
+  height:50px;
+  font-size: 16px;
+  --border-radius: 8px;
+  font-weight: 400;
+  font-family: var(--f-Poppins);
+  letter-spacing: .08px;
+  width: 100%;
+}
+
+

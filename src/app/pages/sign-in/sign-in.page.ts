@@ -20,7 +20,7 @@ import { ConfigurationService } from 'src/app/shared/services/configuration.serv
 export class SignInPage implements OnInit {
   CONSTANT: any = COPY;
   isLoading = false;
-
+  earlyAccessDetails : [] = [];
   readonly passwordRequirementMessage = passwordRequirementMessage;
 
   signInForm = new FormGroup({
@@ -49,10 +49,32 @@ export class SignInPage implements OnInit {
     try {
       await Auth.signIn(this.signInForm.value);
       await this.userService.setHeaderToken();
+
       const user = await this.getUser();
       const config = await this.getConfiguration();
-      if (user && config) this.router.navigateByUrl('/tabs/dashboard');
-      else this.userService.signOut();
+
+      if (user && config)
+      {
+        if(user.earlyAccess==true)
+        {
+          if(user.isReferalUsed==false && config.referral==true)
+          {
+            this.router.navigateByUrl('/referral');
+          }
+          else
+          {
+            this.router.navigateByUrl('/tabs/dashboard');
+          }
+        }
+        else
+        {
+          this.router.navigateByUrl('/early-access');
+        }
+      }
+      else
+      {
+        this.userService.signOut();
+      }
     } catch (e) {
       if (e?.message === 'User is not confirmed.') {
         this.navCtrl.navigateForward(

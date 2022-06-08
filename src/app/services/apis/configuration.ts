@@ -4,6 +4,7 @@ import { environment } from "src/environments/environment";
 export class ApiConfiguration {
     protected baseUrl: string = environment.baseUrl;
 
+    public appname = environment.APP_NAME;
     public configuration = `configuration`;
 
     public register = `authentication/register`;
@@ -17,6 +18,12 @@ export class ApiConfiguration {
     public sip = 'sip';
     public depositWithdrawalAmount = `transactions/amount/`;
     public transactionList = `transactions`;
+
+    public referralCode = `auth/verify/referral/user`;
+    public earlyAccessCheck = `early/access/user/`;
+    public checkMaintenance = `version/${this.appname}/`;
+
+    public feedback = `feedback`;
 
 }
 
