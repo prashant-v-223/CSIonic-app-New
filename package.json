@@ -2,7 +2,7 @@
   "name": "prosppr",
   "version": "0.0.2",
   "author": "Prosppr",
-  "homepage": "https://prosppr.in/",
+  "homepage": "https://prosppr.com/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
