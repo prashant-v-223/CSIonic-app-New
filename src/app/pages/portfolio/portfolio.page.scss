@@ -26,27 +26,27 @@
     justify-content: space-between;
     width: 100%;
     border-radius: 15px;
-    -webkit-box-shadow: 0px 20px 50px 0px #0000001c;
-    -moz-box-shadow: 0px 20px 50px 0px #0000001c;
-    box-shadow: 0px 20px 50px 0px #0000001c;
+    // -webkit-box-shadow: 0px 20px 50px 0px #0000001c;
+    // -moz-box-shadow: 0px 20px 50px 0px #0000001c;
+    // box-shadow: 0px 20px 50px 0px #0000001c;
     background-color: #fff;
     margin-bottom: 2.5rem;
 
-    &::after {
-      content: "";
-      position: absolute;
-      left: 15px;
-      bottom: -15px;
-      width: 92%;
-      height: 50px;
-      background-color: var(--theme-color);
-      z-index: -1;
-      border-radius: 15px;
-    }
+    // &::after {
+    //   content: "";
+    //   position: absolute;
+    //   left: 15px;
+    //   bottom: -15px;
+    //   width: 92%;
+    //   height: 50px;
+    //   background-color: var(--theme-color);
+    //   z-index: -1;
+    //   border-radius: 15px;
+    // }
 
     .card-body {
       display: inline-block; 
-      padding:  15px;
+      padding:  15px 0 0;
       position: relative;
       z-index: 1;
       width: 100%;
@@ -56,17 +56,17 @@
       } 
  
       .small-label {
-        font-size: 16px;
+        font-size: 13px;
         opacity: 0.6;
         line-height: 16px;
         font-family: var(--f-Poppins);
-        font-weight: 500;
+        // font-weight: 500;
         text-align: left;
         color: #000;
       }
       .myPrice {
         font-size: 30px;
-        font-weight: 500;
+        font-weight: 700;
         line-height: 30px;
         letter-spacing: -1.08px; 
         margin-bottom: 5px; 
@@ -74,13 +74,13 @@
       .invest-list {
         padding: 0px;
         margin-top: 10px;
-    }
-    .invest-list h6{
-      font-size: 18px;
-      line-height: 24px;
-      font-weight: 500; 
-      margin-bottom: 0px;
-    }
+      }
+      .invest-list h6{
+        font-size: 18px;
+        line-height: 24px;
+        font-weight: 500; 
+        margin-bottom: 0px;
+      }
     }
   }
 }
@@ -91,7 +91,7 @@
   left: inherit;
   padding-right: 0px;
   padding-inline: 0;
-  font-size: 26px;
+  font-size: 20px;
   font-family: var(--f-Poppins);
   font-weight: 500;
   margin-bottom: 0.8rem;
@@ -102,6 +102,13 @@
   ion-col {
     padding: 5px 0px;
   }
+}
+
+.cardShadow {
+  background: #FDFDFD;
+  box-shadow: 10px -19px 20px #e2e2e2;
+  border-radius: 16px;
+  padding: 0px 5px;
 }
 
 //  Popular Coin Card End

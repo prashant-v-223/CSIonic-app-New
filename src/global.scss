@@ -63,9 +63,9 @@ ion-button {
 .ion-button-theme {
   --color: var(--blackColor);
   --background: var(--theme-color);
-  --background-activated: var(--theme-d-color);
-  --background-focused: var(--theme-d-color);
-  --background-hover: var(--theme-d-color);
+  --background-activated: var(--theme-color);
+  --background-focused: var(--theme-color);
+  --background-hover: var(--theme-color);
   --background-activated-opacity: 1;
   --background-focused-opacity: 1;
   --background-hover-opacity: 1;
@@ -185,7 +185,7 @@ ion-button {
   color: var(--blackColor);
 }
 .text-d-theme {
-  color: var(--theme-d-color);
+  color: var(--theme-color);
 }
 .text-danger {
   color: #ff8080;
