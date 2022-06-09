@@ -7,12 +7,13 @@
 }
 .dashboard {
   .userName {
-    font-size: 28px;
+    font-size: 18px;
     color: var(--black);
     font-family: var(--f-Poppins);
     letter-spacing: -0.9px;
     line-height: 40px;
     margin-bottom: 0px;
+    font-weight: 700;
   }
   .userInfo {
     font-weight: 400;
@@ -29,7 +30,7 @@
     -webkit-box-shadow: 0px 20px 50px 0px #0000001c;
     -moz-box-shadow: 0px 20px 50px 0px #0000001c;
     box-shadow: 0px 20px 50px 0px #0000001c;
-    background-color: #fff;
+    background-color: var(--theme-color);
     margin-bottom: 2.5rem;
     &::after {
       content: "";
@@ -38,7 +39,7 @@
       bottom: -15px;
       width: 92%;
       height: 50px;
-      background-color: var(--theme-color);
+      background-color: var(--bg-lighter);
       z-index: -1;
       border-radius: 15px;
     }
@@ -51,7 +52,7 @@
       width: 100%;
       .label {
         font-size: 15px;
-        color: var(--black);
+        color: var(--white);
         opacity: 0.7;
         line-height: 18px;
         font-family: var(--f-Poppins);
@@ -59,12 +60,12 @@
       }
       .small-text {
         font-size: 15px;
-        color: #102e28;
+        color: var(--white);
         line-height: 18px;
         font-weight: 400;
         display: flex;
         align-items: center;
-    
+        margin-top: 4px;
       }
       .myPrice {
         font-size: 30px;
@@ -72,7 +73,8 @@
         line-height: 30px;
         letter-spacing: -1.08px; 
         margin-bottom: 0px;
-        margin-top: 5px;
+        margin-top: 8px;
+        color: var(--white);
       }
     }
   }
