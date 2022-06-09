@@ -1,46 +1,41 @@
 
  <!-- Header Section Start -->
- <ion-header translucent class="themeHeader">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button  mat-icon-button class="back-btn" defaultHref="/tabs/dashboard">
-      </ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
+ <ion-header class="themeHeader">
+  <div class="user-profile">
+    <ion-row>
+      <ion-col size="2" class="text-center" size-md>
+        <ion-icon src="../../../assets/profile/category.svg"></ion-icon>
+      </ion-col>
+      <ion-col size="8" class="text-center" size-md>
+        <h2 class="text-white font-weight-bold">Profile</h2>
+      </ion-col>
+      <ion-col size="2" class="text-center avatar" size-md>
+        <ion-img src="../../../assets/profile/avatar.svg"></ion-img>
+      </ion-col>
+      <ion-col size="12" class="text-center avatar-main mt-3" size-md>
+        <ion-img src="../../../assets/profile/avatar.svg"></ion-img>
+      </ion-col>
+      <ion-col size="12" class="text-center" size-md>
+        <h2 class="text-white font-weight-bold">{{ user.firstName }} {{ user.lastName }}</h2>
+      </ion-col>
+      <ion-col size="12" class="text-center profile-mobile" size-md>
+        <h3 class="text-white font-weight-bold">+41 20302093029</h3>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-header>
 <!-- Header Section End -->
 <!-- Body Section Start -->
+<ion-row class="list-header p-0">
+  <ion-col size="12" class="p-0">
+    <p class="text-white font-weight-bold p-0"></p>
+  </ion-col>
+</ion-row>
 <ion-content class="profile">
-  <div class="user-profile">
-    <div class="card">
-      <div class="card-body">
-        <div class="user-avatar">
-          <img [src]="user?.kycDocuments?.selfie ? user.kycDocuments.selfie : 'assets/avatar.jpeg'" alt="Profile picture">
-        </div>
-        <div class="user-details">
-          <h6>
-            <ng-container *ngIf="user else loadingTmplt">
-              {{ user.firstName }} {{ user.lastName }}
-            </ng-container>
-          </h6>
-          <div class="small-text mt-2">
-            <ion-icon src="assets/profile/icon-device-mobile.svg"></ion-icon>
-
-            <ng-container *ngIf="user else loadingTmplt">
-              {{ user.contact }}
-            </ng-container>
-          </div>
-          <!-- <div class="small-text">
-            <ion-icon src="../../../assets/profile/icon-language.svg"></ion-icon> Speaks Hindi
-          </div> -->
-        </div>
-      </div>
-    </div>
-  </div>
   <ion-list class="ion-list">
     <ion-item class="first-item" routerLink="/my-wallet">
       <div class="item-inner">
-        <ion-icon src="../../../assets/profile/icon-wallet.svg"></ion-icon>
+        <ion-icon src="../../../assets/profile/wallet.svg"></ion-icon>
         <ion-label>
           <h6>My Wallet</h6>
           <span>₹19,006</span>
@@ -49,7 +44,7 @@
     </ion-item>
     <ion-item routerLink="/bank-details">
       <div class="item-inner">
-        <ion-icon src="../../../assets/profile/icon-bank.svg"></ion-icon>
+        <ion-icon src="../../../assets/profile/bank-accounts.svg"></ion-icon>
         <ion-label>
           <h6>Bank accounts</h6>
           <span>Banks & AutoPay mandates</span>
@@ -65,7 +60,7 @@
         </ion-label>
       </div>
     </ion-item>
-    <ion-item routerLink="/feedback">
+   <!--  <ion-item routerLink="/feedback">
       <div class="item-inner">
         <ion-icon src="../../../assets/profile/icon-help.svg"></ion-icon>
         <ion-label>
@@ -73,7 +68,7 @@
           <span>Our support team is here 24/7</span>
         </ion-label>
       </div>
-    </ion-item>
+    </ion-item> -->
     <!-- <ion-item>
       <div class="item-inner">
         <ion-icon src="../../../assets/profile/icon-setting.svg"></ion-icon>
@@ -94,7 +89,7 @@
     </ion-item>
     <ion-item (click)="openModal()">
       <div class="item-inner">
-        <ion-icon src="../../../assets/profile/icon-help.svg"></ion-icon>
+        <ion-icon src="../../../assets/profile/setting.svg"></ion-icon>
         <ion-label>
           <h6>Support</h6>
           <span>Manage profile settings</span>
@@ -103,7 +98,7 @@
     </ion-item>
     <ion-item>
       <div class="item-inner" (click)="signOut()">
-        <ion-icon src="../../../assets/profile/icon-logout.svg"></ion-icon>
+        <ion-icon src="../../../assets/profile/logout.svg"></ion-icon>
         <ion-label>
           <h6>Logout</h6>
           <span>You will be missed</span>

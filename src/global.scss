@@ -31,21 +31,16 @@
 @import "~@ionic/angular/css/ionic-swiper";
 
 :root {
-  --amplify-primary-color: #8ac685;
-  --amplify-primary-tint: #5ebd4e;
-  --amplify-primary-shade: #41a930;
-  --theme-color: #8ac680;
-  --theme-d-color: #67ba59;
-  --bg-lighter: #eff7ed;
   --amplify-primary-color: #558080;
   --amplify-primary-tint: #337e7e;
-  --amplify-primary-shade: #2B7979/* #41a930 */;
+  --amplify-primary-shade: #115858/* #41a930 */;
   --theme-color: #337e7e;
   --theme-d-color: #337e7e;
   --bg-lighter: #e1eeee;
   --blackColor: #102e28;
   --lighter-b-Color: #2f4858;
   --f-Poppins: "Poppins", sans-serif;
+  --f-Lexend: "Lexend";
   --f-Raleway: "Raleway", sans-serif;
   --amplify-font-family: "Poppins", sans-serif;
   --amplify-text-sm: 16px;
@@ -54,6 +49,9 @@
   --amplify-font-weight: 600;
   --amplify-background-color: rgba(0, 0, 0, 0) !important;
   --amplify-secondary-contrast: var(--bg-lighter);
+  --light-gray: #78828A;
+  --light-black:#1F2C37;
+  --lighter-gray:#F8F8F8;
   ---border: 10px;
 }
 .f-Poppins {
