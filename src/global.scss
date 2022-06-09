@@ -51,6 +51,7 @@
   ---border: 10px;
   --input-border: #ECF1F6;
   --input-color: #FDFDFD;
+  --white: #FFFFFF;
 }
 .f-Poppins {
   font-family: var(--f-Poppins) !important;
@@ -224,9 +225,6 @@ p {
   color: var(--theme-color);
   font-family: var(--f-Poppins);
   text-decoration: inherit;
-}
-.font-weight-600 {
-  font-weight: 600;
 }
 .gray-text {
   color: var(--ion-color-medium);
@@ -1209,4 +1207,19 @@ ion-spinner.size-sm {
 
 .font-bold {
   font-weight: bold;
+}
+.font-weight-600 {
+  font-weight: 600;
+}
+.font-weight-400 {
+  font-weight: 400;
+}
+.font-weight-700 {
+  font-weight: 700;
+}
+.font-20 {
+  font-size: 20px;
+}
+.font-xx {
+  font-size: xx-large;
 }

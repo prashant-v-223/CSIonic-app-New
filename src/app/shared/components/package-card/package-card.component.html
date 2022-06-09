@@ -1,20 +1,22 @@
 <ng-container [ngSwitch]="true">
 
-  <div class="card bg-lighter" *ngSwitchCase="view === 'package' || view === 'sip'">
+  <div class="card" *ngSwitchCase="view === 'package' || view === 'sip'">
     <div class="card-body">
       <div class="d-flex align-center justify-between w-100 mb-3">
         <app-coin-stack [coins]="coins"></app-coin-stack>
 
         <div class="d-flex align-center">
           <div class="text-right mr-2 right-section" *ngIf="view === 'sip'">
-            <div class="small-label text-dark">Interval</div>
-            <h4 class="small-price text-dark">
-              &#8377;{{ package.installmentAmount | number }}/<span
-                class="ion-text-capitalize">{{ package.interval.type }}</span></h4>
+            <div class="small-label text-dark">
+              <span>Interval</span>&nbsp;
+              <span class="text-dark font-weight-600">
+                &#8377;{{ package.installmentAmount | number }}/<span class="ion-text-capitalize">{{ package.interval.type }}</span>
+              </span>
+            </div>
           </div>
           
           <a class="view-icon" [routerLink]="navigationLink">
-            <ion-icon name="chevron-forward-outline"></ion-icon>
+            <ion-icon class="vertical-middle" name="arrow-forward-outline"></ion-icon>
           </a>
         </div>
       </div>
@@ -35,8 +37,10 @@
         </div>
         <div>
           <div class="small-label text-dark">Returns</div>
-          <div class="small-text bg-theme text-white">
-            <ion-icon class="text-white icon-up" src="assets/md-arrow-dropup.svg"></ion-icon> 45%
+          <div class="small-text">
+            <!-- <ion-icon class="text-white bg-theme icon-up" src="assets/arrow-up.svg"></ion-icon>  -->
+            <ion-icon class="text-white bg-theme icon-up" name="arrow-up-outline"></ion-icon>
+            <span style="margin-left: 5px;">45%</span>
           </div>
         </div>
       </div>
