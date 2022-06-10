@@ -1,6 +1,6 @@
 <ng-container [ngSwitch]="true">
 
-  <div class="card" *ngSwitchCase="view === 'package' || view === 'sip'">
+  <div class="card bg-white" *ngSwitchCase="view === 'package' || view === 'sip'">
     <div class="card-body">
       <div class="d-flex align-center justify-between w-100 mb-3">
         <app-coin-stack [coins]="coins"></app-coin-stack>
@@ -27,7 +27,7 @@
             {{ view === 'package' ? 'Min Invest' : 'Total Invested' }}
           </div>
           <h4 class="Price text-dark ion-text-left">
-            &#8377;{{ (view === 'package' ? packageObj.totalMinimumDepositAmount : package.totalAmount) | number }}
+            &#8377; {{ (view === 'package' ? packageObj.totalMinimumDepositAmount : package.totalAmount) | number }}
           </h4>
         </div>
         <div>
@@ -52,8 +52,8 @@
     bg-theme text-white
     bg-lighter
   -->
-  <div class="card bg-lighter" *ngSwitchCase="view === 'coin'" [routerLink]="navigationLink">
-    <div class="card-body">
+  <div class="card bg-white" *ngSwitchCase="view === 'coin'" [routerLink]="navigationLink">
+    <div class="card-body pb-0">
       <div class="d-flex align-center justify-between w-100 mb-3">
 
         <app-coin-stack [coins]="coins"></app-coin-stack>
@@ -68,29 +68,27 @@
           bg-danger text-white
           bg-theme text-white
         -->
-        <div class="small-text bg-white text-dark">
-          <!-- 
-            src arrows
-            assets/md-arrow-dropup.svg
-            assets/md-arrow-dropdown.svg
-          -->
-          <ion-icon class="text-d-theme icon-up" src="assets/md-arrow-dropup.svg"></ion-icon>
-          0.7%
+        <div class="small-text popular-section">
+          <span class="popular-label">Popular</span></div>
         </div>
-      </div>
       <div class="small-label">{{ package.coins[0].currencyId.fullName }}</div>
-      <div class="d-flex align-end">
-        <h4 class="Price">₹19,006</h4>
+      <div class="d-flex align-end mt-2">
+        <h4 class="Price">₹ 19,006</h4>
         <span class="small-label ml-2">{{ package.coins[0].currencyId.code }}</span>
       </div>
-    </div>
-    <div class="mt-1">
+      <div class="small-text mt-2">
+          <ion-icon class="text-white bg-theme icon-up" name="arrow-up-outline"></ion-icon>
+          <span class="ml-1 font-16">45%</span>
+        </div>
+      </div>
+    <div>
       <!-- 
         src line with color options
         assets/area-line-white.svg
         assets/area-line-theme.svg
       -->
-      <ion-icon class="large-line" src="assets/area-line-theme.svg"></ion-icon>
+      <!-- <ion-icon class="large-line" src="assets/area-line-theme.svg"></ion-icon> -->
+      <img class="large-line" src="assets/area-line-theme-shadow.svg" />
     </div>
   </div>
 
