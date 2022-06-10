@@ -15,7 +15,7 @@
   <ion-list class="ion-list bg-white">
     <ion-row>
       <ion-col class="p-0" size="12" size-md>
-        <ion-list class="d-flex justify-center">
+        <ion-list class="d-flex justify-center p-1">
           <div class="coinTag-inner">
             <app-coin-stack [coins]="coins"></app-coin-stack>
           </div>
@@ -49,14 +49,14 @@
         <div *ngIf="stepperSteps === 'planFrequency'">
           <ion-list class="mt-3">
             <ion-segment class="tabbingTheme" (ionChange)="onSelectFrequency($event)" [value]="selectFrequency">
-              <ion-segment-button value="monthly">
-                <ion-label>
-                  Monthly
-                </ion-label>
-              </ion-segment-button>
               <ion-segment-button value="daily">
                 <ion-label>
                   Daily
+                </ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="monthly">
+                <ion-label>
+                  Monthly
                 </ion-label>
               </ion-segment-button>
               <ion-segment-button value="weekly">

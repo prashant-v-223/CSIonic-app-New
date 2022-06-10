@@ -16,9 +16,11 @@
     margin-bottom: 15px;
   } 
   .tabbingTheme {
-    background-color: var(--bg-lighter);
+    // background-color: var(--bg-lighter);
+    // border-radius: 18px;
     padding: 8px;
-    border-radius: 18px;
+    background: #F8F8F8;
+    border-radius: 12px;
 
     ion-segment-button {
       font-size: 14px;
@@ -54,7 +56,6 @@
       font-weight: 500;
       font-family: var(--f-Poppins); 
       letter-spacing: .08px;  
-      --background: var(--bg-lighter);
       color: var(--lighter-b-Color);
       --background-focused: var(--lighter-b-Color);
       --background-hover: var(--lighter-b-Color);
@@ -64,6 +65,9 @@
       --background-activated-opacity: 1;
       --background-focused-opacity: 1;
       --background-hover-opacity: 1;
+      --background: var(--color);
+      border: solid 2px #F8F8F8;
+      border-radius: 15px;
       &.ion-activated{
         color: #fff;
         --background-activated:var(--lighter-b-Color); 
@@ -78,7 +82,7 @@
   }
   ion-datetime { 
     max-width: 100%;
-    background-color: var( --bg-lighter);
+    // background-color: var( --bg-lighter);
     border-radius: 15px; 
   
   }
