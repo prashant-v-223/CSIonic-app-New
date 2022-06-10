@@ -34,7 +34,7 @@
   --amplify-primary-color: #558080;
   --amplify-primary-tint: #337e7e;
   --amplify-primary-shade: #115858/* #41a930 */;
-  --theme-color: #337e7e;
+  --theme-color: #2B7979;
   --theme-d-color: #337e7e;
   --bg-lighter: #e1eeee;
   --blackColor: #102e28;
@@ -51,11 +51,15 @@
   --amplify-secondary-contrast: var(--bg-lighter);
   --light-gray: #78828A;
   --light-black:#1F2C37;
-  --lighter-gray:#F8F8F8;
+  --lighter-gray:#F5F5F5;
+  --light-gray-color:#F8F8F8;
   ---border: 10px;
 }
 .f-Poppins {
   font-family: var(--f-Poppins) !important;
+}
+.f-Lexend {
+  font-family: var(--f-Lexend) !important;
 }
 ion-button {
   &.md {
@@ -125,6 +129,10 @@ ion-button {
 }
 .bg-lighter {
   background-color: var(--bg-lighter);
+}
+
+.bg-lighter-gray {
+  background-color: var(--lighter-gray);
 }
 .bg-theme {
   background-color: var(--theme-color);
@@ -441,7 +449,8 @@ p {
   .small-label {
     font-size: 13px;
     line-height: 16px;
-    font-family: var(--f-Poppins);
+    //@at-root: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     font-weight: 400;
     text-align: left;
   }
@@ -578,7 +587,7 @@ p {
       display: inline-block;
       width: 100%;
 
-      .coinTag {
+      /* .coinTag {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -587,6 +596,18 @@ p {
         border-radius: 12px;
         .coin-icon {
           font-size: 20px;
+        }
+      } */
+      .coinTag {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 26px;
+        height: 26px;
+        border-radius: 10px;
+        margin-right: 10px;
+        .coin-icon {
+          font-size: 16px;
         }
       }
       .small-text {
@@ -670,6 +691,20 @@ p {
           margin-bottom: 2px;
           font-weight: 400;
           line-height: 14px;
+          font-family: Lexend;
+        }
+        .change-percentage,.currncy-name
+        {
+          color: #6c757d !important;
+          font-weight: 500;
+          font-family: Lexend;
+        }
+        .popular-currency
+        {
+          background-color: #E6E6E6;
+          padding: 4px 6px;
+          color: #78828A;
+          font-family: Lexend;
         }
       }
     }
@@ -693,12 +728,18 @@ p {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 50px;
+    /* width: 50px;
     height: 50px;
-    border-radius: 15px;
+    border: solid 2px #fff;
     margin-left: -25px;
-    border: solid 1px #fff;
+    border-radius: 15px; */
+    margin-left: -10px;
     z-index: 1;
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    border: solid 2px #fff;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 
     &:first-child {
       margin-left: 0px;
@@ -1201,3 +1242,8 @@ ion-spinner.size-sm {
 .font-bold {
   font-weight: bold;
 }
+.text-muted-custom
+{
+  color: #6c757d !important;
+}
+
