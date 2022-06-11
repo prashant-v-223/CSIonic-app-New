@@ -1,8 +1,8 @@
 <ng-container [ngSwitch]="true">
 
-  <div class="card bg-lighter" *ngSwitchCase="view === 'package' || view === 'sip'">
+  <div class="card bg-white" *ngSwitchCase="view === 'package' || view === 'sip'">
     <div class="card-body">
-      <div class="d-flex align-center justify-between w-100 mb-3">
+      <div class="d-flex align-center justify-between w-100 mb-2">
         <app-coin-stack [coins]="coins"></app-coin-stack>
 
         <div class="d-flex align-center">
@@ -12,45 +12,47 @@
               &#8377;{{ package.installmentAmount | number }}/<span
                 class="ion-text-capitalize">{{ package.interval.type }}</span></h4>
           </div>
-          
-          <a class="view-icon" [routerLink]="navigationLink">
-            <ion-icon name="chevron-forward-outline"></ion-icon>
+          <div class="small-label text-dark mr-2"><span class="text-muted-custom">Interval </span> <b>₹ 80.00/weekly</b></div>
+          <a class="view-icon mt-2" [routerLink]="navigationLink">
+            <ion-icon name="chevron-forward-outline" src="assets/icon/arrow-right.svg"></ion-icon>
           </a>
         </div>
       </div>
       <div class="small-label text-dark">{{ packageObj.name }}</div>
-      <div class="d-flex align-center justify-between mt-2">
-        <div>
-          <div class="small-label text-dark">
-            {{ view === 'package' ? 'Min Invest' : 'Total Invested' }}
-          </div>
-          <h4 class="Price text-dark ion-text-left">
-            &#8377;{{ (view === 'package' ? packageObj.totalMinimumDepositAmount : package.totalAmount) | number }}
-          </h4>
-        </div>
-        <div>
-          <div class="d-flex align-center">
-            <ion-icon class="line-draw" src="assets/small-line-theme.svg"></ion-icon>
-          </div>
-        </div>
-        <div>
-          <div class="small-label text-dark">Returns</div>
-          <div class="small-text bg-theme text-white">
-            <ion-icon class="text-white icon-up" src="assets/md-arrow-dropup.svg"></ion-icon> 45%
-          </div>
-        </div>
+      <div class="align-center justify-between mt-2">
+        <ion-row>
+          <ion-col size="5">
+            <div class="small-label text-muted-custom">
+              {{ view === 'package' ? 'Min Invest' : 'Total Invested' }}
+            </div>
+            <h4 class="Price text-dark ion-text-left">
+              &#8377; {{ (view === 'package' ? packageObj.totalMinimumDepositAmount : package.totalAmount) | number }}
+            </h4>
+          </ion-col>
+          <ion-col size="4">
+            <div class="text-right mr-2">
+              <img class="line-draw" src="assets/icon/chart.svg" alt="img">
+            </div>
+          </ion-col>
+          <ion-col size="3">
+            <div class="small-label text-dark">Returns</div>
+            <div class="small-text text-muted-custom change-percentage">
+              <ion-icon class="text-muted-custom icon-up" src="assets/icon/arrow-up-square.svg"></ion-icon>&nbsp;45%
+            </div>
+          </ion-col>
+        </ion-row>
       </div>
     </div>
   </div>
 
-  <!-- 
+  <!--
     classes for card color
     bg-theme text-white
     bg-lighter
   -->
-  <div class="card bg-lighter" *ngSwitchCase="view === 'coin'" [routerLink]="navigationLink">
-    <div class="card-body">
-      <div class="d-flex align-center justify-between w-100 mb-3">
+  <div class="card bg-white" *ngSwitchCase="view === 'coin'" [routerLink]="navigationLink">
+    <div class="card-body pb-0">
+      <div class="d-flex align-center justify-between w-100 mb-2">
 
         <app-coin-stack [coins]="coins"></app-coin-stack>
 
@@ -58,35 +60,33 @@
           <ion-icon class="coin-icon" src="assets/icon-bitc.svg"></ion-icon>
         </div> -->
 
-        <!-- 
+        <!--
           classes for different up-down status
           bg-white text-dark
           bg-danger text-white
           bg-theme text-white
         -->
-        <div class="small-text bg-white text-dark">
-          <!-- 
+        <div class="small-text popular-currency text-dark">
+          popular
+          <!--
             src arrows
             assets/md-arrow-dropup.svg
             assets/md-arrow-dropdown.svg
           -->
-          <ion-icon class="text-d-theme icon-up" src="assets/md-arrow-dropup.svg"></ion-icon>
-          0.7%
         </div>
       </div>
-      <div class="small-label">{{ package.coins[0].currencyId.fullName }}</div>
+      <div class="small-label currncy-name">{{ package.coins[0].currencyId.fullName }}</div>
       <div class="d-flex align-end">
-        <h4 class="Price">₹19,006</h4>
-        <span class="small-label ml-2">{{ package.coins[0].currencyId.code }}</span>
+        <h4 class="Price">₹ 19,006</h4>
+        <span class="small-label ml-2">{{ package.coins[0].currencyId.code }}</span><br>
+      </div>
+      <div class="d-flex">
+        <ion-icon class="text-d-theme icon-up mt-2" src="assets/icon/arrow-up-square.svg"></ion-icon>
+        <span class="change-percentage ml-2 mt-2 pt-0">0.7%</span>
       </div>
     </div>
-    <div class="mt-1">
-      <!-- 
-        src line with color options
-        assets/area-line-white.svg
-        assets/area-line-theme.svg
-      -->
-      <ion-icon class="large-line" src="assets/area-line-theme.svg"></ion-icon>
+    <div class="mt-0">
+      <img class="line-draw-full" src="assets/icon/chart.svg" alt="img">
     </div>
   </div>
 

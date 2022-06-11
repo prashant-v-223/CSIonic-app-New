@@ -1,11 +1,23 @@
 <!-- Body Section Start -->
-<ion-content class="invest popularSection basket">
-  <div class="theme-banner bg-lighter">
+<ion-header class="themeHeader">
+  <div class="user-profile">
+    <ion-row class="pl-5 pr-5 mt-4">
+      <ion-col size="6" class="text-left" size-md>
+        <ion-icon src="../../../assets/icon/category-dark.svg"></ion-icon>
+      </ion-col>
+      <ion-col size="6" class="text-right avatar" size-md>
+        <ion-img src="../../../assets/profile/avatar.svg"></ion-img>
+      </ion-col>
+    </ion-row>
+  </div>
+</ion-header>
+<ion-content class="invest popularSection basket bg-lighter-gray">
+  <div class="p-5 pb-2 bg-lighter-gray">
     <ion-grid class="p-0">
       <ion-row>
         <ion-col size="12" class="p-0" size-md>
           <h2 class="ion-title">Invest</h2>
-          <span class="small-label">Find out best options to invest and earn</span>
+          <ion-label>Find out best options to invest and earn</ion-label>
         </ion-col>
         <ion-segment class="tabbingTheme" (ionChange)="segmentChanged($event)" value="Coins">
           <ion-segment-button value="Coins">
@@ -22,27 +34,21 @@
       </ion-row>
     </ion-grid>
   </div>
-  <ion-list class="ion-list">
+  <ion-list class="ion-list bg-lighter-gray">
     <ion-grid class="p-0">
-
       <ion-row *ngIf="segment === 'Coins'">
-
         <ng-container *ngIf="!showLoader else loadingTmplt">
-
           <ng-container *ngIf="coinList?.length else noCoinsTmplt">
-            <ion-col *ngFor="let coin of coinList" size="6" size-md>
+            <ion-col *ngFor="let coin of coinList" size="6" class="p-0" size-md>
               <app-package-card [package]="coin" view="coin" [navigationLink]="'/packages/' + coin._id"></app-package-card>
             </ion-col>
           </ng-container>
-
           <ng-template #noCoinsTmplt>
             <div class="ion-text-center mt-5">
               No coins available
             </div>
           </ng-template>
-
         </ng-container>
-
         <!-- <ion-col size="6" size-md>
           <div class="card bg-theme">
             <div class="card-body">
@@ -73,7 +79,7 @@
         <ng-container *ngIf="!showLoader else loadingTmplt">
 
           <ng-container *ngIf="packageList?.length else noPackagesTmplt">
-            <ion-col *ngFor="let package of packageList" size="12" size-md>
+            <ion-col *ngFor="let package of packageList" class="sip-list" size="12" size-md>
               <app-package-card [package]="package" [navigationLink]="'/packages/' + package._id"></app-package-card>
             </ion-col>
           </ng-container>
