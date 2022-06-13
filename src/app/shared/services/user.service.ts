@@ -35,7 +35,7 @@ export class UserService {
   }
 
   getUser() {
-    return this.api.getData(this.apiConfig.user);
+    return this.api.putData(this.apiConfig.user,{});
   }
 
   verifySelfie(formData: FormData) {

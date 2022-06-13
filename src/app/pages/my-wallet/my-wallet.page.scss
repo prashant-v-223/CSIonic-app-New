@@ -20,7 +20,7 @@
     background-size: cover;
     background-position: top center;
     background-repeat: no-repeat;
-    height: 350px;
+    height: 250px;
     display: block;
     ion-toolbar{
       --background:transparent;
@@ -53,7 +53,7 @@ ion-icon{
 }
 .list-header
 {
-  background:var(--lighter-gray);
+  background:#F8F8F8;
   padding-bottom:0px;
   ion-col p{
     border-radius: 40px 40px 0px 0px;
@@ -171,12 +171,12 @@ ion-icon{
   ion-button{
     ion-icon{
       font-size: 20px;
-      &.icon-theme{
+     /*  &.icon-theme{
           stroke:#8AC680;
       }
       &.icon-dark{
         stroke:#2F4858;
-    }
+    } */
     }
   }
   //  My Wallet Card End

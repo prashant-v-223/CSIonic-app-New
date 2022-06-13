@@ -13,6 +13,11 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800;900&family=Raleway:wght@100;300;400;500;600;700;800;900&display=swap");
 @import "~@ionic/angular/css/core.css";
 
+@font-face {
+  font-family: 'Lexend';
+  src: url('/assets/fonts/Lexend-Regular.ttf');//mine
+}
+
 /* Basic CSS for apps built with Ionic */
 @import "~@ionic/angular/css/normalize.css";
 @import "~@ionic/angular/css/structure.css";
@@ -631,7 +636,7 @@ p {
         text-align: left;
       }
       .Price {
-        font-size: 22px;
+        font-size: 18px;
         font-weight: 500;
         line-height: 22px;
         letter-spacing: -1.08px;

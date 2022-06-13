@@ -60,22 +60,22 @@
       <ion-segment class="tabbingTheme" (ionChange)="segmentChanged($event)" value="day">
         <ion-segment-button value="day">
           <ion-label>
-            Day
+           1 Day
           </ion-label>
         </ion-segment-button>
         <ion-segment-button value="week">
           <ion-label>
-            Week
+           1 Week
           </ion-label>
         </ion-segment-button>
         <ion-segment-button value="month">
           <ion-label>
-            Month
+           1 Month
           </ion-label>
         </ion-segment-button>
         <ion-segment-button value="year">
           <ion-label>
-            Year
+           1 Year
           </ion-label>
         </ion-segment-button>
         <ion-segment-button value="all">
@@ -91,7 +91,7 @@
         <!-- TODO -->
         <ion-col size="6" class="mb-4" size-md>
           <h4 class="heading-label f-Lexend">&#8377; 19,006.00</h4>
-          <span class="small-label gray-text">Current</span>
+          <span class="small-label gray-text">Current Value</span>
         </ion-col>
 
         <!-- TODO -->
@@ -104,13 +104,13 @@
         <!-- TODO -->
         <ion-col size="6" class="mb-4" size-md>
           <h4 class="heading-label f-Lexend">&#8377; 2,000.00</h4>
-          <span class="small-label gray-text">Return</span>
+         <!--  <span class="small-label gray-text">Returns</span> -->
         </ion-col>
 
         <!-- TODO -->
         <ion-col size="6" class="mb-4" size-md>
           <h4 class="heading-label text-d-theme f-Lexend"><ion-icon class="text-muted-custom icon-up" src="assets/icon/arrow-up-square.svg"></ion-icon>&nbsp;+24%</h4>
-          <span class="small-label gray-text">Total Return</span>
+          <span class="small-label gray-text">% ROI</span>
         </ion-col>
         <ion-col size="12" size-md>
           <div class="line"></div>
@@ -123,7 +123,7 @@
         <ion-col size="6" class="mt-3" size-md>
           <ng-container *ngIf="view === 'package' else intervalTmplt">
             <h6 class="smallHeading-label">&#8377;{{ packageDetails.totalMinimumDepositAmount }}</h6>
-            <span class="small-label">Minimum SIP Amt</span>
+            <span class="small-label"><!-- Minimum SIP Amt -->Active Plan</span>
           </ng-container>
 
           <ng-template #intervalTmplt>
@@ -145,17 +145,24 @@
 
       <ion-row class="mt-2 mb-4">
 
-        <ng-container *ngIf="canStartSIP else SIPPrerequisiteMessageTmplt">
+        <!-- <ng-container *ngIf="canStartSIP else SIPPrerequisiteMessageTmplt">
           <ion-col size="6" size-md>
-            <!-- TODO:  provide edit SIP option -->
-            <ion-button class="ion-button-theme" shape="round" expand="full" (click)="openSIPStep()">
+          <ion-button class="ion-button-theme" shape="round" expand="full" (click)="openSIPStep()">
               Add SIP
             </ion-button>
           </ion-col>
           <ion-col size="6" size-md>
-            <!-- TODO:  provide edit SIP option -->
             <ion-button class="ion-button-white" shape="round" expand="full" >
               Edit SIP
+            </ion-button>
+          </ion-col>
+        </ng-container> -->
+
+        <ng-container *ngIf="canStartSIP else SIPPrerequisiteMessageTmplt">
+          <ion-col size="12" size-md>
+            <!-- TODO:  provide edit SIP option -->
+            <ion-button class="ion-button-theme" shape="round" expand="full" (click)="openSIPStep()">
+              {{ view === 'package' ? 'Add' : 'Edit' }} SIP
             </ion-button>
           </ion-col>
         </ng-container>

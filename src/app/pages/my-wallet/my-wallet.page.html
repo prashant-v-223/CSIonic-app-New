@@ -16,7 +16,7 @@
 </ion-row>
 <ion-header class="themeHeader">
   <div class="user-profile">
-    <ion-row class="pl-5 mt-4">
+    <ion-row class="pl-4 mt-0">
       <ion-col size="12" class="text-left" size-md>
         <ion-icon src="../../../assets/icon/back-arrow.svg" routerLink="/tabs/profile"></ion-icon>
       </ion-col>
@@ -26,23 +26,22 @@
       <ion-col size="12" class="text-left mt-2" size-md>
         <h1 class="wallet-header-amount">₹ 20,000</h1>
       </ion-col>
-      <ion-col size="12" class="text-left mt-1" size-md>
+     <!--  <ion-col size="12" class="text-left mt-1" size-md>
         <h3 class="my-portfolio-heading">My portfolio</h3>
+      </ion-col> -->
+      <ion-col size="4" class="text-center mt-3" size-md>
+        <ion-button class="ion-button-white" routerLink="/deposit-amount">
+          <ion-icon class="mr-1 icon-theme" src="../../../assets/icon/deposit-icon.svg"></ion-icon>
+          Add Funds</ion-button>
       </ion-col>
-      <ion-col size="6" class="text-left" size-md>
-        <h2 class="my-portfolio-heading">₹ 20,000</h2>
-        <h3 class="my-portfolio-withdrawal text-muted">Withdraw</h3>
-      </ion-col>
-      <ion-col size="6" class="text-left" size-md>
-        <h2 class="my-portfolio-heading">504</h2>
-        <h3 class="my-portfolio-transaction text-muted">Transaction</h3>
+      <ion-col size="8" class="text-center mt-3" size-md>
+        <ion-button class="ion-button-white" routerLink="/withdrawal-amount">
+           <ion-icon class="mr-1 icon-dark" src="../../../assets/icon/withdraw-icon.svg"></ion-icon>
+        Withdraw Funds</ion-button>
       </ion-col>
     </ion-row>
   </div>
 </ion-header>
-
-
-
 <!-- Header Section End -->
 <!-- Body Section Start -->
 <ion-content class="walletSection">
