@@ -1,28 +1,38 @@
 <!-- Body Section Start -->
+<ion-header class="themeHeader">
+  <ion-toolbar>
+    <ion-list class="d-flex justify-between align-center">
+      <ion-icon class="font-20" src="../../../assets/category.svg"></ion-icon>
+      <img class="w-35" src="../../../assets/logo/Prosprr-Logo-H.svg" />
+      <ion-icon class="font-xx" src="../../../assets/profile/profile.svg"></ion-icon>
+    </ion-list>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content class="dashboard">
   <ion-list class="ion-list">
     <h1 class="userName ion-text-capitalize">Hello, {{ user.firstName }}!</h1>
-    <p class="userInfo">Invest more to earn more, check out your portfolio,</p>
+    <!-- <p class="userInfo">Invest more to earn more - You and your investments, are here to Prosper.</p> -->
     <ion-col size="12" class="p-0 myPortfolio">
       <div class="card-body">
         <div>
-          <span class="label">My Portfolio</span>
-          <h4 class="myPrice text-d-theme">₹19,006</h4>
+          <span class="label text-white">My Portfolio</span>
+          <h4 class="myPrice">₹ 19,006</h4>
         </div>
         <div class="text-right">
-          <span class="label">Profit</span>
+          <span class="label">P/L</span>
           <div class="small-text justify-end">
-            <ion-icon class="text-d-theme icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon>
+            <ion-icon class="icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon>
             0.7%
           </div>
-          <div class="small-text">₹8,595.00</div>
+          <div class="small-text">₹ 8,595.00</div>
         </div>
       </div>
     </ion-col>
     
     <ion-col size="12" class="themeHeading p-0">
-      <h6>POPULAR COINS</h6>
-      <a href="#" class="link-dark" routerLink="/popular-coins">View All</a>
+      <h6 class="font-weight-700">POPULAR COINS</h6>
+      <a href="#" class="text-theme text-decoration-none font-weight-500" routerLink="/popular-coins">View All</a>
     </ion-col>
     <ion-col size="12" class="p-0 popularSection mb-3">
 
@@ -48,8 +58,8 @@
     </ion-col>
     
     <ion-col size="12" class="themeHeading p-0">
-      <h6>POPULAR BASKETS</h6>
-      <a href="#" class="link-dark" routerLink="/popular-baskets">View All</a>
+      <h6 class="font-weight-700">POPULAR BASKETS</h6>
+      <a href="#" class="text-theme text-decoration-none font-weight-500" routerLink="/popular-baskets">View All</a>
     </ion-col>
     <ion-col size="12" class="p-0 popularSection basket">
 

@@ -15,9 +15,10 @@
 }
 ion-searchbar{
     padding: 0px;
-    --background: var(--bg-lighter);
-    height: 36px; 
-    --border-radius:10px;
+    --background: var(--white);
+    height: 42px;
+    border-radius:10px;
+    border: solid 1px #ECF1F6;
     --color:#000;
     --placeholder-color:#444;
     font-family: var(--f-Poppins); 
@@ -33,5 +34,10 @@ ion-searchbar{
   }
   //  Popular Coin Card End
   
+  ion-content, ion-header {
+    --ion-background-color: #F8F8F8;
+  }
  
- 
+.themeHeader ion-toolbar {
+  --background: #F8F8F8;
+}
