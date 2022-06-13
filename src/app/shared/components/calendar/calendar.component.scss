@@ -44,7 +44,7 @@
   }
 
   .active {
-    background-color: #000;
+    background-color: var(--theme-color);
     color: #fff !important;
     border-radius: 50%;
     font-weight: 500;
