@@ -21,10 +21,14 @@
       height: 18px;
       line-height: 18px;
       font-size: 18px;
-      color: var(--ion-color-primary);
+      color: var(--theme-color);
       margin-top: 0.25rem;
       flex-shrink: 0;
 
     }
   }
+}
+.calendar-day.calendar-day-today.calendar-day-active::after,.calendar-day.calendar-day-active::after
+{
+  background: #2B7979 !important;
 }

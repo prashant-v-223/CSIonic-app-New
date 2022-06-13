@@ -1,5 +1,5 @@
   <!-- Header Section Start -->
- <ion-header translucent class="themeHeader">
+ <!-- <ion-header translucent class="themeHeader">
   <ion-toolbar>
     <ion-list class="d-flex justify-between">
     <ion-buttons slot="start">
@@ -8,12 +8,48 @@
     </ion-buttons>
   </ion-list>
   </ion-toolbar>
+</ion-header> -->
+<ion-row class="list-header p-0">
+  <ion-col size="12" class="p-0">
+    <p class="text-white font-weight-bold p-0"></p>
+  </ion-col>
+</ion-row>
+<ion-header class="themeHeader">
+  <div class="user-profile">
+    <ion-row class="pl-4 mt-0">
+      <ion-col size="12" class="text-left" size-md>
+        <ion-icon src="../../../assets/icon/back-arrow.svg" routerLink="/tabs/profile"></ion-icon>
+      </ion-col>
+      <ion-col size="12" class="text-left mt-3" size-md>
+        <h2 class="wallet-heading">My wallet</h2>
+      </ion-col>
+      <ion-col size="12" class="text-left mt-2" size-md>
+        <h1 class="wallet-header-amount">₹ 20,000</h1>
+      </ion-col>
+     <!--  <ion-col size="12" class="text-left mt-1" size-md>
+        <h3 class="my-portfolio-heading">My portfolio</h3>
+      </ion-col> -->
+      <ion-col size="4" class="text-center mt-3" size-md>
+        <ion-button class="ion-button-white" routerLink="/deposit-amount">
+          <ion-icon class="mr-1 icon-theme" src="../../../assets/icon/deposit-icon.svg"></ion-icon>
+          Add Funds</ion-button>
+      </ion-col>
+      <ion-col size="8" class="text-center mt-3" size-md>
+        <ion-button class="ion-button-white" routerLink="/withdrawal-amount">
+           <ion-icon class="mr-1 icon-dark" src="../../../assets/icon/withdraw-icon.svg"></ion-icon>
+        Withdraw Funds</ion-button>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-header>
+
+
+
 <!-- Header Section End -->
 <!-- Body Section Start -->
 <ion-content class="walletSection">
-  <div class="theme-banner bg-lighter">
-    <ion-grid class="p-0">
+   <!-- <div class="theme-banner bg-lighter">
+   <ion-grid class="p-0">
       <ion-row>
         <ion-col size="7" class="p-0" size-md>
           <h2 class="ion-title">My Wallet</h2>
@@ -49,15 +85,15 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-  </div>
+  </div>-->
   <ion-list class="ion-list">
-    <ion-grid class="themeHeading mt-0 p-0">
+    <ion-grid class="themeHeading mt-0 pt-2">
       <h6>Transcation</h6>
     </ion-grid>
     <ion-item *ngFor="let transaction of transactionList; index as i">
       <ion-list class="up-icon " slot="start">
-        <ion-icon *ngIf="transaction.type=='deposit'" class="icon-theme" src="../../../assets/icon-up-arrow.svg"></ion-icon>
-        <ion-icon *ngIf="transaction.type=='withdrawal'" class="icon-dark" src="../../../assets/icon-down-arrow.svg"></ion-icon>
+        <ion-icon *ngIf="transaction.type=='deposit'" src="../../../assets/icon/deposit-icon.svg"></ion-icon>
+        <ion-icon *ngIf="transaction.type=='withdrawal'" src="../../../assets/icon/withdraw-icon.svg"></ion-icon>
       </ion-list>
       <ion-label>
         <ion-row class="w-100">

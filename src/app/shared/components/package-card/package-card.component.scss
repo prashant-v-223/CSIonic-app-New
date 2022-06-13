@@ -1,3 +1,4 @@
+
 .card {
   border: 1px solid #ECF1F6;
   box-shadow: 8px 8px 10px #ECF1F6;
@@ -19,4 +20,19 @@
 .popular-label {
   color: #1F2C37;
   font-size: 13px;
+}
+
+.line-draw
+{
+  width: 80% !important;
+}
+.line-draw-full
+{
+  width: 100% !important;
+  margin-top: -20%;
+  margin-bottom: -10%;
+}
+.popularSection .card .card-body
+{
+  padding: 1px 12px !important;
 }

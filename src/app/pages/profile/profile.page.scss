@@ -1,138 +1,99 @@
- 
+
     .themeHeader{
+      background-image: url("~src/assets/profile/profile-header-bg.svg");
+      background-size: cover;
+      background-position: top center;
+      background-repeat: no-repeat;
+      height: 300px;
+      display: block;
       ion-toolbar{
-        --background:var(--theme-color); 
-        --border-color:var(--theme-color); 
+        --background:transparent;
+        color: #fff !important;
       }
-      ion-list{
-        background: transparent;
-      }
-      ion-back-button.md{ 
-        background-color:rgba($color: #000, $alpha: .1); 
-        ion-icon{
-          stroke: #2F4858;
-        }
-      }
-      ion-back-button{
-        color: #fff;
-      } 
-  } 
+  }
+  .user-profile
+  {
+    padding-top: 4%;
+  }
+  ion-icon{
+    font-size: 20px;
+  }
+  .avatar ion-img{
+    width: 40px;
+    border-radius: 50px;
+  }
+  .avatar-main ion-img{
+    width: 80px;
+    border-radius: 50px;
+    margin: auto;
+  }
+  .profile-mobile
+  {
+    margin-top: -7%;
+  }
+  .list-header
+  {
+    background:linear-gradient(to right, #1f7979 , #136464);
+    padding-bottom:0px;
+    ion-col p{
+      border-radius: 40px 40px 0px 0px;
+      height: 35px;
+      background-color: #fff;
+      margin-bottom:-2.5%;
+      opacity: 1;
+
+    }
+  }
   .profile{
-    .user-profile{
-        width: 100%;
-        background-color: var(--theme-color);
-        position: relative;
-        padding: 0rem 1rem 0rem 1rem;
-        display: inline-block;
-        &::after{
-            content: '';
-            position: absolute;
-            left: 0px;
-            bottom: 0px;
-            height: 50px;
-            background-color: #fff;
-            width: 100%;
-            border-radius: 25px 25px 0px 0px;
-        }
-        .card{
-          position: relative;
-          display: flex;
-          justify-content: space-between; 
-          align-items: center;
-          border-radius: 20px;
-          -webkit-box-shadow:0px 3px 15px 0px rgb(0 0 0 / 10%);
-          -moz-box-shadow: 0px 3px 15px 0px rgb(0 0 0 / 10%);
-          box-shadow:0px 3px 15px 0px rgb(0 0 0 / 10%);
-          background-color: #fff;  
-          z-index: 5;
-          .card-body{
-            padding: 15px;
-            width: 100%;
-            display: flex;
-            .user-avatar{
-              width: 80px;
-              height: 80px;
-              overflow: hidden;
-              border-radius: 100%;
-              background-color: #f1f1f1;
-              img, fa-icon {
-                width: 100%;
-                height: 100%;
-                object-fit: cover;
-              }
-            }
-            .user-details{
-                width: 75%;
-                padding-left: .8rem;
-                display: flex;
-                flex-flow: column;
-                align-items: flex-start;
-                justify-content: center;
-                h6{
-                    font-size: 20px;
-                    line-height: 20px;
-                    font-weight: 500;
-                    font-family: var(--f-Poppins);
-                    margin-bottom: 5px;
-                    color: var(--blackColor);
-                    letter-spacing: -0.72px;
-                }
-                .small-text{
-                    font-size: 14px;
-                    line-height: 18px;
-                    font-weight: 400;
-                    letter-spacing: 1px;
-                    color: var(--blackColor);
-                    font-family: var(--f-Poppins);
-                    align-items: center;
-                    display: flex;
-                    margin-bottom: 2px;
-                }
-                ion-icon{
-                    font-size: 20px;
-                    font-weight: 600;
-                    margin-right: 1px;
-                }
-            }
-          }
-        }
-      }
+    --background:var(--amplify-primary-shade);
     .ion-list{
+        padding-top: 0rem;
+        .first-item
+        {
+          margin-top: -3%;
+        }
         ion-item {
             --padding-start: 0px;
-            --inner-padding-start: 0px; 
+            --inner-padding-start: 0px;
             --padding-end: 0px;
-            --inner-padding-end: 0px; 
+            --inner-padding-end: 0px;
             --inner-border-width:0px;
-            --background: var(--bg-lighter);
-            border-radius: 10px;
-            margin-bottom: .8rem;
+            //--background: var(--bg-lighter);
+            //border-radius: 10px;
+            border-bottom-left-radius: 0px;
+            border-bottom-right-radius: 0px;
+            /* margin-bottom: .8rem; */
             --icon-font-size: 0px;
+            border-bottom: 1px solid #CAC8DA;
             .item-inner{
-                padding: 15px;
-                width: 100%;
-                display: flex;
-                align-items: center;
-                ion-icon{
-                    font-size: 30px;
-                    margin-right: 10px;
-                }
-                ion-label{
+              padding: 15px;
+              width: 100%;
+              display: flex;
+              align-items: center;
+              ion-icon{
+                font-size: 30px;
+                margin-right: 5%;
+                margin-left: -2%;
+              }
+              ion-label{
+                  width: 100%;
+                  padding-bottom: 5px;
                     h6{
-                        font-size: 16px;
-                        color: var(--blackColor);
-                        font-family: var(--f-Poppins);
+                        font-size: 18px;
+                        color: var(--light-black);
+                        font-family: var(--f-Lexend);
                         margin-bottom: 0px;
                         font-weight: 600;
-                        line-height: 22px; 
+                        line-height: 30px;
                     }
                     span{
-                        font-size: 14px;
-                        color: var(--blackColor); 
+                        font-size: 15px;
+                        color: var(--light-gray);
                         font-weight: 400;
+                        font-family: var(--f-Lexend);
                     }
                 }
-            } 
+            }
           }
     }
   }
