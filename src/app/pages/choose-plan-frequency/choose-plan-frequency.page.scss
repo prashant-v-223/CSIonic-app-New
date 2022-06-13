@@ -102,4 +102,12 @@
   ion-modal ion-datetime {
     height: 382px;
   }
+
+  :host {
+    .calendar-day.calendar-day-today.calendar-day-active {
+      &:after {
+        background: var(--theme-color);
+      }
+    }
+  }  
 }

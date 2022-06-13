@@ -1245,8 +1245,8 @@ ion-spinner.size-sm {
   text-decoration: none;
 }
 :host .calendar-day.calendar-day-today.calendar-day-active::after {
-  background: #2B7979;
-  opacity: 1;
+  background: #2B7979 !important;
+  // opacity: 1;
 }
 .w-35 {
   width: 35%;

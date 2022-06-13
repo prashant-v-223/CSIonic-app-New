@@ -8,7 +8,7 @@
         <div class="d-flex align-center">
           <div class="text-right mr-2 right-section" *ngIf="view === 'sip'">
             <div class="small-label text-dark">
-              <span>Interval</span>&nbsp;
+              <!-- <span>Interval</span>&nbsp; -->
               <span class="text-dark font-weight-600">
                 &#8377;{{ package.installmentAmount | number }}/<span class="ion-text-capitalize">{{ package.interval.type }}</span>
               </span>
@@ -24,7 +24,7 @@
       <div class="d-flex align-center justify-between mt-2">
         <div>
           <div class="small-label text-dark">
-            {{ view === 'package' ? 'Min Invest' : 'Total Invested' }}
+            {{ view === 'package' ? 'Min Invest' : 'Invested' }}
           </div>
           <h4 class="Price text-dark ion-text-left">
             &#8377; {{ (view === 'package' ? packageObj.totalMinimumDepositAmount : package.totalAmount) | number }}
