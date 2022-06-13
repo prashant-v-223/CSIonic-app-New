@@ -88,7 +88,7 @@ ion-content {
     padding: 8px;
     border-radius: 30px;
     ion-segment-button {
-      font-size: 13px;
+      font-size: 12px;
       color: #78828A;
       min-width: 20px;
       font-family: var(--f-Lexend);
@@ -103,9 +103,8 @@ ion-content {
       background-color: #ded8d838;
       --indicator-color: var(--theme-color);
       --indicator-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-
       &.segment-button-checked {
-        font-size: 15px;
+        font-size: 12px;
         color: #fff;
         font-weight: 500;
         &.md{
