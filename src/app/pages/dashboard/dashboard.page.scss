@@ -1,15 +1,23 @@
-.themeHeader{ 
-  .menuLeft{  
+.themeHeader{
+  .menuLeft{
     ion-icon{
       stroke: #2F4858;
     }
   }
 }
+
+ion-header,#background-content{
+  background-color: var(--lighter-gray);
+}
+.dashboard ion-list{
+  background-color: var(--lighter-gray) !important;
+}
 .dashboard {
   .userName {
     font-size: 28px;
     color: var(--black);
-    font-family: var(--f-Poppins);
+    //font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     letter-spacing: -0.9px;
     line-height: 40px;
     margin-bottom: 0px;
@@ -54,7 +62,8 @@
         color: var(--black);
         opacity: 0.7;
         line-height: 18px;
-        font-family: var(--f-Poppins);
+        //font-family: var(--f-Poppins);
+        font-family: var(--f-Lexend);
         font-weight: 400;
       }
       .small-text {
@@ -64,15 +73,18 @@
         font-weight: 400;
         display: flex;
         align-items: center;
-    
+        //font-family: var(--f-Poppins);
+        font-family: var(--f-Lexend);
       }
       .myPrice {
         font-size: 30px;
         font-weight: 400;
         line-height: 30px;
-        letter-spacing: -1.08px; 
+        letter-spacing: -1.08px;
         margin-bottom: 0px;
         margin-top: 5px;
+        //font-family: var(--f-Poppins);
+        font-family: var(--f-Lexend);
       }
     }
   }

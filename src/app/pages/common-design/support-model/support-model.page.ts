@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { EmailComposer, EmailComposerOptions } from '@awesome-cordova-plugins/email-composer/ngx';
+import { EmailComposer } from 'capacitor-email-composer';
 
 
 import {
@@ -22,7 +22,7 @@ export class SupportModelPage implements OnInit {
   constructor(
     private modalController: ModalController,
     private navParams: NavParams,
-    private navCtrl: NavController,private emailComposer:EmailComposer
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -39,15 +39,15 @@ export class SupportModelPage implements OnInit {
 
   }
 
-  async openEmail()
-  {
-    const email:EmailComposerOptions = {
-        to: 'yash.technocomet@gmail.com',
-        cc: 'adatiyayashu1909@gmail.com',
-        subject: 'My first email',
-        body: 'This is testing',
-    }
-    await this.emailComposer.open(email);
+  async openEmail() {
+    let emailOps = {
+      "to": ['yash.technocomet@gmail.com'],
+      "cc": ['adatiyayashu1909@gmail.com', 'chaitanya@prosppr.com'],
+      "subject": 'My first email',
+      "body": 'This is testing',
+    };
+    EmailComposer.open(emailOps);
+    // await this.emailComposer.open(email);
     const onClosedData: string = "Wrapped Up!";
     await this.modalController.dismiss(onClosedData);
   }

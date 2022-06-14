@@ -1,7 +1,7 @@
 <!-- Body Section Start -->
 <ion-content class="dashboard">
   <ion-list class="ion-list">
-    <h1 class="userName ion-text-capitalize">Hello, {{ user.firstName }}!</h1>
+    <h1 class="userName ion-text-capitalize mt-1">Hello, {{ user.firstName }}!</h1>
     <p class="userInfo">Invest more to earn more, check out your portfolio,</p>
     <ion-col size="12" class="p-0 myPortfolio">
       <div class="card-body">
@@ -19,7 +19,7 @@
         </div>
       </div>
     </ion-col>
-    
+
     <ion-col size="12" class="themeHeading p-0">
       <h6>POPULAR COINS</h6>
       <a href="#" class="link-dark" routerLink="/popular-coins">View All</a>
@@ -28,15 +28,15 @@
 
       <ng-container *ngIf="!showLoader else loadingTmplt">
         <ng-container *ngIf="coinList?.length else noCoinsTmplt">
-  
+
           <swiper [slidesPerView]="1.9" [loop]="false">
             <ng-template swiperSlide *ngFor="let coin of coinList">
               <app-package-card [package]="coin" view="coin" [navigationLink]="'/packages/' + coin._id"></app-package-card>
             </ng-template>
           </swiper>
-  
+
         </ng-container>
-  
+
         <ng-template #noCoinsTmplt>
           <div class="ion-text-center mt-5">
             No coins available
@@ -46,7 +46,7 @@
 
 
     </ion-col>
-    
+
     <ion-col size="12" class="themeHeading p-0">
       <h6>POPULAR BASKETS</h6>
       <a href="#" class="link-dark" routerLink="/popular-baskets">View All</a>
@@ -55,17 +55,17 @@
 
       <ng-container *ngIf="!showLoader else loadingTmplt">
         <ng-container *ngIf="packageList?.length else noPackagesTmplt">
-  
+
           <swiper [slidesPerView]="1.5" [loop]="false">
-  
+
             <ng-template swiperSlide *ngFor="let package of packageList">
               <app-package-card [package]="package" [navigationLink]="'/packages/' + package._id"></app-package-card>
             </ng-template>
-            
+
           </swiper>
-  
+
         </ng-container>
-  
+
         <ng-template #noPackagesTmplt>
           <div class="ion-text-center mt-5">
             No packages available

@@ -1,4 +1,4 @@
-.themeHeader { 
+.themeHeader {
   .menuLeft {
     background-color: rgba($color: #EFF7ED, $alpha: 1);
     color: #fff;
@@ -17,6 +17,16 @@
     --ion-color-base: #2F4858 !important;
     letter-spacing: .08px;
   }
+  ion-toolbar{
+    --background: var(--lighter-gray);
+  }
+  .analytics{
+    background: var(--lighter-gray);
+  }
+}
+
+ion-content {
+  --ion-background-color: var(--lighter-gray);
 }
 
 .portfolio {
@@ -45,21 +55,22 @@
     }
 
     .card-body {
-      display: inline-block; 
+      display: inline-block;
       padding:  15px;
       position: relative;
       z-index: 1;
       width: 100%;
+      font-family: var(--f-Lexend);
       .line-draw {
         font-size: 70px;
         height: 40px;
-      } 
- 
+      }
       .small-label {
-        font-size: 16px;
+        font-size: 14px;
         opacity: 0.6;
         line-height: 16px;
-        font-family: var(--f-Poppins);
+        //font-family: var(--f-Poppins);
+        font-family: var(--f-Lexend);
         font-weight: 500;
         text-align: left;
         color: #000;
@@ -68,23 +79,26 @@
         font-size: 30px;
         font-weight: 500;
         line-height: 30px;
-        letter-spacing: -1.08px; 
-        margin-bottom: 5px; 
+        letter-spacing: -1.08px;
+        margin-bottom: 5px;
+        font-family: var(--f-Lexend);
       }
       .invest-list {
         padding: 0px;
-        margin-top: 10px;
+        /* margin-top: 10px; */
+        font-family: var(--f-Lexend);
     }
     .invest-list h6{
-      font-size: 18px;
+      font-size: 16px;
       line-height: 24px;
-      font-weight: 500; 
+      font-weight: 500;
       margin-bottom: 0px;
+      font-family: var(--f-Lexend);
     }
     }
   }
 }
-.topHeader{  
+.topHeader{
   position: inherit;
   text-align: left;
   height: inherit;
@@ -92,7 +106,8 @@
   padding-right: 0px;
   padding-inline: 0;
   font-size: 26px;
-  font-family: var(--f-Poppins);
+  //font-family: var(--f-Poppins);
+  font-family: var(--f-Lexend);
   font-weight: 500;
   margin-bottom: 0.8rem;
   line-height: 28px;

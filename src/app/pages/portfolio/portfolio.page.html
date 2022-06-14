@@ -1,7 +1,7 @@
 <!-- Header Section Start -->
 <ion-header translucent class="themeHeader">
   <ion-toolbar>
-    <ion-list class="d-flex justify-end">
+    <ion-list class="d-flex justify-end analytics">
       <ion-button color="dark" routerLink="/analytics">
         Analytics
       </ion-button>
@@ -15,14 +15,14 @@
   <ion-list class="ion-list">
     <ion-title class="topHeader">My portfolio</ion-title>
     <ion-col size="12" class="p-0 myPortfolio">
-      <div class="card-body">
+      <div class="card-body pt-2 pb-2">
         <div class="d-flex justify-between">
           <div>
             <h4 class="myPrice text-d-theme">₹19,006</h4>
             <span class="small-label">Current</span>
           </div>
           <div class="">
-            <ion-icon class="line-draw" src="../../../assets/small-line-theme.svg"></ion-icon>
+            <ion-icon class="line-draw" src="../../../assets/icon/chart.svg"></ion-icon>
           </div>
         </div>
         <ion-grid class="invest-list">
@@ -36,7 +36,7 @@
               <span class="small-label">Return</span>
             </ion-col>
             <ion-col size="4" class="p-0" size-md>
-              <h6 class="text-d-theme">+24%</h6>
+              <h6 class="text-d-theme d-flex"> <ion-icon class="text-muted-custom icon-up" src="assets/icon/arrow-up-square.svg"></ion-icon>&nbsp;24%</h6>
               <span class="small-label">Total Return</span>
             </ion-col>
           </ion-row>
@@ -61,7 +61,7 @@
               <div class="card-body">
                 <div class="d-flex align-center justify-between w-100 mb-3">
                   <div class="d-flex">
-                    <div class="coinTag bg-blue"> 
+                    <div class="coinTag bg-blue">
                       <ion-icon class="coin-icon"  src="../../../assets/icon-bitc.svg"></ion-icon>
                     </div>
                     <div class="coinTag bg-greenLighter">
