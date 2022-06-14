@@ -7,10 +7,12 @@
 
         <div class="d-flex align-center">
           <div class="text-right mr-2 right-section" *ngIf="view === 'sip'">
-            <div class="small-label text-dark">Interval</div>
-            <h4 class="small-price text-dark">
-              &#8377;{{ package.installmentAmount | number }}/<span
-                class="ion-text-capitalize">{{ package.interval.type }}</span></h4>
+            <div class="small-label text-dark">
+              <!-- <span>Interval</span>&nbsp; -->
+              <span class="text-dark font-weight-600">
+                &#8377;{{ package.installmentAmount | number }}/<span class="ion-text-capitalize">{{ package.interval.type }}</span>
+              </span>
+            </div>
           </div>
           <!-- <div class="small-label text-dark mr-2"><span class="text-muted-custom">Interval </span> <b>₹ 80.00/weekly</b></div> -->
           <a class="view-icon mt-2" [routerLink]="navigationLink">
@@ -53,8 +55,7 @@
   -->
   <div class="card bg-white" *ngSwitchCase="view === 'coin'" [routerLink]="navigationLink">
     <div class="card-body pb-0">
-      <div class="d-flex align-center justify-between w-100 mb-2">
-
+      <div class="d-flex align-center justify-between w-100 mb-3">
         <app-coin-stack [coins]="coins"></app-coin-stack>
 
         <!-- <div class="coinTag bg-dark">

@@ -1,19 +1,18 @@
   <!-- Header Section Start --> 
  <ion-header translucent class="themeHeader">
   <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button  mat-icon-button class="back-btn" defaultHref="/portfolio-details"> 
-      </ion-back-button>
-    </ion-buttons> 
+    <ion-list class="d-flex justify-between align-center">
+      <ion-icon src="../../../assets/icon/back-arrow.svg" routerLink="/tabs/portfolio"></ion-icon>
+      <ion-button color="dark" size="small" routerLink="/portfolio-details">
+        Withdraw
+      </ion-button>
+    </ion-list>
   </ion-toolbar>
 </ion-header>
 <!-- Header Section End -->
 <ion-content class="analytics">
   <ion-list class="ion-list">
     <ion-grid class="p-0">
-      <ion-col size="12" class="topHeader bg-white p-0">
-        <ion-title>Analytics</ion-title>
-      </ion-col>
       <ion-col size="12" class="p-0">
         <ul class="chartList">
           <li>
@@ -31,10 +30,10 @@
         <img src="../../../assets/demo-graph-2.png" height="250" alt="">
       </ion-col>
       <ion-col size="12" class="themeHeading p-0 mt-4">
-        <h6>HIGHEST GAINS & LOSSES</h6>
+        <h6>Net Value</h6>
       </ion-col>
        <ion-col size="12" class="p-0" size-md>
-        <h6 class="Price">₹19,206.00</h6>
+        <h6 class="Price">₹ 19,206.00</h6>
         <span class="small-label">Daily Average</span>
       </ion-col>  
       <ion-col size="12" class="d-flex justify-center p-0 mt-3 mb-2">

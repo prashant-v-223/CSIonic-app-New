@@ -47,13 +47,12 @@
   }
 
   .Price {
-    font-size: 22px;
-    font-weight: 400;
+    font-size: 18px;
     line-height: 30px;
     letter-spacing: -1.08px;
     margin-bottom: 0px;
     margin-top: 0px;
-    font-weight: 400; 
+    font-weight: 500; 
     color: var(--blackColor);
   }
 
@@ -65,5 +64,10 @@
     text-align: left;
     color: var(--blackColor);
     opacity: .8;
+  }
+  .themeHeading {
+    h6 {
+      font-weight: 700 !important;
+    }
   }
 }
