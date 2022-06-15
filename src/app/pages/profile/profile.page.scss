@@ -1,19 +1,24 @@
 
-    .themeHeader{
-      background-image: url("~src/assets/profile/profile-header-bg.svg");
-      background-size: cover;
-      background-position: top center;
-      background-repeat: no-repeat;
-      height: 300px;
-      display: block;
-      ion-toolbar{
-        --background:transparent;
-        color: #fff !important;
-      }
+.themeHeader{
+  background-image: url("~src/assets/profile/profile-header-bg.svg");
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  height: 300px;
+  display: block;
+    ion-toolbar{
+      --background:transparent;
+      color: #fff !important;
+    }
   }
   .user-profile
   {
     padding-top: 4%;
+  }
+  .profile-heading
+  {
+    margin-top: 5px !important;
+    font-family: var(--f-Lexend);
   }
   ion-icon{
     font-size: 20px;
@@ -33,7 +38,7 @@
   }
   .list-header
   {
-    background:linear-gradient(to right, #1f7979 , #136464);
+    background:linear-gradient(to right, #438f8f , #136464 7%);
     padding-bottom:0px;
     ion-col p{
       border-radius: 40px 40px 0px 0px;

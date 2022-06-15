@@ -77,7 +77,7 @@ ion-header,#background-content{
     font-family: var(--f-Lexend);
   }
   ion-content {
-    --ion-background-color: #F8F8F8;
+    --ion-background-color: var(--lighter-gray);
   }
   .sip-list{
     margin-bottom: -4% !important;
