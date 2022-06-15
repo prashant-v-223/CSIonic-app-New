@@ -16,6 +16,7 @@
   </ion-toolbar>
 </ion-header>
 <!-- Header Section End -->
+
 <ion-content class="portfolio-view">
   <ion-grid class="p-0" *ngIf="!showLoader else loadingTmplt">
     <ion-row>
@@ -51,9 +52,10 @@
       </ion-row>
     </ion-list> -->
 
+    <!-- Show the graph based on selected period -->
+    <!-- <img src="../../../assets/icon/chart.svg" width="100%" alt="img"> -->
     <ion-list>
-      <!-- Show the graph based on selected period -->
-      <img src="../../../assets/icon/chart.svg" width="100%" alt="img">
+      <canvas #lineCanvas></canvas>
     </ion-list>
 
     <ion-list class="ion-list">
