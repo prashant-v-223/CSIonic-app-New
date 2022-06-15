@@ -35,8 +35,8 @@
       }
     }
     .small-text {
-      font-size: 14px;
-      font-weight: 600;
+      font-size: 12px;
+      font-weight: 400;
       color: var(--blackColor);
       font-family: var(--f-Poppins);
       margin-bottom: 0px;
@@ -53,9 +53,18 @@
       margin-bottom: 10px;
     }
   }
+  ion-label {
+    margin: 0px 0px 5px 0px !important;
+    font-family: var(--f-Poppins);
+    text-transform: capitalize;
+    font-weight: 600 !important;
+  }
   .customForm {
-    ion-label {
-      margin: 0px 0px 5px 0px !important;
+    ion-icon{
+      position: absolute;
+      top: 25%;
+      z-index: 100;
+      right: 3%;
     }
   }
 
