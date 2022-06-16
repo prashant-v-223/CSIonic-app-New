@@ -8,7 +8,7 @@ import { UserService } from 'src/app/shared/services/user.service';
   styleUrls: ['./invest.page.scss'],
 })
 export class InvestPage implements OnInit {
-  selectedTab: string = 'investList'; 
+  selectedTab: string = 'investList';
   portfolioList: any[] = []
 
   user: any;
@@ -28,7 +28,7 @@ export class InvestPage implements OnInit {
     this.getPackages();
   }
 
-  public segment: string = "Coins";  
+  public segment: string = "Coins";
 
   segmentChanged(ev: any) {
     this.segment = ev.detail.value;
@@ -41,6 +41,7 @@ export class InvestPage implements OnInit {
         const separated = this.packagesService.separatePackagesAndCoins(planListRes?.data?.data);
         this.packageList = separated.packages;
         this.coinList = separated.coins;
+       // console.log(this.coinList,'1',this.packageList);
         this.showLoader = false;
       }
     } catch (e) {

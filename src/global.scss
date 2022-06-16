@@ -621,12 +621,12 @@ p {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 26px;
-        height: 26px;
+        width: 32px;
+        height: 32px;
         border-radius: 10px;
         margin-right: 10px;
         .coin-icon {
-          font-size: 16px;
+          font-size: 28px;
         }
       }
       .small-text {
@@ -677,7 +677,7 @@ p {
         }
         .coinTag {
           margin-left: -18px;
-          border: solid 1px #fff;
+          border: solid 2px #fff;
           z-index: 1;
           &:first-child {
             margin-left: 0px;
@@ -751,7 +751,7 @@ p {
     border: solid 2px #fff;
     margin-left: -25px;
     border-radius: 15px; */
-    margin-left: -10px;
+    margin-left: -15px;
     z-index: 1;
     width: 40px;
     height: 40px;
@@ -764,7 +764,7 @@ p {
     }
 
     .coin-icon {
-      font-size: 25px;
+      font-size: 38px;
     }
   }
 }

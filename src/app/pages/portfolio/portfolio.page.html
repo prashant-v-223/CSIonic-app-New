@@ -53,7 +53,7 @@
         <ion-row *ngIf="sipList?.length else noSIPsTmplt">
 
           <ion-col *ngFor="let sip of sipList" size="12" size-md>
-            <app-package-card [package]="sip" [view]="'sip'" [navigationLink]="'/sip/' + sip._id"></app-package-card>
+            <app-package-card [package]="sip" [packageList]="sip.packageId.coins" [view]="'sip'" [navigationLink]="'/sip/' + sip._id"></app-package-card>
           </ion-col>
 
           <!-- <ion-col size="12" size-md>

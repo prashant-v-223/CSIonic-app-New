@@ -10,6 +10,8 @@ export class PackageCardComponent implements OnInit, OnChanges {
   @Input() view: 'package'|'sip'|'coin' = 'package';
   @Input() package: any;
   @Input() navigationLink = '/';
+  @Input() coinList: any;
+  @Input() packageList: any;
 
   coins = [];
 
@@ -24,7 +26,11 @@ export class PackageCardComponent implements OnInit, OnChanges {
     return ['package', 'coin'].includes(this.view) ? this.package : this.package.packageId;
   }
 
-  ngOnInit() {}
+  ngOnInit()
+  {
+    this.packageList;
+    this.coinList;
+  }
 
   populateCoins() {
     this.coins = this.packageObj.coins.map(coin => coin.currencyId);

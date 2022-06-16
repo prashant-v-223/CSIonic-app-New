@@ -16,11 +16,14 @@
 
   //  Feedback
 .feedbackSection {
-    padding-top: 1rem;
+    //padding-top: 1rem;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin-bottom: 0.5rem;
     border-radius: 10px;
-    background-color: #F3FCF2;
+    background-color: #2B7979;
+    ion-label{
+      color: #fff;
+    }
     ion-textarea
     {
       min-height:10vh;
@@ -28,7 +31,7 @@
     }
     ion-radio
     {
-      --color-checked:#007261 !important;
+      --color-checked:#2B7979 !important;
 
     }
    ion-list{
@@ -51,7 +54,7 @@
     --inner-border-width: 0px;
     --inner-padding-end: 0px;
     --padding-start: 15px;
-    --background: #F3FCF2 !important;
+    --background: #2B7979 !important;
       .radio-button-feedback
       {
         width: 18px;

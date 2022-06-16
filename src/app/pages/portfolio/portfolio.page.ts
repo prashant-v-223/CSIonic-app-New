@@ -7,7 +7,7 @@ import { SIPService } from 'src/app/shared/services/sip.service';
   styleUrls: ['./portfolio.page.scss'],
 })
 export class PortfolioPage implements OnInit {
-  
+
   showLoader = true;
   sipList: any[] = []
 

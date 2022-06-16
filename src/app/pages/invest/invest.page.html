@@ -40,7 +40,7 @@
         <ng-container *ngIf="!showLoader else loadingTmplt">
           <ng-container *ngIf="coinList?.length else noCoinsTmplt">
             <ion-col *ngFor="let coin of coinList" size="6" class="p-0" size-md>
-              <app-package-card [package]="coin" view="coin" [navigationLink]="'/packages/' + coin._id"></app-package-card>
+              <app-package-card [package]="coin" [coinList]="coin.coins" [packageList]="coin.coins" view="coin" [navigationLink]="'/packages/' + coin._id"></app-package-card>
             </ion-col>
           </ng-container>
           <ng-template #noCoinsTmplt>
@@ -80,7 +80,7 @@
 
           <ng-container *ngIf="packageList?.length else noPackagesTmplt">
             <ion-col *ngFor="let package of packageList" class="sip-list" size="12" size-md>
-              <app-package-card [package]="package" [navigationLink]="'/packages/' + package._id"></app-package-card>
+              <app-package-card [package]="package" [coinList]="package.coins" [packageList]="package.coins" [navigationLink]="'/packages/' + package._id"></app-package-card>
             </ion-col>
           </ng-container>
 
