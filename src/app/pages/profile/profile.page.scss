@@ -2,9 +2,9 @@
 .themeHeader{
   background-image: url("~src/assets/profile/profile-header-bg.svg");
   background-size: cover;
-  background-position: top center;
+  background-position: center;
   background-repeat: no-repeat;
-  height: 300px;
+  height: 270px;
   display: block;
     ion-toolbar{
       --background:transparent;
@@ -13,7 +13,7 @@
   }
   .user-profile
   {
-    padding-top: 4%;
+    padding: 4% 2%;
   }
   .profile-heading
   {
@@ -38,7 +38,7 @@
   }
   .list-header
   {
-    background:linear-gradient(to right, #438f8f , #136464 7%);
+    background:linear-gradient(to right, #116161 , #116161 7%);
     padding-bottom:0px;
     ion-col p{
       border-radius: 40px 40px 0px 0px;

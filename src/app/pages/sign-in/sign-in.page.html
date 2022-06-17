@@ -24,8 +24,8 @@
 
       <ion-label class="input" position="stacked">Password</ion-label>
       <ion-item class="customForm">
-        <ion-input type="password" placeholder="Password" formControlName="password"></ion-input>
-        <ion-icon name="eye"></ion-icon>
+        <ion-input [type]="passwordType" placeholder="Password" formControlName="password"></ion-input>
+        <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
       </ion-item>
       <div class="error-message"
         *ngIf="signInForm.get('password').dirty && !signInForm.get('password').errors?.required && signInForm.get('password').errors?.password">

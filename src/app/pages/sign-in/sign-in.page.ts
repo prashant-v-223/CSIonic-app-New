@@ -21,6 +21,8 @@ export class SignInPage implements OnInit {
   CONSTANT: any = COPY;
   isLoading = false;
   earlyAccessDetails : [] = [];
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-off';
   readonly passwordRequirementMessage = passwordRequirementMessage;
 
   signInForm = new FormGroup({
@@ -38,6 +40,11 @@ export class SignInPage implements OnInit {
 
   async ngOnInit() {
     await SplashScreen.hide();
+  }
+
+  hideShowPassword() {
+    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
   }
 
   async signIn() {

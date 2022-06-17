@@ -13,7 +13,8 @@ import { passwordRequirementMessage, passwordValidator } from 'src/app/shared/va
 export class SignUpPage {
   CONSTANT: any = COPY;
   isLoading = false;
-
+  passwordType: string = 'password';
+  passwordIcon: string = 'eye-off';
   readonly passwordRequirementMessage = passwordRequirementMessage;
 
   phoneNumberCountryCodes = [
@@ -22,6 +23,11 @@ export class SignUpPage {
       code: '+91',
     },
   ];
+
+  hideShowPassword() {
+    this.passwordType = this.passwordType === 'text' ? 'password' : 'text';
+    this.passwordIcon = this.passwordIcon === 'eye-off' ? 'eye' : 'eye-off';
+  }
 
   signUpForm = new FormGroup({
     username: new FormControl(null, [Validators.required, Validators.email]),
