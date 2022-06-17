@@ -137,7 +137,7 @@ export class PortfolioViewPage implements OnInit {
           this.packageDetails = res.data;
         }
 
-        this.fillPackageCalculatedDetails();
+        //this.fillPackageCalculatedDetails();
         this.showLoader = false;
       }
     } catch (e) {
