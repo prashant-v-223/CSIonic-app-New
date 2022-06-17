@@ -13,8 +13,6 @@ import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import { ApiConfiguration } from './services/apis/configuration';
-import { FormsModule , ReactiveFormsModule } from '@angular/forms';
-import { EmailComposer } from '@awesome-cordova-plugins/email-composer/ngx';
 import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 Amplify.configure({
   Auth: {
@@ -29,18 +27,16 @@ Amplify.configure({
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot(),
+    IonicModule.forRoot({backButtonText:''}),
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
     CommonModule,
-    FormsModule,
     AmplifyUIAngularModule,
-    ReactiveFormsModule
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    ApiConfiguration,EmailComposer,
+    ApiConfiguration,
     AppVersion,
     {
       provide: RouteReuseStrategy,

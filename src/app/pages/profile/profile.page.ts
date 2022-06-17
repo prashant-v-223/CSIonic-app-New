@@ -6,7 +6,6 @@ import { Auth } from 'aws-amplify';
 
 import { UserService } from 'src/app/shared/services/user.service';
 import { SupportModelPage } from '../common-design/support-model/support-model.page';
-import { EmailComposer } from '@awesome-cordova-plugins/email-composer/ngx';
 
 
 @Component({
@@ -21,7 +20,7 @@ export class ProfilePage {
 
 
   constructor(
-    private userService: UserService, private modalController: ModalController,private emailComposer:EmailComposer
+    private userService: UserService, private modalController: ModalController
   )
   {
     this.user = this.userService.getUserFromStorage();

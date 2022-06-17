@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { COINS } from '../../helper/const';
+import { environment } from "src/environments/environment";
 
 @Component({
   selector: 'app-coin-stack',
@@ -9,11 +10,12 @@ import { COINS } from '../../helper/const';
 export class CoinStackComponent implements OnInit {
 
   @Input() coins: any = [];
-
-  COINS = COINS;
-
+  common_url=environment.ICON_URL;
+  COINS = this.coins;
   constructor() { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    //console.log(this.coins);
+  }
 
 }

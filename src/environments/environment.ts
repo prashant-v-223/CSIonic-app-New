@@ -10,7 +10,10 @@ export const environment = {
   AWS_REGION: "ap-south-1",
   COGNITO_USER_POOL_ID: "ap-south-1_Oj7GfEVr1",
   COGNITO_USER_POOL_CLIENT_ID: "7r09ln3dhgo52u5csglok841ld",
-  APP_NAME: "prosppr-mobile"
+  APP_NAME: "prosppr-mobile",
+  ICON_URL: "http://localhost:3000/",
+  TO_EMAIL: ['yash.technocomet@gmail.com'],
+  CC_EMAIL: ['adatiyayashu1909@gmail.com','arjun.technocomet@gmail.com'],
 };
 
 /*

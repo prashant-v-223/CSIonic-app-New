@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { EmailComposer, EmailComposerOptions } from '@awesome-cordova-plugins/email-composer/ngx';
+import { EmailComposer } from 'capacitor-email-composer';
+import { environment } from "src/environments/environment";
 
 
 import {
@@ -22,7 +23,7 @@ export class SupportModelPage implements OnInit {
   constructor(
     private modalController: ModalController,
     private navParams: NavParams,
-    private navCtrl: NavController,private emailComposer:EmailComposer
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -30,7 +31,7 @@ export class SupportModelPage implements OnInit {
       mailSubject: new FormControl('',[Validators.required]),
       mailBody: new FormControl('',[Validators.required]),
     });
-    console.table(this.navParams);
+    //console.table(this.navParams);
     this.modelId = this.navParams.data.paramID;
     this.modalTitle = this.navParams.data.paramTitle;
   }
@@ -39,15 +40,15 @@ export class SupportModelPage implements OnInit {
 
   }
 
-  async openEmail()
-  {
-    const email:EmailComposerOptions = {
-        to: 'yash.technocomet@gmail.com',
-        cc: 'adatiyayashu1909@gmail.com',
-        subject: 'My first email',
-        body: 'This is testing',
-    }
-    await this.emailComposer.open(email);
+  async openEmail() {
+    let emailOps = {
+      "to": environment.TO_EMAIL,
+      "cc": environment.CC_EMAIL,
+      "subject": this.supportForm.controls['mailSubject'].value,
+      "body": this.supportForm.controls['mailBody'].value,
+    };
+    EmailComposer.open(emailOps);
+    // await this.emailComposer.open(email);
     const onClosedData: string = "Wrapped Up!";
     await this.modalController.dismiss(onClosedData);
   }
