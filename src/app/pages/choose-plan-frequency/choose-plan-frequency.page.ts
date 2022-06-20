@@ -45,7 +45,7 @@ export class ChoosePlanFrequencyPage implements OnInit {
   };
   isFrequencyValid = false;
   tenureYears = [];
-  stepperSteps = "tenure";
+  stepperSteps = "planFrequency";
   selectedDate: Date;
   config;
 
@@ -69,8 +69,8 @@ export class ChoosePlanFrequencyPage implements OnInit {
     this.coins = this.package.coins.map((coin) => coin.currencyId);
     this.onSelectFrequency('monthly');
     this.config = await this.configurationService.getConfiguration();
-    this.tenureYears = this.config.tenure;
-    this.onSelectTenure(0);
+    //this.tenureYears = this.config.tenure;
+    //this.onSelectTenure(0);
   }
 
   onSelectFrequency(type) {
@@ -90,10 +90,10 @@ export class ChoosePlanFrequencyPage implements OnInit {
     this.updateValidity();
   }
 
-  onSelectTenure(index) {
+/*   onSelectTenure(index) {
     this.selectedTenure = this.tenureYears[index];
     this.updateValidity();
-  }
+  } */
 
   onSelectDate(date) {
     this.frequencyObject.monthDay = (
@@ -117,7 +117,7 @@ export class ChoosePlanFrequencyPage implements OnInit {
       this.stepperSteps = "addAmount";
     }
     if (this.stepperSteps === "addAmount") {
-      this.sipService.setSIPData('tenure', this.selectedTenure);
+     // this.sipService.setSIPData('tenure', this.selectedTenure);
       this.sipService.setSIPData('plan-frequency', this.frequencyObject);
       if(this.selectFrequency === 'monthly'){
         this.sipService.setSIPData('selectedDate', this.selectedDate);
@@ -139,8 +139,8 @@ export class ChoosePlanFrequencyPage implements OnInit {
   closeModal(status: 'dismissed' | 'success' | 'error') {
     if (this.stepperSteps === "addAmount" && status === 'dismissed') {
       this.stepperSteps = "planFrequency";
-    } else if (this.stepperSteps === "planFrequency") {
-      this.stepperSteps = "tenure";
+    /* } else if (this.stepperSteps === "planFrequency") {
+      this.stepperSteps = "tenure"; */
     } else {
       this.modalController.dismiss(
         {

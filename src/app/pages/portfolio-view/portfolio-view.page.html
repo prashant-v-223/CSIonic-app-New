@@ -22,15 +22,17 @@
       <ion-col size="12" class="pt-4" size-md>
         <ion-list class="d-flex justify-center">
           <div class="coinTag-inner">
-            <app-coin-stack [coins]="packageCalculatedDetails.coins"></app-coin-stack>
+            <app-coin-stack [coins]="packageDetails.coins" [coinList]="packageDetails.coins" [packageList]="packageDetails.coins"></app-coin-stack>
           </div>
         </ion-list>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="12" class=" mt-2 pt-4 text-center" size-md>
-       <h1 class="text-theme sip-amount">&#8377; 20,000</h1>
-       <span class="sip-amount-subtext">Etherium (ETH)</span>
+      <ion-col size="12" class=" mt-2 pt-1 text-center" size-md>
+      <!--  <h1 class="text-theme sip-amount">&#8377; 20,000</h1>
+       <span class="sip-amount-subtext">Etherium (ETH)</span> -->
+       <h1 class="text-theme sip-amount">&#8377; {{ packageDetails.totalMinimumDepositAmount }}</h1>
+       <span class="sip-amount-subtext">{{ packageDetails.name }}</span>
       </ion-col>
     </ion-row>
     <!-- <ion-list class="ion-list portfolio-price pt-2">

@@ -55,7 +55,7 @@ export class WithdrawalAmountPage implements OnInit {
   }
 
   amountForm = new FormGroup({
-    withdrawalAmount: new FormControl('',[Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/),Validators.min(1),Validators.max(this.maxWithdrawalAmounts)]),
+    withdrawalAmount: new FormControl('',[Validators.required,Validators.pattern(/^-?([0-9]\d*)?$/),Validators.min(1),Validators.max(this.maxWithdrawalAmounts)]),
   });
 
   onBack() {

@@ -89,7 +89,11 @@ ion-button {
 .ion-button-theme-lighter {
   --color: var(--blackColor);
   color: var(--blackColor);
-  --background: var(--bg-lighter);
+  //--background: var(--bg-lighter);
+  --background: transparent;
+  --box-shadow: none !important;
+  border:1px solid #F8F8F8;
+  border-radius: 12px;
   --background-activated: var(--theme-color);
   --background-focused: var(--theme-color);
   --background-hover: var(--theme-color);
@@ -628,7 +632,7 @@ p {
         margin-right: 10px;
         box-shadow: 0px 5px 20px rgb(122 122 122 / 12%);
         .coin-icon {
-          font-size: 28px;
+          font-size: 32px;
         }
       }
       .small-text {
@@ -679,7 +683,7 @@ p {
         }
         .coinTag {
           margin-left: -18px;
-          border: solid 2px #fff;
+          border: solid 1px #fff;
           z-index: 1;
           box-shadow: 0px 5px 20px rgb(122 122 122 / 12%);
           &:first-child {
@@ -756,10 +760,10 @@ p {
     border-radius: 15px; */
     margin-left: -15px;
     z-index: 1;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 12px;
-    border: solid 2px #fff;
+    border: solid 1px #fff;
     //box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
     box-shadow: 0px 5px 20px rgb(122 122 122 / 12%);
 
@@ -768,7 +772,7 @@ p {
     }
 
     .coin-icon {
-      font-size: 38px;
+      font-size: 46px;
     }
   }
 }
@@ -1076,9 +1080,11 @@ p {
 .dial-pad {
   padding: 0rem 2rem;
   ion-button {
-    width: 70px;
-    height: 50px;
+    width: 80px;
+    height: 55px;
+    //box-shadow: 0px 5px 20px rgba(122, 122, 122, 0.12);
     //--border-radius: 100%;
+    background-color: #fff;
     margin: 0px;
     font-family: var(--f-Lexend);
     font-size: 20px;
@@ -1086,10 +1092,13 @@ p {
     --padding-start: 0;
     --padding-end: 0;
     &.ion-button-white {
-      stroke: #000;
+      stroke: #1F2C37;
       font-size: 20px;
-      width: 70px;
-      height: 70px;
+      width: 80px;
+      height: 55px;
+      //box-shadow: 0px 5px 20px rgba(122, 122, 122, 0.12);
+      border-radius: 12px;
+      border:1px solid #F8F8F8;
       &.ion-activated {
         color: #fff;
         fill: #fff;
@@ -1278,6 +1287,12 @@ ion-spinner.size-sm {
 }
 .font-20 {
   font-size: 20px;
+}
+.font-16 {
+  font-size: 16px;
+}
+.font-12 {
+  font-size: 12px;
 }
 .font-xx {
   font-size: xx-large;
