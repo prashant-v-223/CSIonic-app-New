@@ -20,9 +20,10 @@
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
     margin-bottom: 0.5rem;
     border-radius: 10px;
-    background-color: #2B7979;
+    background-color: #F3FCF2;
     ion-label{
-      color: #fff;
+      color: #000;
+      font-size: 14px !important;
     }
     ion-textarea
     {
@@ -31,8 +32,7 @@
     }
     ion-radio
     {
-      --color-checked:#2B7979 !important;
-
+      --color-checked:#007261 !important;
     }
    ion-list{
     padding-top: 0rem;
@@ -44,7 +44,7 @@
       font-size: 16px;
       --border-radius: 8px;
       font-weight: 400;
-      font-family: var(--f-Poppins);
+      font-family: var(--f-Lexend);
       letter-spacing: .08px;
       width: 100%;
 
@@ -53,8 +53,9 @@
     --min-height: 30px;
     --inner-border-width: 0px;
     --inner-padding-end: 0px;
-    --padding-start: 15px;
-    --background: #2B7979 !important;
+    --padding-start: 16.5px;
+    --padding-end: 6px;
+    --background: #F3FCF2 !important;
       .radio-button-feedback
       {
         width: 18px;
@@ -79,7 +80,7 @@
       }
       .ion-title{
         font-size: 17px;
-        font-family: var(--f-Poppins);
+        font-family: var(--f-Lexend);
         letter-spacing: .08px;
         margin-bottom: 0px;
         font-weight: 600;
@@ -89,12 +90,12 @@
       }
       .small-label{
         font-size: 14px;
-        font-family: var(--f-Poppins);
+        font-family: var(--f-Lexend);
         color: var(--blackColor);
       }
       .priceTage{
         font-size: 18px;
-        font-family: var(--f-Poppins);
+        font-family: var(--f-Lexend);
         letter-spacing: .08px;
         margin-bottom: 0px;
         font-weight: 600;
@@ -110,8 +111,8 @@
   }
   .ans ion-item
   {
-    --padding-start: 11px !important;
-    --padding-end: 4px;
+    --padding-start: 12px !important;
+    --padding-end: 1px;
   }
   .queAnsdata
   {
@@ -136,7 +137,7 @@ ion-button{
   font-size: 16px;
   --border-radius: 8px;
   font-weight: 400;
-  font-family: var(--f-Poppins);
+  font-family: var(--f-Lexend);
   letter-spacing: .08px;
   width: 100%;
 }

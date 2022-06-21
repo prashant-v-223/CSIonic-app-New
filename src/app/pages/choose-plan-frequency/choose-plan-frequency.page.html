@@ -22,10 +22,10 @@
         </ion-list>
         <h2 class="header-title mt-3">How frequently would you like to invest?</h2>
         <ion-list class="mt-3 mb-3">
-          <div class="small-label text-center">Step {{ stepperSteps === 'tenure' ? 1 : 2 }} of 3</div>
-          <ion-progress-bar class="themeProgress" [value]="stepperSteps === 'tenure' ? 0.33 : 0.66"></ion-progress-bar>
+          <div class="small-label text-center">Step {{ stepperSteps === 'planFrequency' ? 1 : 2 }} of 2</div>
+          <ion-progress-bar class="themeProgress" [value]="stepperSteps === 'planFrequency' ? 0.50 : 1"></ion-progress-bar>
         </ion-list>
-        <div *ngIf="stepperSteps === 'tenure'">
+      <!--   <div *ngIf="stepperSteps === 'tenure'">
           <ion-list class="mt-3">
             <ion-segment class="tabbingTheme">
               <ion-label>
@@ -45,7 +45,7 @@
               </ion-row>
             </ion-grid>
           </ion-list>
-        </div>
+        </div> -->
         <div *ngIf="stepperSteps === 'planFrequency'">
           <ion-list class="mt-3">
             <ion-segment class="tabbingTheme" (ionChange)="onSelectFrequency($event)" [value]="selectFrequency">
@@ -54,14 +54,14 @@
                   Daily
                 </ion-label>
               </ion-segment-button>
-              <ion-segment-button value="monthly">
-                <ion-label>
-                  Monthly
-                </ion-label>
-              </ion-segment-button>
               <ion-segment-button value="weekly">
                 <ion-label>
                   Weekly
+                </ion-label>
+              </ion-segment-button>
+              <ion-segment-button value="monthly">
+                <ion-label>
+                  Monthly
                 </ion-label>
               </ion-segment-button>
             </ion-segment>
@@ -69,14 +69,12 @@
           <ion-list class="mt-2" *ngIf="selectFrequency === 'weekly'">
             <ion-grid class="p-0">
               <ion-row>
-
                 <ion-col *ngFor="let day of week" size="6" size-md>
                   <ion-button class="day-select text-capitalize" [class.active]="selectedDay===day" expand="full"
                     shape="round" (click)="onSelectDay(day)">
                     <ion-text class="text-capitalize">{{ day }}</ion-text>
                   </ion-button>
                 </ion-col>
-
               </ion-row>
             </ion-grid>
           </ion-list>
