@@ -1,7 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { Chart } from 'chart.js';
-import ChartDataLabels from "chartjs-plugin-datalabels";
-Chart.register(ChartDataLabels);
+import {Chart} from 'chart.js';
+import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
   selector: 'app-analytics',
@@ -19,6 +18,7 @@ export class AnalyticsPage implements OnInit {
   
   ngOnInit() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
+      plugins: [ChartDataLabels],
       type: "bar",
       data: {
         labels: ["Jan","Feb","Mar","Apr","May","Jun","Jul"],
@@ -63,6 +63,7 @@ export class AnalyticsPage implements OnInit {
       }
     });
     this.doughnutChart = new Chart(this.doughnutCanvas.nativeElement, {
+      plugins: [ChartDataLabels],
       type: "doughnut",
       data: {
         labels: ["22.5%","22.5%","50%"],

@@ -2,6 +2,6 @@
   *ngFor="let coin of coins; index as i"
   class="coinTag mr-2"
   >
-  <ion-icon class="coin-icon" [src]="coin.currencyId.icon || 'assets/currency/bitcoin.svg'"></ion-icon>
+  <ion-icon class="coin-icon" [src]="coin?.currencyId?.icon || 'assets/currency/bitcoin.svg'"></ion-icon>
 </div>
 <!-- [ngClass]="{'bg-blue' : i === 0, 'bg-greenLighter': i === 1, 'bg-grey': i > 1 }" -->

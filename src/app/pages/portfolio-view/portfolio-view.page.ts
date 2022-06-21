@@ -8,10 +8,6 @@ import { SIPService } from 'src/app/shared/services/sip.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ChoosePlanFrequencyPage } from '../choose-plan-frequency/choose-plan-frequency.page';
 
-import { Chart } from 'chart.js';
-import ChartDataLabels from "chartjs-plugin-datalabels";
-Chart.register(ChartDataLabels);
-
 enum SIPSteps {
   FREQUENCY,
   AMOUNT,
@@ -33,9 +29,8 @@ export enum RequiredVerificationEnum {
 })
 export class PortfolioViewPage implements OnInit {
 
-  @ViewChild('lineCanvas') private lineCanvas: ElementRef;
-  lineChart: any;
-
+  // @ViewChild('lineCanvas') private lineCanvas: ElementRef;
+  // lineChart: any;
   CONSTANT = COPY;
   COINS = COINS;
 
@@ -94,71 +89,74 @@ export class PortfolioViewPage implements OnInit {
     this.activateRoute.params.subscribe((params: Params) => {
       this.id = params.id;
       this.view = this.router.url.startsWith('/sip') ? 'sip' : 'package';
+
+      this.loadDetails();
     });
   }
-  
+
   ngAfterViewInit() {
-    this.lineChartMethod();
+    this.checkUserCanStartSIP();
+    // this.lineChartMethod();
   }
- 
-  lineChartMethod() {
-    console.log(this.lineCanvas);
+
+  // lineChartMethod() {
+  //   console.log(this.lineCanvas);
     
-    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-      type: 'line',
-      data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-        datasets: [
-          {
-            data: [30, 70, 30, 50, 35, 10, 35, 30, 80, 20, 50, 100],
-            backgroundColor: 'rgba(43, 121, 121, .5)',
-            borderColor: 'rgba(43, 121, 121, 1)',
-            borderCapStyle: 'butt',
-            fill: true,
-            tension: 0.5,
-            pointBorderColor: 'rgba(75,192,192,1)',
-            pointBackgroundColor: '#FFFFFF',
-            pointRadius: 0,
-            pointHitRadius: 10,
-            pointBorderWidth: 1,
-            pointHoverBorderWidth: 5,
-            pointHoverRadius: 10,
-            pointHoverBackgroundColor: '#FFFFFF',
-            pointHoverBorderColor: 'rgba(43, 121, 121, 1)',
-            spanGaps: false,
-          }
-        ]
-      },
-      options: {
-        plugins: {
-          legend: {
-            display: false
-          },
-          datalabels: {
-            display: false,
-          },
-        },
-        scales: {
-          y: {
-            grid: {
-              drawBorder: false,
-              display: false
-            },
-            ticks: {
-              display: false
-            }
-          },
-          x: {
-            grid: {
-              drawBorder: false,
-              display: false
-            },
-          }
-        }
-      }
-    });
-  }
-  
+  //   this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+  //     type: 'line',
+  //     data: {
+  //       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
+  //       datasets: [
+  //         {
+  //           data: [30, 70, 30, 50, 35, 10, 35, 30, 80, 20, 50, 100],
+  //           backgroundColor: 'rgba(43, 121, 121, .5)',
+  //           borderColor: 'rgba(43, 121, 121, 1)',
+  //           borderCapStyle: 'butt',
+  //           fill: true,
+  //           tension: 0.5,
+  //           pointBorderColor: 'rgba(75,192,192,1)',
+  //           pointBackgroundColor: '#FFFFFF',
+  //           pointRadius: 0,
+  //           pointHitRadius: 10,
+  //           pointBorderWidth: 1,
+  //           pointHoverBorderWidth: 5,
+  //           pointHoverRadius: 10,
+  //           pointHoverBackgroundColor: '#FFFFFF',
+  //           pointHoverBorderColor: 'rgba(43, 121, 121, 1)',
+  //           spanGaps: false,
+  //         }
+  //       ]
+  //     },
+  //     options: {
+  //       plugins: {
+  //         legend: {
+  //           display: false
+  //         },
+  //         datalabels: {
+  //           display: false,
+  //         },
+  //       },
+  //       scales: {
+  //         y: {
+  //           grid: {
+  //             drawBorder: false,
+  //             display: false
+  //           },
+  //           ticks: {
+  //             display: false
+  //           }
+  //         },
+  //         x: {
+  //           grid: {
+  //             drawBorder: false,
+  //             display: false
+  //           },
+  //         }
+  //       }
+  //     }
+  //   });
+  // }
+
   checkUserCanStartSIP() {
     this.canStartSIP = false;
     this.pendingVerificationList = [];
