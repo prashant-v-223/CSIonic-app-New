@@ -52,6 +52,7 @@ export class AddAmountPage implements OnInit {
 
   async ngOnInit() {
     this.config = await this.configurationService.getConfiguration();
+    this.setAmount(this.sipService?.getSIPData()?.package?.totalMinimumDepositAmount);
   }
 
   prepareChartData() {
@@ -106,6 +107,7 @@ export class AddAmountPage implements OnInit {
 
     try {
       this.showLoader = true;
+      this.isAmountValid = false;
       const sipRes = await this.sipService.addSIP();
       if (sipRes.status === this.CONSTANT.SUCCESS) {
         // this.sipService.setSIPData('reset', null);
@@ -131,6 +133,7 @@ export class AddAmountPage implements OnInit {
       this.handleSIPCreateError();
     } finally {
       this.showLoader = false;
+      this.isAmountValid = true;
     }
   }
 
