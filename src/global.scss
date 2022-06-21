@@ -1313,3 +1313,6 @@ ion-spinner.size-sm {
   color: #6c757d !important;
 }
 
+.calendar-action-buttons ::ng-deep ion-timedate{
+  display: none !important;
+}
