@@ -22,17 +22,15 @@
       <ion-col size="12" class="pt-4" size-md>
         <ion-list class="d-flex justify-center">
           <div class="coinTag-inner">
-            <app-coin-stack [coins]="packageDetails.coins" [coinList]="packageDetails.coins" [packageList]="packageDetails.coins"></app-coin-stack>
+            <app-coin-stack [coins]="packageCalculatedDetails.coins"></app-coin-stack>
           </div>
         </ion-list>
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size="12" class=" mt-2 pt-1 text-center" size-md>
-      <!--  <h1 class="text-theme sip-amount">&#8377; 20,000</h1>
-       <span class="sip-amount-subtext">Etherium (ETH)</span> -->
-       <h1 class="text-theme sip-amount">&#8377; {{ packageDetails.totalMinimumDepositAmount }}</h1>
-       <span class="sip-amount-subtext">{{ packageDetails.name }}</span>
+      <ion-col size="12" class=" mt-2 pt-4 text-center" size-md>
+       <h1 class="text-theme sip-amount"><ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon>20,000</h1>
+       <span class="sip-amount-subtext">Etherium (ETH)</span>
       </ion-col>
     </ion-row>
     <!-- <ion-list class="ion-list portfolio-price pt-2">
@@ -56,6 +54,7 @@
     <ion-list>
       <!-- Show the graph based on selected period -->
       <img src="../../../assets/icon/chart.svg" width="100%" alt="img">
+      <!-- <canvas #lineCanvas></canvas> -->
     </ion-list>
 
     <ion-list class="ion-list">
@@ -92,26 +91,26 @@
 
         <!-- TODO -->
         <ion-col size="6" class="mb-4" size-md>
-          <h4 class="heading-label f-Lexend">&#8377; 19,006.00</h4>
+          <h4 class="heading-label f-Lexend"><ion-icon class="font-15" src="../../../assets/icon/rupee-black.svg"></ion-icon>19,006.00</h4>
           <span class="small-label gray-text">Current Value</span>
         </ion-col>
 
         <!-- TODO -->
         <ion-col size="6" class="mb-4" size-md>
-          <h4 class="heading-label f-Lexend">&#8377; {{ (view === 'sip' ? sipDetails.totalAmount : 19006) | number }}
+          <h4 class="heading-label f-Lexend"><ion-icon class="font-15" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (view === 'sip' ? sipDetails.totalAmount : 19006) | number }}
           </h4>
           <span class="small-label gray-text">Invested</span>
         </ion-col>
 
         <!-- TODO -->
         <ion-col size="6" class="mb-4" size-md>
-          <h4 class="heading-label f-Lexend">&#8377; 2,000.00</h4>
+          <h4 class="heading-label f-Lexend"><ion-icon class="font-15" src="../../../assets/icon/rupee-black.svg"></ion-icon>2,000.00</h4>
          <!--  <span class="small-label gray-text">Returns</span> -->
         </ion-col>
 
         <!-- TODO -->
         <ion-col size="6" class="mb-4" size-md>
-          <h4 class="heading-label text-d-theme f-Lexend"><ion-icon class="text-muted-custom icon-up" src="assets/icon/arrow-up-square.svg"></ion-icon>&nbsp;+24%</h4>
+          <h4 class="heading-label text-d-theme f-Lexend"><ion-icon class="text-muted-custom icon-up font-18" src="assets/icon/arrow-up-square.svg"></ion-icon>&nbsp;+24%</h4>
           <span class="small-label gray-text">% ROI</span>
         </ion-col>
         <ion-col size="12" size-md>
@@ -124,13 +123,13 @@
         </ion-col> -->
         <ion-col size="6" class="mt-3" size-md>
           <ng-container *ngIf="view === 'package' else intervalTmplt">
-            <h6 class="smallHeading-label">&#8377;{{ packageDetails.totalMinimumDepositAmount }}</h6>
+            <h6 class="smallHeading-label"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ packageDetails.totalMinimumDepositAmount }}</h6>
             <span class="small-label"><!-- Minimum SIP Amt -->Active Plan</span>
           </ng-container>
 
           <ng-template #intervalTmplt>
             <h6 class="smallHeading-label">
-              &#8377;{{ sipDetails.installmentAmount | number }}/<span class="ion-text-capitalize">{{
+              <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ sipDetails.installmentAmount | number }}/<span class="ion-text-capitalize">{{
                 sipDetails.interval.type }}</span>
             </h6>
             <span class="small-label">Interval</span>
