@@ -27,7 +27,7 @@
         </ion-list>
         <ion-list class="mt-2 text-center">
           <ion-text class="small-label mt-3">
-            &#8377; INR
+            <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon> INR
           </ion-text>
           <h1 class="text-dark  mt-3 " *ngIf="amount else amountPlaceholderTmplt">
             {{ amount | number : '1.0-0' }}
@@ -36,9 +36,9 @@
           <div class="d-flex justify-center">
             <div class="error-message"
               *ngIf="amount > config?.sip?.maxInstallmentAmount || amount < sipService?.getSIPData()?.package?.totalMinimumDepositAmount">
-              Installment amount should be greater than or equal to &#8377;
+              Installment amount should be greater than or equal to <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>
               {{ sipService?.getSIPData()?.package?.totalMinimumDepositAmount | number : '1.0-0' }} and less than or
-              equal to &#8377; {{ config?.sip?.maxInstallmentAmount | number : '1.0-0' }}
+              equal to <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon> {{ config?.sip?.maxInstallmentAmount | number : '1.0-0' }}
             </div>
           </div>
 
