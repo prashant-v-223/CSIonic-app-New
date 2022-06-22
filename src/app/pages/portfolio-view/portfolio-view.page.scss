@@ -14,9 +14,10 @@
     letter-spacing: .08px;
   }
   ion-icon{
+
     font-size: 42px;
     margin-top: -10%;
-    padding-left: 1%;
+   padding-left: 1%;
   }
   .sip-withdraw{
     background-color: #1F2C37;
@@ -156,9 +157,9 @@ ion-content {
       height: 1px;
       background-color: #DCDCDC;
     }
-    ion-icon{
-      font-size: 18px;
-    }
+    // ion-icon{
+    //   font-size: 18px;
+    // }
   }
 
   ion-button {
