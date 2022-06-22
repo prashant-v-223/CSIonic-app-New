@@ -11,7 +11,7 @@ import { COPY } from 'src/app/shared/helper/const';
 import { UserService } from 'src/app/shared/services/user.service';
 import { passwordRequirementMessage, passwordValidator } from 'src/app/shared/validators/password-validator';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
-
+import { NotificationService } from 'src/app/shared/services/notification.service';
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.page.html',
@@ -35,7 +35,8 @@ export class SignInPage implements OnInit {
     private router: Router,
     private toastController: ToastController,
     private userService: UserService,
-    private configurationService: ConfigurationService
+    private configurationService: ConfigurationService,
+    private notificationService: NotificationService
   ) {}
 
   async ngOnInit() {
@@ -70,6 +71,7 @@ export class SignInPage implements OnInit {
           }
           else
           {
+            const token = await this.notificationService.getPushNotificationToken();
             this.router.navigateByUrl('/tabs/dashboard');
           }
         }

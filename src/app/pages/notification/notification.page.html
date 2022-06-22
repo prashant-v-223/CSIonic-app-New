@@ -1,0 +1,41 @@
+<ion-header translucent class="themeHeader">
+  <ion-toolbar>
+    <ion-list>
+      <ion-buttons slot="start">
+        <ion-back-button mat-icon-button class="back-btn" defaultHref="/tabs/profile">
+        </ion-back-button>
+      </ion-buttons>
+    </ion-list>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-title>Notifications</ion-title>
+
+  <ng-container *ngIf="!isLoading else loadingTmplt">
+
+    <ion-list *ngIf="notifications?.length else noNotificationsTmplt">
+
+      <ion-item *ngFor="let notification of notifications">
+        <ion-label>
+          <h2>{{ notification.title }}</h2>
+          <p>{{ notification.body }}</p>
+        </ion-label>
+      </ion-item>
+
+    </ion-list>
+
+    <ng-template #noNotificationsTmplt>
+      <div class="mt-5">
+        No notifications available
+      </div>
+    </ng-template>
+
+  </ng-container>
+
+</ion-content>
+
+<ng-template #loadingTmplt>
+  <app-loading-skeleton></app-loading-skeleton>
+</ng-template>

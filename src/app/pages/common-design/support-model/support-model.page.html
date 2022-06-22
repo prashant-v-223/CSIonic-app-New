@@ -1,4 +1,4 @@
-<ion-header class="themeHeader">
+<ion-header class="themeHeader text-center">
   <ion-toolbar>
     <ion-title>Support</ion-title>
   </ion-toolbar>
@@ -23,7 +23,7 @@
       </ion-row>
       <ion-row>
         <ion-col text-center>
-          <ion-button (click)="openEmail()" [disabled]="supportForm.invalid || supportForm.disabled">Send Mail</ion-button>
+          <ion-button class="ion-button-theme" (click)="openEmail()" [disabled]="supportForm.invalid || supportForm.disabled">Send Mail</ion-button>
         </ion-col>
       </ion-row>
     </form>

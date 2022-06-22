@@ -626,8 +626,8 @@ p {
         display: flex;
         justify-content: center;
         align-items: center;
-        width: 32px;
-        height: 32px;
+        width: 26px;
+        height: 26px;
         border-radius: 10px;
         margin-right: 10px;
         box-shadow: 0px 5px 20px rgb(122 122 122 / 12%);
@@ -742,6 +742,13 @@ p {
       margin-top: 5px;
     }
   }
+}
+.popular-currency
+{
+  background-color: #E6E6E6;
+  padding: 4px 6px;
+  color: #78828A;
+  font-family: Lexend;
 }
 
 .coinTag-inner {

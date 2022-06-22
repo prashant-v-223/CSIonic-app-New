@@ -27,7 +27,6 @@ export class DashboardPage implements OnInit {
   ) {
     this.user = this.userService.getUserFromStorage();
 
-    console.log()
   }
 
   ngOnInit(): void {
