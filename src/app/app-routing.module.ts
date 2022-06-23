@@ -191,10 +191,6 @@ const routes: Routes = [
     path: 'onboard',
     loadChildren: () => import('./pages/onboard/onboard.module').then( m => m.OnboardPageModule)
   }
-
-
-
-
 ];
 
 @NgModule({
