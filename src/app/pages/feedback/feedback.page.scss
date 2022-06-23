@@ -53,8 +53,8 @@
     --min-height: 30px;
     --inner-border-width: 0px;
     --inner-padding-end: 0px;
-    --padding-start: 16.5px;
-    --padding-end: 6px;
+    --padding-start: 13px;
+    --padding-end: 3px;
     --background: #F3FCF2 !important;
       .radio-button-feedback
       {
@@ -108,11 +108,12 @@
 
   .que{
     display: flex;
+    margin-left: 1%;
   }
   .ans ion-item
   {
     --padding-start: 12px !important;
-    --padding-end: 1px;
+    --padding-end: 2px;
   }
   .queAnsdata
   {

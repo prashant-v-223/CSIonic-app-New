@@ -14,19 +14,20 @@
     letter-spacing: .08px;
   }
   ion-icon{
-    font-size: 42px;
+    font-size: 36px;
     margin-top: 0%;
-    padding-left: 1%;
+    padding-left: 0%;
   }
-  .sip-withdraw{
-    background-color: #1F2C37;
+  .sip-withdraw .withdraw-link-btn{
+    --background: #1F2C37 !important;
     border-radius: 10px;
-    padding: 4px 6px;
+    //padding: 4px 6px;
     font-family: var(--f-Lexend);
     color: #fff;
     font-weight: 500;
-    width: 32%;
+    width: 90%;
     height: 32px;
+    margin-left: 10%;
   }
   .sip-withdraw b{
     padding-left: 7%;
@@ -123,7 +124,7 @@ ion-content {
   }
 
   .portfolio-details {
-    border-radius: 30px 30px 0px 0px;
+    border-radius: 1% 3%;
     padding: 0rem 1.5rem;
     .small-label {
       font-size: 14px;
@@ -135,8 +136,8 @@ ion-content {
       color:#1F2C37;
     }
     .heading-label {
-      font-size: 22px;
-      line-height: 22px;
+      font-size: 20px;
+      line-height: 14px;
       font-weight: 500;
       letter-spacing: -0.08px;
       opacity: 1;
@@ -200,4 +201,9 @@ ion-content, ion-header, ion-row, ion-col {
   font-family: var(--f-Lexend);
   color: #1F2C37;
   font-weight: 500;
+}
+.sip-chart
+{
+  margin-top: -10%;
+  margin-bottom: -10%;
 }

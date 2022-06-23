@@ -187,9 +187,6 @@ const routes: Routes = [
     path: 'feedback',
     loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
   }
-
-
-
 ];
 
 @NgModule({

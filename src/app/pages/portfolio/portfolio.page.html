@@ -42,6 +42,7 @@
           </ion-row>
         </ion-grid>
       </div>
+      <span class="withdrawal-status">Testing</span>
     </ion-col>
     <ion-col size="12" class="themeHeading p-0">
       <h6>MY INVESTMENTS</h6>
@@ -52,8 +53,12 @@
 
         <ion-row *ngIf="sipList?.length else noSIPsTmplt">
 
-          <ion-col *ngFor="let sip of sipList" size="12" size-md>
+          <ion-col *ngFor="let sip of sipList" size="12" size-md [ngClass]="{'myPortfolio-list-completed': sip.status == 'withdrawn_completed', 'myPortfolio-list-inprogress' : sip.status === 'withdrawn_inprogress', 'myPortfolio-list-failure' : sip.status === 'withdrawn_failure' }" >
             <app-package-card [package]="sip" [packageList]="sip.packageId.coins" [view]="'sip'" [navigationLink]="'/sip/' + sip._id"></app-package-card>
+
+            <span *ngIf="sip.status =='withdrawn_inprogress'" class="withdrawal-status font-12">Withdrawal Inprogress</span>
+            <span *ngIf="sip.status == 'withdrawn_completed'" class="withdrawal-status font-12">Withdrawal Completed</span>
+            <span *ngIf="sip.status == 'withdrawn_failure'" class="withdrawal-status font-12">Withdrawal Faliure</span>
           </ion-col>
 
           <!-- <ion-col size="12" size-md>
