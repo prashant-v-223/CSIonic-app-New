@@ -1,13 +1,10 @@
 .themeHeader{
-  background-image: url("~src/assets/portfolio-heading.png");
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  height: 250px;
-  display: block;
-  ion-toolbar{
-    --background: transparent;
-    color: #fff !important;
+  .menuLeft {
+    background-color: rgba($color: #EFF7ED, $alpha: 1);
+    color: #fff;
+    ion-icon {
+      stroke: #2F4858;
+    }
   }
   ion-button {
     margin: 0px;

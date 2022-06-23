@@ -20,8 +20,10 @@
     margin-top: 5px !important;
     font-family: var(--f-Lexend);
   }
-  ion-icon{
-    font-size: 20px;
+  ion-content {
+    ion-icon{
+      font-size: 20px;
+    }
   }
   .avatar ion-img{
     width: 40px;
