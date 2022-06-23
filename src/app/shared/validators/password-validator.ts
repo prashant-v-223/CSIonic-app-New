@@ -5,7 +5,7 @@ import { AbstractControl, ValidationErrors, ValidatorFn } from "@angular/forms";
 // Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character ^ $ * . [ ] { } ( ) ? " ! @ # % & / \ , > < ' : ; | _ ~ ` = + -
 export const passwordRegExp = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[\^$*.\[\]{}\(\)?\-\"!@#%&\/,><\':;|_~`])\S{8,99}$/);
 
-export const passwordRequirementMessage = 'Password must contain Minimum eight characters, at least one uppercase letter, one lowercase letter, one number and one special character';
+export const passwordRequirementMessage = '<ul class="text-danger pl-1"><li>Password must contain Minimum eight characters.</li> <li>At least one uppercase letter.</li> <li>One lowercase letter, one number and one special character.</li></ul>';
 
 export function passwordValidator(control: AbstractControl): ValidationErrors | null {
   const isValidPassword = passwordRegExp.test(control.value);

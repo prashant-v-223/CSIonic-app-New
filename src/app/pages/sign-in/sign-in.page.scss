@@ -13,14 +13,14 @@
     background-color: rgba($color: #fff, $alpha: 0.5);
     border-radius: 100%;
   }
-  &::after {
-    top: 20px;
-    right: -90px;
-  }
-  &::before {
-    bottom: 20px;
-    left: -90px;
-  }
+  // &::after {
+  //   top: 20px;
+  //   right: -90px;
+  // }
+  // &::before {
+  //   bottom: 20px;
+  //   left: -90px;
+  // }
   .login-inner {
     z-index: 1;
     position: relative;
