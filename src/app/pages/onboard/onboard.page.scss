@@ -1,0 +1,74 @@
+ion-content {
+    font-family: 'Lexend';
+    font-style: normal;
+
+    .main-background {
+        // background:linear-gradient(0deg, #000000 0%, rgba(196, 196, 196, 0) 79%), url("~src/assets/onboard-background.png");
+        background-image: url("~src/assets/prosppr-onboard.png");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        min-height:100%;
+    }
+    
+    .section {
+        bottom: 0px;
+        position: absolute;
+        padding: 30px 20px;
+    }
+    
+    .main-heading {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 22px;
+        text-align: center;
+        letter-spacing: 0.005em;
+        color: #FFFFFF;
+        width: 100%;
+        span {
+            color: var(--theme-d-color);
+        }
+    }
+    .appLogo {
+        width: 100%;
+        .logo {
+            width: 100%;
+            font-size: 50px;
+        }
+    }
+    
+    ion-button{
+        margin: 0px;
+        line-height: 0px;
+        height: 50px;
+        font-size: 16px;
+        --border-radius: 10px;
+        font-weight: 400;
+        letter-spacing: 0.08px;
+        width: 100%;
+        --box-shadow: inherit;
+    }
+
+    .footer {
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 17px;
+        text-align: center;
+        mix-blend-mode: normal;
+        color: #78828A;
+        a {
+            color: #78828A;
+            text-decoration-line: underline;
+        }
+    }
+}
+
+.mt-14 {
+    margin-top: 14px;
+}
+.mb-14 {
+    margin-bottom: 14px;
+}
+.mb-12 {
+    margin-bottom: 12px;
+}

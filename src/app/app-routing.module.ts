@@ -186,7 +186,12 @@ const routes: Routes = [
   {
     path: 'feedback',
     loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
+  },
+  {
+    path: 'onboard',
+    loadChildren: () => import('./pages/onboard/onboard.module').then( m => m.OnboardPageModule)
   }
+
 
 
 
