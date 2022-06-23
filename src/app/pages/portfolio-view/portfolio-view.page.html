@@ -22,7 +22,8 @@
       <ion-col size="12" class="pt-4" size-md>
         <ion-list class="d-flex justify-center">
           <div class="coinTag-inner">
-            <app-coin-stack [coins]="packageCalculatedDetails.coins"></app-coin-stack>
+            <!-- <app-coin-stack [coins]="packageCalculatedDetails.coins"></app-coin-stack> -->
+            <app-coin-stack [coins]="packageDetails.coins" [coinList]="packageDetails.coins" [packageList]="packageDetails.coins"></app-coin-stack>
           </div>
         </ion-list>
       </ion-col>
