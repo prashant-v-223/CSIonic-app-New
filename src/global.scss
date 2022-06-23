@@ -63,6 +63,13 @@
   --input-border: #ECF1F6;
   --input-color: #FDFDFD;
   --white: #FFFFFF;
+
+  --ion-color-primary: #115858;
+	--ion-color-primary-rgb: 56,128,255;
+	--ion-color-primary-contrast: #ffffff;
+	--ion-color-primary-contrast-rgb: 255,255,255;
+	--ion-color-primary-shade: #2B7979;
+	--ion-color-primary-tint: #558080;
 }
 .f-Poppins {
   font-family: var(--f-Lexend) !important;
@@ -1301,10 +1308,6 @@ ion-spinner.size-sm {
 .text-decoration-none {
   text-decoration: none;
 }
-:host .calendar-day.calendar-day-today.calendar-day-active::after {
-  background: #2B7979 !important;
-  // opacity: 1;
-}
 .w-35 {
   width: 35%;
 }
@@ -1314,3 +1317,18 @@ ion-spinner.size-sm {
   color: #6c757d !important;
 }
 
+.font-18 {
+  font-size: 18px;
+}
+.font-10 {
+  font-size: 10px;
+}
+.font-15 {
+  font-size: 15px;
+}
+.font-13 {
+  font-size: 13px;
+}
+.font-larger {
+  font-size: larger;
+}

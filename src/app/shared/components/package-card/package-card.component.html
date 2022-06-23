@@ -1,6 +1,6 @@
 <ng-container [ngSwitch]="true">
 
-  <div class="card bg-white" *ngSwitchCase="view === 'package' || view === 'sip'">
+  <div class="card bg-white" *ngSwitchCase="view === 'package' || view === 'sip'" [routerLink]="navigationLink">
     <div class="card-body">
       <div class="d-flex align-center justify-between w-100 mb-2">
         <app-coin-stack [coins]="packageList"></app-coin-stack>
@@ -10,7 +10,7 @@
             <div class="small-label text-dark">
               <!-- <span>Interval</span>&nbsp; -->
               <span class="text-dark font-weight-600">
-                &#8377;{{ package.installmentAmount | number }}/<span class="ion-text-capitalize">{{ package.interval.type }}</span>
+                <ion-icon class="font-10" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ package.installmentAmount | number }}/<span class="ion-text-capitalize">{{ package.interval.type }}</span>
               </span>
             </div>
           </div>

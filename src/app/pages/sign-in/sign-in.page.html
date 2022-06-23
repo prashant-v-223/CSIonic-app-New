@@ -19,7 +19,9 @@
       </ion-item>
       <div class="error-message"
         *ngIf="signInForm.get('username').dirty && !signInForm.get('username').errors?.required && signInForm.get('username').errors?.email">
-        Enter valid email address
+        <ul class="text-danger pl-1">
+          <li>Enter valid email address</li>
+        </ul>
       </div>
 
       <ion-label class="input" position="stacked">Password</ion-label>
@@ -27,9 +29,9 @@
         <ion-input [type]="passwordType" placeholder="Password" formControlName="password"></ion-input>
         <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
       </ion-item>
-      <div class="error-message"
+      <div class="error-message" [innerHTML]="passwordRequirementMessage"
         *ngIf="signInForm.get('password').dirty && !signInForm.get('password').errors?.required && signInForm.get('password').errors?.password">
-        {{ passwordRequirementMessage }}
+        <!-- {{ passwordRequirementMessage }} -->
       </div>
 
       <ion-list class="p-0 text-right">

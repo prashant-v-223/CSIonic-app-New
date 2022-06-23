@@ -54,7 +54,7 @@
       font-size: 15px;
       --border-radius: 15px;
       font-weight: 500;
-      font-family: var(--f-Poppins); 
+      font-family: var(--f-Poppins);
       letter-spacing: .08px;
       color: var(--lighter-b-Color);
       --background-focused: var(--lighter-b-Color);
@@ -82,7 +82,11 @@
   }
   ion-datetime {
     max-width: 100%;
-    border-radius: 15px; 
+    border-radius: 15px;
+    .calendar-action-buttons
+    {
+      display: none !important;
+    }
   }
 
   .grid {
@@ -101,3 +105,4 @@
     height: 382px;
   }
 }
+
