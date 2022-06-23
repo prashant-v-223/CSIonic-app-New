@@ -1,24 +1,24 @@
   <div class="p-3">
     <div class="dash-card mb-3" (click)="viewTransactions()">
       <h3 class="mb-2">Balance available</h3>
-      <h1 class="balance">&#8377; 1,156</h1>
+      <h1 class="balance"><ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon> 1,156</h1>
     </div>
     <div class="dash-card mb-5">
       <h3>My Investments</h3>
       <div class="flex-row align-center mb-3">
         <div class="card-item w-50">
           <span class="gray-text mb-1">Invested</span>
-          <span class="f-500">&#8377; 19,42,000.00</span>
+          <span class="f-500"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon> 19,42,000.00</span>
         </div>
         <div class="card-item w-50">
           <span class="gray-text mb-1">Current</span>
-          <span class="f-500">&#8377; 19,55,000.00</span>
+          <span class="f-500"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon> 19,55,000.00</span>
         </div>
       </div>
       <div class="flex-row align-center">
         <div class="card-item w-50">
           <span class="gray-text mb-1">Returns</span>
-          <span class="f-500">&#8377; 2,000.00</span>
+          <span class="f-500"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon> 2,000.00</span>
         </div>
         <div class="card-item w-50">
           <span class="gray-text mb-1">Total Returns %</span>
@@ -31,8 +31,8 @@
       <div class="flex-column flex-item no-shrink align-end">
         <span class="mb-2"
           [ngClass]="sip.investment < sip.returns ? 'green-text' : 'red-text'">{{sip.investment > sip.returns ? "-":""}}
-          &#8377;{{sip.returns}}</span>
-        <span>(&#8377;{{sip.investment}})</span>
+          <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{sip.returns}}</span>
+        <span>(<ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{sip.investment}})</span>
       </div>
     </div>
   </div>

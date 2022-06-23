@@ -198,17 +198,18 @@ export class PortfolioViewPage implements OnInit {
         } else {
           this.packageDetails = res.data;
         }
-
-        this.fillPackageCalculatedDetails();
+       // this.COINS = this.packageDetails.coins;
+        //this.fillPackageCalculatedDetails();
         this.showLoader = false;
       }
+     //console.log(this.packageDetails.coins);
     } catch (e) {
       console.log('Error while getting package details', e);
       this.goBack();
     }
   }
 
-  fillPackageCalculatedDetails() {
+  /* fillPackageCalculatedDetails() {
     this.packageCalculatedDetails.coins = this.packageDetails.coins.map(
       (coin) => coin.currencyId
     );
@@ -224,7 +225,7 @@ export class PortfolioViewPage implements OnInit {
       this.packageCalculatedDetails.returnPercentage =
         this.packageDetails.yearlyReturns['_1'];
     }
-  }
+  } */
 
   segmentChanged(ev: any) {
     this.segment = ev.detail.value;

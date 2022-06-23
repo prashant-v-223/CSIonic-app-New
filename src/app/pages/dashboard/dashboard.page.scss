@@ -20,7 +20,7 @@ ion-header,#background-content{
     font-family: var(--f-Lexend);
     letter-spacing: -0.9px;
     line-height: 40px;
-    margin-bottom: 0px;
+    margin-bottom: -6%;
     font-weight: 700;
   }
   .userInfo {
@@ -39,7 +39,7 @@ ion-header,#background-content{
     -moz-box-shadow: 0px 20px 50px 0px #0000001c;
     box-shadow: 0px 20px 50px 0px #0000001c;
     background-color: var(--theme-color);
-    margin-bottom: 2.5rem;
+    margin-bottom: 1.5rem;
     &::after {
       content: "";
       position: absolute;
@@ -59,7 +59,7 @@ ion-header,#background-content{
       z-index: 1;
       width: 100%;
       .label {
-        font-size: 15px;
+        font-size: 12px;
         color: var(--white);
         opacity: 0.7;
         line-height: 18px;

@@ -65,7 +65,7 @@
   --white: #FFFFFF;
 }
 .f-Poppins {
-  font-family: var(--f-Poppins) !important;
+  font-family: var(--f-Lexend) !important;
 }
 .f-Lexend {
   font-family: var(--f-Lexend) !important;
@@ -89,7 +89,11 @@ ion-button {
 .ion-button-theme-lighter {
   --color: var(--blackColor);
   color: var(--blackColor);
-  --background: var(--bg-lighter);
+  //--background: var(--bg-lighter);
+  --background: transparent;
+  --box-shadow: none !important;
+  border:1px solid #F8F8F8;
+  border-radius: 12px;
   --background-activated: var(--theme-color);
   --background-focused: var(--theme-color);
   --background-hover: var(--theme-color);
@@ -221,7 +225,7 @@ ion-content {
 p {
   font-size: 14px;
   line-height: 18px;
-  font-family: var(--f-Poppins);
+  font-family: var(--f-Lexend);
   color: var(--blackColor);
   opacity: 0.8;
 }
@@ -235,13 +239,13 @@ p {
 .link-dark {
   font-size: 14px;
   color: #000;
-  font-family: var(--f-Poppins);
+  font-family: var(--f-Lexend);
   text-decoration: inherit;
 }
 .link-primary {
   font-size: 14px;
   color: var(--theme-color);
-  font-family: var(--f-Poppins);
+  font-family: var(--f-Lexend);
   text-decoration: inherit;
 }
 .gray-text {
@@ -449,7 +453,7 @@ p {
   }
   .ion-title {
     font-size: 26px;
-    font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     font-weight: 500;
     margin: 0rem;
     line-height: 28px;
@@ -467,7 +471,7 @@ p {
   .small-label {
     font-size: 13px;
     line-height: 16px;
-    //@at-root: var(--f-Poppins);
+    //@at-root: var(--f-Lexend);
     font-family: var(--f-Lexend);
     font-weight: 400;
     text-align: left;
@@ -517,7 +521,8 @@ p {
   }
   ion-toolbar {
     --min-height: 55px;
-    padding: 0rem 0.8rem 0rem 0.5rem;
+    //padding: 0rem 0.8rem 0rem 0.5rem;
+    padding: 0rem 1rem 0rem 1rem;
     --background: #fff;
     --border-width: 0px;
     --opacity: 1;
@@ -540,7 +545,7 @@ p {
     --icon-margin-end: 0;
     color: var(--blackColor);
     --color: var(--blackColor);
-    font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     --icon-font-size: 28px;
     --min-height: 32px;
     font-size: 16px;
@@ -583,7 +588,7 @@ p {
     color: #000;
     text-transform: uppercase;
     line-height: 16px;
-    font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     font-weight: 600;
     margin-bottom: 0px;
   }
@@ -601,11 +606,11 @@ p {
     border-radius: 15px;
     margin-right: 15px;
     flex-flow: column;
+    box-shadow: 0px 5px 20px rgba(122, 122, 122, 0.12);
     .card-body {
       padding: 12px;
       display: inline-block;
       width: 100%;
-
       /* .coinTag {
         display: flex;
         justify-content: center;
@@ -625,8 +630,9 @@ p {
         height: 32px;
         border-radius: 10px;
         margin-right: 10px;
+        box-shadow: 0px 5px 20px rgb(122 122 122 / 12%);
         .coin-icon {
-          font-size: 28px;
+          font-size: 32px;
         }
       }
       .small-text {
@@ -645,7 +651,7 @@ p {
         font-size: 13px;
         opacity: 0.9;
         line-height: 16px;
-        font-family: var(--f-Poppins);
+        font-family: var(--f-Lexend);
         font-weight: 300;
         text-align: left;
       }
@@ -677,8 +683,9 @@ p {
         }
         .coinTag {
           margin-left: -18px;
-          border: solid 2px #fff;
+          border: solid 1px #fff;
           z-index: 1;
+          box-shadow: 0px 5px 20px rgb(122 122 122 / 12%);
           &:first-child {
             margin-left: 0px;
           }
@@ -753,18 +760,19 @@ p {
     border-radius: 15px; */
     margin-left: -15px;
     z-index: 1;
-    width: 40px;
-    height: 40px;
+    width: 44px;
+    height: 44px;
     border-radius: 12px;
-    border: solid 2px #fff;
-    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    border: solid 1px #fff;
+    //box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    box-shadow: 0px 5px 20px rgb(122 122 122 / 12%);
 
     &:first-child {
       margin-left: 0px;
     }
 
     .coin-icon {
-      font-size: 38px;
+      font-size: 46px;
     }
   }
 }
@@ -810,7 +818,7 @@ p {
   }
 
   .small-label {
-    font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     font-weight: 400;
   }
 
@@ -830,7 +838,7 @@ p {
     --border-radius: 10px;
     --color: #000;
     --placeholder-color: #444;
-    font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     --box-shadow: none;
     .searchbar-input-container.sc-ion-searchbar-ios {
       height: 100%;
@@ -903,7 +911,7 @@ p {
   .small-label {
     font-size: 16px;
     line-height: 16px;
-    font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     font-weight: 300;
     text-align: left;
     opacity: 0.6;
@@ -939,7 +947,7 @@ p {
     }
 
     .small-label {
-      font-family: var(--f-Poppins);
+      font-family: var(--f-Lexend);
       font-weight: 500;
     }
 
@@ -985,7 +993,7 @@ p {
     --border-color-checked: var(--theme-color);
   }
   ion-label {
-    font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
   }
 }
 .custom-select {
@@ -1029,7 +1037,7 @@ p {
     color: #000;
     text-transform: uppercase;
     line-height: 16px;
-    font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     font-weight: 500;
     margin-bottom: 0px;
     --highlight-color-focused: red;
@@ -1047,7 +1055,7 @@ p {
     --padding-end: 15px !important;
     border-radius: 12px;
     font-size: 14px;
-    font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     font-weight: 400;
     --placeholder-opacity: 0.9;
     border: solid 2px var(--input-border);
@@ -1072,20 +1080,25 @@ p {
 .dial-pad {
   padding: 0rem 2rem;
   ion-button {
-    width: 70px;
-    height: 70px;
-    --border-radius: 100%;
+    width: 80px;
+    height: 55px;
+    //box-shadow: 0px 5px 20px rgba(122, 122, 122, 0.12);
+    //--border-radius: 100%;
+    background-color: #fff;
     margin: 0px;
-    font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     font-size: 20px;
     font-weight: 600;
     --padding-start: 0;
     --padding-end: 0;
     &.ion-button-white {
-      stroke: #000;
+      stroke: #1F2C37;
       font-size: 20px;
-      width: 70px;
-      height: 70px;
+      width: 80px;
+      height: 55px;
+      //box-shadow: 0px 5px 20px rgba(122, 122, 122, 0.12);
+      border-radius: 12px;
+      border:1px solid #F8F8F8;
       &.ion-activated {
         color: #fff;
         fill: #fff;
@@ -1116,7 +1129,7 @@ ion-action-sheet {
   &.sc-ion-action-sheet-ios-h,
   .sc-ion-action-sheet-md {
     --button-color: #000;
-    font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     font-weight: 400;
   }
   .action-sheet-selected.sc-ion-action-sheet-md,
@@ -1177,7 +1190,7 @@ ion-action-sheet {
     font-size: 18px;
     --border-radius: 0px;
     font-weight: 500;
-    font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     letter-spacing: 0.08px;
     text-transform: inherit;
   }
@@ -1218,7 +1231,7 @@ ion-action-sheet {
     padding-top: 14px;
     padding-bottom: 10px;
     min-height: auto;
-    font-family: var(--f-Poppins);
+    font-family: var(--f-Lexend);
     border-bottom: solid 1px #ddd;
   }
   .action-sheet-button .sc-ion-action-sheet-md,
@@ -1275,6 +1288,12 @@ ion-spinner.size-sm {
 .font-20 {
   font-size: 20px;
 }
+.font-16 {
+  font-size: 16px;
+}
+.font-12 {
+  font-size: 12px;
+}
 .font-xx {
   font-size: xx-large;
 }
@@ -1293,4 +1312,15 @@ ion-spinner.size-sm {
 {
   color: #6c757d !important;
 }
-
+.font-18 {
+  font-size: 18px;
+}
+.font-10 {
+  font-size: 10px;
+}
+.font-15 {
+  font-size: 15px;
+}
+.font-13 {
+  font-size: 13px;
+}

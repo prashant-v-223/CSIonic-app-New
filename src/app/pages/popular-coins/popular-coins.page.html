@@ -27,7 +27,7 @@
 
         <ion-row>
           <ion-col *ngFor="let coin of coinList" size="6" size-md>
-            <app-package-card [package]="coin" view="coin" [navigationLink]="'/packages/' + coin._id">
+            <app-package-card [package]="coin"  [coinList]="coin.coins" [packageList]="coin.coins" view="coin" [navigationLink]="'/packages/' + coin._id">
             </app-package-card>
           </ion-col>
         </ion-row>

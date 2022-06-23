@@ -44,7 +44,7 @@ export class AppComponent implements OnInit, OnDestroy {
       this.versionNumber = res;
     })
     .catch( async (error) => {
-      console.error(error);
+      await console.error(error);
     })
     .finally(() => {
       console.log('finally');

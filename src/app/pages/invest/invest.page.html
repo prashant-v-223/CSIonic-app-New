@@ -1,7 +1,7 @@
 <!-- Body Section Start -->
 <ion-header class="themeHeader">
   <div class="user-profile">
-    <ion-row class="pl-4 pr-5 mt-2">
+    <ion-row class="pl-3 pr-3 mt-2">
       <ion-col size="6" class="text-left" size-md>
         <ion-icon src="../../../assets/icon/category-dark.svg"></ion-icon>
       </ion-col>
@@ -39,7 +39,7 @@
       <ion-row *ngIf="segment === 'Coins'">
         <ng-container *ngIf="!showLoader else loadingTmplt">
           <ng-container *ngIf="coinList?.length else noCoinsTmplt">
-            <ion-col *ngFor="let coin of coinList" size="6" class="p-0" size-md>
+            <ion-col *ngFor="let coin of coinList" size="6" size-md>
               <app-package-card [package]="coin" [coinList]="coin.coins" [packageList]="coin.coins" view="coin" [navigationLink]="'/packages/' + coin._id"></app-package-card>
             </ion-col>
           </ng-container>

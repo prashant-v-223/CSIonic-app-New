@@ -25,12 +25,12 @@
       <ion-item class="customForm">
         <ion-input type="text" placeholder="Enter your first name" formControlName="given_name"></ion-input>
       </ion-item>
-      
+
       <ion-label class="input" position="stacked">Last name</ion-label>
       <ion-item class="customForm">
         <ion-input type="text" placeholder="Enter your last name" formControlName="family_name"></ion-input>
       </ion-item>
-      
+
       <ion-label class="input" position="stacked">Email Address</ion-label>
       <ion-item class="customForm">
         <ion-input type="email" placeholder="Enter your email address" formControlName="username"></ion-input>
@@ -39,7 +39,7 @@
         *ngIf="signUpForm.get('username').dirty && !signUpForm.get('username').errors?.required && signUpForm.get('username').errors?.email">
         Enter valid email address
       </div>
-    
+
       <ion-label class="input" position="stacked">Mobile Number</ion-label>
       <ion-item class="customForm custom-select">
         <ion-select formControlName="phone_number_country_code" interface="popover">
@@ -57,8 +57,8 @@
 
       <ion-label class="input" position="stacked">Password</ion-label>
       <ion-item class="customForm">
-        <ion-input type="password" placeholder="Enter your password" formControlName="password"></ion-input>
-        <ion-icon name="eye"></ion-icon>
+        <ion-input [type]="passwordType" placeholder="Enter your password" formControlName="password"></ion-input>
+        <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
       </ion-item>
       <div class="error-message"
         *ngIf="signUpForm.get('password').dirty && !signUpForm.get('password').errors?.required && signUpForm.get('password').errors?.password">

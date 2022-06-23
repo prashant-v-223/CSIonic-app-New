@@ -1,6 +1,6 @@
- 
+
 .portfolio-view {
-  .header-title { 
+  .header-title {
     font-size: 24px;
     font-family: var(--f-Poppins);
     font-weight: 500;
@@ -12,10 +12,10 @@
     font-size: 16px;
     line-height: 12px;
     font-weight: 400;
-    color: var(--blackColor); 
+    color: var(--blackColor);
     margin-bottom: 15px;
-  } 
-  ion-input{ 
+  }
+  ion-input{
     --padding-start: 10px;
     font-size: 20px;
     font-family: var(--f-Poppins);
@@ -38,4 +38,8 @@
 
 .error-message {
   width: 250px;
+}
+.button-solid
+{
+  box-shadow: none !important;
 }
