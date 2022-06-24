@@ -1,29 +1,30 @@
+<!-- Header Section Start -->
 <ion-header translucent class="themeHeader">
   <ion-toolbar>
-    <ion-list>
+    <ion-list class="d-flex justify-between">
       <ion-buttons slot="start">
-        <ion-back-button mat-icon-button class="back-btn" defaultHref="/tabs/profile">
-        </ion-back-button>
+        <ion-back-button mat-icon-button mode='md' defaultHref="/tabs/profile"><ion-icon src="../../../assets/icon/back-arrow.svg"></ion-icon></ion-back-button>
       </ion-buttons>
+      <ion-label class="notifcation-list d-flex"><b>Notification List</b></ion-label>
     </ion-list>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
 
-  <ion-title>Notifications</ion-title>
+  <ion-title  class="topHeader">Notifications</ion-title>
 
   <ng-container *ngIf="!isLoading else loadingTmplt">
 
     <ion-list *ngIf="notifications?.length else noNotificationsTmplt">
-
-      <ion-item *ngFor="let notification of notifications">
-        <ion-label>
-          <h2>{{ notification.title }}</h2>
-          <p>{{ notification.body }}</p>
-        </ion-label>
-      </ion-item>
-
+      <ion-grid>
+        <ion-item *ngFor="let notification of notifications">
+          <ion-label class="notification-data">
+            <h2>{{ notification.title }}</h2>
+            <p>{{ notification.body }}</p>
+          </ion-label>
+        </ion-item>
+      </ion-grid>
     </ion-list>
 
     <ng-template #noNotificationsTmplt>

@@ -23,6 +23,7 @@ export class SignInPage implements OnInit {
   earlyAccessDetails : [] = [];
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
+  token : any = '';
   readonly passwordRequirementMessage = passwordRequirementMessage;
 
   signInForm = new FormGroup({
@@ -57,8 +58,8 @@ export class SignInPage implements OnInit {
     try {
       await Auth.signIn(this.signInForm.value);
       await this.userService.setHeaderToken();
-
-      const user = await this.getUser();
+      this.token = await this.notificationService.getPushNotificationToken();
+      const user = await this.getUser(this.token);
       const config = await this.getConfiguration();
 
       if (user && config)
@@ -71,7 +72,7 @@ export class SignInPage implements OnInit {
           }
           else
           {
-            const token = await this.notificationService.getPushNotificationToken();
+            //this.token = await this.notificationService.getPushNotificationToken();
             this.router.navigateByUrl('/tabs/dashboard');
           }
         }
@@ -103,9 +104,9 @@ export class SignInPage implements OnInit {
     }
   }
 
-  async getUser() {
+  async getUser(token?:string) {
     try {
-      const userRes = await this.userService.getUser();
+      const userRes = await this.userService.getUser(token);
       if (userRes.status === this.CONSTANT.SUCCESS) {
         this.userService.setUserToStorage(userRes.data);
         return userRes.data;

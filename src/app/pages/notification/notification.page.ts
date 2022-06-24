@@ -22,6 +22,7 @@ export class NotificationPage implements OnInit {
   async loadNotifications() {
     try {
       this.notifications = await this.notificationService.getNotifications();
+      this.notifications = this.notifications['data']['data'];
       this.isLoading = false;
     } catch(e) {
       console.error('Error in loading notification service');

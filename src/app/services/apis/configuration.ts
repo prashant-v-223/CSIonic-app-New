@@ -25,7 +25,7 @@ export class ApiConfiguration {
 
     public feedback = `feedback`;
 
-    public notification = 'notifications';
+    public notification = 'notification';
 
 }
 
