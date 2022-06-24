@@ -1,6 +1,6 @@
 <ng-container [ngSwitch]="true">
 
-  <div class="card bg-white" *ngSwitchCase="view === 'package' || view === 'sip'">
+  <div class="card bg-white" *ngSwitchCase="view === 'package' || view === 'sip'" [routerLink]="navigationLink">
     <div class="card-body">
       <div class="d-flex align-center justify-between w-100 mb-2">
         <app-coin-stack [coins]="packageList"></app-coin-stack>

@@ -2,6 +2,7 @@
   *ngFor="let coin of coins; index as i"
   class="coinTag mr-2"
   >
+  <!-- <ion-icon class="coin-icon" [src]="coin?.currencyId?.icon || 'assets/currency/bitcoin.svg'"></ion-icon> -->
   <ion-img class="coin-icon" *ngIf="coin?.currencyId?.icon?.key" src="{{ coin?.currencyId?.icon?.url+'/'+coin?.currencyId?.icon?.key }}"></ion-img>
   <ion-img class="coin-icon" *ngIf="!coin?.currencyId?.icon?.key" [src]="'assets/currency/bitcoin.svg'"></ion-img>
 </div>

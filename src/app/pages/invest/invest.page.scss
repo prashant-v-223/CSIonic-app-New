@@ -27,25 +27,28 @@
 ion-header,#background-content{
   background-color: var(--lighter-gray);
 }
-.themeHeader{
-  background-image: var(--lighter-gray);
-  background-size: cover;
-  background-position: top center;
-  background-repeat: no-repeat;
-  height: 85px;
-  display: block;
-  ion-toolbar{
-        --background:var(--lighter-gray);
-        color: #fff !important;
-      }
+  .themeHeader{
+    background-image: var(--lighter-gray);
+    background-size: cover;
+    background-position: top center;
+    background-repeat: no-repeat;
+    height: 40px;
+    display: block;
+    ion-toolbar{
+      --background:var(--lighter-gray);
+      color: #fff !important;
+    }
+    ion-list {
+      background:var(--lighter-gray);
+    }
   }
   .user-profile
   {
     padding-top: 2%;
   }
-  ion-icon{
-    font-size: 26px;
-  }
+  // ion-icon{
+  //   font-size: 26px;
+  // }
   .avatar ion-img{
     width: 40px;
     border-radius: 50px;

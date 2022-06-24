@@ -1,4 +1,4 @@
-.themeHeader {
+.themeHeader{
   .menuLeft {
     background-color: rgba($color: #EFF7ED, $alpha: 1);
     color: #fff;
@@ -46,7 +46,7 @@ ion-content {
       content: "";
       position: absolute;
       left: 15px;
-      bottom: -15px;
+      bottom: -20px;
       width: 92%;
       height: 50px;
       background-color: var(--theme-color);
@@ -116,6 +116,58 @@ ion-content {
 .popularSection {
   ion-col {
     padding: 0px 0px;
+  }
+}
+.withdrawal-status
+{
+  position: absolute;
+  bottom: 1.8%;
+  /* left: 7.5%; */
+  color: #fff;
+  width: 90%;
+  text-align: center;
+}
+.myPortfolio-list-completed {
+  margin-bottom: 1%;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    bottom: 1px;
+    width: 92%;
+    height: 50px;
+    background: linear-gradient(to right, #2b7979a3 , #57b1b1a3);
+    z-index: -1;
+    border-radius: 15px;
+  }
+}
+
+.myPortfolio-list-inprogress {
+  margin-bottom: 1%;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    bottom: 1px;
+    width: 92%;
+    height: 50px;
+    background: linear-gradient(to right, #f89c2ca6 , #e7b981a6);
+    z-index: -1;
+    border-radius: 15px;
+  }
+}
+.myPortfolio-list-failure {
+  margin-bottom: 1%;
+  &::after {
+    content: "";
+    position: absolute;
+    left: 15px;
+    bottom: 1px;
+    width: 92%;
+    height: 50px;
+    background:linear-gradient(to right, #e43333ad , #eb6969ad);
+    z-index: -1;
+    border-radius: 15px;
   }
 }
 

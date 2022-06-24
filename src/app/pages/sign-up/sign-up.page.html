@@ -37,7 +37,9 @@
       </ion-item>
       <div class="error-message"
         *ngIf="signUpForm.get('username').dirty && !signUpForm.get('username').errors?.required && signUpForm.get('username').errors?.email">
-        Enter valid email address
+        <ul class="text-danger pl-1">
+          <li>Enter valid email address</li>
+        </ul>
       </div>
 
       <ion-label class="input" position="stacked">Mobile Number</ion-label>
@@ -52,7 +54,9 @@
       </ion-item>
       <div class="error-message"
         *ngIf="signUpForm.get('phone_number').dirty && !signUpForm.get('phone_number').errors?.required && signUpForm.get('phone_number').errors?.pattern">
-        Enter 10 digit mobile number
+        <ul class="text-danger pl-1">
+          <li>Enter 10 digit mobile number</li>
+        </ul>
       </div>
 
       <ion-label class="input" position="stacked">Password</ion-label>
@@ -60,9 +64,9 @@
         <ion-input [type]="passwordType" placeholder="Enter your password" formControlName="password"></ion-input>
         <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
       </ion-item>
-      <div class="error-message"
+      <div class="error-message" [innerHTML]="passwordRequirementMessage"
         *ngIf="signUpForm.get('password').dirty && !signUpForm.get('password').errors?.required && signUpForm.get('password').errors?.password">
-        {{ passwordRequirementMessage }}
+        <!-- {{ passwordRequirementMessage }} -->
       </div>
 
       <ion-item class="custom-check">
