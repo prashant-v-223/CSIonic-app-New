@@ -34,8 +34,9 @@ export class UserService {
     return this.api.setHeaderToken();
   }
 
-  getUser() {
-    return this.api.putData(this.apiConfig.user,{});
+  getUser(token?:string) {
+    const tokenData = {'fcmToken':token};
+    return this.api.putData(this.apiConfig.user,tokenData);
   }
 
   verifySelfie(formData: FormData) {
