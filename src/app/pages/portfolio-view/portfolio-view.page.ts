@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { ModalController, NavController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController, NavController } from '@ionic/angular';
 
 import { COPY, COINS } from 'src/app/shared/helper/const';
 import { PackagesService } from 'src/app/shared/services/packages.service';
@@ -80,7 +80,9 @@ export class PortfolioViewPage implements OnInit {
     public modalController: ModalController,
     private packagesService: PackagesService,
     private sipService: SIPService,
-    private userService: UserService
+    private userService: UserService,
+    public alertController: AlertController,
+    public loadingController: LoadingController
   ) {
     this.user = this.userService.getUserFromStorage();
   }
@@ -177,6 +179,39 @@ export class PortfolioViewPage implements OnInit {
 
     this.canStartSIP = !list.length;
     this.pendingVerificationList = list;
+  }
+
+  showConfirm() {
+    this.alertController.create({
+      header: 'Confirm Withdraw',
+      message: 'Are you sure? you want to withdraw?',
+      buttons: [
+        {
+          text: 'No',
+        },
+        {
+          text: 'Yes',
+          handler: () => {
+            this.simpleLoader();
+            this.sipService.withdrawSIP(this.id).then(res => {
+              this.navCtrl.navigateBack('/tabs/portfolio');
+              this.loadingController.dismiss();
+            });
+          }
+        }
+      ]
+    }).then(res => {
+      res.present();
+    });
+  }
+
+  simpleLoader() {
+    this.loadingController.create({
+      spinner: 'crescent',
+      message: 'Loading...'
+    }).then((response) => {
+      response.present();
+    });
   }
 
   async loadDetails() {
