@@ -188,9 +188,14 @@ const routes: Routes = [
     loadChildren: () => import('./pages/feedback/feedback.module').then( m => m.FeedbackPageModule)
   },
   {
+    path: 'notification',
+    loadChildren: () => import('./pages/notification/notification.module').then( m => m.NotificationPageModule)
+  },
+  {
     path: 'onboard',
     loadChildren: () => import('./pages/onboard/onboard.module').then( m => m.OnboardPageModule)
   }
+
 ];
 
 @NgModule({
@@ -199,4 +204,5 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
+
 export class AppRoutingModule {}

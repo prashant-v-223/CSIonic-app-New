@@ -1,0 +1,28 @@
+<ion-header translucent class="themeHeader">
+  <ion-toolbar>
+    <ion-list>
+      <ion-buttons slot="start">
+        <ion-back-button mat-icon-button class="back-btn" defaultHref="/notification">
+        </ion-back-button>
+      </ion-buttons>
+    </ion-list>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ng-container *ngIf="!isLoading else loadingTmplt">
+
+    <ion-title>{{ notification.title }}</ion-title>
+
+    <div class="mt-5">
+      {{ notification.body }}
+    </div>
+
+  </ng-container>
+
+</ion-content>
+
+<ng-template #loadingTmplt>
+  <app-loading-skeleton></app-loading-skeleton>
+</ng-template>
