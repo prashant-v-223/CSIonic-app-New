@@ -187,10 +187,10 @@ export class PortfolioViewPage implements OnInit {
       message: 'Are you sure? you want to withdraw?',
       buttons: [
         {
-          text: 'No',
+          text: 'cancel',
         },
         {
-          text: 'Yes',
+          text: 'confirm',
           handler: () => {
             this.simpleLoader();
             this.sipService.withdrawSIP(this.id).then(res => {
