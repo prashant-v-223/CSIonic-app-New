@@ -40,7 +40,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/sign-in',
+    redirectTo: '/onboard',
     pathMatch: 'full',
   },
   {
@@ -193,7 +193,8 @@ const routes: Routes = [
   },
   {
     path: 'onboard',
-    loadChildren: () => import('./pages/onboard/onboard.module').then( m => m.OnboardPageModule)
+    loadChildren: () => import('./pages/onboard/onboard.module').then( m => m.OnboardPageModule),
+    canActivate: [NonAuthGuard],
   }
 
 ];
