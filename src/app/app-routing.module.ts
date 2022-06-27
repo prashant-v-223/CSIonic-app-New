@@ -40,7 +40,6 @@ const routes: Routes = [
   },
   {
     path: '',
-    // redirectTo: '/sign-in',
     redirectTo: '/onboard',
     pathMatch: 'full',
   },
