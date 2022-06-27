@@ -54,7 +54,8 @@ export class UserService {
       await Auth.signOut({
         global: true
       });
-      this.navCtrl.navigateRoot('/sign-in');
+      // this.navCtrl.navigateRoot('/sign-in');
+      this.navCtrl.navigateRoot('/onboard');
     }, 500);
   }
 
