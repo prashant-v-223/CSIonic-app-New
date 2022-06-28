@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { AlertController, LoadingController, ModalController, NavController } from '@ionic/angular';
+import { AlertController, LoadingController, ModalController, NavController, ToastController } from '@ionic/angular';
 
 import { COPY, COINS } from 'src/app/shared/helper/const';
 import { PackagesService } from 'src/app/shared/services/packages.service';
@@ -82,7 +82,8 @@ export class PortfolioViewPage implements OnInit {
     private sipService: SIPService,
     private userService: UserService,
     public alertController: AlertController,
-    public loadingController: LoadingController
+    public loadingController: LoadingController,
+    public toastController: ToastController
   ) {
     this.user = this.userService.getUserFromStorage();
   }
@@ -196,6 +197,19 @@ export class PortfolioViewPage implements OnInit {
             this.sipService.withdrawSIP(this.id).then(res => {
               this.navCtrl.navigateBack('/tabs/portfolio');
               this.loadingController.dismiss();
+            }).catch((e) => {
+              setTimeout(() => {
+                this.loadingController.dismiss();
+              }, 100);
+              if (e.status === 400) {
+                this.showToast(e.error.error);
+              } 
+              if (e.status === 500) {
+                this.showToast("Something went wrong.");
+              }
+              if (e.status === 404) {
+                this.showToast("SIP not found.");
+              }
             });
           }
         }
@@ -212,6 +226,14 @@ export class PortfolioViewPage implements OnInit {
     }).then((response) => {
       response.present();
     });
+  }
+
+  async showToast(text) {
+    const toast = await this.toastController.create({
+      message: text,
+      duration: 5000
+    });
+    toast.present();
   }
 
   async loadDetails() {
