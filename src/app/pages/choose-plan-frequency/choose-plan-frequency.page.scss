@@ -106,3 +106,68 @@
   }
 }
 
+ion-item{
+  border: none;
+  --inner-border-width: 0px !important;
+  --padding-start: 7px !important;
+  --inner-padding-end: 7px !important;
+}
+
+
+label {
+  display: inline-block;
+  background-color: #fff;
+  padding: 10px;
+  width: 40px;
+  height: 35px;
+  border-radius: 30px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+input:checked + label {
+  background-color: #2B7979;
+  color: #fff;
+}
+
+input {
+  width:0px;
+  height:0px;
+  visibility: hidden;
+  position: absolute;
+}
+
+.answer-radio {
+  position: relative;
+}
+
+label::before,
+label::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  border-radius: 10px;
+  left: 5px;
+  visibility: hidden;
+  top: 10px;
+}
+
+label::before {
+  width: 16px;
+  height: 16px;
+  border: 1px solid #ddd;
+}
+
+label::after {
+  width: 10px;
+  height: 10px;
+  background-color: #ddd;
+  left: 9px;
+  top: 14px;
+  display: none;
+}
+
+input:checked + label::after {
+  display: inline-block;
+}
