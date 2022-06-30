@@ -1,6 +1,7 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AlertController, LoadingController, ModalController, NavController, ToastController } from '@ionic/angular';
+import { Chart } from 'chart.js';
 
 import { COPY, COINS } from 'src/app/shared/helper/const';
 import { PackagesService } from 'src/app/shared/services/packages.service';
@@ -29,11 +30,14 @@ export enum RequiredVerificationEnum {
 })
 export class PortfolioViewPage implements OnInit {
 
-  // @ViewChild('lineCanvas') private lineCanvas: ElementRef;
-  // lineChart: any;
+  @ViewChild('lineCanvas') private lineCanvas: ElementRef;
+  lineChart: any;
   CONSTANT = COPY;
   COINS = COINS;
-
+  chartLabel : any;
+  chartData : any;
+  coinCode:string;
+  time_frame:boolean=false;
   public segment: string = 'day';
   showLoader = true;
   RequiredVerificationEnum = RequiredVerificationEnum;
@@ -99,66 +103,91 @@ export class PortfolioViewPage implements OnInit {
 
   ngAfterViewInit() {
     this.checkUserCanStartSIP();
-    // this.lineChartMethod();
+    this.lineChartMethod();
   }
 
-  // lineChartMethod() {
-  //   console.log(this.lineCanvas);
-    
-  //   this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-  //     type: 'line',
-  //     data: {
-  //       labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'June', 'July', 'Aug', 'Sept', 'Oct', 'Nov', 'Dec'],
-  //       datasets: [
-  //         {
-  //           data: [30, 70, 30, 50, 35, 10, 35, 30, 80, 20, 50, 100],
-  //           backgroundColor: 'rgba(43, 121, 121, .5)',
-  //           borderColor: 'rgba(43, 121, 121, 1)',
-  //           borderCapStyle: 'butt',
-  //           fill: true,
-  //           tension: 0.5,
-  //           pointBorderColor: 'rgba(75,192,192,1)',
-  //           pointBackgroundColor: '#FFFFFF',
-  //           pointRadius: 0,
-  //           pointHitRadius: 10,
-  //           pointBorderWidth: 1,
-  //           pointHoverBorderWidth: 5,
-  //           pointHoverRadius: 10,
-  //           pointHoverBackgroundColor: '#FFFFFF',
-  //           pointHoverBorderColor: 'rgba(43, 121, 121, 1)',
-  //           spanGaps: false,
-  //         }
-  //       ]
-  //     },
-  //     options: {
-  //       plugins: {
-  //         legend: {
-  //           display: false
-  //         },
-  //         datalabels: {
-  //           display: false,
-  //         },
-  //       },
-  //       scales: {
-  //         y: {
-  //           grid: {
-  //             drawBorder: false,
-  //             display: false
-  //           },
-  //           ticks: {
-  //             display: false
-  //           }
-  //         },
-  //         x: {
-  //           grid: {
-  //             drawBorder: false,
-  //             display: false
-  //           },
-  //         }
-  //       }
-  //     }
-  //   });
-  // }
+ async lineChartMethod(duration?:any,interval?:string,symbol?:string) {
+
+ if(duration!=undefined && interval!=undefined)
+  {
+    this.time_frame = true;
+    const res = await (this.view === 'sip'
+    ? this.sipService.getChartDetails(this.coinCode,duration,interval)
+    : this.packagesService.getPackageDetails(this.id));
+
+    console.log(res.data);
+    this.chartLabel = res.data?.date;
+    this.chartData = res.data?.price;
+  }
+  else
+  {
+    this.time_frame = true;
+    const res = await (this.view === 'sip'
+    ? this.sipService.getSIPDetails(this.id)
+    : this.packagesService.getPackageDetails(this.id));
+    this.chartLabel = res.data?.chartData?.date;
+    this.chartData = res.data?.chartData?.price;
+    this.coinCode = res.data?.sip?.packageId?.coins[0].currencyId.code;
+  }
+  this.time_frame = false;
+
+   this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+     type: 'line',
+     data: {
+       labels: this.chartLabel,
+       datasets: [
+         {
+           data: this.chartData,
+           backgroundColor: 'rgba(43, 121, 121, .5)',
+           borderColor: 'rgba(43, 121, 121, 1)',
+           borderCapStyle: 'butt',
+           fill: true,
+           tension: 0.5,
+           pointBorderColor: 'rgba(75,192,192,1)',
+           pointBackgroundColor: '#FFFFFF',
+           pointRadius: 0,
+           pointHitRadius: 10,
+           pointBorderWidth: 1,
+           pointHoverBorderWidth: 5,
+           pointHoverRadius: 10,
+           pointHoverBackgroundColor: '#FFFFFF',
+           pointHoverBorderColor: 'rgba(43, 121, 121, 1)',
+           spanGaps: false,
+         }
+       ]
+     },
+     options: {
+       plugins: {
+         legend: {
+           display: false
+         },
+         datalabels: {
+           display: false,
+         },
+       },
+       scales: {
+         y: {
+           grid: {
+             drawBorder: false,
+             display: false
+           },
+           ticks: {
+             display: false
+           }
+         },
+         x: {
+           grid: {
+             drawBorder: false,
+             display: false
+           },
+           ticks: {
+            display: false
+          }
+         }
+       }
+     }
+   });
+ }
 
   checkUserCanStartSIP() {
     this.canStartSIP = false;
@@ -203,7 +232,7 @@ export class PortfolioViewPage implements OnInit {
               }, 100);
               if (e.status === 400) {
                 this.showToast(e.error.error);
-              } 
+              }
               if (e.status === 500) {
                 this.showToast("Something went wrong.");
               }
@@ -250,11 +279,14 @@ export class PortfolioViewPage implements OnInit {
 
       if (res.status === this.CONSTANT.SUCCESS && res.data) {
         if (this.view === 'sip') {
-          this.sipDetails = res.data;
+          this.sipDetails = res.data.sip;
           this.packageDetails = this.sipDetails.packageId;
-        } else {
+          //this.packageDetails = this.packageDetails.data.sip;
+        } else
+        {
           this.packageDetails = res.data;
         }
+        /* console.log(res.data); */
        // this.COINS = this.packageDetails.coins;
         //this.fillPackageCalculatedDetails();
         this.showLoader = false;
@@ -286,6 +318,9 @@ export class PortfolioViewPage implements OnInit {
 
   segmentChanged(ev: any) {
     this.segment = ev.detail.value;
+    this.lineChart.destroy();
+    var durationMonth = this.segment.split("-");
+    this.lineChartMethod(Number(durationMonth[0]),durationMonth[1]);
   }
 
   async openSIPStep() {

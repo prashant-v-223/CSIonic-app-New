@@ -17,17 +17,17 @@
 </ion-header>
 <!-- Header Section End -->
 <ion-content class="portfolio-view">
-  <ion-grid class="p-0" *ngIf="!showLoader else loadingTmplt">
-    <ion-row>
+  <ion-grid class="p-0">
+    <ion-row *ngIf="!showLoader else loadingTmplt">
       <ion-col size="12" class="pt-1" size-md>
         <ion-list class="d-flex justify-center mt-3">
           <div class="coinTag-inner">
             <app-coin-stack [coins]="packageDetails.coins" [coinList]="packageDetails.coins" [packageList]="packageDetails.coins"></app-coin-stack>
           </div>
-        </ion-list>    
+        </ion-list>
       </ion-col>
     </ion-row>
-    <ion-row>
+    <ion-row *ngIf="!showLoader else loadingTmplt">
       <ion-col size="12" class=" mt-1 pt-1 text-center" size-md>
       <!--  <h1 class="text-theme sip-amount">&#8377; 20,000</h1>
        <span class="sip-amount-subtext">Etherium (ETH)</span> -->
@@ -37,44 +37,45 @@
     </ion-row>
 
 
-    <ion-list>
+    <ion-list class="sip-chart">
       <!-- Show the graph based on selected period -->
-      <img src="../../../assets/icon/chart.svg" width="100%" alt="img" class="sip-chart">
+      <canvas #lineCanvas></canvas>
+      <!-- <img src="../../../assets/icon/chart.svg" width="100%" alt="img" class="sip-chart"> -->
     </ion-list>
 
-    <ion-list class="ion-list pb-1 pt-1">
-      <ion-segment class="tabbingTheme" (ionChange)="segmentChanged($event)" value="day">
-        <ion-segment-button value="day">
+    <ion-list class="ion-list pb-1 pt-1" *ngIf="!showLoader else loadingTmplt">
+      <ion-segment class="tabbingTheme" [disabled]="time_frame" (ionChange)="segmentChanged($event)" value="3-month">
+        <ion-segment-button value="3-month">
+          <ion-label>
+           3 month
+          </ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="6-month">
+          <ion-label>
+           6 month
+          </ion-label>
+        </ion-segment-button>
+        <ion-segment-button value="1-year">
           <ion-label>
            1 Year
           </ion-label>
         </ion-segment-button>
-        <ion-segment-button value="week">
+        <ion-segment-button value="2-year">
           <ion-label>
-           3 Year
+          2 Year
           </ion-label>
         </ion-segment-button>
-        <ion-segment-button value="month">
-          <ion-label>
-           5 Year
-          </ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="year">
-          <ion-label>
-           10 Year
-          </ion-label>
-        </ion-segment-button>
-        <ion-segment-button value="all">
+        <!-- <ion-segment-button value="all">
           <ion-label>
            All
           </ion-label>
-        </ion-segment-button>
+        </ion-segment-button> -->
         </ion-segment>
       </ion-list>
-      
-      <ion-list class="ion-list portfolio-details">
+
+      <ion-list class="ion-list portfolio-details"  *ngIf="!showLoader else loadingTmplt">
         <ion-row>
-          
+
         <!-- TODO -->
         <ion-col size="6" class="mb-1" size-md>
           <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-15" src="../../../assets/icon/rupee-black.svg"></ion-icon>19006</h4>
@@ -121,9 +122,9 @@
           <h6 class="smallHeading-label text-dark mt-0">21 Jun, 2021</h6>
           <span class="small-label">Next Investment</span>
         </ion-col>
-      </ion-row>
-      
-      <ion-row class="mt-1 mb-4">
+        </ion-row>
+
+        <ion-row class="mt-1 mb-4" *ngIf="!showLoader else loadingTmplt">
         <ng-container *ngIf="canStartSIP else SIPPrerequisiteMessageTmplt">
           <ion-col size="12" size-md>
             <!-- TODO:  provide edit SIP option -->
@@ -146,7 +147,7 @@
           </div>
         </ng-template>
 
-      </ion-row>
+        </ion-row>
     </ion-list>
   </ion-grid>
 
