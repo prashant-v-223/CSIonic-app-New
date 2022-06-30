@@ -15,6 +15,7 @@ import { COPY } from 'src/app/shared/helper/const';
 import { MaintenanceService } from './shared/services/maintenance.service';
 import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
 import { Platform } from '@ionic/angular';
+import { Capacitor } from '@capacitor/core';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -31,7 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
     private maintenanceService: MaintenanceService,
     private appVersion: AppVersion,
     private platform: Platform
-    ) {
+  ) {
     library.addIconPacks(fas as any, fab as any, far as any);
 
 
@@ -39,31 +40,24 @@ export class AppComponent implements OnInit, OnDestroy {
 
 
   async ngOnInit() {
-
-      if (this.platform.is("mobile")) {
-        this.appVersion.getVersionNumber().then((res) => {
+    if (Capacitor.isNativePlatform()) {
+      this.appVersion.getVersionNumber()
+        .then((res) => {
           this.versionNumber = res;
         })
-        .catch( async (error) => {
-          await console.error(error);
-        })
-        .finally(() => {
-          console.log('finally');
+        .catch((error) => {
+          console.error(error);
         });
-      }
+    }
 
-    try
-    {
+    try {
       let maintenanceCheck = await this.maintenanceService.getLatestVersion();
-      if(maintenanceCheck.data.maintenance)
-      {
+      if (maintenanceCheck.data.maintenance) {
         this.router.navigateByUrl('maintenance-mode');
       }
-      else
-      {
-        this.versionNumber = this.versionNumber!='' ? this.versionNumber.split('.').join("") : "0";
-        if(maintenanceCheck.data.mandatoryUpdate && maintenanceCheck.data.latest.split('.').join("")>this.versionNumber && this.platform.is("mobile"))
-        {
+      else {
+        this.versionNumber = this.versionNumber != '' ? this.versionNumber.split('.').join("") : "0";
+        if (maintenanceCheck.data.mandatoryUpdate && maintenanceCheck.data.latest.split('.').join("") > this.versionNumber && Capacitor.isNativePlatform()) {
           this.router.navigateByUrl('force-app-update');
         } else {
           const status = await Network.getStatus();
@@ -74,10 +68,9 @@ export class AppComponent implements OnInit, OnDestroy {
             autoHide: false
           });
 
-        // this.router.navigateByUrl('maintenance-mode');
+          // this.router.navigateByUrl('maintenance-mode');
           const userToken = this.userService.setHeaderToken();
-          if (userToken)
-          {
+          if (userToken) {
             const user = await this.getUser();
             if (!user)
               throw new Error("User not available");
@@ -98,7 +91,7 @@ export class AppComponent implements OnInit, OnDestroy {
   }
 
   async handleNetworkStatus(status: ConnectionStatus) {
-    if (!status.connected){
+    if (!status.connected) {
       this.router.navigateByUrl(`/error/${ErrorEnum.NO_INTERNET}?redirect=${this.router.url}`, { replaceUrl: true });
       await SplashScreen.hide();
     }
@@ -107,8 +100,7 @@ export class AppComponent implements OnInit, OnDestroy {
   async getUser() {
     try {
       const userRes = await this.userService.getUser();
-      if (userRes.status === this.CONSTANT.SUCCESS)
-      {
+      if (userRes.status === this.CONSTANT.SUCCESS) {
         this.userService.setUserToStorage(userRes.data);
         return userRes.data;
       }
