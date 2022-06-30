@@ -12,7 +12,6 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { passwordRequirementMessage, passwordValidator } from 'src/app/shared/validators/password-validator';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
-import { Platform } from '@ionic/angular';
 import { Capacitor } from '@capacitor/core';
 @Component({
   selector: 'app-sign-in',
