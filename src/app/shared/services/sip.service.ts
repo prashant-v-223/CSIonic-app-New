@@ -130,6 +130,10 @@ export class SIPService {
     return this.api.getData(`${this.apiConfig.sip}/${id}`);
   }
 
+  getChartDetails(symbol: string,duration: string,interval: string) {
+    return this.api.getData(`${this.apiConfig.chart}?symbol=${symbol}&duration=${duration}&interval=${interval}`);
+  }
+
   changeSIPStatus(id: string, statusObj: { status: SIPStatus }) {
     return this.api.putData(`${this.apiConfig.sip}/${id}/change-status`, statusObj);
   }

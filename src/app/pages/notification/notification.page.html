@@ -10,16 +10,16 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="notifications">
 
-  <ion-title  class="topHeader">Notifications</ion-title>
+ <!--  <ion-title  class="topHeader">Notifications</ion-title> -->
 
   <ng-container *ngIf="!isLoading else loadingTmplt">
 
-    <ion-list *ngIf="notifications?.length else noNotificationsTmplt">
+    <ion-list class="pr-3" *ngIf="notifications?.length else noNotificationsTmplt">
       <ion-grid>
-        <ion-item *ngFor="let notification of notifications">
-          <ion-label class="notification-data">
+        <ion-item class="card" *ngFor="let notification of notifications" routerLink="/{{ notification.data.route }}">
+          <ion-label class="notification-data ">
             <h2>{{ notification.title }}</h2>
             <p>{{ notification.body }}</p>
           </ion-label>
