@@ -94,6 +94,7 @@ export class BankDetailsPage implements OnInit {
 
   initForm() {
     this.bankDetailsForm = new FormGroup({
+      bankName: new FormControl('', [Validators.required]),
       holderName: new FormControl('', [Validators.required]),
       accountNumber: new FormControl('', [
         Validators.required,
@@ -109,6 +110,7 @@ export class BankDetailsPage implements OnInit {
 
   patchFormValue() {
     this.bankDetailsForm.patchValue({
+      bankName: this.bankDetails.bankName,
       holderName: this.bankDetails.holderName,
       accountNumber: this.bankDetails.accountNumber,
       IFSC: this.bankDetails.IFSC,

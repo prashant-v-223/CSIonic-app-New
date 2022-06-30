@@ -46,7 +46,7 @@
           {{ phoneNumberCountryCode.code }}
         </ion-select-option>
       </ion-select>
-        <ion-input type="number" placeholder="Enter your mobile number" formControlName="phone_number"></ion-input>
+        <ion-input type="number" placeholder="Enter your mobile number" formControlName="phone_number" class="h-100"></ion-input>
       </ion-item>
       <div class="error-message"
         *ngIf="signUpForm.get('phone_number').dirty && !signUpForm.get('phone_number').errors?.required && signUpForm.get('phone_number').errors?.pattern">
