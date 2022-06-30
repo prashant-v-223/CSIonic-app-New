@@ -40,7 +40,7 @@ export class AppComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
 
-      if (!this.platform.is("desktop")) {
+      if (this.platform.is("mobile")) {
         this.appVersion.getVersionNumber().then((res) => {
           this.versionNumber = res;
         })
@@ -62,7 +62,7 @@ export class AppComponent implements OnInit, OnDestroy {
       else
       {
         this.versionNumber = this.versionNumber!='' ? this.versionNumber.split('.').join("") : "0";
-        if(maintenanceCheck.data.mandatoryUpdate && maintenanceCheck.data.latest.split('.').join("")>this.versionNumber && !this.platform.is("desktop"))
+        if(maintenanceCheck.data.mandatoryUpdate && maintenanceCheck.data.latest.split('.').join("")>this.versionNumber && this.platform.is("mobile"))
         {
           this.router.navigateByUrl('force-app-update');
         } else {
