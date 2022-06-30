@@ -31,6 +31,7 @@ export class ChoosePlanFrequencyPage implements OnInit {
   endOfMonth = moment().endOf('month').format('YYYY-MM-DD');
   isOpened: boolean = true;
   daysInThisMonth = moment(this.monthlyDate, "YYYY-MM").daysInMonth();
+  currentDay = moment().format('DD');
 
   frequencyObject?: {
     type: 'daily' | 'weekly' | 'monthly';
@@ -104,7 +105,19 @@ export class ChoosePlanFrequencyPage implements OnInit {
     this.frequencyObject.monthDay = (
       date.detail?.value ? new Date(date.detail.value) : new Date()
     ).getDate();
+      
     this.selectedDate = date.detail?.value ? new Date(date.detail.value) : new Date();
+    
+    this.updateValidity();
+  }
+  
+  updateDay(value) {
+    this.frequencyObject.monthDay = parseInt(value);
+    var date = new Date();
+    date.setDate(value);
+
+    this.selectedDate = date;
+    
     this.updateValidity();
   }
 
@@ -124,6 +137,7 @@ export class ChoosePlanFrequencyPage implements OnInit {
     if (this.stepperSteps === "addAmount") {
      // this.sipService.setSIPData('tenure', this.selectedTenure);
       this.sipService.setSIPData('plan-frequency', this.frequencyObject);
+      
       if(this.selectFrequency === 'monthly'){
         this.sipService.setSIPData('selectedDate', this.selectedDate);
       }
