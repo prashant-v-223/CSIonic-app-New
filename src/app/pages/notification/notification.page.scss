@@ -11,12 +11,16 @@
   line-height: 28px;
 }
 ion-label.notification-data{
-     white-space: normal !important;
+  white-space: normal !important;
 }
 
 .themeHeader {
   ion-toolbar{
-    background-color: var(--lighter-gray);
+    --background: var(--lighter-gray) !important;
+    padding: 0rem 0.5rem 0rem 0.5rem;
+  }
+  ion-list{
+    background: var(--lighter-gray) !important;
   }
   ion-button {
     margin: 0px;
@@ -50,11 +54,21 @@ ion-label.notification-data{
     padding-top: 2%;
     font-family: var(--f-Lexend);
     font-weight: 500;
-    font-size: 15px;
+    font-size: 22px;
+    color: #000;
+  }
+}
+.notifications{
+  padding:2% !important;
+  h2{
+    font-weight: 500;
+  }
+  p{
+    color: #000;
   }
 }
 .themeHeader ion-toolbar{
-  --background-color: var(--lighter-gray);
+  --background: var(--lighter-gray);
 }
 ion-content {
   --ion-background-color: var(--lighter-gray);

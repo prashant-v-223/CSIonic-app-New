@@ -199,9 +199,10 @@ ion-content, ion-header, ion-row, ion-col {
 }
 .sip-chart
 {
-  margin-top: -10%;
+  margin-top: 0%;
   margin-bottom: -10%;
   height: calc(50vh - 0px - 100px);
+  min-height: calc(50vh - 0px - 100px);
 }
 .vertical-middle {
   vertical-align: middle;

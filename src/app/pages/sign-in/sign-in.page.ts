@@ -12,8 +12,8 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { passwordRequirementMessage, passwordValidator } from 'src/app/shared/validators/password-validator';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
+import { Platform } from '@ionic/angular';
 import { Capacitor } from '@capacitor/core';
-
 @Component({
   selector: 'app-sign-in',
   templateUrl: './sign-in.page.html',
@@ -39,7 +39,8 @@ export class SignInPage implements OnInit {
     private toastController: ToastController,
     private userService: UserService,
     private configurationService: ConfigurationService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private platform:Platform,
   ) {}
 
   async ngOnInit() {
@@ -53,10 +54,10 @@ export class SignInPage implements OnInit {
 
   async signIn() {
     if (this.signInForm.invalid) return;
-    
+
     this.isLoading = true;
     this.signInForm.disable();
-    
+
     try {
       const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
       await Auth.signIn(this.signInForm.value);
