@@ -7,7 +7,7 @@
         </ion-back-button> -->
         <ion-back-button mat-icon-button mode='md' defaultHref="/tabs/dashboard"><ion-icon src="../../../assets/icon/back-arrow.svg"></ion-icon></ion-back-button>
       </ion-buttons>
-      <ion-label class="sip-withdraw d-flex"> <ion-button class="withdraw-link-btn" (click)="showConfirm()"><ion-icon class="text-muted-custom font-22" src="assets/icon/arrow-up-square.svg"></ion-icon> <b>Withdraw</b></ion-button> </ion-label>
+      <ion-label class="sip-withdraw d-flex"> <ion-button class="withdraw-link-btn" (click)="showConfirm()"><ion-icon class="text-muted-custom font-24" src="assets/icon/arrow-up-square.svg"></ion-icon> <b>Withdraw</b></ion-button> </ion-label>
       <!-- TODO: implement withdraw action -->
       <!-- <ion-button color="dark" routerLink="/withdraw-amount">
         <ion-icon class="mr-1" name="arrow-up"></ion-icon> Withdraw
@@ -127,7 +127,7 @@
         <ng-container *ngIf="canStartSIP else SIPPrerequisiteMessageTmplt">
           <ion-col size="12" size-md>
             <!-- TODO:  provide edit SIP option -->
-            <ion-button class="ion-button-theme" shape="round" expand="full" (click)="openSIPStep()">
+            <ion-button class="ion-button-theme" shape="round" expand="full" (click)="openSIPStep()" *ngIf="view === 'package'">
               {{ view === 'package' ? 'Add' : 'Edit' }} SIP
             </ion-button>
           </ion-col>

@@ -30,6 +30,7 @@ export class ChoosePlanFrequencyPage implements OnInit {
   startOfMonth = moment().format('YYYY-MM-DD');
   endOfMonth = moment().endOf('month').format('YYYY-MM-DD');
   isOpened: boolean = true;
+  daysInThisMonth = moment(this.monthlyDate, "YYYY-MM").daysInMonth();
 
   frequencyObject?: {
     type: 'daily' | 'weekly' | 'monthly';
@@ -71,6 +72,10 @@ export class ChoosePlanFrequencyPage implements OnInit {
     this.config = await this.configurationService.getConfiguration();
     //this.tenureYears = this.config.tenure;
     //this.onSelectTenure(0);
+  }
+
+  counter() {
+    return new Array(this.daysInThisMonth);
   }
 
   onSelectFrequency(type) {

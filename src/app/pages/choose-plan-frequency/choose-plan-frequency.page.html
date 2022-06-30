@@ -78,11 +78,23 @@
               </ion-row>
             </ion-grid>
           </ion-list>
-          <ion-list class="mt-2" *ngIf="selectFrequency === 'monthly'">
+         <!--  <ion-row class="mt-2 answer" *ngIf="selectFrequency === 'monthly'">
+            <ion-item class="mainDay answer-radio" *ngFor='let in of counter() ;let i = index'>
+              <input type="radio" class="answer-element" mode="md" item-left value="{{i+1}}">
+              <label class="radio-label">{{i+1}}</label>
+            </ion-item>
+         </ion-row> -->
+         <ion-row class="answer">
+          <ion-item class="answer-radio" *ngFor='let in of counter() ;let i = index'>
+            <input type="radio" class="space" id="answer-{{i+1}}" name="answer-element" value="{{i+1}}">
+            <label for="answer-{{i+1}}" class="radio-label"><span *ngIf="i < 9">0</span>{{i+1}}</label>
+          </ion-item>
+        </ion-row>
+          <!-- <ion-list class="mt-2" *ngIf="selectFrequency === 'monthly'">
             <ion-datetime presentation="date" class="ion-color ion-color-danger datetime-presentation-date-time datetime-size-fixed hydrated datetime-ready" [min]="startOfMonth" [max]="endOfMonth" [(ngModel)]="monthlyDate"
               (ionChange)="onSelectDate($event)" class="ion-text-center">
             </ion-datetime>
-          </ion-list>
+          </ion-list> -->
         </div>
       </ion-col>
     </ion-row>

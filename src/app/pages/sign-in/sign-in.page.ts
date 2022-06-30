@@ -54,11 +54,12 @@ export class SignInPage implements OnInit {
 
   async signIn() {
     if (this.signInForm.invalid) return;
-    const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
+
     this.isLoading = true;
     this.signInForm.disable();
 
     try {
+      const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
       await Auth.signIn(this.signInForm.value);
       await this.userService.setHeaderToken();
       if(isPushNotificationsAvailable)

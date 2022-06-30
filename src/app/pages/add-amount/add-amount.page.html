@@ -20,18 +20,31 @@
             <app-coin-stack [coins]="coins"></app-coin-stack>
           </div>
         </ion-list>
-        <h2 class="header-title mt-2">Add Amount</h2>
+        <h2 class="header-title mt-2">Choose plan frequency</h2>
         <ion-list class="mt-3 mb-3 ">
           <div class="small-label text-center">Step 2 of 2</div>
           <ion-progress-bar class="themeProgress" value="1"></ion-progress-bar>
         </ion-list>
-        <ion-list class="mt-2 text-center">
-          <ion-text class="small-label mt-3">
+        <ion-list class="mt-2 mb-2 text-center">
+          <ion-row class="border-box">
+            <ion-col size="5" size-md class="d-flex justify-center align-center">
+              <ion-text class="small-label mb-0 p-2 currency-chip">
+                <ion-icon class="font-12 p-1" src="../../../assets/icon/rupee-white.svg"></ion-icon> 
+                <span class="p-1 font-weight-500 vertical-align-super">INR</span>
+              </ion-text>
+            </ion-col>
+            <ion-col size="7" size-md>
+              <h1 class="text-dark mt-3 " *ngIf="amount else amountPlaceholderTmplt">
+                {{ amount | number : '1.0-0' }}
+              </h1>
+            </ion-col>
+          </ion-row>
+          <!-- <ion-text class="small-label mt-3">
             <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon> INR
           </ion-text>
           <h1 class="text-dark  mt-3 " *ngIf="amount else amountPlaceholderTmplt">
             {{ amount | number : '1.0-0' }}
-          </h1>
+          </h1> -->
 
           <div class="d-flex justify-center">
             <div class="error-message"
@@ -48,7 +61,7 @@
             </h1>
           </ng-template>
         </ion-list>
-        <ion-list class="mt-2 text-center dial-pad">
+        <ion-list class="mt-2 text-center dial-pad p-0">
           <ion-row>
             <ion-col *ngFor="let digit of [1,2,3,4,5,6,7,8,9]" size="4" size-md>
               <ion-button class="ion-button-theme-lighter" (click)="setAmount(digit)">{{ digit }}</ion-button>
