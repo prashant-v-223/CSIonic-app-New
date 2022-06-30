@@ -40,36 +40,17 @@ export class AppComponent implements OnInit, OnDestroy {
 
   async ngOnInit() {
 
-    this.appVersion.getVersionNumber().then((res) => {
-      this.versionNumber = res;
-    })
-    .catch( async (error) => {
-      await console.error(error);
-    })
-    .finally(() => {
-      console.log('finally');
-    });
-    /* try
-    {
-      console.log(this.appVersion);
-      let maintenanceCheck = await this.maintenanceService.getLatestVersion();
-      if(maintenanceCheck.data.maintenance===true)
-      {
-        this.router.navigateByUrl('maintenance-mode');
+      if (!this.platform.is("desktop")) {
+        this.appVersion.getVersionNumber().then((res) => {
+          this.versionNumber = res;
+        })
+        .catch( async (error) => {
+          await console.error(error);
+        })
+        .finally(() => {
+          console.log('finally');
+        });
       }
-      else
-      {
-        if(maintenanceCheck.data.mandatoryUpdate===true && maintenanceCheck.data.latest>this.appVersion)
-        {
-          this.router.navigateByUrl('force-app-update');
-          throw new Error("Please update your app");
-        }
-      }
-    }
-    catch(error)
-    {
-        throw new Error("UserToken not available");
-    } */
 
     try
     {
@@ -80,10 +61,9 @@ export class AppComponent implements OnInit, OnDestroy {
       }
       else
       {
-        this.versionNumber = this.versionNumber.split('.').join("");
-        if(maintenanceCheck.data.mandatoryUpdate && maintenanceCheck.data.latest.split('.').join("")>this.versionNumber)
+        this.versionNumber = this.versionNumber!='' ? this.versionNumber.split('.').join("") : "0";
+        if(maintenanceCheck.data.mandatoryUpdate && maintenanceCheck.data.latest.split('.').join("")>this.versionNumber && !this.platform.is("desktop"))
         {
-          console.log('force-app-update');
           this.router.navigateByUrl('force-app-update');
         } else {
           const status = await Network.getStatus();
@@ -111,7 +91,6 @@ export class AppComponent implements OnInit, OnDestroy {
         }
       }
     } catch (e) {
-      console.log(e);
       this.userService.signOut();
     } finally {
       await SplashScreen.hide();

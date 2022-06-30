@@ -3,6 +3,7 @@ import { PushNotifications, Token } from '@capacitor/push-notifications';
 import { ApiCallService } from 'src/app/services/apis/api-call.service';
 import { ApiConfiguration } from 'src/app/services/apis/configuration';
 import { Notification } from '../types/notification';
+import { Capacitor } from '@capacitor/core';
 
 enum PushNotificationError {
   PERMISSION_NOT_GRANTED
@@ -17,7 +18,11 @@ export class NotificationService {
     private api: ApiCallService,
     private apiConfig: ApiConfiguration
   ) {
-    this.listenForNotifications();
+    const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
+     
+    if (isPushNotificationsAvailable) {
+      this.listenForNotifications();
+    }
   }
 
   getPushNotificationToken() {

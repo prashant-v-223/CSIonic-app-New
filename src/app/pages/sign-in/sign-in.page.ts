@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
-import { NavController, ToastController } from '@ionic/angular';
+import { NavController, Platform, ToastController } from '@ionic/angular';
 import { SplashScreen } from '@capacitor/splash-screen';
 
 import { Auth } from 'aws-amplify';
@@ -39,7 +39,8 @@ export class SignInPage implements OnInit {
     private toastController: ToastController,
     private userService: UserService,
     private configurationService: ConfigurationService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    private platform: Platform
   ) {}
 
   async ngOnInit() {
@@ -58,10 +59,10 @@ export class SignInPage implements OnInit {
     this.signInForm.disable();
     
     try {
-      const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
       await Auth.signIn(this.signInForm.value);
       await this.userService.setHeaderToken();
-      if(isPushNotificationsAvailable)
+      const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
+      if (isPushNotificationsAvailable) 
       {
         this.token = await this.notificationService.getPushNotificationToken();
       }
@@ -78,7 +79,6 @@ export class SignInPage implements OnInit {
           }
           else
           {
-            //this.token = await this.notificationService.getPushNotificationToken();
             this.router.navigateByUrl('/tabs/dashboard');
           }
         }
