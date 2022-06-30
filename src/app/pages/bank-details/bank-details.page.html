@@ -29,6 +29,11 @@
           <form *ngIf="bankDetailsForm" (ngSubmit)="save()" [formGroup]="bankDetailsForm" class="w-100">
 
             <ion-item class="customForm">
+              <ion-label position="stacked">Bank Name</ion-label>
+              <ion-input placeholder="Type here" formControlName="bankName"></ion-input>
+            </ion-item>
+
+            <ion-item class="customForm">
               <ion-label position="stacked">ACCOUNT HOLDER NAME</ion-label>
               <ion-input placeholder="Type here" formControlName="holderName"></ion-input>
             </ion-item>
