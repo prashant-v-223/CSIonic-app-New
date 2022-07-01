@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SIPService } from 'src/app/shared/services/sip.service';
+import { UserService } from 'src/app/shared/services/user.service';
 
 @Component({
   selector: 'app-portfolio',
@@ -10,13 +11,17 @@ export class PortfolioPage implements OnInit {
 
   showLoader = true;
   sipList: any[] = []
-
+  portfolioInfo:any;
   constructor(
-    private sipService: SIPService
+    private sipService: SIPService,
+    private userService: UserService,
   ) { }
 
   ngOnInit() {
     this.loadSIPList();
+    localStorage.setItem('withdraw','true');
+    this.getPortfolioDetails();
+
   }
 
   async loadSIPList() {
@@ -29,6 +34,19 @@ export class PortfolioPage implements OnInit {
       }
     } catch (e) {
       console.error('Error while loading SIP list', e);
+    }
+  }
+
+  async getPortfolioDetails() {
+    this.showLoader = true;
+    try {
+      const posrtfolioData = await this.userService.getPortfolioDataDetails();
+      if (posrtfolioData?.data) {
+        this.portfolioInfo = posrtfolioData.data;
+        this.showLoader = false;
+      }
+    } catch (e) {
+      console.log('Error while getting portfolio details: ', e);
     }
   }
 

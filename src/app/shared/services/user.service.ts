@@ -97,4 +97,16 @@ export class UserService {
       throw e;
     }
   }
+
+  async getPortfolioDataDetails() {
+    try
+    {
+      return this.api.getData(`${this.apiConfig.portfolio}`);
+    }
+    catch(e)
+    {
+      throw e;
+    }
+
+  }
 }

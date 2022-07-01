@@ -20,32 +20,23 @@
     <ion-grid class="topHeader mb-2">
       <ion-searchbar placeholder="Search..."></ion-searchbar>
     </ion-grid>
-
     <ng-container *ngIf="!showLoader else loadingTmplt">
-
       <ion-grid class="p-0" *ngIf="coinList?.length else noCoinsTmplt">
-
         <ion-row>
           <ion-col *ngFor="let coin of coinList" size="6" size-md>
             <app-package-card [package]="coin"  [coinList]="coin.coins" [packageList]="coin.coins" view="coin" [navigationLink]="'/packages/' + coin._id">
             </app-package-card>
           </ion-col>
         </ion-row>
-
       </ion-grid>
-
       <ng-template #noCoinsTmplt>
         <div class="ion-text-center mt-5">
           No coins available
         </div>
       </ng-template>
-
     </ng-container>
-
-
     <ng-template #loadingTmplt>
       <app-loading-skeleton></app-loading-skeleton>
     </ng-template>
-
   </ion-list>
 </ion-content>

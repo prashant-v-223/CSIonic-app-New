@@ -37,6 +37,7 @@ export class PortfolioViewPage implements OnInit {
   chartLabel : any;
   chartData : any;
   coinCode:string;
+  withdrawBtn:string='false';
   time_frame:boolean=false;
   public segment: string = 'day';
   showLoader = true;
@@ -99,11 +100,15 @@ export class PortfolioViewPage implements OnInit {
 
       this.loadDetails();
     });
+    this.withdrawBtn = localStorage.getItem('withdraw');
+    console.log(this.withdrawBtn);
   }
 
   ngAfterViewInit() {
     this.checkUserCanStartSIP();
     this.lineChartMethod();
+
+
   }
 
  async lineChartMethod(duration?:any,interval?:string,symbol?:string) {
@@ -111,11 +116,7 @@ export class PortfolioViewPage implements OnInit {
  if(duration!=undefined && interval!=undefined)
   {
     this.time_frame = true;
-    const res = await (this.view === 'sip'
-    ? this.sipService.getChartDetails(this.coinCode,duration,interval)
-    : this.packagesService.getPackageDetails(this.id));
-
-    console.log(res.data);
+    const res = await this.sipService.getChartDetails(this.coinCode,duration,interval);
     this.chartLabel = res.data?.date;
     this.chartData = res.data?.price;
   }
@@ -127,10 +128,13 @@ export class PortfolioViewPage implements OnInit {
     : this.packagesService.getPackageDetails(this.id));
     this.chartLabel = res.data?.chartData?.date;
     this.chartData = res.data?.chartData?.price;
-    this.coinCode = res.data?.sip?.packageId?.coins[0].currencyId.code;
+    this.coinCode = res.data?.sip?.packageId ? res.data?.sip?.packageId?.coins[0].currencyId.code : res.data?.package?.coins[0].currencyId.code;
   }
   this.time_frame = false;
-
+    let context: CanvasRenderingContext2D = this.lineCanvas.nativeElement.getContext('2d');
+    let grad = context.createLinearGradient(0, 0, 0, 200);
+    grad.addColorStop(0, '#2B7979');
+    grad.addColorStop(1, '#fff');
    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
      type: 'line',
      data: {
@@ -138,7 +142,7 @@ export class PortfolioViewPage implements OnInit {
        datasets: [
          {
            data: this.chartData,
-           backgroundColor: 'rgba(43, 121, 121, .5)',
+           backgroundColor: grad,
            borderColor: 'rgba(43, 121, 121, 1)',
            borderCapStyle: 'butt',
            fill: true,
@@ -147,7 +151,7 @@ export class PortfolioViewPage implements OnInit {
            pointBackgroundColor: '#FFFFFF',
            pointRadius: 0,
            pointHitRadius: 10,
-           pointBorderWidth: 1,
+           pointBorderWidth: 0.5,
            pointHoverBorderWidth: 5,
            pointHoverRadius: 10,
            pointHoverBackgroundColor: '#FFFFFF',
@@ -284,7 +288,7 @@ export class PortfolioViewPage implements OnInit {
           //this.packageDetails = this.packageDetails.data.sip;
         } else
         {
-          this.packageDetails = res.data;
+          this.packageDetails = res.data.package;
         }
         /* console.log(res.data); */
        // this.COINS = this.packageDetails.coins;
