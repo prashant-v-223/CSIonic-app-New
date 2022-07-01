@@ -41,10 +41,8 @@ export class PortfolioPage implements OnInit {
     this.showLoader = true;
     try {
       const posrtfolioData = await this.userService.getPortfolioDataDetails();
-      if (posrtfolioData?.data) {
-        this.portfolioInfo = posrtfolioData.data;
-        this.showLoader = false;
-      }
+      this.portfolioInfo = posrtfolioData.data;
+      this.showLoader = false;
     } catch (e) {
       console.log('Error while getting portfolio details: ', e);
     }

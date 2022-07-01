@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, OnInit, Output, ViewChild } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AlertController, LoadingController, ModalController, NavController, ToastController } from '@ionic/angular';
 import { Chart } from 'chart.js';
@@ -37,6 +37,8 @@ export class PortfolioViewPage implements OnInit {
   chartLabel : any;
   chartData : any;
   coinCode:string;
+  @Output() coinList: any;
+  @Output() packageList: any;
   withdrawBtn:string='false';
   time_frame:boolean=false;
   public segment: string = 'day';
