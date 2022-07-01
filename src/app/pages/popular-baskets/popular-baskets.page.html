@@ -22,7 +22,7 @@
   <ion-list class="ion-list">
     <ion-grid class="topHeader mb-2">
       <!-- <ion-title>Popular Baskets</ion-title> -->
-      <ion-searchbar placeholder="Search..." *ngIf="!showLoader"></ion-searchbar>
+      <ion-searchbar placeholder="Search..." #searchText *ngIf="!showLoader" (keyup)="onSearchChange(searchText)" (ionClear)="onClear()"></ion-searchbar>
     </ion-grid>
 
     <ng-container *ngIf="!showLoader else loadingTmplt">

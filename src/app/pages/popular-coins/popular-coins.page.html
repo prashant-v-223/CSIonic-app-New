@@ -18,7 +18,7 @@
 <ion-content class="popularSection">
   <ion-list class="ion-list">
     <ion-grid class="topHeader mb-2">
-      <ion-searchbar placeholder="Search..."></ion-searchbar>
+      <ion-searchbar placeholder="Search..." #searchText (keyup)="onSearchChange(searchText)" (ionClear)="onClear()"></ion-searchbar>
     </ion-grid>
 
     <ng-container *ngIf="!showLoader else loadingTmplt">

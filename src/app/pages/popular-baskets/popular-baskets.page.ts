@@ -10,6 +10,7 @@ export class PopularBasketsPage implements OnInit {
 
   showLoader = true;
   packageList: any[] = [];
+  packages: any[] = [];
 
   constructor(
     private packagesService: PackagesService,
@@ -23,11 +24,24 @@ export class PopularBasketsPage implements OnInit {
     try {
       const planListRes = await this.packagesService.getPackages();
       if (planListRes?.data?.data) {
-        this.packageList = this.packagesService.separatePackagesAndCoins(planListRes?.data?.data).packages;
+        this.packages = this.packagesService.separatePackagesAndCoins(planListRes?.data?.data).packages;
+        this.packageList = this.packages;
         this.showLoader = false;
       }
     } catch (e) {
       console.log('Error while getting packages list: ', e);
     }
+  }
+
+  onSearchChange(evt: any) {
+    if (evt.value.length !== 0) {
+      this.packageList = this.packages.filter((value) => value.name.includes(evt.value));
+    } else {
+      this.packageList = this.packages;
+    }
+  }
+  
+  onClear() {
+    this.packageList = this.packages;
   }
 }

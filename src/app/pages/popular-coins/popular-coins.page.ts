@@ -10,6 +10,7 @@ export class PopularCoinsPage implements OnInit {
 
   showLoader = true;
   coinList: any[] = [];
+  coins: any[] = [];
 
   constructor(
     private packagesService: PackagesService,
@@ -23,11 +24,24 @@ export class PopularCoinsPage implements OnInit {
     try {
       const planListRes = await this.packagesService.getPackages();
       if (planListRes?.data?.data) {
-        this.coinList = this.packagesService.separatePackagesAndCoins(planListRes?.data?.data).coins;
+        this.coins = this.packagesService.separatePackagesAndCoins(planListRes?.data?.data).coins;
+        this.coinList = this.coins;
         this.showLoader = false;
       }
     } catch (e) {
       console.log('Error while getting packages list: ', e);
     }
+  }
+  
+  onSearchChange(evt: any) {
+    if (evt.value.length !== 0) {
+      this.coinList = this.coins.filter((value) => value.name.includes(evt.value));
+    } else {
+      this.coinList = this.coins;
+    }
+  }
+  
+  onClear() {
+    this.coinList = this.coins;
   }
 }
