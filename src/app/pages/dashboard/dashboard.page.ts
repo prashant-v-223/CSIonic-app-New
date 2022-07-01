@@ -16,6 +16,7 @@ export class DashboardPage implements OnInit {
   showLoader = true;
   packageList: any[] = [];
   coinList: any[] = [];
+  portfolioInfo:any='';
   user: any;
 
   constructor(
@@ -32,6 +33,7 @@ export class DashboardPage implements OnInit {
   ngOnInit(): void {
     this.getPackages();
     this.getUserInfo();
+    this.getPortfolioDetails();
   }
 
 
@@ -49,6 +51,20 @@ export class DashboardPage implements OnInit {
       }
     } catch (e) {
       console.log('Error while getting packages list: ', e);
+    }
+  }
+
+  async getPortfolioDetails() {
+    this.showLoader = true;
+    try {
+      const posrtfolioData = await this.userService.getPortfolioDataDetails();
+      if (posrtfolioData?.data) {
+        this.portfolioInfo = posrtfolioData.data;
+        console.log(this.portfolioInfo);
+        this.showLoader = false;
+      }
+    } catch (e) {
+      console.log('Error while getting portfolio details: ', e);
     }
   }
 

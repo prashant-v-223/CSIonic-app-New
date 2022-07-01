@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./portfolio-details.page.scss'],
 })
 export class PortfolioDetailsPage implements OnInit {
-  selectedTab: string = 'portfolioList'; 
+  selectedTab: string = 'portfolioList';
   portfolioList: any[] = [
   ]
   constructor() { }

@@ -1,22 +1,22 @@
 <ion-tabs>
   <ion-tab-bar slot="bottom">
-    
-    <ion-tab-button tab="dashboard" class="footerTab">
+
+    <ion-tab-button tab="dashboard" (click)="setWithDraw('home')" class="footerTab">
       <ion-icon class="tab-icons" src="assets/footer-icon/homeIcon.svg"></ion-icon>
       <span class="tab-text">Home</span>
     </ion-tab-button>
 
-    <ion-tab-button tab="portfolio" class="footerTab">
+    <ion-tab-button tab="portfolio" (click)="setWithDraw('portfolio')" class="footerTab">
       <ion-icon class="tab-icons" src="assets/footer-icon/portfolioIcon.svg"></ion-icon>
       <span class="tab-text">Portfolio</span>
     </ion-tab-button>
 
-    <ion-tab-button tab="invest" class="footerTab">
+    <ion-tab-button tab="invest" (click)="setWithDraw('invest')" class="footerTab">
       <ion-icon class="tab-icons" src="assets/footer-icon/investIcon.svg"></ion-icon>
       <span class="tab-text">Invest</span>
     </ion-tab-button>
-    
-    <ion-tab-button tab="profile" class="footerTab">
+
+    <ion-tab-button tab="profile" (click)="setWithDraw('profile')" class="footerTab">
       <ion-icon class="tab-icons" src="assets/footer-icon/profileIcon.svg"></ion-icon>
       <span class="tab-text">Profile</span>
     </ion-tab-button>

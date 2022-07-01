@@ -24,12 +24,9 @@
       <!-- <ion-title>Popular Baskets</ion-title> -->
       <ion-searchbar placeholder="Search..." *ngIf="!showLoader"></ion-searchbar>
     </ion-grid>
-
     <ng-container *ngIf="!showLoader else loadingTmplt">
-
       <ion-grid class="p-0" *ngIf="packageList?.length else noPackagesTmplt">
         <ion-row>
-
           <ion-col *ngFor="let package of packageList" size="12" size-md>
             <app-package-card [package]="package" [coinList]="package.coins" [packageList]="package.coins" [navigationLink]="'/packages/' + package._id"></app-package-card>
           </ion-col>
@@ -58,7 +55,6 @@
                   <div class="small-label text-dark">Total Invested</div>
                   <h4 class="Price text-dark">₹70.00</h4>
                 </div>
-
                 <div class="d-flex align-center">
                   <div class="d-flex align-center mr-2">
                     <ion-icon class="line-draw" src="../../../assets/small-line-danger.svg"></ion-icon>
@@ -74,21 +70,16 @@
             </div>
           </div>
         </ion-col> -->
-
         </ion-row>
       </ion-grid>
-
       <ng-template #noPackagesTmplt>
         <div class="ion-text-center mt-5">
           No packages available
         </div>
       </ng-template>
-
     </ng-container>
-
     <ng-template #loadingTmplt>
       <app-loading-skeleton></app-loading-skeleton>
     </ng-template>
-
   </ion-list>
 </ion-content>

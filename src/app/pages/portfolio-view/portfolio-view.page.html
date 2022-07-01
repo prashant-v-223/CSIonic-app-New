@@ -3,15 +3,9 @@
   <ion-toolbar>
     <ion-list class="d-flex justify-between">
       <ion-buttons slot="start">
-        <!-- <ion-back-button mat-icon-button class="back-btn" defaultHref="/tabs/dashboard">
-        </ion-back-button> -->
         <ion-back-button mat-icon-button mode='md' defaultHref="/tabs/dashboard"><ion-icon src="../../../assets/icon/back-arrow.svg"></ion-icon></ion-back-button>
       </ion-buttons>
-      <ion-label class="sip-withdraw d-flex"> <ion-button class="withdraw-link-btn" (click)="showConfirm()"><ion-icon class="text-muted-custom font-24" src="assets/icon/arrow-up-square.svg"></ion-icon> <b>Withdraw</b></ion-button> </ion-label>
-      <!-- TODO: implement withdraw action -->
-      <!-- <ion-button color="dark" routerLink="/withdraw-amount">
-        <ion-icon class="mr-1" name="arrow-up"></ion-icon> Withdraw
-      </ion-button> -->
+      <ion-label *ngIf="withdrawBtn=='true'" class="sip-withdraw d-flex"> <ion-button class="withdraw-link-btn" (click)="showConfirm()"><ion-icon class="text-muted-custom font-24" src="assets/icon/arrow-up-square.svg"></ion-icon> <b>Withdraw</b></ion-button> </ion-label>
     </ion-list>
   </ion-toolbar>
 </ion-header>
@@ -29,18 +23,15 @@
     </ion-row>
     <ion-row *ngIf="!showLoader else loadingTmplt">
       <ion-col size="12" class=" mt-1 pt-1 text-center" size-md>
-      <!--  <h1 class="text-theme sip-amount">&#8377; 20,000</h1>
-       <span class="sip-amount-subtext">Etherium (ETH)</span> -->
-       <h1 class="text-theme sip-amount mt-0"><ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ packageDetails.totalMinimumDepositAmount }}</h1>
+       <!-- <span class="sip-amount-subtext">Etherium (ETH)</span> -->
+        <h1 class="text-theme sip-amount mt-0"><ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ packageDetails.totalMinimumDepositAmount }}</h1>
        <span class="sip-amount-subtext">{{ packageDetails.name }}</span>
       </ion-col>
     </ion-row>
 
 
-    <ion-list class="sip-chart">
-      <!-- Show the graph based on selected period -->
-      <canvas #lineCanvas></canvas>
-      <!-- <img src="../../../assets/icon/chart.svg" width="100%" alt="img" class="sip-chart"> -->
+    <ion-list class="sip-chart pr-3">
+      <canvas #lineCanvas id="chart"></canvas>
     </ion-list>
 
     <ion-list class="ion-list pb-1 pt-1" *ngIf="!showLoader else loadingTmplt">
@@ -65,11 +56,6 @@
           2 Year
           </ion-label>
         </ion-segment-button>
-        <!-- <ion-segment-button value="all">
-          <ion-label>
-           All
-          </ion-label>
-        </ion-segment-button> -->
         </ion-segment>
       </ion-list>
 
@@ -146,7 +132,6 @@
             verification process
           </div>
         </ng-template>
-
         </ion-row>
     </ion-list>
   </ion-grid>
