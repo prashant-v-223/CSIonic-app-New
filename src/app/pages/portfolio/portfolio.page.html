@@ -18,7 +18,7 @@
       <div class="card-body pt-2 pb-2">
         <div class="d-flex justify-between">
           <div>
-            <h4 class="myPrice text-d-theme"><ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ portfolioInfo.currentAmount | number }}</h4>
+            <h4 class="myPrice text-d-theme"><ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ portfolioInfo?.currentAmount | number }}</h4>
             <span class="small-label">Current</span>
           </div>
           <div class="">
@@ -28,7 +28,7 @@
         <ion-grid class="invest-list">
           <ion-row class="w-100">
             <ion-col size="4" class="p-0" size-md>
-              <h6 class="text-dark"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ portfolioInfo.investedAmount | number }}</h6>
+              <h6 class="text-dark"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ portfolioInfo?.investedAmount | number }}</h6>
               <span class="small-label">Invested</span>
             </ion-col>
             <ion-col size="4" class="p-0" size-md>

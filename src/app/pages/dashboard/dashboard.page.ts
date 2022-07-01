@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewEncapsulation  } from '@angular/core';
+import { Component, OnInit, Output, ViewEncapsulation  } from '@angular/core';
 import { PackagesService } from 'src/app/shared/services/packages.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
@@ -14,9 +14,11 @@ import { Router } from '@angular/router';
 export class DashboardPage implements OnInit {
 
   showLoader = true;
-  packageList: any[] = [];
-  coinList: any[] = [];
+  /* packageList: any[] = [];
+  coinList: any[] = []; */
   portfolioInfo:any='';
+  @Output() coinList: any;
+  @Output() packageList: any;
   user: any;
 
   constructor(
@@ -108,3 +110,7 @@ export class DashboardPage implements OnInit {
     }
   }
 }
+function output() {
+  throw new Error('Function not implemented.');
+}
+

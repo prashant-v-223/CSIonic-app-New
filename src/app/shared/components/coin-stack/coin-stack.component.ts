@@ -12,6 +12,8 @@ export class CoinStackComponent implements OnInit {
   @Input() coins: any = [];
   common_url=environment.ICON_URL;
   COINS = this.coins;
+  @Input() coinList: any;
+  @Input() packageList: any;
   constructor() { }
 
   ngOnInit() {

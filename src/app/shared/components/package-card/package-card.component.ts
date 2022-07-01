@@ -39,26 +39,28 @@ export class PackageCardComponent implements OnInit, OnChanges {
   {
     this.packageList;
     this.coinList;
-    this.coinCode = this.coinList[0].currencyId.code;
-    
-    
-    
+    this.coinCode = this.coinList!=undefined ? this.coinList[0]?.currencyId.code : '';
   }
 
   ngAfterViewInit() {
     this.lineChartMethod(this.coinCode);
+    console.log(this.coinCode);
   }
 
-  async lineChartMethod(coinCodeName:string) {
-    let coinData = await this.sipService.getChartDetails(coinCodeName,"3","month")
-    this.chartDateLabel = coinData.data.date;
-    this.chartPriceLabel = coinData.data.price;
+  async lineChartMethod(coinCodeName:string)
+  {
+    if(coinCodeName!='')
+    {
+      let coinData = await this.sipService.getChartDetails(coinCodeName,"3","month")
+      this.chartDateLabel = coinData.data.date;
+      this.chartPriceLabel = coinData.data.price;
+    }
 
     let context: CanvasRenderingContext2D = this.lineCanvas.nativeElement.getContext('2d');
     let grad = context.createLinearGradient(0, 0, 0, 100);
     grad.addColorStop(0, '#2B7979');
     grad.addColorStop(1, '#fff');
-    
+
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',
       data: {
