@@ -13,7 +13,7 @@ export class TransactionsService {
   ) {}
 
   //Deposit/Withdrawal Amount API
-  async depositWithdrawalAmount(amount:string,type:string,utrNumber?:string) {
+  async depositWithdrawalAmount(amount:number,type:string,utrNumber?:string) {
       try
       {
         const amountData = {depositAmount:amount,utrNumber:utrNumber};

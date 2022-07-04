@@ -20,11 +20,8 @@
     <ion-grid class="topHeader bg-white p-0">
       <ion-title>Bank Account</ion-title>
     </ion-grid>
-
     <ng-container *ngIf="!isLoading else loadingTmplt">
-
       <ng-container [ngSwitch]="mode">
-
         <ng-container *ngSwitchCase="'edit'">
           <form *ngIf="bankDetailsForm" (ngSubmit)="save()" [formGroup]="bankDetailsForm" class="w-100">
 
@@ -70,41 +67,33 @@
         </ng-container>
 
         <ng-container *ngSwitchCase="'view'">
-
           <ion-item class="customForm mb-0">
             <ion-label>
               ACCOUNT HOLDER NAME
               <p>{{ bankDetails.holderName }}</p>
             </ion-label>
           </ion-item>
-
           <ion-item class="customForm mb-0">
             <ion-label>
               BANK ACCOUNT NUMBER
               <p>{{ bankDetails.accountNumber }}</p>
             </ion-label>
           </ion-item>
-
           <ion-item class="customForm mb-0">
             <ion-label>
               IFSC CODE
               <p>{{ bankDetails.IFSC }}</p>
             </ion-label>
           </ion-item>
-
           <ion-item class="customForm mb-0">
             <ion-label>
               ACCOUNT TYPE
               <p>{{ accountTypeLabel }}</p>
             </ion-label>
           </ion-item>
-
         </ng-container>
-
       </ng-container>
-
     </ng-container>
-
   </ion-list>
 </ion-content>
 <!-- Footer Section Start -->

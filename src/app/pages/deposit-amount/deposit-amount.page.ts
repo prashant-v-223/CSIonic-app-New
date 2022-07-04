@@ -26,7 +26,10 @@ export class DepositAmountPage implements OnInit {
   BankDataResponse : [] = [];
   depositAmountResponse : [] = [];
   isLoading: boolean = false;
-
+  stepperSteps = "amountSet";
+  amount: number;
+  isAmountValid = false;
+  utrNumberSet:string='';
   ngOnInit() {
     const user = this.userService.getUserFromStorage();
     if (!user) this.onBack();
@@ -36,17 +39,8 @@ export class DepositAmountPage implements OnInit {
   }
 
   amountForm = new FormGroup({
-    depositAmount: new FormControl('',[Validators.required,Validators.pattern(/^-?(0|[1-9]\d*)?$/),Validators.min(1)]),
     utrNumber: new FormControl('',[Validators.required]),
   });
-
-  /* GetDeposit()
-  {
-    if(this.AmountForm.controls['deposit_amount'].value > 0)
-    {
-      this.disabled = false;
-    }
-  } */
 
   omit_special_char(e) {
     var k;
@@ -55,7 +49,7 @@ export class DepositAmountPage implements OnInit {
   }
 
   onBack() {
-    this.navCtrl.navigateBack('/tabs/my-wallet');
+    this.navCtrl.navigateBack('/my-wallet');
   }
 
   async GetBankInfo()
@@ -75,17 +69,48 @@ export class DepositAmountPage implements OnInit {
     }
   }
 
+  setAmount(amountDigit: number | 'remove') {
+    const amountString = String(this.amount);
+    if (amountDigit === 'remove') {
+      if (this.amount || this.amount === 0)
+        this.amount = Number(
+          amountString.substring(0, amountString.length - 1)
+        );
+    } else {
+      this.amount =
+        this.amount || this.amount === 0
+          ? Number(amountString + amountDigit)
+          : amountDigit;
+    }
+
+    this.isAmountValid =
+      this.amount &&
+      new RegExp('^\\d+$').test(String(this.amount)) &&
+      this.amount > 0;
+  }
+
+  async openNextStep() {
+    if (this.stepperSteps === "amountSet") {
+      this.stepperSteps = "depositAmount";
+    }
+  }
+
+  openBackStep() {
+    if (this.stepperSteps === "depositAmount") {
+      this.stepperSteps = "amountSet";
+    }
+  }
+
   addDeposit()
   {
     this.isLoading = true;
-    var depositAmount = this.amountForm.controls['depositAmount'].value;
-    var utrNumber = this.amountForm.controls['utrNumber'].value;
-    this.transactionService.depositWithdrawalAmount(depositAmount,"deposit",utrNumber)
+    this.transactionService.depositWithdrawalAmount(this.amount,"deposit",this.amountForm.controls['utrNumber'].value)
       .then((res) => {
       if (res.status =="SUCCESS")
       {
         this.isLoading = false;
         this.amountForm.reset();
+        this.navCtrl.navigateBack('/my-wallet');
       }
       else
       {
