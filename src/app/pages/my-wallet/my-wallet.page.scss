@@ -24,6 +24,12 @@
       --background:transparent;
       color: #fff !important;
     }
+    ion-back-button.md{
+      background-color:rgba($color: #fff, $alpha: 1);
+      ion-icon{
+        stroke: #2F4858;
+      }
+    }
 }
 .user-profile
 {

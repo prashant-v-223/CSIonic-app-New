@@ -103,14 +103,12 @@ export class PortfolioViewPage implements OnInit {
       this.loadDetails();
     });
     this.withdrawBtn = localStorage.getItem('withdraw');
-    console.log(this.withdrawBtn);
+    //console.log(this.withdrawBtn);
   }
 
   ngAfterViewInit() {
     this.checkUserCanStartSIP();
     this.lineChartMethod();
-
-
   }
 
  async lineChartMethod(duration?:any,interval?:string,symbol?:string) {
@@ -130,7 +128,7 @@ export class PortfolioViewPage implements OnInit {
     : this.packagesService.getPackageDetails(this.id));
     this.chartLabel = res.data?.chartData?.date;
     this.chartData = res.data?.chartData?.price;
-    this.coinCode = res.data?.sip?.packageId ? res.data?.sip?.packageId?.coins[0].currencyId.code : res.data?.package?.coins[0].currencyId.code;
+    this.coinCode = res.data?.sip?.packageId ? res.data?.sip?.packageId?.coins[0].currencyId.baseAsset : res.data?.package?.coins[0].currencyId.baseAsset;
   }
   this.time_frame = false;
     let context: CanvasRenderingContext2D = this.lineCanvas.nativeElement.getContext('2d');

@@ -4,21 +4,50 @@
       --border-color:var(--bg-lighter);
     } */
     ion-list{
-      background: transparent;
+      background: var(--lighter-gray);
     }
     ion-back-button.md{
-      background-color:rgba($color: #fff, $alpha: 1);
+      background-color: var(--lighter-gray) !important;
       ion-icon{
         stroke: #2F4858;
       }
     }
+    .deposit-list {
+      --background: #1F2C37 !important;
+      border-radius: 10px;
+      //padding: 4px 6px;
+      font-family: var(--f-Lexend);
+      color: #fff;
+      font-weight: 500;
+      width: 90%;
+      height: 32px;
+      margin-left: 10%;
+    }
+    .deposit-list b{
+      padding-left: 7%;
+      padding-top: 2%;
+      font-family: var(--f-Lexend);
+      font-weight: 500;
+      font-size: 20px;
+      color: #000;
+    }
   }
 
   //  My Wallet Card Start
-.walletSection {
+.depositSection {
 padding-top: 0rem;
+.border-box {
+  border: 1px solid #efebeb;
+  border-radius: 12px;
+}
+.type-amount
+{
+  font-size: 18px !important;
+  font-family: var(--f-Lexend);
+}
   ion-list{
     padding-top: 0rem;
+    background-color: var(--lighter-gray) !important;
     }
     ion-button{
       margin: 0px;
@@ -31,6 +60,21 @@ padding-top: 0rem;
       letter-spacing: .08px;
       width: 100%;
 
+  }
+  .small-label {
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--blackColor);
+    ion-icon {
+      background-color: var( --theme-color);
+      border-radius: 10px;
+      vertical-align: middle;
+      margin-top: -5%;
+    }
+    span {
+      font-size: 18px;
+      padding: 5px 0;
+    }
   }
   ion-item{
     --min-height: 65px;
@@ -92,7 +136,7 @@ padding-top: 0rem;
 }
 ion-button{
   ion-icon{
-    font-size: 20px;
+    font-size: 26px;
     &.icon-theme{
         stroke:#8AC680;
     }
@@ -115,4 +159,32 @@ ion-button{
     margin-bottom: 1.5rem;
     line-height: 28px;
   }
+
+}
+.deposit-btn
+{
+  border-left: 1px solid #fff;
+}
+.currency-box {
+  width: 92%;
+  margin: auto;
+}
+.currency-chip {
+  background: #F8F8F8;
+  border-radius: 24px;
+}
+.themeHeader ion-toolbar{
+  --background: var(--lighter-gray);
+}
+ion-content {
+  --ion-background-color: var(--lighter-gray);
+}
+
+.deposit-info
+{
+  background-color: var( --theme-color);
+  font-size: 14px;
+  font-family:var(--f-Lexend);
+  color: #fff;
+  border-radius: 15px;
 }

@@ -18,7 +18,9 @@
       <div class="card-body pt-2 pb-2">
         <div class="d-flex justify-between">
           <div>
-            <h4 class="myPrice text-d-theme"><ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ portfolioInfo?.currentAmount | number }}</h4>
+            <h4 class="myPrice text-d-theme"><!-- <ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon> --><ion-buttons slot="start">
+              <ion-back-button  mat-icon-button class="back-btn" defaultHref="/my-wallet"></ion-back-button>
+            </ion-buttons><ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ portfolioInfo?.currentAmount | number }}</h4>
             <span class="small-label">Current</span>
           </div>
           <div class="">

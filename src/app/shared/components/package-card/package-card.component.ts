@@ -39,12 +39,11 @@ export class PackageCardComponent implements OnInit, OnChanges {
   {
     this.packageList;
     this.coinList;
-    this.coinCode = this.coinList!=undefined ? this.coinList[0]?.currencyId.code : '';
+    this.coinCode = this.coinList!=undefined ? this.coinList[0]?.currencyId.baseAsset : '';
   }
 
   ngAfterViewInit() {
     this.lineChartMethod(this.coinCode);
-    console.log(this.coinCode);
   }
 
   async lineChartMethod(coinCodeName:string)
