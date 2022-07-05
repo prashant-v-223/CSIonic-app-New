@@ -111,11 +111,11 @@ export class AddAmountPage implements OnInit {
       const sipRes = await this.sipService.addSIP();
       if (sipRes.status === this.CONSTANT.SUCCESS) {
         // this.sipService.setSIPData('reset', null);
-        const toast = await this.toastController.create({
+        /* const toast = await this.toastController.create({
           message: 'SIP created successfully',
           duration: 2000,
-        });
-        toast.present();
+        }); */
+        //toast.present();
         this.closeModal('success');
 
         // show the success screen

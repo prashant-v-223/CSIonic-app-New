@@ -28,7 +28,7 @@ export class DepositAmountPage implements OnInit {
   isLoading: boolean = false;
   stepperSteps = "amountSet";
   amount: number = 1;
-  isAmountValid = false;
+  isAmountValid = true;
   utrNumberSet:string='';
   ngOnInit() {
     const user = this.userService.getUserFromStorage();

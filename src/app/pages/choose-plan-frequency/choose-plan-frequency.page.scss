@@ -56,10 +56,10 @@
       font-weight: 500;
       font-family: var(--f-Poppins);
       letter-spacing: .08px;
-      color: var(--lighter-b-Color);
-      --background-focused: var(--lighter-b-Color);
-      --background-hover: var(--lighter-b-Color);
-      --background-activated: var(--lighter-b-Color);
+      color: var(--theme-color);
+      --background-focused: var(--theme-color);
+      --background-hover: var(--theme-color);
+      --background-activated: var(--theme-color);
       text-transform: inherit;
       --box-shadow:inherit;
       --background-activated-opacity: 1;
@@ -70,14 +70,14 @@
       border-radius: 15px;
       &.ion-activated{
         color: #fff;
-        --background-activated:var(--lighter-b-Color);
+        --background-activated:var(--theme-color);
       }
       &.active{
         color: #fff;
-        --background: var(--lighter-b-Color);
-        --background-activated: var(--lighter-b-Color);
-          --background-focused: var(--lighter-b-Color);
-          --background-hover: var(--lighter-b-Color);
+        --background: var(--theme-color);
+        --background-activated: var(--theme-color);
+          --background-focused: var(--theme-color);
+          --background-hover: var(--theme-color);
       }
   }
   ion-datetime {

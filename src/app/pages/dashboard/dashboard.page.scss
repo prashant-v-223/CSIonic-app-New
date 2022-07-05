@@ -29,6 +29,9 @@ ion-header,#background-content{
     margin-bottom: 1rem;
   }
 
+  ion-content{
+    --ion-background-color: var(--lighter-gray);
+  }
   .myPortfolio {
     position: relative;
     display: flex;
@@ -90,3 +93,4 @@ ion-header,#background-content{
     }
   }
 }
+

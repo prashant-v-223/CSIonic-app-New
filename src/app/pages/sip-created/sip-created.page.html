@@ -11,7 +11,7 @@
           <h2 class="header-title  f-Poppins text-center">SIP Created</h2>
         </ion-col>
         <ion-col size="6" class="pl-5" size-md>
-          <h4 class="header-title text-white"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ sipData.installmentAmount }}</h4>
+          <h4 class="header-title text-white"><ion-icon class="font-15" src="../../../assets/icon/rupee-white.svg"></ion-icon>{{ sipData.installmentAmount }}</h4>
           <span class="small-label ">Amount</span>
         </ion-col>
         <ion-col size="6" class="pl-5" size-md>
@@ -33,7 +33,7 @@
               <span class="small-label">Coin</span>
 
               <span *ngFor="let coin of sipData.package.coins" class="small-text">
-                {{ coin.currencyId.fullName }} ({{ coin.currencyId.code }})
+                {{ coin.currencyId.fullName }} <!-- ({{ coin.currencyId.code }}) -->
               </span>
             </ion-col>
 
@@ -42,7 +42,7 @@
               <span class="small-label">Price</span>
 
               <span *ngFor="let coin of sipData.package.coins" class="small-text ">
-                <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (sipData.installmentAmount * coin.allocation / 100) | number: '1.2-2' }}
+                <ion-icon class="font-15" src="../../../assets/icon/rupee-white.svg"></ion-icon>{{ (sipData.installmentAmount * coin.allocation / 100) | number: '1.2-2' }}
               </span>
             </ion-col>
 

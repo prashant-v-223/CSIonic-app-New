@@ -194,9 +194,9 @@ ion-input{
   font-family: var(--f-Lexend);
   font-weight: 400;
   color: #000;
-  border: 1px solid #efebeb;
+  /* border: 1px solid #efebeb; */
   border-radius: 10px;
-  &.has-value{
+ /*  &.has-value{
     background-color: var( --bg-lighter);
-  }
+  } */
 }

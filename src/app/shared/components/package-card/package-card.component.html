@@ -89,8 +89,8 @@
       </div>
     </div>
     <div class="mt-0">
-      <!-- <img class="line-draw-full" src="assets/icon/chart.svg" alt="img"> -->
-      <canvas class="w-100" #lineCanvas></canvas>
+      <img class="line-draw-full" *ngIf="chartHide" src="assets/icon/chart.svg" alt="img">
+      <canvas class="w-100" *ngIf="!chartHide" #lineCanvas></canvas>
     </div>
   </div>
 

@@ -19,7 +19,7 @@ export class PackageCardComponent implements OnInit, OnChanges {
   coinCode: string = "";
   chartDateLabel: any;
   chartPriceLabel: any;
-
+  chartHide:boolean= false;
   coins = [];
 
   constructor(
@@ -50,11 +50,19 @@ export class PackageCardComponent implements OnInit, OnChanges {
   {
     if(coinCodeName!='')
     {
-      let coinData = await this.sipService.getChartDetails(coinCodeName,"3","month")
-      this.chartDateLabel = coinData.data.date;
-      this.chartPriceLabel = coinData.data.price;
+      try
+      {
+        let coinData = await this.sipService.getChartDetails(coinCodeName,"3","month")
+        this.chartDateLabel = coinData.data.date;
+        this.chartPriceLabel = coinData.data.price;
+        this.chartHide = false;
+      }
+      catch(error)
+      {
+        this.chartHide = true;
+        console.log(error.status);
+      }
     }
-
     let context: CanvasRenderingContext2D = this.lineCanvas.nativeElement.getContext('2d');
     let grad = context.createLinearGradient(0, 0, 0, 100);
     grad.addColorStop(0, '#2B7979');

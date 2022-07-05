@@ -29,9 +29,9 @@
     font-family: var(--f-Lexend);
     font-weight: 400;
     color: #000;
-    &.has-value{
+    /* &.has-value{
       background-color: var( --bg-lighter);
-    }
+    } */
   }
   .error-message {
     --padding-start: 15px !important;
