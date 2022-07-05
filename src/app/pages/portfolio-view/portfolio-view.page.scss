@@ -162,7 +162,7 @@ ion-content {
     line-height: 0px;
     height: 60px;
     font-size: 16px;
-    --border-radius: 12px;
+    --border-radius: 0px !important;
     font-weight: 500;
     font-family: var(--f-Lexend);
     letter-spacing: .08px;
