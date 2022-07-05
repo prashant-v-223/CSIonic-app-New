@@ -116,7 +116,7 @@ export class PortfolioViewPage implements OnInit {
  if(duration!=undefined && interval!=undefined)
   {
     this.time_frame = true;
-    const res = await this.sipService.getChartDetails(this.coinCode,duration,interval);
+    const res = await this.sipService.getChartDetailsPackage(this.coinCode,duration,interval);
     this.chartLabel = res.data?.date;
     this.chartData = res.data?.price;
   }
@@ -128,7 +128,7 @@ export class PortfolioViewPage implements OnInit {
     : this.packagesService.getPackageDetails(this.id));
     this.chartLabel = res.data?.chartData?.date;
     this.chartData = res.data?.chartData?.price;
-    this.coinCode = res.data?.sip?.packageId ? res.data?.sip?.packageId?.coins[0].currencyId.baseAsset : res.data?.package?.coins[0].currencyId.baseAsset;
+    this.coinCode = res.data?.sip?.packageId ? res.data?.sip?.packageId._id : res.data?.package?._id;
   }
   this.time_frame = false;
     let context: CanvasRenderingContext2D = this.lineCanvas.nativeElement.getContext('2d');

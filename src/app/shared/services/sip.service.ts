@@ -131,7 +131,11 @@ export class SIPService {
   }
 
   getChartDetails(symbol: string,duration: string,interval: string) {
-    return this.api.getData(`${this.apiConfig.chart}?symbol=${symbol}&duration=${duration}&interval=${interval}`);
+    return this.api.getData(`${this.apiConfig.chart}/?symbol=${symbol}&duration=${duration}&interval=${interval}`);
+  }
+
+  getChartDetailsPackage(packegeId:string,duration: string,interval: string) {
+    return this.api.getData(`${this.apiConfig.chart}/${packegeId}?duration=${duration}&interval=${interval}`);
   }
 
   changeSIPStatus(id: string, statusObj: { status: SIPStatus }) {

@@ -84,7 +84,7 @@
               <label class="radio-label">{{i+1}}</label>
             </ion-item>
          </ion-row> -->
-         <ion-row class="answer">
+         <ion-row class="answer" *ngIf="selectFrequency === 'monthly'">
           <ion-item class="answer-radio" *ngFor='let in of counter() ;let i = index'>
             <input type="radio" class="space" id="answer-{{i+1}}" name="answer-element" value="{{i+1}}" #update_day (click)="updateDay(update_day.value)" [checked]="currentDay==i+1 ? true : false" >
             <label for="answer-{{i+1}}" class="radio-label"><span *ngIf="i < 9">0</span>{{i+1}}</label>

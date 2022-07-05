@@ -89,7 +89,7 @@ export class AddAmountPage implements OnInit {
     } else {
       this.amount =
         this.amount || this.amount === 0
-          ? Number(amountString + amountDigit)
+          ? Number(amountDigit)
           : amountDigit;
     }
 
