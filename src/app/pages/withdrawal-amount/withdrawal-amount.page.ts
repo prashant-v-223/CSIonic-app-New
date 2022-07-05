@@ -24,7 +24,7 @@ export class WithdrawalAmountPage implements OnInit {
   maxWithdrawalAmounts:number = 2000;
   stepperSteps = "amountSet";
   amount: number = 1;
-  isAmountValid = false;
+  isAmountValid = true;
   config;
 
   constructor(private navCtrl: NavController,private userService: UserService,public toastController: ToastController,private configurationService:ConfigurationService,public sipService: SIPService,private transactionService:TransactionsService) { }
