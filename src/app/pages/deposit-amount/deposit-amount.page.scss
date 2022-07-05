@@ -47,7 +47,7 @@ padding-top: 0rem;
 }
   ion-list{
     padding-top: 0rem;
-    background-color: var(--lighter-gray) !important;
+   // background-color: var(--lighter-gray) !important;
     }
     ion-button{
       margin: 0px;
@@ -176,9 +176,9 @@ ion-button{
 .themeHeader ion-toolbar{
   --background: var(--lighter-gray);
 }
-ion-content {
+/* ion-content {
   --ion-background-color: var(--lighter-gray);
-}
+} */
 
 .deposit-info
 {
@@ -187,4 +187,16 @@ ion-content {
   font-family:var(--f-Lexend);
   color: #fff;
   border-radius: 15px;
+}
+ion-input{
+  --padding-start: 10px;
+  font-size: 16px;
+  font-family: var(--f-Lexend);
+  font-weight: 400;
+  color: #000;
+  border: 1px solid #efebeb;
+  border-radius: 10px;
+  &.has-value{
+    background-color: var( --bg-lighter);
+  }
 }

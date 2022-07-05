@@ -33,19 +33,20 @@
                         </ion-text>
                       </ion-col>
                       <ion-col size="7" size-md>
-                        <h1 class="text-dark type-amount mt-3 mb-2" *ngIf="amount else amountPlaceholderTmplt">
+                        <!-- <h1 class="text-dark type-amount mt-3 mb-2" *ngIf="amount else amountPlaceholderTmplt">
                           {{ amount | number : '1.0-0' }}
-                        </h1>
+                        </h1> -->
+                        <ion-input type="text" #depostiAmount placeholder="Type Amount" value="{{ amount }}" (keyup)="setAmount(depostiAmount.value)" ></ion-input>
                       </ion-col>
                     </ion-row>
 
-                    <ng-template class="mb-2" #amountPlaceholderTmplt>
-                      <h1 class="gray-text type-amount mt-3 ">
+                    <!-- <ng-template class="mb-2" #amountPlaceholderTmplt>
+                      <!-- <h1 class="gray-text type-amount mt-3 ">
                         Type Amount
                       </h1>
-                    </ng-template>
+                    </ng-template> -->
                   </ion-list>
-                  <ion-list class="mt-2 text-center dial-pad p-0">
+                  <!-- <ion-list class="mt-2 text-center dial-pad p-0">
                     <ion-row>
                       <ion-col *ngFor="let digit of [1,2,3,4,5,6,7,8,9]" size="4" size-md>
                         <ion-button class="ion-button-theme-lighter" (click)="setAmount(digit)">{{ digit }}</ion-button>
@@ -62,7 +63,7 @@
                         </ion-button>
                       </ion-col>
                     </ion-row>
-                  </ion-list>
+                  </ion-list> -->
                 </ion-col>
               </ion-row>
             </div>

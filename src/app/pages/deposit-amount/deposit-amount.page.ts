@@ -27,7 +27,7 @@ export class DepositAmountPage implements OnInit {
   depositAmountResponse : [] = [];
   isLoading: boolean = false;
   stepperSteps = "amountSet";
-  amount: number;
+  amount: number = 1;
   isAmountValid = false;
   utrNumberSet:string='';
   ngOnInit() {
@@ -79,7 +79,7 @@ export class DepositAmountPage implements OnInit {
     } else {
       this.amount =
         this.amount || this.amount === 0
-          ? Number(amountString + amountDigit)
+          ? Number(amountDigit)
           : amountDigit;
     }
 

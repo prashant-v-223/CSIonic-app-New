@@ -23,7 +23,7 @@ export class WithdrawalAmountPage implements OnInit {
   isLoading: boolean = false;
   maxWithdrawalAmounts:number = 2000;
   stepperSteps = "amountSet";
-  amount: number;
+  amount: number = 1;
   isAmountValid = false;
   config;
 
@@ -83,7 +83,7 @@ export class WithdrawalAmountPage implements OnInit {
     } else {
       this.amount =
         this.amount || this.amount === 0
-          ? Number(amountString + amountDigit)
+          ? Number(amountDigit)
           : amountDigit;
     }
 
