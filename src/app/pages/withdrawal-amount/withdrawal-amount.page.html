@@ -47,6 +47,7 @@
                         <ion-input type="text" #withdrawAmount placeholder="Type Amount" value="{{ amount }}" (keyup)="setAmount(withdrawAmount.value)" ></ion-input>
                       </ion-col>
                     </ion-row>
+                    <label class="font-12 text-muted-custom">Note : Minimum Withdraw is {{ minWithdrawalAmounts }}.</label><br>
 
                     <!-- <ng-template #amountPlaceholderTmplt>
                       <h1 class="gray-text type-amount mt-3 ">

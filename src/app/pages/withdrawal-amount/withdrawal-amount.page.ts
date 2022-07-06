@@ -21,22 +21,22 @@ export class WithdrawalAmountPage implements OnInit {
   BankDataResponse : [] = [];
   depositAmountResponse : [] = [];
   isLoading: boolean = false;
-  maxWithdrawalAmounts:number = 2000;
+  maxWithdrawalAmounts:number = 0;
+  minWithdrawalAmounts:number = 1000;
   stepperSteps = "amountSet";
-  amount: number = 1;
-  isAmountValid = true;
+  amount: number = 0;
+  isAmountValid = false;
   config;
 
   constructor(private navCtrl: NavController,private userService: UserService,public toastController: ToastController,private configurationService:ConfigurationService,public sipService: SIPService,private transactionService:TransactionsService) { }
   async ngOnInit() {
     const user = this.userService.getUserFromStorage();
     this.config = await this.configurationService.getConfiguration();
+    this.minWithdrawalAmounts = this.config.minimumWithdrawalAmount;
     if (!user) this.onBack();
     this.userId = user._id;
     this.GetBankInfo(this.userId);
-
   }
-
 
   omit_special_char(e) {
     var k;
@@ -90,7 +90,7 @@ export class WithdrawalAmountPage implements OnInit {
     this.isAmountValid =
       this.amount &&
       new RegExp('^\\d+$').test(String(this.amount)) &&
-      this.amount <= this.maxWithdrawalAmounts;
+      this.amount <= this.maxWithdrawalAmounts && this.amount >= this.minWithdrawalAmounts;
   }
 
   openNextStep() {
