@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SIPService } from 'src/app/shared/services/sip.service';
 import { UserService } from 'src/app/shared/services/user.service';
 
@@ -12,17 +13,36 @@ export class PortfolioPage implements OnInit {
   showLoader = true;
   sipList: any[] = []
   portfolioInfo:any;
+  testing:string='';
   constructor(
     private sipService: SIPService,
+    private router: Router,
     private userService: UserService,
-  ) { }
+  ) {
+   }
 
-  ngOnInit() {
-    this.loadSIPList();
+   async ngOnInit() {
+
+    //let navigation = this.router.getCurrentNavigation();
+    /* this.loadSIPList();
     localStorage.setItem('withdraw','true');
-    this.getPortfolioDetails();
+    this.getPortfolioDetails(); */
 
   }
+
+  async ionViewWillEnter()
+  {
+    this.loadSIPList();
+    await localStorage.setItem('withdraw','true');
+    console.log(localStorage.getItem('withdraw'));
+    await this.getPortfolioDetails();
+  }
+
+  /* async ionViewWillEnter() {
+    await this.loadSIPList();
+    localStorage.setItem('withdraw','true');
+    this.getPortfolioDetails();
+  } */
 
   async loadSIPList() {
     this.showLoader = true;

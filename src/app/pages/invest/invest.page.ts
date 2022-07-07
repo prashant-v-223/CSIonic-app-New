@@ -25,7 +25,12 @@ export class InvestPage implements OnInit {
   }
 
   ngOnInit() {
-    this.getPackages();
+    //this.getPackages();
+  }
+
+  async ionViewWillEnter()
+  {
+    await this.getPackages();
   }
 
   public segment: string = "Coins";

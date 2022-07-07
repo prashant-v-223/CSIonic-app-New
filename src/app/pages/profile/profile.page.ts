@@ -20,12 +20,31 @@ export class ProfilePage {
 
 
   constructor(
-    private userService: UserService, private modalController: ModalController
+    private userService: UserService, private navCtrl: NavController,private modalController: ModalController
   )
   {
-    this.user = this.userService.getUserFromStorage();
+    this.user = this.userService.getUser().then((res) =>{
+      this.user = res;
+      this.userService.setUserToStorage(this.user.data);
+      this.user = this.userService.getUserFromStorage();
+    });
+
   }
 
+  ionViewWillEnter()
+  {
+    this.user = this.userService.getUser().then((res) =>{
+      this.user = res;
+      this.userService.setUserToStorage(this.user.data);
+      this.user = this.userService.getUserFromStorage();
+    });
+    if (!this.user) this.onBack();
+  }
+
+  /* async ionViewWillEnter(){
+     this.user = await this.userService.getUserFromStorage();
+  }
+ */
   signOut() {
     this.userService.signOut();
   }
@@ -48,4 +67,7 @@ export class ProfilePage {
     return await modal.present();
   }
 
+  onBack() {
+    this.navCtrl.navigateBack('/tabs/profile');
+  }
 }

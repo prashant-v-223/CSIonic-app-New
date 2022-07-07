@@ -43,6 +43,7 @@ export class PortfolioViewPage implements OnInit {
   time_frame:boolean=false;
   public segment: string = 'day';
   showLoader = true;
+  withdrawalStatus = "complete";
   RequiredVerificationEnum = RequiredVerificationEnum;
   pequiredVerificationData = {
     [RequiredVerificationEnum.AADHAR_CARD]: {
@@ -128,6 +129,8 @@ export class PortfolioViewPage implements OnInit {
     : this.packagesService.getPackageDetails(this.id));
     this.chartLabel = res.data?.chartData?.date;
     this.chartData = res.data?.chartData?.price;
+    this.withdrawalStatus = res.data?.sip?.status;
+    console.log(this.withdrawalStatus);
     this.coinCode = res.data?.sip?.packageId ? res.data?.sip?.packageId._id : res.data?.package?._id;
   }
   this.time_frame = false;
@@ -226,14 +229,15 @@ export class PortfolioViewPage implements OnInit {
         {
           text: 'confirm',
           handler: () => {
-            this.simpleLoader();
+            //this.simpleLoader();
             this.sipService.withdrawSIP(this.id).then(res => {
-              this.navCtrl.navigateBack('/tabs/portfolio');
-              this.loadingController.dismiss();
+              //this.navCtrl.navigateRoot([`/tabs/portfolio`], {state: {reload: true}}).then();
+              this.navCtrl.back();
+              //this.loadingController.dismiss();
             }).catch((e) => {
-              setTimeout(() => {
+              /* setTimeout(() => {
                 this.loadingController.dismiss();
-              }, 100);
+              }, 100); */
               if (e.status === 400) {
                 this.showToast(e.error.error);
               }
@@ -252,14 +256,14 @@ export class PortfolioViewPage implements OnInit {
     });
   }
 
-  simpleLoader() {
+  /* simpleLoader() {
     this.loadingController.create({
       spinner: 'crescent',
       message: 'Loading...'
     }).then((response) => {
       response.present();
     });
-  }
+  } */
 
   async showToast(text) {
     const toast = await this.toastController.create({

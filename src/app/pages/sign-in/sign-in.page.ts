@@ -61,7 +61,7 @@ export class SignInPage implements OnInit {
       await Auth.signIn(this.signInForm.value);
       await this.userService.setHeaderToken();
       const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
-      if (isPushNotificationsAvailable) 
+      if (isPushNotificationsAvailable)
       {
         this.token = await this.notificationService.getPushNotificationToken();
       }

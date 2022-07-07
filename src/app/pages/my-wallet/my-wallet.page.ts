@@ -11,11 +11,24 @@ export class MyWalletPage implements OnInit {
 
   constructor(private navCtrl: NavController,private userService: UserService,public toastController: ToastController,private alertCtrl: AlertController,private transactionService:TransactionsService) { }
   transactionList : any[] = [];
-  user : [] = [];
-  ngOnInit() {
-    this.user = this.userService.getUserFromStorage();
+  user : any = [];
+  wallet
+  async ngOnInit() {
+    this.user = await this.userService.getUser();
+    await this.userService.setUserToStorage(this.user.data);
+    this.user = await this.userService.getUserFromStorage();
     if (!this.user) this.onBack();
     this.getTransactionList();
+  }
+
+  async ionViewWillEnter()
+  {
+    this.getTransactionList();
+    this.user = await this.userService.getUser();
+    await this.userService.setUserToStorage(this.user.data);
+    this.user = await this.userService.getUserFromStorage();
+    console.log(this.user);
+    if (!this.user) this.onBack();
   }
   async getTransactionList()
   {

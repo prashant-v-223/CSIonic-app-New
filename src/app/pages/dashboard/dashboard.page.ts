@@ -33,11 +33,17 @@ export class DashboardPage implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getPackages();
+    /* this.getPackages();
     this.getUserInfo();
-    this.getPortfolioDetails();
+    this.getPortfolioDetails(); */
   }
 
+  async ionViewWillEnter()
+  {
+    await this.getPackages();
+    await this.getUserInfo();
+    await this.getPortfolioDetails();
+  }
 
 
   async getPackages() {

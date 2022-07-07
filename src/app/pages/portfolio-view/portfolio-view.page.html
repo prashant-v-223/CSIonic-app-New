@@ -5,7 +5,7 @@
       <ion-buttons slot="start">
         <ion-back-button mat-icon-button mode='md' defaultHref="/tabs/dashboard"><ion-icon src="../../../assets/icon/back-arrow.svg"></ion-icon></ion-back-button>
       </ion-buttons>
-      <ion-label *ngIf="withdrawBtn=='true'" class="sip-withdraw d-flex"> <ion-button class="withdraw-link-btn" (click)="showConfirm()"><ion-icon class="text-muted-custom font-24" src="assets/icon/arrow-up-square.svg"></ion-icon> <b>Withdraw</b></ion-button> </ion-label>
+      <ion-label *ngIf="withdrawBtn=='true' && withdrawalStatus=='active'" class="sip-withdraw d-flex"> <ion-button class="withdraw-link-btn" (click)="showConfirm()"><ion-icon class="text-muted-custom font-24" src="assets/icon/arrow-up-square.svg"></ion-icon> <b>Withdraw</b></ion-button> </ion-label>
     </ion-list>
   </ion-toolbar>
 </ion-header>
