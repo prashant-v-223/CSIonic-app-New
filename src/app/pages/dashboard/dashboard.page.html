@@ -25,9 +25,9 @@
           <span class="label">P/L</span>
           <div class="small-text justify-end">
             <ion-icon class="icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon>
-            0.7%
+            {{ portfolioInfo.absoluteReturnPercentage | number }}%
           </div>
-          <div class="small-text"><ion-icon class="font-12" src="../../../assets/icon/rupee-white.svg"></ion-icon> 8,595.00</div>
+          <div class="small-text justify-end"><ion-icon class="font-12" src="../../../assets/icon/rupee-white.svg"></ion-icon> {{ portfolioInfo.absoluteReturn | number }}</div>
         </div>
       </div>
     </ion-col>
