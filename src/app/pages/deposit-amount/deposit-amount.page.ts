@@ -35,7 +35,7 @@ export class DepositAmountPage implements OnInit {
     if (!user) this.onBack();
 
     this.userId = user._id;
-    this.GetBankInfo();
+    this.GetBankInfo(this.userId);
   }
 
   amountForm = new FormGroup({
@@ -52,13 +52,16 @@ export class DepositAmountPage implements OnInit {
     this.navCtrl.navigateBack('/my-wallet');
   }
 
-  async GetBankInfo()
+  async GetBankInfo(userId:string)
   {
     try
     {
-        this.BankDataResponse = await this.configurationService.getConfiguration();
-        this.BankDataResponse = this.BankDataResponse['account'];
-    }
+        // this.BankDataResponse = await this.configurationService.getConfiguration();
+        this.BankDataResponse = await this.userService.getUserBankDetails(userId);
+        
+        this.BankDataResponse = this.BankDataResponse['data'];
+        console.log(this.BankDataResponse);
+      }
     catch (e)
     {
       const toast = await this.toastController.create({

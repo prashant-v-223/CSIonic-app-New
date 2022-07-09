@@ -54,6 +54,14 @@
               <!-- Installment amount should be greater than or equal to --><b>Note : Minimum amount is<ion-icon class="font-10" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ sipService?.getSIPData()?.package?.totalMinimumDepositAmount | number : '1.0-0' }}. Maximum amount is<ion-icon class="font-10" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ config?.sip?.maxInstallmentAmount | number : '1.0-0' }}</b>
             </div>
           </div>
+          <div class="bg-danger p-3 mt-2 prerequisite-message d-flex justify-between text-white" *ngIf="addFundError">
+            <div class="d-flex align-center">
+              <span class="font-15"> Low fund available in wallet </span>
+            </div>
+            <ion-chip (click)="redirectAddFund()">
+              <ion-label color="light">Add Funds</ion-label>
+            </ion-chip>
+          </div>
 
           <ng-template #amountPlaceholderTmplt>
             <!-- <h1 class="gray-text  mt-3 ">
