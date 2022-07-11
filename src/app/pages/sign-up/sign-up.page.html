@@ -21,18 +21,30 @@
       <ion-item class="customForm">
         <ion-input type="text" placeholder="Enter your first name" formControlName="given_name"></ion-input>
       </ion-item>
+      <div class="error-message"
+        *ngIf="signUpForm.get('given_name').dirty && !signUpForm.get('given_name').errors?.required && signUpForm.get('given_name').errors?.pattern">
+        <ul class="text-danger pl-1">
+          <li>Number not allow in first name</li>
+        </ul>
+      </div>
 
       <ion-label class="input" position="stacked">Last name</ion-label>
       <ion-item class="customForm">
         <ion-input type="text" placeholder="Enter your last name" formControlName="family_name"></ion-input>
       </ion-item>
+      <div class="error-message"
+        *ngIf="signUpForm.get('family_name').dirty && !signUpForm.get('family_name').errors?.required && signUpForm.get('family_name').errors?.pattern">
+        <ul class="text-danger pl-1">
+          <li>Number not allow in last name</li>
+        </ul>
+      </div>
 
       <ion-label class="input" position="stacked">Email Address</ion-label>
       <ion-item class="customForm">
         <ion-input type="email" placeholder="Enter your email address" formControlName="username"></ion-input>
       </ion-item>
       <div class="error-message"
-        *ngIf="signUpForm.get('username').dirty && !signUpForm.get('username').errors?.required && signUpForm.get('username').errors?.email">
+        *ngIf="signUpForm.get('username').dirty && !signUpForm.get('username').errors?.required && (signUpForm.get('username').errors?.email || signUpForm.get('username').errors?.pattern)" >
         <ul class="text-danger pl-1">
           <li>Enter valid email address</li>
         </ul>

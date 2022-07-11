@@ -28,13 +28,17 @@
     </ion-list>
 
     <ng-template #noNotificationsTmplt>
-      <ion-list class="p-3">
-        <ion-grid>
-          <div class="mt-2">
-            No notifications available
-          </div>
-        </ion-grid>
-      </ion-list>
+        <ion-list class="p-3">
+          <ion-grid>
+            <ion-row class="w-100">
+              <ion-col class="p-0 text-center" size="12"  size-md>
+                <div class="mt-2">
+                  No notification available
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-list>
     </ng-template>
 
   </ng-container>

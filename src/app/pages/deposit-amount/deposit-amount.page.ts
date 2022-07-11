@@ -42,11 +42,11 @@ export class DepositAmountPage implements OnInit {
     utrNumber: new FormControl('',[Validators.required]),
   });
 
-  omit_special_char(e) {
+  /* omit_special_char(e) {
     var k;
     document.all ? k = e.keyCode : k = e.which;
     return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
-  }
+  } */
 
   onBack() {
     this.navCtrl.navigateBack('/my-wallet');
@@ -58,16 +58,17 @@ export class DepositAmountPage implements OnInit {
     {
         // this.BankDataResponse = await this.configurationService.getConfiguration();
         this.BankDataResponse = await this.userService.getUserBankDetails(userId);
-        
+
         this.BankDataResponse = this.BankDataResponse['data'];
         console.log(this.BankDataResponse);
       }
-    catch (e)
-    {
-      const toast = await this.toastController.create({
-        message: e,
-        duration: 2000,
-      });
+      catch (e)
+      {
+        const toast = await this.toastController.create({
+          message: e,
+          duration: 2000,
+        });
+        console.log(e);
       await toast.present();
     }
   }
@@ -130,5 +131,16 @@ export class DepositAmountPage implements OnInit {
     });
   }
 
+
+  numbersOnly(event) {
+    var charCode = (event.which) ? event.which : event.keyCode;
+    // Only Numbers 0-9
+    if ((charCode < 48 || charCode > 57)) {
+      event.preventDefault();
+      return false;
+    } else {
+      return true;
+    }
+  }
 
 }

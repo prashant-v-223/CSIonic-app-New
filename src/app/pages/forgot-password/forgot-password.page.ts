@@ -9,7 +9,7 @@ import { Auth } from 'aws-amplify';
   styleUrls: ['./forgot-password.page.scss'],
 })
 export class ForgotPasswordPage implements OnInit {
-  usernameCtrl = new FormControl(null, [Validators.required, Validators.email]);
+  usernameCtrl = new FormControl(null, [Validators.required,Validators.pattern('^[A-Za-z0-9_@.]+'), Validators.email]);
   isLoading = false;
 
   constructor(

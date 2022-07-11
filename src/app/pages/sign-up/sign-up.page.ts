@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavController, ToastController } from '@ionic/angular';
 import { Auth } from 'aws-amplify';
 import { COPY } from 'src/app/shared/helper/const';
-import { passwordRequirementMessage, passwordValidator } from 'src/app/shared/validators/password-validator';
+import { alphabetRegExp, passwordRequirementMessage, passwordValidator , alphabetValidator } from 'src/app/shared/validators/password-validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -30,10 +30,10 @@ export class SignUpPage {
   }
 
   signUpForm = new FormGroup({
-    username: new FormControl(null, [Validators.required, Validators.email]),
+    username: new FormControl(null, [Validators.required, Validators.pattern('^[A-Za-z0-9_@.]+'),Validators.email]),
     password: new FormControl(null, [Validators.required, passwordValidator]),
-    given_name: new FormControl(null, Validators.required),
-    family_name: new FormControl(null, Validators.required),
+    given_name: new FormControl(null,[ Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]),
+    family_name: new FormControl(null, [ Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]),
     phone_number_country_code: new FormControl('+91', Validators.required),
     phone_number: new FormControl(null, [
       Validators.required,
@@ -85,4 +85,16 @@ export class SignUpPage {
       this.signUpForm.enable();
     }
   }
+
+ /*  keyPressAlphabet(event) {
+
+    var inp = String.fromCharCode(event.keyCode);
+    // Allow numbers, alpahbets, space, underscore
+    if (/[a-zA-Z_ ]/.test(inp)) {
+      return true;
+    } else {
+      event.preventDefault();
+      return false;
+    }
+  } */
 }

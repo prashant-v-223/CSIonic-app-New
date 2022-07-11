@@ -24,8 +24,8 @@ export class InvestPage implements OnInit {
     this.user = this.userService.getUserFromStorage();
   }
 
-  ngOnInit() {
-    //this.getPackages();
+  async ngOnInit() {
+    await this.getPackages();
   }
 
   async ionViewWillEnter()

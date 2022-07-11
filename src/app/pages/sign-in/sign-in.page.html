@@ -18,7 +18,7 @@
         <ion-input type="email" placeholder="Email" formControlName="username"></ion-input>
       </ion-item>
       <div class="error-message"
-        *ngIf="signInForm.get('username').dirty && !signInForm.get('username').errors?.required && signInForm.get('username').errors?.email">
+        *ngIf="signInForm.get('username').dirty && !signInForm.get('username').errors?.required && (signInForm.get('username').errors?.email || signInForm.get('username').errors?.pattern)" >
         <ul class="text-danger pl-1">
           <li>Enter valid email address</li>
         </ul>
