@@ -28,7 +28,7 @@ export class SignInPage implements OnInit {
   readonly passwordRequirementMessage = passwordRequirementMessage;
 
   signInForm = new FormGroup({
-    username: new FormControl('', [Validators.required, Validators.email]),
+    username: new FormControl('', [Validators.required,Validators.pattern('^[A-Za-z0-9_@.]+'), Validators.email]),
     password: new FormControl('', [Validators.required, passwordValidator]),
   });
 

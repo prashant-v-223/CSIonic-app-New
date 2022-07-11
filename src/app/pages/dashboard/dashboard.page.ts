@@ -20,6 +20,7 @@ export class DashboardPage implements OnInit {
   @Output() coinList: any;
   @Output() packageList: any;
   user: any;
+  userData: any;
 
   constructor(
     private packagesService: PackagesService,
@@ -32,10 +33,10 @@ export class DashboardPage implements OnInit {
 
   }
 
-  ngOnInit(): void {
-    /* this.getPackages();
-    this.getUserInfo();
-    this.getPortfolioDetails(); */
+  async ngOnInit() {
+    await this.getPackages();
+    await this.getUserInfo();
+    await this.getPortfolioDetails();
   }
 
   async ionViewWillEnter()
@@ -68,7 +69,7 @@ export class DashboardPage implements OnInit {
       const posrtfolioData = await this.userService.getPortfolioDataDetails();
       if (posrtfolioData?.data) {
         this.portfolioInfo = posrtfolioData.data;
-        console.log(this.portfolioInfo);
+        //console.log(this.portfolioInfo);
         this.showLoader = false;
       }
     } catch (e) {
@@ -82,15 +83,19 @@ export class DashboardPage implements OnInit {
     try
     {
       await this.userService.setHeaderToken();
-      const user = this.userService.getUserFromStorage();
+
+      this.userData = await this.userService.getUser();
+      //console.log(this.userData);
+      this.userService.setUserToStorage(this.userData.data);
+      const user = await this.userService.getUserFromStorage();
       const config = await this.configurationService.getConfiguration();
 
       if (user && config)
       {
-        console.log(user.earlyAccess);
+
         if(user.earlyAccess==true)
         {
-          console.log(user.earlyAccess,"2313");
+          //console.log(user.earlyAccess,"2313");
           if(user.isReferalUsed==false && config.referral==true)
           {
             this.router.navigateByUrl('/referral');

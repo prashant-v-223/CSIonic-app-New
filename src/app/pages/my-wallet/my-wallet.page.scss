@@ -20,23 +20,29 @@
     background-repeat: no-repeat;
     height: 230px;
     display: block;
+    font-family: var(--f-Lexend);
     ion-toolbar{
       --background:transparent;
       color: #fff !important;
     }
     ion-back-button.md{
       background-color:rgba($color: #fff, $alpha: 1);
+      font-family: var(--f-Lexend);
+
       ion-icon{
         stroke: #2F4858;
       }
     }
+    font-family: var(--f-Lexend);
+
+
 }
 .user-profile
 {
   padding-top: 2%;
   h3, h2
   {
-    font-family: Lexend;
+    font-family: var(--f-Lexend);
   }
 }
 ion-icon{
@@ -114,7 +120,7 @@ ion-icon{
         font-size: 16px;
         --border-radius: 8px;
         font-weight: 400;
-        font-family: var(--f-Poppins);
+        font-family: var(--f-Lexend);
         letter-spacing: .08px;
         width: 100%;
 
@@ -142,7 +148,7 @@ ion-icon{
         }
         .ion-title{
           font-size: 17px;
-          font-family: var(--f-Poppins);
+          font-family: var(--f-Lexend);
           letter-spacing: .08px;
           margin-bottom: 0px;
           font-weight: 600;
@@ -152,12 +158,12 @@ ion-icon{
         }
         .small-label{
           font-size: 14px;
-          font-family: var(--f-Poppins);
+          font-family: var(--f-Lexend);
           color: var(--blackColor);
         }
         .priceTage{
           font-size: 18px;
-          font-family: var(--f-Poppins);
+          font-family: var(--f-Lexend);
           letter-spacing: .08px;
           margin-bottom: 0px;
           font-weight: 600;

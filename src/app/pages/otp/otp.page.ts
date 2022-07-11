@@ -63,7 +63,8 @@ export class OtpPage implements OnInit, OnDestroy {
     this.isLoading = true;
     this.otpCtrl.disable();
 
-    try {
+    try{
+      console.log(this.email);
       await Auth.confirmSignUp(this.email, this.otpCtrl.value);
       this.showToast('Verification successful');
       this.navCtrl.navigateRoot('/');
