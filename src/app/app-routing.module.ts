@@ -195,7 +195,12 @@ const routes: Routes = [
     path: 'onboard',
     loadChildren: () => import('./pages/onboard/onboard.module').then( m => m.OnboardPageModule),
     canActivate: [NonAuthGuard],
+  },
+  {
+    path: 'sip-transaction-list/:id',
+    loadChildren: () => import('./pages/sip-transaction-list/sip-transaction-list.module').then( m => m.SipTransactionListPageModule)
   }
+
 
 ];
 

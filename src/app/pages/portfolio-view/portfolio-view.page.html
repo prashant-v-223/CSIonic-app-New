@@ -148,3 +148,12 @@
     </ng-container>
   </ion-footer>
 </div>
+<div *ngIf="listBtn === 'true'">
+  <ion-footer class="bottomBtn">
+    <ng-container>
+        <ion-button class="footerTab ion-button-theme m-0" shape="round" expand="full" (click)="transactionsList()">
+          Transactions
+        </ion-button>
+    </ng-container>
+  </ion-footer>
+</div>

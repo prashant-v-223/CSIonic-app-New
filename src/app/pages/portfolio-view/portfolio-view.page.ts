@@ -40,6 +40,7 @@ export class PortfolioViewPage implements OnInit {
   @Output() coinList: any;
   @Output() packageList: any;
   withdrawBtn:string='false';
+  listBtn:string='false';
   time_frame:boolean=false;
   public segment: string = 'day';
   showLoader = true;
@@ -104,6 +105,7 @@ export class PortfolioViewPage implements OnInit {
       this.loadDetails();
     });
     this.withdrawBtn = localStorage.getItem('withdraw');
+    this.listBtn = localStorage.getItem('list');
     //console.log(this.withdrawBtn);
   }
 
@@ -347,6 +349,10 @@ export class PortfolioViewPage implements OnInit {
       id: 'FrequencyModal',
     });
     await frequencyModal.present();
+  }
+
+  transactionsList() {
+    this.navCtrl.navigateBack('/sip-transaction-list/'+this.id);
   }
 
   goBack() {
