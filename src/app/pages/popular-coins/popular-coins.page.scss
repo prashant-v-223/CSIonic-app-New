@@ -1,5 +1,5 @@
- 
-.topHeader{ 
+
+.topHeader{
   ion-title{
     position: inherit;
     text-align: left;
@@ -11,7 +11,7 @@
     font-family: var(--f-Poppins);
     font-weight: 400;
     margin-bottom: .8rem;
-    line-height: 28px; 
+    line-height: 28px;
 }
 ion-searchbar{
   padding: 0px;
@@ -21,26 +21,32 @@ ion-searchbar{
   border: solid 1px #ECF1F6;
   --color:#000;
   --placeholder-color:#444;
-  font-family: var(--f-Poppins); 
-  --box-shadow:none; 
+  font-family: var(--f-Poppins);
+  --box-shadow:none;
   font-weight: 500;
 }
 
 }
 //  Popular Coin Card Start
-.popularSection { 
+.popularSection {
     ion-list{
         padding:.5rem .8rem 1rem .8rem;
       }
   }
   //  Popular Coin Card End
-  
- 
- 
+
+
+
   ion-content, ion-header {
     --ion-background-color: #F8F8F8;
   }
- 
+
 .themeHeader ion-toolbar {
   --background: #F8F8F8;
+}
+
+.popular-coins-list{
+  padding-top: 0px !important;
+  padding-bottom: 0px !important;
+  margin-bottom: -2.5%;
 }

@@ -3,6 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   Input,
+  Output,
 } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { ModalController } from '@ionic/angular';
@@ -23,16 +24,19 @@ export class SipCreatedPage implements AfterViewInit {
   SIPStatus = SIPStatus;
   CONSTANT: any = COPY;
   user: any;
+  @Output() coinList: any;
+  @Output() packageList: any;
 
   @Input() newSIP;
   sipData: any = null;
   coins = [];
-
+  screenShow:string='success';
   showLoader = false;
   mandateStatus: SIPStatus;
   isShowingMandateEsign = false;
   eSignURL = '';
   browserFinishHandler: PluginListenerHandle;
+
 
   constructor(
     private sipService: SIPService,
@@ -46,9 +50,14 @@ export class SipCreatedPage implements AfterViewInit {
   }
 
   async ngAfterViewInit() {
-    if (this.newSIP) {
+    if (this.newSIP!='') {
+      this.screenShow='success';
       this.updateMandateStatus();
       this.cdr.detectChanges();
+    }
+    else
+    {
+      this.screenShow='fail';
     }
   }
 
@@ -118,11 +127,15 @@ export class SipCreatedPage implements AfterViewInit {
     // );
   }
 
-  handleFooterButtonClick() {
+  /* handleFooterButtonClick() {
     if (this.mandateStatus === SIPStatus.SIGNING_SUCCESS)
       this.onBackHomeClick();
     else
       this.initESign();
+  } */
+
+  handleFooterButtonClick() {
+      this.onBackHomeClick();
   }
 
   onBackHomeClick() {

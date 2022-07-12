@@ -89,7 +89,6 @@ export class DepositAmountPage implements OnInit {
 
     this.isAmountValid =
       this.amount &&
-      new RegExp('^\\d+$').test(String(this.amount)) &&
       this.amount > 0;
   }
 
@@ -134,13 +133,12 @@ export class DepositAmountPage implements OnInit {
 
   numbersOnly(event) {
     var charCode = (event.which) ? event.which : event.keyCode;
-    // Only Numbers 0-9
-    if ((charCode < 48 || charCode > 57)) {
-      event.preventDefault();
-      return false;
-    } else {
-      return true;
+    event = (event) ? event : window.event;
+    var charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 46 || charCode > 57)) {
+        return false;
     }
+    return true;
   }
 
 }

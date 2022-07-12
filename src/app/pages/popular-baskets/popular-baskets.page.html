@@ -27,7 +27,7 @@
     <ng-container *ngIf="!showLoader else loadingTmplt">
       <ion-grid class="p-0" *ngIf="packageList?.length else noPackagesTmplt">
         <ion-row>
-          <ion-col *ngFor="let package of packageList" size="12" size-md>
+          <ion-col *ngFor="let package of packageList" class="popular-baskets-list" size="12" size-md>
             <app-package-card [package]="package" [coinList]="package.coins" [packageList]="package.coins" [navigationLink]="'/packages/' + package._id"></app-package-card>
           </ion-col>
           <!-- <ion-col size="12" size-md>

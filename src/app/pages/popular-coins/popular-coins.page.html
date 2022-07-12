@@ -23,7 +23,7 @@
     <ng-container *ngIf="!showLoader else loadingTmplt">
       <ion-grid class="p-0" *ngIf="coinList?.length else noCoinsTmplt">
         <ion-row>
-          <ion-col *ngFor="let coin of coinList" size="6" size-md>
+          <ion-col *ngFor="let coin of coinList" size="6" class="popular-coins-list" size-md>
             <app-package-card [package]="coin"  [coinList]="coin.coins" [packageList]="coin.coins" view="coin" [navigationLink]="'/packages/' + coin._id">
             </app-package-card>
           </ion-col>

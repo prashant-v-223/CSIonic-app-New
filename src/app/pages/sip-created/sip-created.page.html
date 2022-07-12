@@ -1,27 +1,28 @@
-<ion-content class="sip-created">
+<ion-content class="sip-success-fail" *ngIf="screenShow=='success'">
   <ion-list class="ion-list">
     <ion-grid class="p-0">
       <ion-row>
-        <ion-col class="d-flex justify-center p-0" size="12" size-md>
+        <ion-col class="d-flex justify-center p-0 mt-5" size="12" size-md>
           <div class="sip-done">
-            <ion-icon src="assets/icon-checked.svg"></ion-icon>
+            <ion-img class="w-50 sip-created-image" src="../../../assets/sip-created.png"></ion-img>
           </div>
         </ion-col>
-        <ion-col class="mt-5 mb-2" size="12" size-md>
-          <h2 class="header-title  f-Poppins text-center">SIP Created</h2>
+        <ion-col class="mt-1 mb-1 text-center" size="12" size-md>
+          <h2 class="text-theme text-center f-Lexend">Congratulations</h2>
+          <span class="font-14 f-Lexend font-weight-400 text-muted-custom">You have successfully created your SIP.</span>
         </ion-col>
-        <ion-col size="6" class="pl-5" size-md>
-          <h4 class="header-title text-white"><ion-icon class="font-15" src="../../../assets/icon/rupee-white.svg"></ion-icon>{{ sipData.installmentAmount }}</h4>
-          <span class="small-label ">Amount</span>
+        <ion-col size="12" class="text-center" size-md>
+          <h4 class="header-title"><ion-icon class="font-18" src="../../../assets/icon/rupee-black.svg"></ion-icon><span class="font-24 font-weight-400">{{ sipData.installmentAmount }} / </span><span class="font-24">{{ sipData.interval.type | titlecase }}</span></h4>
+          <!-- <span class="small-label ">Amount</span> -->
         </ion-col>
-        <ion-col size="6" class="pl-5" size-md>
+        <!-- <ion-col size="6" class="pl-5" size-md>
           <h4 class="header-title text-white f-Poppins text-capitalize">{{ sipData.interval.type }}</h4>
           <span class="small-label ">Interval</span>
-        </ion-col>
-        <ion-list class="view-sip mt-3">
-          <ion-col size="12" class="pt-4 d-flex justify-center" size-md>
+        </ion-col> -->
+        <ion-list class="view-sip mt-1">
+          <ion-col size="12" class="pt-2 d-flex justify-center" size-md>
             <div class="coinTag-inner">
-              <app-coin-stack [coins]="coins"></app-coin-stack>
+              <app-coin-stack [coins]="coins"  [coinList]="coins" [packageList]="coins"></app-coin-stack>
             </div>
           </ion-col>
           <ion-row class="ion-list portfolio-price pt-2">
@@ -29,30 +30,45 @@
               <div class="Price text-center">₹19,006</div>
               <span class="small-text text-center">Etherium (ETH)</span>
             </ion-col> -->
-            <ion-col size="4" class="p-0" size-md>
-              <span class="small-label">Coin</span>
 
-              <span *ngFor="let coin of sipData.package.coins" class="small-text">
-                {{ coin.currencyId.fullName }} <!-- ({{ coin.currencyId.code }}) -->
+            <table class="w-100">
+              <thead>
+                <tr class="sip-coins-table">
+                  <th class="text-left font-weight-200 text-muted-custom">Coin</th>
+                  <th class="text-left font-weight-200 text-muted-custom">Price</th>
+                  <th class="text-left font-weight-200 text-muted-custom">Amount</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let coin of sipData.package.coins" class="sip-coins-table">
+                  <td class="font-14">{{ coin.currencyId.code }} ({{ coin.allocation | number: '1.2-2' }}%)</td>
+                  <td class="font-14"><ion-icon class="font-11" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (sipData.installmentAmount * coin.allocation / 100) | number: '1.2-2' }}</td>
+                  <td class="font-14"><ion-icon class="font-11" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (sipData.installmentAmount * coin.allocation / 100) | number: '1.2-2' }}</td>
+                </tr>
+              </tbody>
+            </table>
+
+            <!-- <ion-col size="4" class="p-0 font-14 font-weight-200 " size-md>
+              <span class="small-label font-weight-200 text-muted-custom">Coin</span>
+
+              <span *ngFor="let coin of sipData.package.coins" class="mt-2">
+                {{ coin.currencyId.fullName }} ({{ coin.allocation | number: '1.2-2' }}%)
               </span>
             </ion-col>
 
-            <!-- TODO: amount per currency -->
-            <ion-col size="5" class="p-0 pl-3" size-md>
-              <span class="small-label">Price</span>
-
-              <span *ngFor="let coin of sipData.package.coins" class="small-text ">
-                <ion-icon class="font-15" src="../../../assets/icon/rupee-white.svg"></ion-icon>{{ (sipData.installmentAmount * coin.allocation / 100) | number: '1.2-2' }}
+            <ion-col size="5" class="p-0 pl-3 font-weight-200 font-14" size-md>
+              <span class="small-label text-muted-custom">Price</span>
+              <span *ngFor="let coin of sipData.package.coins" class="mt-2">
+                <ion-icon class="font-11" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (sipData.installmentAmount * coin.allocation / 100) | number: '1.2-2' }}
               </span>
             </ion-col>
 
-            <ion-col size="3" class="p-0 pl-2" size-md>
-              <span class="small-label ">Weight</span>
-
-              <span *ngFor="let coin of sipData.package.coins" class="small-text ">
-                {{ coin.allocation }}%
+            <ion-col size="3" class="p-0 pl-2 font-14 font-weight-200" size-md>
+              <span class="small-label text-muted-custom">Amount</span>
+              <span *ngFor="let coin of sipData.package.coins" class="mt-2">
+                {{ (sipData.installmentAmount * coin.allocation / 100) | number: '1.2-2' }}
               </span>
-            </ion-col>
+            </ion-col> -->
           </ion-row>
         </ion-list>
 
@@ -62,7 +78,7 @@
             <div class="text-white font-bold">
               Congratulations!
               <br>
-              eSign Successful
+              eSign Successfull
             </div>
           </ion-list>
         </ion-col>
@@ -74,12 +90,40 @@
   <app-loading *ngIf="showLoader"></app-loading>
 
 </ion-content>
+<ion-content class="sip-success-fail" *ngIf="screenShow=='fail'">
+  <ion-list class="ion-list">
+    <ion-grid class="p-0">
+      <ion-row>
+        <ion-col class="d-flex justify-center p-0 mt-5" size="12" size-md>
+          <div class="sip-done">
+            <ion-img class="w-75 sip-fail-image" src="../../../assets/Wrong-PNG.png"></ion-img>
+          </div>
+        </ion-col>
+        <ion-col class="mt-1 mb-1 text-center" size="12" size-md>
+          <h2 class="text-danger text-center f-Lexend">Portfolio Creation Failed!</h2>
+          <span class="font-12 f-Lexend font-weight-400 text-muted-custom">There was a problem creating your portfolio.<br>Please check all fields and try again.</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
+  <app-loading *ngIf="showLoader"></app-loading>
+</ion-content>
+
 <!-- Footer Section Start -->
-<ion-footer class="bottomBtn">
-  <ion-button class="footerTab ion-button-theme m-0" expand="full" routerLink="/tabs/dashboard"
+<ion-footer class="bottomBtn d-flex">
+
+  <ion-button class="ion-button-theme m-0 w-50 font-15 letter-spacing-05" expand="full" routerLink="/tabs/invest" (click)="handleFooterButtonClick()">
+    <span *ngIf="screenShow!='fail'">Create New</span>
+    <span *ngIf="screenShow=='fail'">Retry</span>
+  </ion-button>
+  <ion-button class="ion-button-theme-lighter m-0 w-50 font-15 letter-spacing-05" expand="full" routerLink="/tabs/dashboard" (click)="handleFooterButtonClick()">
+    Home
+  </ion-button>
+  <!-- <ion-button class="footerTab ion-button-theme m-0" expand="full" routerLink="/tabs/dashboard"
     (click)="handleFooterButtonClick()">
     {{ mandateStatus === SIPStatus.SIGNING_SUCCESS ? 'Back home' : ((mandateStatus === SIPStatus.SIGNING_FAILED ? 'Re-'
     : '') + 'Initiate eSign') }}
-  </ion-button>
+  </ion-button> -->
 </ion-footer>
 <!-- Footer Section End -->

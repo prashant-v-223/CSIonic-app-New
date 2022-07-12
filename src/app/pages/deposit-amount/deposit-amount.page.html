@@ -36,7 +36,7 @@
                         <!-- <h1 class="text-dark type-amount mt-3 mb-2" *ngIf="amount else amountPlaceholderTmplt">
                           {{ amount | number : '1.0-0' }}
                         </h1> -->
-                        <ion-input type="number" #depostiAmount placeholder="Type Amount" (keypress)="numbersOnly($event)" value="{{ amount }}" (keyup)="setAmount(depostiAmount.value)" ></ion-input>
+                        <ion-input type="text" #depostiAmount placeholder="Type Amount" (keypress)="numbersOnly($event)" value="{{ amount }}" (keyup)="setAmount(depostiAmount.value)" ></ion-input>
                       </ion-col>
                     </ion-row>
 
@@ -260,15 +260,15 @@
     </div> -->
   </ion-content>
   <ion-footer class="bottomBtn" *ngIf="stepperSteps === 'amountSet'">
-    <ion-button class="footerTab ion-button-theme m-0" expand="full" (click)="openNextStep(utrNumber)" [disabled]="!isAmountValid">
+    <ion-button class="footerTab ion-button-theme m-0 letter-spacing-05" expand="full" (click)="openNextStep(utrNumber)" [disabled]="!isAmountValid">
       Next
     </ion-button>
   </ion-footer>
   <ion-footer class="bottomBtn d-flex" *ngIf="stepperSteps === 'depositAmount'">
-    <ion-button class="footerTab ion-button-theme m-0  w-50" expand="full" (click)="openBackStep()">
+    <ion-button class="footerTab ion-button-theme m-0 letter-spacing-05 w-50" expand="full" (click)="openBackStep()">
       Back
     </ion-button>
-    <ion-button class="footerTab ion-button-theme m-0 w-50 deposit-btn" expand="full" (click)="addDeposit()">
+    <ion-button class="footerTab ion-button-theme m-0 letter-spacing-05 w-50 deposit-btn" expand="full" (click)="addDeposit()">
       Deposit
     </ion-button>
   </ion-footer>
