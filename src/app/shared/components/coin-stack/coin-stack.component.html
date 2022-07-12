@@ -3,7 +3,8 @@
   class="coinTag mr-2"
   >
   <!-- <ion-icon class="coin-icon" [src]="coin?.currencyId?.icon || 'assets/currency/bitcoin.svg'"></ion-icon> -->
-  <ion-img class="coin-icon" *ngIf="coin?.currencyId?.icon?.key" src="{{ coin?.currencyId?.icon?.url+'/'+coin?.currencyId?.icon?.key }}"></ion-img>
-  <ion-img class="coin-icon" *ngIf="!coin?.currencyId?.icon?.key" [src]="'assets/currency/bitcoin.svg'"></ion-img>
+  <ion-img class="coin-icon" *ngIf="coin?.currencyId?.icon?.key && !coin?.icon?.key" src="{{ coin?.currencyId?.icon?.url+'/'+coin?.currencyId?.icon?.key }}"></ion-img>
+  <ion-img class="coin-icon" *ngIf="!coin?.currencyId?.icon?.key && coin?.icon?.key" src="{{ coin?.icon?.url+'/'+coin?.icon?.key }}"></ion-img>
+  <ion-img class="coin-icon" *ngIf="!coin?.currencyId?.icon?.key && !coin?.icon?.key" [src]="'assets/currency/bitcoin.svg'"></ion-img>
 </div>
 <!-- [ngClass]="{'bg-blue' : i === 0, 'bg-greenLighter': i === 1, 'bg-grey': i > 1 }" -->

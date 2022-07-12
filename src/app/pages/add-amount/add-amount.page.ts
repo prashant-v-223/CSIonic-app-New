@@ -103,7 +103,6 @@ export class AddAmountPage implements OnInit {
 
     this.isAmountValid =
       this.amount &&
-      new RegExp('^\\d+$').test(String(this.amount)) &&
       this.amount <= this.config.sip.maxInstallmentAmount &&
       this.amount >= this.sipService?.getSIPData()?.package?.totalMinimumDepositAmount;
   }
@@ -141,7 +140,21 @@ export class AddAmountPage implements OnInit {
           id: 'SuccessModal',
         });
         await successModal.present();
-      } else this.handleSIPCreateError();
+      } else
+      {
+        this.closeModal('success');
+
+        // show the success screen
+        const successModal = await this.modalController.create({
+          component: SipCreatedPage,
+          componentProps: {
+            newSIP: ''
+          },
+          id: 'SuccessModal',
+        });
+        await successModal.present();
+      }
+      //} else this.handleSIPCreateError();
     } catch (e) {
       console.log('Error while creating SIP: ', e);
       this.handleSIPCreateError();
@@ -176,12 +189,11 @@ export class AddAmountPage implements OnInit {
 
   numbersOnly(event) {
     var charCode = (event.which) ? event.which : event.keyCode;
-    // Only Numbers 0-9
-    if ((charCode < 48 || charCode > 57)) {
-      event.preventDefault();
-      return false;
-    } else {
-      return true;
+    event = (event) ? event : window.event;
+    var charCode = (event.which) ? event.which : event.keyCode;
+    if (charCode > 31 && (charCode < 46 || charCode > 57)) {
+        return false;
     }
+    return true;
   }
 }

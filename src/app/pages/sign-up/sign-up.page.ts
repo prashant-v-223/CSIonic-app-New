@@ -32,8 +32,8 @@ export class SignUpPage {
   signUpForm = new FormGroup({
     username: new FormControl(null, [Validators.required, Validators.pattern('^[A-Za-z0-9_@.]+'),Validators.email]),
     password: new FormControl(null, [Validators.required, passwordValidator]),
-    given_name: new FormControl(null,[ Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]),
-    family_name: new FormControl(null, [ Validators.required, Validators.pattern('^[a-zA-Z \-\']+')]),
+    given_name: new FormControl(null,[ Validators.required, Validators.pattern('^[a-zA-Z]+')]),
+    family_name: new FormControl(null, [ Validators.required, Validators.pattern('^[a-zA-Z]+')]),
     phone_number_country_code: new FormControl('+91', Validators.required),
     phone_number: new FormControl(null, [
       Validators.required,
