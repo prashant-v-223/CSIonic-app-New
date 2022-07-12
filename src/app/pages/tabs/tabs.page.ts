@@ -17,9 +17,11 @@ export class TabsPage implements OnInit {
     if(screen!='portfolio')
     {
       localStorage.setItem('withdraw','false');
+      localStorage.setItem('list','false');
     }
     else{
       localStorage.setItem('withdraw','true');
+      localStorage.setItem('list','true');
     }
   }
 }

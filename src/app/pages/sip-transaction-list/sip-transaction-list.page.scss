@@ -1,0 +1,99 @@
+.mv-auto {
+    align-self: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+.walletSection {
+    padding-top: 0rem;
+      ion-list{
+        --background:var(--amplify-primary-shade);
+        padding-top: 0rem;
+          ion-icon{
+            font-size: 14px;
+            &.icon-theme{
+                stroke:#8AC680;
+            }
+            &.icon-dark{
+              stroke:#2F4858;
+          }
+        }
+        }
+        ion-button{
+          margin: 0px;
+          line-height: 0px;
+          height:50px;
+          font-size: 16px;
+          --border-radius: 8px;
+          font-weight: 400;
+          font-family: var(--f-Lexend);
+          letter-spacing: .08px;
+          width: 100%;
+  
+      }
+      ion-item{
+        --padding-start: 0px;
+        --inner-padding-start: 0px;
+        --padding-end: 0px;
+        --inner-padding-end: 0px;
+        --border-width: 0px;
+        --inner-border-width: 0px;
+        --background: var(--bg-lighter);
+        border-radius: 10px;
+        margin-bottom: .8rem;
+        --icon-font-size: 0px;
+          .item-inner {
+            padding: 15px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+          }
+          .list-md{
+               padding-bottom: 0px;
+          }
+          .up-icon{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            //background-color: var(--bg-lighter);
+            border-radius: 15px;
+            margin-right: 1rem;
+            ion-icon{
+              font-size: 34px;
+            }
+          }
+          .ion-title{
+            font-size: 17px;
+            font-family: var(--f-Lexend);
+            letter-spacing: .08px;
+            margin-bottom: 0px;
+            font-weight: 600;
+            color: #000;
+            line-height: 20px;
+            margin-bottom: 2px;
+            margin-top: 2px;
+          }
+          .small-label{
+            font-size: 14px;
+            font-family: var(--f-Lexend);
+            color: var(--blackColor);
+          }
+          .priceTage{
+            font-size: 18px;
+            font-family: var(--f-Lexend);
+            letter-spacing: .08px;
+            margin-bottom: 0px;
+            font-weight: 600;
+            color: #000;
+            line-height: 18px;
+            margin-bottom: 0px;
+          }
+          ion-label{
+            margin-inline: 0px;
+            margin:0px;
+          }
+  
+      }
+  
+    }
