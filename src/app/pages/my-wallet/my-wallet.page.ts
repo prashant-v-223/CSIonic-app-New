@@ -29,7 +29,6 @@ export class MyWalletPage implements OnInit {
     this.user = await this.userService.getUser();
     await this.userService.setUserToStorage(this.user.data);
     this.user = await this.userService.getUserFromStorage();
-    console.log(this.user);
     if (!this.user) this.onBack();
   }
   async getTransactionList()

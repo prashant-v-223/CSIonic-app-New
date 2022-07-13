@@ -102,7 +102,7 @@ export class PortfolioViewPage implements OnInit {
       this.id = params.id;
       this.view = this.router.url.startsWith('/sip') ? 'sip' : 'package';
 
-      this.loadDetails();
+      //this.lineChartMethod();
     });
     this.withdrawBtn = localStorage.getItem('withdraw');
     this.listBtn = localStorage.getItem('list');
@@ -129,10 +129,20 @@ export class PortfolioViewPage implements OnInit {
     const res = await (this.view === 'sip'
     ? this.sipService.getSIPDetails(this.id)
     : this.packagesService.getPackageDetails(this.id));
+
+    if (res.status === this.CONSTANT.SUCCESS && res.data) {
+      if (this.view === 'sip') {
+        this.sipDetails = res.data.sip;
+        this.packageDetails = this.sipDetails.packageId;
+      } else
+      {
+        this.packageDetails = res.data.package;
+      }
+      this.showLoader = false;
+    }
     this.chartLabel = res.data?.chartData?.date;
     this.chartData = res.data?.chartData?.price;
     this.withdrawalStatus = res.data?.sip?.status;
-    console.log(this.withdrawalStatus);
     this.coinCode = res.data?.sip?.packageId ? res.data?.sip?.packageId._id : res.data?.package?._id;
   }
   this.time_frame = false;
@@ -231,15 +241,9 @@ export class PortfolioViewPage implements OnInit {
         {
           text: 'confirm',
           handler: () => {
-            //this.simpleLoader();
             this.sipService.withdrawSIP(this.id).then(res => {
-              //this.navCtrl.navigateRoot([`/tabs/portfolio`], {state: {reload: true}}).then();
               this.navCtrl.back();
-              //this.loadingController.dismiss();
             }).catch((e) => {
-              /* setTimeout(() => {
-                this.loadingController.dismiss();
-              }, 100); */
               if (e.status === 400) {
                 this.showToast(e.error.error);
               }
@@ -257,15 +261,6 @@ export class PortfolioViewPage implements OnInit {
       res.present();
     });
   }
-
-  /* simpleLoader() {
-    this.loadingController.create({
-      spinner: 'crescent',
-      message: 'Loading...'
-    }).then((response) => {
-      response.present();
-    });
-  } */
 
   async showToast(text) {
     const toast = await this.toastController.create({
@@ -296,12 +291,9 @@ export class PortfolioViewPage implements OnInit {
         {
           this.packageDetails = res.data.package;
         }
-        /* console.log(res.data); */
-       // this.COINS = this.packageDetails.coins;
-        //this.fillPackageCalculatedDetails();
+
         this.showLoader = false;
       }
-     //console.log(this.packageDetails.coins);
     } catch (e) {
       console.log('Error while getting package details', e);
       this.goBack();
@@ -356,6 +348,6 @@ export class PortfolioViewPage implements OnInit {
   }
 
   goBack() {
-    this.navCtrl.navigateBack('/tabs/dashboard');
+    this.navCtrl.navigateBack('/tabs/portfolio');
   }
 }
