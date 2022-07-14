@@ -296,18 +296,43 @@ export class IdVerificationPage implements OnInit {
       formData.append('backPage', this.attachments.backImage.blob);
     }
 
-    this.isSaving = true;
-    try {
-      if (this.verifyType === this.verifyTypeEnum.SELFIE)
-        await this.userService.verifySelfie(formData);
-      else await this.userService.verifyProof(formData);
-      const userRes = await this.userService.getUser();
-      this.userService.setUserToStorage(userRes.data);
-      this.onBack();
-    } catch (e) {
+    /* var imageFront = Math.round(this.attachments.frontImage.blob.size/1048576).toFixed(2);
+    var imageBack = this.attachments.backImage?.blob!=null ? Math.round(this.attachments.backImage?.blob?.size/1048576).toFixed(2) : '0'; */
+
+    var imageFront = this.attachments.frontImage.blob.size;
+    var imageBack = this.attachments.backImage?.blob!=null ? this.attachments.backImage?.blob?.size : 0;
+
+    if(imageFront<=10485760 && imageBack<=10485760)
+    {
+      this.isSaving = true;
+      try {
+        if (this.verifyType === this.verifyTypeEnum.SELFIE)
+          await this.userService.verifySelfie(formData);
+        else await this.userService.verifyProof(formData);
+        const userRes = await this.userService.getUser();
+        this.userService.setUserToStorage(userRes.data);
+        this.onBack();
+      } catch (e) {
+        const errorInfo = await this.alertCtrl.create({
+          header: 'Verification unsuccessful',
+          message: `There was some problem in verification process, please try again.`,
+          buttons: [
+            {
+              text: 'Ok',
+              role: 'cancel',
+            },
+          ],
+        });
+        await errorInfo.present();
+      } finally {
+        this.isSaving = false;
+      }
+    }
+    else
+    {
       const errorInfo = await this.alertCtrl.create({
         header: 'Verification unsuccessful',
-        message: `There was some problem in verification process, please try again.`,
+        message: `Oops! The file size limit is 10.0 MB. Reduce the file size and try again.`,
         buttons: [
           {
             text: 'Ok',
@@ -316,8 +341,6 @@ export class IdVerificationPage implements OnInit {
         ],
       });
       await errorInfo.present();
-    } finally {
-      this.isSaving = false;
     }
   }
 
