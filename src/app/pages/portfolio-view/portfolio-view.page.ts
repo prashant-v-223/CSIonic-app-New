@@ -233,7 +233,7 @@ export class PortfolioViewPage implements OnInit {
   showConfirm() {
     this.alertController.create({
       header: 'Confirm Withdraw',
-      message: 'Are you sure? you want to withdraw?',
+      message: '1% TDS will be deducted from your withdrawal amount. Are you sure you want to withdraw?',
       buttons: [
         {
           text: 'cancel',

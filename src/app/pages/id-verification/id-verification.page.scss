@@ -1,6 +1,6 @@
- 
- 
- 
+
+
+
   .verify_doc {
     display: flex;
     flex-direction: column;
@@ -21,7 +21,7 @@
   }
 
   span {
-    font-size: 14px; 
+    font-size: 14px;
     font-weight: 400;
   }
 }
@@ -57,20 +57,24 @@
       font-size: 45px;
       line-height: 45px;
       width: 45px;
-      height: 45px; 
+      height: 45px;
     }
 
     .btn-delete {
       position: absolute;
       top: -48px;
-      right: -10px; 
+      right: -10px;
+    }
+    .color-danger
+    {
+      line-height: 2.1;
     }
 
     .selection-preview {
       background: red;
     }
   }
- 
+
 
 .uploadFile {
   display: none;
