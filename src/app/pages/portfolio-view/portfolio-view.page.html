@@ -141,7 +141,8 @@
 </ion-content>
 <div *ngIf="view === 'package'">
   <ion-footer class="bottomBtn" *ngIf="!showLoader else loadingTmplt">
-    <ng-container *ngIf="canStartSIP else SIPPrerequisiteMessageTmplt">
+    <!-- <ng-container *ngIf="canStartSIP else SIPPrerequisiteMessageTmplt"> -->
+      <ng-container>
         <ion-button class="footerTab ion-button-theme m-0" shape="round" expand="full" (click)="openSIPStep()" *ngIf="view === 'package'">
           {{ view === 'package' ? 'Add' : 'Edit' }} SIP
         </ion-button>
