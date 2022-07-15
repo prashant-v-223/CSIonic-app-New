@@ -8,6 +8,7 @@ import { TransactionsService } from 'src/app/shared/services/transactions.servic
 import { FormsModule } from '@angular/forms';
 import {
   AlertController,
+  ModalController,
   NavController,
   ToastController,
 } from '@ionic/angular';
@@ -19,7 +20,7 @@ import {
 })
 export class DepositAmountPage implements OnInit {
 
-  constructor(private navCtrl: NavController,private userService: UserService,private bankService: BankDetailsService,public toastController: ToastController,private alertCtrl: AlertController,private configurationService:ConfigurationService,private transactionService:TransactionsService) { }
+    constructor(private navCtrl: NavController,private userService: UserService,private bankService: BankDetailsService,public toastController: ToastController,private alertCtrl: AlertController,private configurationService:ConfigurationService,private modalController: ModalController,private transactionService:TransactionsService) { }
   userId: string;
   disabled : boolean = true;
   depositAmount: string = '';
@@ -49,6 +50,7 @@ export class DepositAmountPage implements OnInit {
   } */
 
   onBack() {
+    this.modalController.dismiss(null, '', 'SuccessModal');
     this.navCtrl.navigateBack('/my-wallet');
   }
 
@@ -113,6 +115,7 @@ export class DepositAmountPage implements OnInit {
       {
         this.isLoading = false;
         this.amountForm.reset();
+        this.modalController.dismiss(null, '', 'SuccessModal');
         this.navCtrl.navigateBack('/my-wallet');
       }
       else

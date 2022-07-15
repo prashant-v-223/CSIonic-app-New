@@ -44,6 +44,7 @@ export class SignInPage implements OnInit {
 
   async ngOnInit() {
     await SplashScreen.hide();
+    localStorage.setItem('portfolio-data',null);
   }
 
   hideShowPassword() {

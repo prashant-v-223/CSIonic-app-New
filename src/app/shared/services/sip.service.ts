@@ -145,11 +145,11 @@ export class SIPService {
   getMandateDetails(sipId: string) {
     return this.api.getData(`${this.apiConfig.sip}/${sipId}/mandate`);
   }
-  
+
   withdrawSIP(sipId: string) {
     return this.api.putData(`${this.apiConfig.sip}/${sipId}/withdrawal`,{});
   }
-  
+
   getSIPTransectionDetails(sipId: string) {
     return this.api.getData(`${this.apiConfig.sip}/${sipId}/transaction/buy`);
   }

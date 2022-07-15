@@ -5,6 +5,10 @@ import { ApiConfiguration } from 'src/app/services/apis/configuration';
 import { Auth } from 'aws-amplify';
 import { NavController } from '@ionic/angular';
 import { ConfigurationService } from './configuration.service';
+import { BehaviorSubject, Observable, throwError } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { catchError, map, shareReplay, tap } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
@@ -12,14 +16,18 @@ import { ConfigurationService } from './configuration.service';
 export class UserService {
 
   readonly USER_STORAGE_KEY = 'user';
+  private subject = new BehaviorSubject<any>([]);
+  portfolio$: Observable<any> = this.subject.asObservable();
 
   constructor(
     private api: ApiCallService,
     private apiConfig: ApiConfiguration,
     private navCtrl: NavController,
-    private configurationService: ConfigurationService
+    private configurationService: ConfigurationService,
+    private http: HttpClient
   ) {
     this.setHeaderToken();
+    this.getPortfolioDataDetails$();
   }
 
   setUserToStorage(user: any) {
@@ -109,4 +117,25 @@ export class UserService {
     }
 
   }
+
+  getPortfolioDataDetails1(): Observable<any> {
+    return this.http.get<any>(this.apiConfig.apiUrl +'portfolio',this.api.getHeader())
+      .pipe(
+        map(res => res),
+        shareReplay(),
+      )
+  }
+
+  public getPortfolioDataDetails$(): Observable<any> {
+    return this.getPortfolioDataDetails1()
+        .pipe(
+            map(response => response),
+            catchError(err => {
+                const message = "Error Investments";
+                console.log(message,err);
+                return throwError(err);
+            }),
+            tap(portfolio$ => this.subject.next(portfolio$))
+        )
+    }
 }

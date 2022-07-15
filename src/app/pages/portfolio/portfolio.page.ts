@@ -27,22 +27,14 @@ export class PortfolioPage implements OnInit {
     /* this.loadSIPList();
     localStorage.setItem('withdraw','true');
     this.getPortfolioDetails(); */
-
   }
 
   async ionViewWillEnter()
   {
-    this.loadSIPList();
-    await localStorage.setItem('withdraw','true');
-    console.log(localStorage.getItem('withdraw'));
-    await this.getPortfolioDetails();
-  }
-
-  /* async ionViewWillEnter() {
     await this.loadSIPList();
     localStorage.setItem('withdraw','true');
-    this.getPortfolioDetails();
-  } */
+    await this.getPortfolioDetails();
+  }
 
   async loadSIPList() {
     this.showLoader = true;
@@ -58,11 +50,26 @@ export class PortfolioPage implements OnInit {
   }
 
   async getPortfolioDetails() {
-    this.showLoader = true;
+    if(localStorage.getItem('portfolio-data')!=null)
+    {
+      this.portfolioInfo = localStorage.getItem('portfolio-data');
+    }
+    this.showLoader = localStorage.getItem('portfolio-data')=='' ? true : false;
+
+    /* this.showLoader = true;
     try {
       const posrtfolioData = await this.userService.getPortfolioDataDetails();
       this.portfolioInfo = posrtfolioData.data;
       this.showLoader = false;
+    } catch (e) {
+      console.log('Error while getting portfolio details: ', e);
+    } */
+    try {
+        this.userService.getPortfolioDataDetails$().subscribe(res => {
+          this.portfolioInfo = res.data;
+          localStorage.setItem('portfolio-data',JSON.stringify(this.portfolioInfo));
+          this.showLoader==true ? this.showLoader=false : "";
+        })
     } catch (e) {
       console.log('Error while getting portfolio details: ', e);
     }

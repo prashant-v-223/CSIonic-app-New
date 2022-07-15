@@ -34,6 +34,7 @@ export class PortfolioViewPage implements OnInit {
   lineChart: any;
   CONSTANT = COPY;
   COINS = COINS;
+  eSignURL = '';
   chartLabel : any;
   chartData : any;
   coinCode:string;
