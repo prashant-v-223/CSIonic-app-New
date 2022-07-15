@@ -16,6 +16,7 @@ import { SipCreatedPage } from '../sip-created/sip-created.page';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
+import { DepositAmountPage } from '../deposit-amount/deposit-amount.page';
 
 @Component({
   selector: 'app-add-amount',
@@ -173,8 +174,17 @@ export class AddAmountPage implements OnInit {
     this.closeModal('error');
   }
 
-  redirectAddFund() {
-    this.router.navigateByUrl('/deposit-amount');
+  async redirectAddFund() {
+    this.closeModal('error');
+    const successModal = await this.modalController.create({
+      component: DepositAmountPage,
+      componentProps: {
+        newSIP: ''
+      },
+      id: 'SuccessModal',
+    });
+    await successModal.present();
+    //this.router.navigateByUrl('/deposit-amount');
   }
 
   closeModal(status: 'dismissed' | 'success' | 'error') {

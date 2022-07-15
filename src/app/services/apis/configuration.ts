@@ -5,6 +5,7 @@ export class ApiConfiguration {
     protected baseUrl: string = environment.baseUrl;
 
     public appname = environment.APP_NAME;
+    public apiUrl = environment.baseUrl;
     public configuration = `configuration`;
 
     public register = `authentication/register`;

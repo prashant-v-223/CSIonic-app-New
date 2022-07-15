@@ -16,7 +16,7 @@ export class DashboardPage implements OnInit {
   showLoader = true;
   /* packageList: any[] = [];
   coinList: any[] = []; */
-  portfolioInfo:any='';
+  portfolioInfo:any=localStorage.getItem('portfolio-data');
   @Output() coinList: any;
   @Output() packageList: any;
   user: any;
@@ -64,14 +64,18 @@ export class DashboardPage implements OnInit {
   }
 
   async getPortfolioDetails() {
-    this.showLoader = true;
+
+    if(localStorage.getItem('portfolio-data')!=null)
+    {
+      this.portfolioInfo = localStorage.getItem('portfolio-data');
+    }
+    this.showLoader = localStorage.getItem('portfolio-data')==null ? true : false;
     try {
-      const posrtfolioData = await this.userService.getPortfolioDataDetails();
-      if (posrtfolioData?.data) {
-        this.portfolioInfo = posrtfolioData.data;
-        //console.log(this.portfolioInfo);
-        this.showLoader = false;
-      }
+      this.userService.getPortfolioDataDetails$().subscribe(res => {
+        this.portfolioInfo = res.data;
+        localStorage.setItem('portfolio-data',JSON.stringify(this.portfolioInfo));
+        this.showLoader==true ? this.showLoader=false : "";
+      })
     } catch (e) {
       console.log('Error while getting portfolio details: ', e);
     }
