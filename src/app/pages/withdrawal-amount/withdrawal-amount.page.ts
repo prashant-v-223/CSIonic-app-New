@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertController, IonInput, ModalController, NavController, ToastController } from '@ionic/angular';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
@@ -7,6 +7,7 @@ import { TransactionsService } from 'src/app/shared/services/transactions.servic
 import { UserService } from 'src/app/shared/services/user.service';
 import { BankDetailsService } from '../bank-details/bank-details.service';
 import { AddAmountPage } from '../add-amount/add-amount.page';
+import { SuccessFailScreenPage } from '../success-fail-screen/success-fail-screen.page';
 
 @Component({
   selector: 'app-withdrawal-amount',
@@ -28,7 +29,11 @@ export class WithdrawalAmountPage implements OnInit {
   isAmountValid = false;
   config;
 
-  constructor(private navCtrl: NavController,private userService: UserService,public toastController: ToastController,private configurationService:ConfigurationService,public sipService: SIPService,private transactionService:TransactionsService) { }
+  @Output() transactionStatus;
+  @Output() transactionType;
+  @Output() transactionAmount;
+
+  constructor(private modalController: ModalController,private navCtrl: NavController,private userService: UserService,public toastController: ToastController,private configurationService:ConfigurationService,public sipService: SIPService,private transactionService:TransactionsService) { }
   async ngOnInit() {
     const user = this.userService.getUserFromStorage();
     this.config = await this.configurationService.getConfiguration();
@@ -105,20 +110,40 @@ export class WithdrawalAmountPage implements OnInit {
   }
 
 
-  withdrawalAmount()
+   withdrawalAmount()
   {
     this.isLoading = true;
     this.transactionService.depositWithdrawalAmount(this.amount,"withdrawal")
-      .then((res) => {
+      .then(async(res) => {
       if (res.status =="SUCCESS")
       {
         this.isLoading = false;
-        this.navCtrl.navigateBack('/my-wallet');
+        const successModal = await this.modalController.create({
+          component: SuccessFailScreenPage,
+          componentProps: {
+            transactionStatus : true,
+            transactionType : "Withdraw",
+            transactionAmount : this.amount,
+          },
+          id: 'SuccessModal',
+        });
+        await successModal.present();
+        //this.navCtrl.navigateBack('/my-wallet');
       }
       else
       {
-        console.error("Something went wrong");
+        /* console.error("Something went wrong"); */
         this.isLoading = false;
+        const successModal = await this.modalController.create({
+          component: SuccessFailScreenPage,
+          componentProps: {
+            transactionStatus : false,
+            transactionType : "Withdraw",
+            transactionAmount : this.amount,
+          },
+          id: 'SuccessModal',
+        });
+        await successModal.present();
       }
     })
     .catch( async (error) => {

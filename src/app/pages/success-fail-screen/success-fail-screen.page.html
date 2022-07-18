@@ -1,0 +1,50 @@
+<ion-content class="transaction-success" *ngIf="screenShow=='success'">
+  <ion-list class="ion-list">
+    <ion-grid class="p-0">
+      <ion-row>
+        <ion-col class="d-flex justify-center p-0 mt-5" size="12" size-md>
+          <div class="transaction-done">
+            <ion-img class="w-50 transaction-success-fail transaction-created-image" src="../../../assets/sip-created.png"></ion-img>
+          </div>
+        </ion-col>
+        <ion-col class="mt-1 mb-1 text-center" size="12" size-md>
+          <h2 class="text-theme text-center f-Lexend">Congratulations</h2>
+          <span class="font-14 f-Lexend font-weight-400 text-muted-custom">We received your {{ transactionType }} request of {{ transactionAmount }}.</span>
+          <span class="font-14 f-Lexend font-weight-400 text-muted-custom"> Your {{ transactionType }} request is in-progress.</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+ <app-loading *ngIf="showLoader"></app-loading>
+</ion-content>
+<ion-content class="transaction-fail" *ngIf="screenShow=='fail'">
+  <ion-list class="ion-list">
+    <ion-grid class="p-0">
+      <ion-row>
+        <ion-col class="d-flex justify-center p-0 mt-5" size="12" size-md>
+          <div class="transaction-done">
+            <ion-img class="w-75 transaction-fail-image" src="../../../assets/Wrong-PNG.png"></ion-img>
+          </div>
+        </ion-col>
+        <ion-col class="mt-1 mb-1 text-center" size="12" size-md>
+          <h2 class="text-danger text-center f-Lexend">Transaction Failed!</h2>
+          <span class="font-12 f-Lexend font-weight-400 text-muted-custom">There was a problem while you generating {{ transactionType }} request. Please try again.</span>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-list>
+
+  <app-loading *ngIf="showLoader"></app-loading>
+</ion-content>
+
+<!-- Footer Section Start -->
+<ion-footer class="bottomBtn d-flex">
+
+  <ion-button class="ion-button-theme m-0 w-50 font-15 letter-spacing-05" expand="full" routerLink="/my-wallet" (click)="handleFooterButtonClick()">
+    <span>My Wallet</span>
+  </ion-button>
+  <ion-button class="ion-button-theme-lighter m-0 w-50 font-15 letter-spacing-05" expand="full" routerLink="/tabs/dashboard" (click)="handleFooterButtonClick()">
+    Home
+  </ion-button>
+</ion-footer>
+<!-- Footer Section End -->

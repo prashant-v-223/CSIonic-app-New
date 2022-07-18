@@ -8,7 +8,7 @@ import { UserService } from '../shared/services/user.service';
 })
 export class AuthGuard implements CanActivate {
     token: any;
-    
+
     constructor(
         private router: Router,
         public navCtrl: NavController,
@@ -23,7 +23,7 @@ export class AuthGuard implements CanActivate {
 
         if (this.token)
             return true;
-        
+
         return this.router.parseUrl('/sign-in');
     }
 }

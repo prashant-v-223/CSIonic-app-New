@@ -34,8 +34,8 @@
           </ion-col>
           <ion-col size="4">
             <div class="text-right mr-2">
-              <!-- <img class="line-draw" src="assets/icon/chart.svg" alt="img"> -->
-              <canvas class="w-100" #lineCanvas></canvas>
+              <img class="line-draw-full" *ngIf="chartHide" src="assets/icon/chart.svg" alt="img">
+              <canvas class="w-100" *ngIf="!chartHide"  #lineCanvas></canvas>
             </div>
           </ion-col>
           <ion-col size="4">
@@ -88,7 +88,7 @@
         <span class="change-percentage ml-2 mt-2 pt-0">0.7%</span>
       </div>
     </div>
-    <div class="mt-0">
+    <div class="mt-1">
       <img class="line-draw-full" *ngIf="chartHide" src="assets/icon/chart.svg" alt="img">
       <canvas class="w-100" *ngIf="!chartHide" #lineCanvas></canvas>
     </div>
