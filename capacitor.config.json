@@ -1,5 +1,5 @@
 {
-  "appId": "com.coinstation.prosprr",
+  "appId": "com.coinstation.prosppr",
   "appName": "Prosppr",
   "webDir": "www",
   "version": "0.0.2",
@@ -10,7 +10,6 @@
       "backgroundColor": "#006a59",
       "showSpinner": false,
       "androidScaleType": "CENTER_CROP",
-      "splashFullScreen": true,
       "splashImmersive": true
     },
     "PushNotifications": {

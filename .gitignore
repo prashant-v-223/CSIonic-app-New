@@ -34,3 +34,4 @@ Thumbs.db
 UserInterfaceState.xcuserstate
 android/
 package-lock.json
+src/environments/environment.prod.ts
