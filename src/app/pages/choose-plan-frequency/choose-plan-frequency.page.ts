@@ -1,5 +1,5 @@
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, Input, OnInit, Output } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import * as moment from 'moment';
 import { SIPService } from 'src/app/shared/services/sip.service';
@@ -32,6 +32,14 @@ export class ChoosePlanFrequencyPage implements OnInit {
   isOpened: boolean = true;
   daysInThisMonth = moment(this.monthlyDate, "YYYY-MM").daysInMonth();
   currentDay = moment().format('DD');
+
+  @Output() sendCustomSelectedData;
+  @Output() sendCcustomSelectedFrequency;
+  @Output() sendCcustomSelectedAmount;
+
+  @Input() customSelectedData;
+  @Input() customSelectedFrequency;
+  @Input() customSelectedAmount;
 
   frequencyObject?: {
     type: 'daily' | 'weekly' | 'monthly';
@@ -71,6 +79,15 @@ export class ChoosePlanFrequencyPage implements OnInit {
     this.coins = this.package.coins.map((coin) => coin.currencyId);
     this.onSelectFrequency('monthly');
     this.config = await this.configurationService.getConfiguration();
+    if(this.customSelectedData!=undefined && this.customSelectedFrequency!=undefined && this.customSelectedAmount!=undefined)
+    {
+      this.selectedDate = this.customSelectedData;
+      this.frequencyObject = this.customSelectedFrequency;
+      this.currentDay = this.customSelectedFrequency.monthDay;
+      console.log(this.customSelectedAmount,'fre');
+      this.openNextStep();
+
+    }
     //this.tenureYears = this.config.tenure;
     //this.onSelectTenure(0);
   }
@@ -105,19 +122,19 @@ export class ChoosePlanFrequencyPage implements OnInit {
     this.frequencyObject.monthDay = (
       date.detail?.value ? new Date(date.detail.value) : new Date()
     ).getDate();
-      
+
     this.selectedDate = date.detail?.value ? new Date(date.detail.value) : new Date();
-    
+
     this.updateValidity();
   }
-  
+
   updateDay(value) {
     this.frequencyObject.monthDay = parseInt(value);
     var date = new Date();
     date.setDate(value);
 
     this.selectedDate = date;
-    
+
     this.updateValidity();
   }
 
@@ -129,6 +146,7 @@ export class ChoosePlanFrequencyPage implements OnInit {
   }
 
   async openNextStep() {
+
     if (this.stepperSteps === "tenure") {
       this.stepperSteps = "planFrequency";
     } else if (this.stepperSteps === "planFrequency") {
@@ -137,13 +155,20 @@ export class ChoosePlanFrequencyPage implements OnInit {
     if (this.stepperSteps === "addAmount") {
      // this.sipService.setSIPData('tenure', this.selectedTenure);
       this.sipService.setSIPData('plan-frequency', this.frequencyObject);
-      
+
       if(this.selectFrequency === 'monthly'){
         this.sipService.setSIPData('selectedDate', this.selectedDate);
       }
+      this.customSelectedData = this.selectedDate;
+      this.customSelectedFrequency = this.frequencyObject;
 
       const amountModal = await this.modalController.create({
         component: AddAmountPage,
+        componentProps: {
+          customSelectedData: this.selectedDate,
+          customSelectedFrequency: this.frequencyObject,
+          customSelectedAmount: this.customSelectedAmount,
+        },
         id: 'AddMountModal',
       });
       await amountModal.present();

@@ -19,15 +19,16 @@
       <div class="card-body">
         <div>
           <span class="label text-white">My Portfolio</span>
-          <h4 class="myPrice text-white"><ion-icon class="font-20" src="../../../assets/icon/rupee-white.svg"></ion-icon>{{ portfolioInfo.currentAmount | number }}</h4>
+          <h4 class="myPrice text-white"><ion-icon class="font-20" src="../../../assets/icon/rupee-white.svg"></ion-icon>{{ portfolioInfo?.currentAmount | number }}</h4>
         </div>
         <div class="text-right">
           <span class="label">P/L</span>
           <div class="small-text justify-end">
-            <ion-icon class="icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon>
-            {{ portfolioInfo.absoluteReturnPercentage | number }}%
+            <ion-icon class="icon-up" *ngIf="portfolioInfo.absoluteReturnPercentage>0" src="../../../assets/md-arrow-dropup.svg"></ion-icon>
+            <ion-icon class="icon-up" *ngIf="portfolioInfo.absoluteReturnPercentage<0" src="../../../assets/md-arrow-dropdown.svg"></ion-icon>
+            {{ portfolioInfo?.absoluteReturnPercentage | number }}%
           </div>
-          <div class="small-text justify-end"><ion-icon class="font-12" src="../../../assets/icon/rupee-white.svg"></ion-icon> {{ portfolioInfo.absoluteReturn | number }}</div>
+          <div class="small-text justify-end"><ion-icon class="font-12" src="../../../assets/icon/rupee-white.svg"></ion-icon> {{ portfolioInfo?.absoluteReturn | number }}</div>
         </div>
       </div>
     </ion-col>

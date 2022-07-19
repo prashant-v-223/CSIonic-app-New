@@ -218,13 +218,13 @@ export class PortfolioViewPage implements OnInit {
     }
 
     const list: RequiredVerificationEnum[] = [];
-    if (!this.user.kycDocuments?.bankAccount)
+    if (!this.user?.kycDocuments?.bankAccount)
       list.push(RequiredVerificationEnum.BANK_ACCOUNT);
-    if (!this.user.kycDocuments?.adhaarCard)
+    if (!this.user?.kycDocuments?.adhaarCard)
       list.push(RequiredVerificationEnum.AADHAR_CARD);
-    if (!this.user.kycDocuments?.panCard)
+    if (!this.user?.kycDocuments?.panCard)
       list.push(RequiredVerificationEnum.PAN_CARD);
-    if (!this.user.kycDocuments?.selfie)
+    if (!this.user?.kycDocuments?.selfie)
       list.push(RequiredVerificationEnum.SELFIE);
 
     this.canStartSIP = !list.length;

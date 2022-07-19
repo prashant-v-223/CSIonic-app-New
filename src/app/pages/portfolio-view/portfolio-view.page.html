@@ -3,7 +3,7 @@
   <ion-toolbar>
     <ion-list class="d-flex justify-between">
       <ion-buttons slot="start">
-        <ion-back-button mat-icon-button mode='md' defaultHref="/tabs/dashboard"><ion-icon src="../../../assets/icon/back-arrow.svg"></ion-icon></ion-back-button>
+        <ion-back-button mat-icon-button mode='md' defaultHref="/tabs/portfolio"><ion-icon src="../../../assets/icon/back-arrow.svg"></ion-icon></ion-back-button>
       </ion-buttons>
       <ion-label *ngIf="withdrawBtn=='true' && withdrawalStatus=='active'" class="sip-withdraw d-flex"> <ion-button class="withdraw-link-btn" (click)="showConfirm()"><ion-icon class="text-muted-custom font-24" src="assets/icon/arrow-up-square.svg"></ion-icon> <b>Withdraw</b></ion-button> </ion-label>
     </ion-list>
@@ -64,20 +64,20 @@
 
         <!-- TODO -->
         <ion-col size="6" class="mb-1" size-md>
-          <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-15" src="../../../assets/icon/rupee-black.svg"></ion-icon>19006</h4>
+          <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>19006</h4>
           <span class="small-label gray-text">Current Value</span>
         </ion-col>
 
         <!-- TODO -->
         <ion-col size="6" class="mb-1" size-md>
-          <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-15" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (view === 'sip' ? sipDetails.totalAmount : 19006) | number }}
+          <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (view === 'sip' ? sipDetails.totalAmount : 19006) | number }}
           </h4>
           <span class="small-label gray-text">Invested</span>
         </ion-col>
 
         <!-- TODO -->
         <ion-col size="6" class="mb-1" size-md>
-          <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-15" src="../../../assets/icon/rupee-black.svg"></ion-icon>2,000.00</h4>
+          <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>2,000.00</h4>
          <!--  <span class="small-label gray-text">Returns</span> -->
         </ion-col>
 

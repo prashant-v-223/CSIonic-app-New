@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ActivatedRoute } from '@angular/router';
@@ -12,6 +12,9 @@ import {
   NavController,
   ToastController,
 } from '@ionic/angular';
+import { AddAmountPage } from '../add-amount/add-amount.page';
+import { ChoosePlanFrequencyPage } from '../choose-plan-frequency/choose-plan-frequency.page';
+import { SuccessFailScreenPage } from '../success-fail-screen/success-fail-screen.page';
 
 @Component({
   selector: 'app-deposit-amount',
@@ -31,27 +34,68 @@ export class DepositAmountPage implements OnInit {
   amount: number = 1;
   isAmountValid = true;
   utrNumberSet:string='';
+  @Input() newSIP;
+  @Input() setCustomSelectedData;
+  @Input() setCustomSelectedFrequency;
+  @Input() setSelectedAmount;
+
+  @Output() customSelectedData;
+  @Output() customSelectedFrequency;
+  @Output() customSelectedAmount;
+
+  @Output() transactionStatus;
+  @Output() transactionType;
+  @Output() transactionAmount;
+
+  backUrl : string = '';
   ngOnInit() {
     const user = this.userService.getUserFromStorage();
     if (!user) this.onBack();
-
+    console.log(this.newSIP);
     this.userId = user._id;
     this.GetBankInfo(this.userId);
+    console.log(this.setCustomSelectedData,this.setCustomSelectedFrequency);
+    this.stepperSteps = "amountSet";
   }
 
   amountForm = new FormGroup({
     utrNumber: new FormControl('',[Validators.required]),
   });
 
+  ionViewWillEnter()
+  {
+    this.stepperSteps = "amountSet";
+  }
   /* omit_special_char(e) {
     var k;
     document.all ? k = e.keyCode : k = e.which;
     return ((k > 64 && k < 91) || (k > 96 && k < 123) || k == 8 || k == 32 || (k >= 48 && k <= 57));
   } */
 
-  onBack() {
+  async onBack() {
+
     this.modalController.dismiss(null, '', 'SuccessModal');
-    this.navCtrl.navigateBack('/my-wallet');
+    if(this.newSIP!='' && this.newSIP!=undefined)
+    {
+      const frequencyModal = await this.modalController.create({
+        component: ChoosePlanFrequencyPage,
+        componentProps: {
+          customSelectedData: this.setCustomSelectedData,
+          customSelectedFrequency: this.setCustomSelectedFrequency,
+          customSelectedAmount: this.setSelectedAmount,
+        },
+        id: 'FrequencyModal',
+      });
+      await frequencyModal.present();
+
+      this.navCtrl.navigateBack('/packages/'+this.newSIP);
+      this.backUrl = '/packages/'+this.newSIP;
+    }
+    else
+    {
+      this.backUrl = '/my-wallet';
+      this.navCtrl.navigateBack('/my-wallet');
+    }
   }
 
   async GetBankInfo(userId:string)
@@ -110,18 +154,41 @@ export class DepositAmountPage implements OnInit {
   {
     this.isLoading = true;
     this.transactionService.depositWithdrawalAmount(this.amount,"deposit",this.amountForm.controls['utrNumber'].value)
-      .then((res) => {
+      .then( async (res) => {
       if (res.status =="SUCCESS")
       {
         this.isLoading = false;
         this.amountForm.reset();
-        this.modalController.dismiss(null, '', 'SuccessModal');
-        this.navCtrl.navigateBack('/my-wallet');
+        if(this.newSIP!='' && this.newSIP!=undefined)
+        {
+          this.modalController.dismiss(null, '', 'SuccessModal');
+        }
+        const successModal = await this.modalController.create({
+          component: SuccessFailScreenPage,
+          componentProps: {
+            transactionStatus : true,
+            transactionType : "Deposit",
+            transactionAmount : this.amount,
+          },
+          id: 'SuccessModal',
+        });
+        await successModal.present();
+        /* this.navCtrl.navigateBack('/my-wallet');
+        this.modalController.dismiss(null, '', 'SuccessModal'); */
       }
       else
       {
-        console.error("Something went wrong");
+        const successModal = await this.modalController.create({
+          component: SuccessFailScreenPage,
+          componentProps: {
+            transactionStatus : false,
+            transactionType : "Deposit",
+            transactionAmount : this.amount,
+          },
+          id: 'SuccessModal',
+        });
         this.isLoading = false;
+        await successModal.present();
       }
     })
     .catch( async (error) => {

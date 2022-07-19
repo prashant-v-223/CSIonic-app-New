@@ -11,7 +11,8 @@ export class SipTransactionListPage implements OnInit {
 
   id: string;
   transactionList : any;
-
+  public segment: string = "buy";
+  transactionType: string = 'buy'
   constructor(
     private sipService: SIPService,
     private router: ActivatedRoute
@@ -20,11 +21,19 @@ export class SipTransactionListPage implements OnInit {
   ngOnInit() {
     this.id = this.router.snapshot.params['id'];
     console.log(this.id);
-    this.loadDetails();
+    this.loadDetails(this.transactionType);
   }
 
-  async loadDetails() {
-    const res = await this.sipService.getSIPTransectionDetails(this.id);
+  async loadDetails(type:string) {
+    const res = await this.sipService.getSIPTransectionDetails(this.id,type);
     this.transactionList = res.data?.data;
   }
+
+
+  segmentChanged(ev: any) {
+    this.transactionType = ev.detail.value;
+    this.segment = ev.detail.value;
+    this.loadDetails(this.transactionType);
+  }
+
 }

@@ -36,7 +36,8 @@
               <span class="small-label">Return</span>
             </ion-col>
             <ion-col size="4" class="p-0" size-md>
-              <h6 class="text-d-theme d-flex"> <ion-icon class="text-muted-custom icon-up" src="assets/icon/arrow-up-square.svg"></ion-icon>&nbsp;{{ portfolioInfo?.absoluteReturnPercentage | number }}%</h6>
+              <h6 class="text-d-theme d-flex" [ngClass]="portfolioInfo?.absoluteReturnPercentage>0 ? 'theme-color' : 'text-danger'">
+                 <ion-icon class="text-muted-custom icon-up mt-1 font-16" *ngIf="portfolioInfo?.absoluteReturnPercentage>0" src="assets/icon/arrow-up-square.svg"></ion-icon><ion-icon class="text-muted-custom icon-up mt-1 font-16" *ngIf="portfolioInfo?.absoluteReturnPercentage<0" src="assets/icon/arrow-square-down.svg"></ion-icon>&nbsp;{{ portfolioInfo?.absoluteReturnPercentage | number }}%</h6>
               <span class="small-label">Total Return</span>
             </ion-col>
           </ion-row>

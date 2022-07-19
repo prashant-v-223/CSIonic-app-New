@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, Output, ViewChild } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { AlertController, IonInput, ModalController, NavController, ToastController } from '@ionic/angular';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
@@ -7,6 +7,7 @@ import { TransactionsService } from 'src/app/shared/services/transactions.servic
 import { UserService } from 'src/app/shared/services/user.service';
 import { BankDetailsService } from '../bank-details/bank-details.service';
 import { AddAmountPage } from '../add-amount/add-amount.page';
+import { SuccessFailScreenPage } from '../success-fail-screen/success-fail-screen.page';
 
 @Component({
   selector: 'app-withdrawal-amount',
@@ -27,14 +28,22 @@ export class WithdrawalAmountPage implements OnInit {
   amount: number = 0;
   isAmountValid = false;
   config;
+  user:any;
 
-  constructor(private navCtrl: NavController,private userService: UserService,public toastController: ToastController,private configurationService:ConfigurationService,public sipService: SIPService,private transactionService:TransactionsService) { }
+  @Output() transactionStatus;
+  @Output() transactionType;
+  @Output() transactionAmount;
+
+  constructor(private modalController: ModalController,private navCtrl: NavController,private userService: UserService,public toastController: ToastController,private configurationService:ConfigurationService,public sipService: SIPService,private transactionService:TransactionsService) { }
   async ngOnInit() {
-    const user = this.userService.getUserFromStorage();
+    this.user = await this.userService.getUser();
+    await this.userService.setUserToStorage(this.user.data);
+    this.user = await this.userService.getUserFromStorage();
     this.config = await this.configurationService.getConfiguration();
     this.minWithdrawalAmounts = this.config.minimumWithdrawalAmount;
-    if (!user) this.onBack();
-    this.userId = user._id;
+    if (!this.user) this.onBack();
+    this.userId = this.user._id;
+    this.maxWithdrawalAmounts = parseFloat(this.user.wallet) - parseFloat(this.user.pendingWithdrawal);
     this.GetBankInfo(this.userId);
   }
 
@@ -51,7 +60,6 @@ export class WithdrawalAmountPage implements OnInit {
     {
       this.BankDataResponse = await this.userService.getUserBankDetails(userId);
       this.BankDataResponse = this.BankDataResponse['data'];
-      this.maxWithdrawalAmounts = this.BankDataResponse['amount'];
     }
     catch (e)
     {
@@ -105,20 +113,40 @@ export class WithdrawalAmountPage implements OnInit {
   }
 
 
-  withdrawalAmount()
+   withdrawalAmount()
   {
     this.isLoading = true;
     this.transactionService.depositWithdrawalAmount(this.amount,"withdrawal")
-      .then((res) => {
+      .then(async(res) => {
       if (res.status =="SUCCESS")
       {
         this.isLoading = false;
-        this.navCtrl.navigateBack('/my-wallet');
+        const successModal = await this.modalController.create({
+          component: SuccessFailScreenPage,
+          componentProps: {
+            transactionStatus : true,
+            transactionType : "Withdraw",
+            transactionAmount : this.amount,
+          },
+          id: 'SuccessModal',
+        });
+        await successModal.present();
+        //this.navCtrl.navigateBack('/my-wallet');
       }
       else
       {
-        console.error("Something went wrong");
+        /* console.error("Something went wrong"); */
         this.isLoading = false;
+        const successModal = await this.modalController.create({
+          component: SuccessFailScreenPage,
+          componentProps: {
+            transactionStatus : false,
+            transactionType : "Withdraw",
+            transactionAmount : this.amount,
+          },
+          id: 'SuccessModal',
+        });
+        await successModal.present();
       }
     })
     .catch( async (error) => {

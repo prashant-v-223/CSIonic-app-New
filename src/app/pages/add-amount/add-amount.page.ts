@@ -1,6 +1,8 @@
 import {
   Component,
+  Input,
   OnInit,
+  Output,
   ViewChild,
 } from '@angular/core';
 import {
@@ -37,6 +39,15 @@ export class AddAmountPage implements OnInit {
     }[];
   };
 
+   @Input() customSelectedData;
+   @Input() customSelectedFrequency;
+   @Input() customSelectedAmount;
+
+   @Output() setCustomSelectedData;
+   @Output() setCustomSelectedFrequency;
+   @Output() setSelectedAmount;
+
+
   CONSTANT: any = COPY;
 
   showLoader = false;
@@ -45,7 +56,6 @@ export class AddAmountPage implements OnInit {
   isAmountValid = false;
 
   addFundError = false;
-
   constructor(
     public sipService: SIPService,
     public toastController: ToastController,
@@ -54,12 +64,13 @@ export class AddAmountPage implements OnInit {
     private userService: UserService,
     // private navCtrl: NavController,
     private router:Router
-  ) {
+    ) {
     this.sipData = this.sipService.getSIPData();
     this.prepareChartData();
   }
 
   async ngOnInit() {
+    console.log(this.customSelectedData,this.customSelectedFrequency);
     this.config = await this.configurationService.getConfiguration();
     this.setAmount(this.sipService?.getSIPData()?.package?.totalMinimumDepositAmount);
   }
@@ -102,10 +113,16 @@ export class AddAmountPage implements OnInit {
           : amountDigit;
     }
 
+    if(this.customSelectedAmount!='' && this.customSelectedAmount!=undefined)
+    {
+      this.amount = this.customSelectedAmount;
+      this.customSelectedAmount = undefined;
+    }
+
     this.isAmountValid =
-      this.amount &&
-      this.amount <= this.config.sip.maxInstallmentAmount &&
-      this.amount >= this.sipService?.getSIPData()?.package?.totalMinimumDepositAmount;
+    this.amount &&
+    this.amount <= this.config.sip.maxInstallmentAmount &&
+    this.amount >= this.sipService?.getSIPData()?.package?.totalMinimumDepositAmount;
   }
 
   async createSIP() {
@@ -179,7 +196,10 @@ export class AddAmountPage implements OnInit {
     const successModal = await this.modalController.create({
       component: DepositAmountPage,
       componentProps: {
-        newSIP: ''
+        newSIP: this.sipData.package._id,
+        setCustomSelectedData: this.customSelectedData,
+        setCustomSelectedFrequency: this.customSelectedFrequency,
+        setSelectedAmount : this.amount,
       },
       id: 'SuccessModal',
     });

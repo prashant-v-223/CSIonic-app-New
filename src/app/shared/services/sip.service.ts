@@ -150,7 +150,7 @@ export class SIPService {
     return this.api.putData(`${this.apiConfig.sip}/${sipId}/withdrawal`,{});
   }
 
-  getSIPTransectionDetails(sipId: string) {
-    return this.api.getData(`${this.apiConfig.sip}/${sipId}/transaction/buy`);
+  getSIPTransectionDetails(sipId: string,type:string) {
+    return this.api.getData(`${this.apiConfig.sip}/${sipId}/transaction/${type}`);
   }
 }

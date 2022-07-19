@@ -3,7 +3,7 @@
     <ion-toolbar>
       <ion-list class="d-flex justify-between">
       <ion-buttons slot="start">
-        <ion-back-button  mat-icon-button class="back-btn" (click)="onBack()" defaultHref="/my-wallet"></ion-back-button>
+        <ion-back-button  mat-icon-button class="back-btn" (click)="onBack()"  defaultHref="{{ backUrl }}"></ion-back-button>
       </ion-buttons>
       <ion-label class="deposit-list d-flex"><b>Deposit Amount</b></ion-label>
     </ion-list>

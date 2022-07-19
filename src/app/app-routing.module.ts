@@ -199,7 +199,11 @@ const routes: Routes = [
   {
     path: 'sip-transaction-list/:id',
     loadChildren: () => import('./pages/sip-transaction-list/sip-transaction-list.module').then( m => m.SipTransactionListPageModule)
+  },  {
+    path: 'success-fail-screen',
+    loadChildren: () => import('./pages/success-fail-screen/success-fail-screen.module').then( m => m.SuccessFailScreenPageModule)
   }
+
 
 
 ];
