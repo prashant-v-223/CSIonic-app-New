@@ -28,6 +28,7 @@ export class WithdrawalAmountPage implements OnInit {
   amount: number = 0;
   isAmountValid = false;
   config;
+  user:any;
 
   @Output() transactionStatus;
   @Output() transactionType;
@@ -35,11 +36,14 @@ export class WithdrawalAmountPage implements OnInit {
 
   constructor(private modalController: ModalController,private navCtrl: NavController,private userService: UserService,public toastController: ToastController,private configurationService:ConfigurationService,public sipService: SIPService,private transactionService:TransactionsService) { }
   async ngOnInit() {
-    const user = this.userService.getUserFromStorage();
+    this.user = await this.userService.getUser();
+    await this.userService.setUserToStorage(this.user.data);
+    this.user = await this.userService.getUserFromStorage();
     this.config = await this.configurationService.getConfiguration();
     this.minWithdrawalAmounts = this.config.minimumWithdrawalAmount;
-    if (!user) this.onBack();
-    this.userId = user._id;
+    if (!this.user) this.onBack();
+    this.userId = this.user._id;
+    this.maxWithdrawalAmounts = parseFloat(this.user.wallet) - parseFloat(this.user.pendingWithdrawal);
     this.GetBankInfo(this.userId);
   }
 
@@ -56,7 +60,6 @@ export class WithdrawalAmountPage implements OnInit {
     {
       this.BankDataResponse = await this.userService.getUserBankDetails(userId);
       this.BankDataResponse = this.BankDataResponse['data'];
-      this.maxWithdrawalAmounts = this.BankDataResponse['amount'];
     }
     catch (e)
     {

@@ -35,13 +35,13 @@
           <ion-col size="4">
             <div class="text-right mr-2">
               <img class="line-draw-full" *ngIf="chartHide" src="assets/icon/chart.svg" alt="img">
-              <canvas class="w-100" *ngIf="!chartHide"  #lineCanvas></canvas>
+              <canvas class="w-100" *ngIf="!chartHide" #lineCanvas></canvas>
             </div>
           </ion-col>
           <ion-col size="4">
             <div class="small-label text-dark">24 hr Returns</div>
             <div class="small-text text-muted-custom change-percentage">
-              <ion-icon class="text-muted-custom icon-up" src="assets/icon/arrow-up-square.svg"></ion-icon>&nbsp;45%
+              <ion-icon class="text-muted-custom icon-up mt-2 pt-1" src="assets/icon/arrow-up-square.svg"></ion-icon>&nbsp;45%
             </div>
           </ion-col>
         </ion-row>
@@ -84,8 +84,8 @@
         <span class="small-label ml-2">{{ package.coins[0].currencyId.code }}</span><br>
       </div>
       <div class="d-flex">
-        <ion-icon class="text-d-theme icon-up mt-2" src="assets/icon/arrow-up-square.svg"></ion-icon>
-        <span class="change-percentage ml-2 mt-2 pt-0">0.7%</span>
+        <ion-icon class="text-d-theme icon-up mt-2 pt-1" src="assets/icon/arrow-up-square.svg"></ion-icon>
+        <span class="change-percentage ml-2 mt-2 pt-1">0.7%</span>
       </div>
     </div>
     <div class="mt-1">

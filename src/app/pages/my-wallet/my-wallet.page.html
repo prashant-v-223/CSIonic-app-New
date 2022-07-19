@@ -24,7 +24,7 @@
         <h2 class="wallet-heading">My Wallet</h2>
       </ion-col>
       <ion-col size="12" class="text-left mt-2" size-md>
-        <h1 class="wallet-header-amount"><ion-icon src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ user.wallet }}</h1>
+        <h1 class="wallet-header-amount"><ion-icon src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ user.wallet | number:'1.2-2' }}</h1>
       </ion-col>
      <!--  <ion-col size="12" class="text-left mt-1" size-md>
         <h3 class="my-portfolio-heading">My portfolio</h3>
@@ -107,7 +107,7 @@
               <span class="small-label">{{ transaction.createdAt | date }}</span>
             </ion-col>
             <ion-col class="p-0 align-center d-flex justify-end" size="2"  size-md>
-              <h4 class="priceTage"><ion-icon class="font-16" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ transaction.amount }}</h4>
+              <h4 class="priceTage"><ion-icon class="font-14" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ transaction.amount | number:'1.2-2' }}</h4>
             </ion-col>
           </ion-row>
         </ion-label>
