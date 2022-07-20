@@ -3,8 +3,7 @@
   <ion-toolbar>
     <ion-list>
       <ion-buttons slot="start">
-        <ion-back-button mat-icon-button class="back-btn" defaultHref="/tabs/profile">
-        </ion-back-button>
+        <ion-icon src="../../../assets/icon/back-arrow.svg" (click)="onBack()"></ion-icon>
       </ion-buttons>
     </ion-list>
   </ion-toolbar>
@@ -16,7 +15,7 @@
       <ion-title>KYC Verification</ion-title>
     </ion-grid>
     <ion-item (click)="!user || user.kycDocuments?.selfie || onIDVerify('selfie')">
-      <div class="item-inner"> 
+      <div class="item-inner">
         <ion-label>
           <h6>{{CONSTANT.TAKE_PHOTO_LABEL}}</h6>
           <span>{{CONSTANT.TAKE_PHOTO_LABEL}}</span>
@@ -29,7 +28,7 @@
       </div>
     </ion-item>
     <ion-item class="mt-2 mb-2" (click)="!user || user.kycDocuments?.panCard || onIDVerify('PAN')">
-      <div class="item-inner"> 
+      <div class="item-inner">
         <ion-label>
           <h6>{{CONSTANT.IDENTITY_PROOF}}</h6>
           <span>{{CONSTANT.VERIFY_PAN_CARD_LABEL}}</span>
@@ -42,7 +41,7 @@
       </div>
     </ion-item>
     <ion-item class="mt-2 mb-2" (click)="!user || user.kycDocuments?.adhaarCard || onIDVerify('id-verify')">
-      <div class="item-inner"> 
+      <div class="item-inner">
         <ion-label>
           <h6>{{CONSTANT.ADDRESS_PROOF}}</h6>
           <span>{{CONSTANT.VERIFY_ID_LABEL}}</span>

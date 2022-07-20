@@ -41,7 +41,7 @@
               </thead>
               <tbody>
                 <tr *ngFor="let coin of sipData.package.coins" class="sip-coins-table">
-                  <td class="font-14">{{ coin.currencyId.code }} ({{ coin.allocation | number: '1.2-2' }}%)</td>
+                  <td class="font-14">{{ coin.currencyId.fullName }} ({{ coin.allocation | number: '1.2-2' }}%)</td>
                   <td class="font-14"><ion-icon class="font-11" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (sipData.installmentAmount * coin.allocation / 100) | number: '1.2-2' }}</td>
                   <td class="font-14"><ion-icon class="font-11" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (sipData.installmentAmount * coin.allocation / 100) | number: '1.2-2' }}</td>
                 </tr>

@@ -351,4 +351,9 @@ export class PortfolioViewPage implements OnInit {
   goBack() {
     this.navCtrl.navigateBack('/tabs/portfolio');
   }
+
+  completeKYC()
+  {
+    this.navCtrl.navigateBack('/kyc-document');
+  }
 }

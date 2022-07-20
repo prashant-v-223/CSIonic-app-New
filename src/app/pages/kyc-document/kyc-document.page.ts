@@ -30,4 +30,9 @@ export class KYCDocumentPage implements OnInit {
       queryParams: { type },
     });
   }
+
+  onBack()
+  {
+    this.navCtrl.back();
+  }
 }
