@@ -37,7 +37,7 @@
               <!-- <h1 class="text-dark mt-3 " *ngIf="amount else amountPlaceholderTmplt">
                 {{ amount | number : '1.0-0' }}
               </h1> -->
-              <ion-input type="text" #planAmount placeholder="Type Amount" (keypress)="numbersOnly($event)" value="{{ amount }}" (keyup)="setAmount(planAmount.value)" ></ion-input>
+              <ion-input type="text" onPaste="return false" onCopy="return false" onCut="return false" autocomplete=off #planAmount placeholder="Type Amount" (keypress)="numbersOnly($event)" value="{{ amount }}" (keyup)="setAmount(planAmount.value)" ></ion-input>
             </ion-col>
           </ion-row>
           <!-- <ion-text class="small-label mt-3">
