@@ -23,27 +23,27 @@
       <div class="small-label text-dark">{{ packageObj.name }}</div>
       <div class="align-center justify-between mt-2">
         <ion-row class="pl-0 ml-0">
-          <ion-col size="4" class="pl-0">
+          <ion-col size="6" class="pl-0">
             <div class="small-label text-muted-custom">
               <!-- {{ view === 'package' ? 'Min Invest' : 'Total Invested' }} -->
               Min Invest
             </div>
             <h4 class="Price text-dark ion-text-left">
-              <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (view === 'package' ? packageObj.totalMinimumDepositAmount : package.totalAmount) | number }}
+              <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (totalMinimumDepositAmount!=0 ? totalMinimumDepositAmount : packageObj.totalMinimumDepositAmount) | number }}
             </h4>
           </ion-col>
-          <ion-col size="4">
-            <div class="text-right mr-2">
+          <ion-col size="6">
+            <div class="text-right p-0 char-custom-css">
               <img class="line-draw-full" *ngIf="chartHide" src="assets/icon/chart.svg" alt="img">
               <canvas class="w-100" *ngIf="!chartHide" #lineCanvas></canvas>
             </div>
           </ion-col>
-          <ion-col size="4">
+         <!--  <ion-col size="4">
             <div class="small-label text-dark">24 hr Returns</div>
             <div class="small-text text-muted-custom change-percentage">
               <ion-icon class="text-muted-custom icon-up mt-2 pt-1" src="assets/icon/arrow-up-square.svg"></ion-icon>&nbsp;45%
             </div>
-          </ion-col>
+          </ion-col> -->
         </ion-row>
       </div>
     </div>
