@@ -132,7 +132,6 @@ export class UserService {
             map(response => response),
             catchError(err => {
                 const message = "Error Investments";
-                console.log(message,err);
                 return throwError(err);
             }),
             tap(portfolio$ => this.subject.next(portfolio$))

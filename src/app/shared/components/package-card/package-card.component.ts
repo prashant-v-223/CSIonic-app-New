@@ -20,8 +20,9 @@ export class PackageCardComponent implements OnInit, OnChanges {
   chartDateLabel: any;
   chartPriceLabel: any;
   chartHide:boolean= false;
+  totalMinimumDepositAmount:number= 0;
   coins = [];
-
+  coinData:any;
   constructor(
     private sipService: SIPService,
   ) { }
@@ -39,7 +40,14 @@ export class PackageCardComponent implements OnInit, OnChanges {
   {
     this.packageList;
     this.coinList;
-    this.coinCode = this.coinList!=undefined ? this.coinList[0]?.currencyId.baseAsset : '';
+    if(this.coinList==undefined)
+    {
+      this.packageList.forEach(element => {
+        this.totalMinimumDepositAmount =  this.totalMinimumDepositAmount + parseInt(element.currencyId.minimumDepositAmount);
+      });
+    }
+    this.totalMinimumDepositAmount = this.package?.packageId?.totalMinimumDepositAmount ? this.package?.packageId?.totalMinimumDepositAmount : this.totalMinimumDepositAmount;
+    this.coinCode = this.coinList!=undefined ? this.coinList[0]?.currencyId.baseAsset : this.package?.packageId?._id;
   }
 
   ngAfterViewInit() {
@@ -52,21 +60,28 @@ export class PackageCardComponent implements OnInit, OnChanges {
     {
       try
       {
-        let coinData = await this.sipService.getChartDetails(coinCodeName,"3","month")
-        this.chartDateLabel = coinData.data.date;
-        this.chartPriceLabel = coinData.data.price;
+        if(this.package?.packageId?._id!=undefined && this.package?.packageId?._id!='')
+        {
+          this.coinData = await this.sipService.getChartDetailsPackage(coinCodeName,"3","month");
+        }
+        else
+        {
+          this.coinData = await this.sipService.getChartDetails(coinCodeName,"3","month");
+        }
+        this.chartDateLabel = this.coinData.data.date;
+        this.chartPriceLabel = this.coinData.data.price;
         this.chartHide = false;
       }
       catch(error)
       {
         this.chartHide = true;
-        console.log(error.status);
       }
     }
     let context: CanvasRenderingContext2D = this.lineCanvas.nativeElement.getContext('2d');
     let grad = context.createLinearGradient(0, 0, 0, 100);
     grad.addColorStop(0, '#2B7979');
     grad.addColorStop(1, '#fff');
+
 
     this.lineChart = new Chart(this.lineCanvas.nativeElement, {
       type: 'line',

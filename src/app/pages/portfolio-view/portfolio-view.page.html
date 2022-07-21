@@ -24,7 +24,7 @@
     <ion-row *ngIf="!showLoader else loadingTmplt">
       <ion-col size="12" class=" mt-1 pt-1 text-center" size-md>
        <!-- <span class="sip-amount-subtext">Etherium (ETH)</span> -->
-        <h1 class="text-theme sip-amount mt-0"><ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ packageDetails.totalMinimumDepositAmount }}</h1>
+        <h1 class="text-theme sip-amount mt-0"><ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ sipDetails?.installmentAmount ? sipDetails?.installmentAmount : packageDetails?.totalMinimumDepositAmount }}</h1>
        <span class="sip-amount-subtext">{{ packageDetails.name }}</span>
       </ion-col>
     </ion-row>
@@ -64,40 +64,36 @@
 
         <!-- TODO -->
         <ion-col size="6" class="mb-1" size-md>
-          <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>19006</h4>
+          <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (sipDetails?.currentAmount ? sipDetails?.currentAmount : 0 ) | number }}</h4>
           <span class="small-label gray-text">Current Value</span>
         </ion-col>
 
         <!-- TODO -->
         <ion-col size="6" class="mb-1" size-md>
-          <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (view === 'sip' ? sipDetails.totalAmount : 19006) | number }}
+          <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (view === 'sip' ? sipDetails?.installmentAmount : 0) | number }}
           </h4>
           <span class="small-label gray-text">Invested</span>
         </ion-col>
 
-        <!-- TODO -->
         <ion-col size="6" class="mb-1" size-md>
           <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>2,000.00</h4>
-         <!--  <span class="small-label gray-text">Returns</span> -->
         </ion-col>
-
-        <!-- TODO -->
         <ion-col size="6" class="mb-1" size-md>
-          <h4 class="heading-label text-d-theme f-Lexend mt-0"><ion-icon class="text-muted-custom icon-up vertical-middle" src="assets/icon/arrow-up-square.svg"></ion-icon>&nbsp;+24%  <span class="small-label gray-text">(% ROI)</span></h4>
-
+          <h4 class="font-16 f-Lexend mt-0" [ngClass]="sipDetails?.absoluteReturnPercentage<0 ? 'text-danger' : 'theme-color'" ><ion-icon *ngIf="sipDetails?.absoluteReturnPercentage>0" class="text-muted-custom icon-up vertical-middle" src="assets/icon/arrow-up-square.svg"></ion-icon><ion-icon *ngIf="sipDetails?.absoluteReturnPercentage<0" class="text-muted-custom icon-up vertical-middle" src="assets/icon/arrow-square-down.svg"></ion-icon>&nbsp;{{  sipDetails?.absoluteReturnPercentage }}  <span class="small-label text-muted" >(% ROI)</span></h4>
         </ion-col>
+
         <ion-col size="12" size-md>
           <div class="line"></div>
         </ion-col>
         <ion-col size="6" class="mt-1" size-md>
           <ng-container *ngIf="view === 'package' else intervalTmplt">
-            <h6 class="smallHeading-label mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ packageDetails.totalMinimumDepositAmount }}</h6>
+            <h6 class="smallHeading-label mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (sipDetails?.installmentAmount ? sipDetails?.installmentAmount : 0) | number }}</h6>
             <span class="small-label"><!-- Minimum SIP Amt -->Active Plan</span>
           </ng-container>
 
           <ng-template #intervalTmplt>
             <h6 class="smallHeading-label mt-0">
-              <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ sipDetails.installmentAmount | number }}/<span class="ion-text-capitalize">{{sipDetails.interval.type }}</span>
+              <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ sipDetails?.installmentAmount | number }}/<span class="ion-text-capitalize">{{sipDetails.interval.type }}</span>
               </h6>
               <span class="small-label">Interval</span>
             </ng-template>
@@ -105,7 +101,7 @@
 
         <!-- TODO -->
         <ion-col size="6" class="mt-1" size-md>
-          <h6 class="smallHeading-label text-dark mt-0">21 Jun, 2021</h6>
+          <h6 class="smallHeading-label text-dark mt-0">{{ sipDetails?.nextScheduleDate ? ((sipDetails?.nextScheduleDate ) | date) : '-' }} </h6>
           <span class="small-label">Next Investment</span>
         </ion-col>
         </ion-row>
