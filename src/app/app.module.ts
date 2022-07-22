@@ -14,6 +14,8 @@ import { CommonModule } from '@angular/common';
 import { AmplifyUIAngularModule } from '@aws-amplify/ui-angular';
 import { ApiConfiguration } from './services/apis/configuration';
 import { AppVersion } from '@awesome-cordova-plugins/app-version/ngx';
+import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
 Amplify.configure({
   Auth: {
     identityPoolId: environment.COGNITO_IDENTITY_POOL_ID,
@@ -37,6 +39,7 @@ Amplify.configure({
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
     ApiConfiguration,
+    SocialSharing,
     AppVersion,
     {
       provide: RouteReuseStrategy,
