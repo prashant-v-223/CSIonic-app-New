@@ -18,7 +18,7 @@
 
     <ion-list class="pr-3" *ngIf="notifications?.length else noNotificationsTmplt">
       <ion-grid>
-        <ion-item class="card" *ngFor="let notification of notifications" routerLink="/{{ notification.data.route }}">
+        <ion-item class="card" *ngFor="let notification of notifications" routerLink="/{{ notification?.data?.route }}">
           <ion-label class="notification-data ">
             <h2>{{ notification.title }}</h2>
             <p>{{ notification.body }}</p>
