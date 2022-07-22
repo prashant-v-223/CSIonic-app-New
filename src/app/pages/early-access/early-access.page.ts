@@ -8,16 +8,8 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class EarlyAccessPage implements OnInit {
 
-  constructor(private userService:UserService) { }
+  constructor(private userService: UserService) { }
 
   ngOnInit() {
-   /*  setTimeout(() => {
-      this.signOutUser();
-    }, 5000); */
   }
-
-  /* signOutUser()
-  {
-    this.userService.signOut();
-  } */
 }

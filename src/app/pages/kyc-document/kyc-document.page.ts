@@ -17,9 +17,9 @@ export class KYCDocumentPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private userService: UserService
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   ionViewDidEnter(): void {
     this.user = this.userService.getUserFromStorage();
@@ -31,8 +31,7 @@ export class KYCDocumentPage implements OnInit {
     });
   }
 
-  onBack()
-  {
+  onBack() {
     this.navCtrl.back();
   }
 }

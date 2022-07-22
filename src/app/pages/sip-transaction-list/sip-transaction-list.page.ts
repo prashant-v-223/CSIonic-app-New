@@ -10,7 +10,7 @@ import { SIPService } from 'src/app/shared/services/sip.service';
 export class SipTransactionListPage implements OnInit {
 
   id: string;
-  transactionList : any;
+  transactionList: any;
   public segment: string = "buy";
   transactionType: string = 'buy'
   constructor(
@@ -24,8 +24,8 @@ export class SipTransactionListPage implements OnInit {
     this.loadDetails(this.transactionType);
   }
 
-  async loadDetails(type:string) {
-    const res = await this.sipService.getSIPTransectionDetails(this.id,type);
+  async loadDetails(type: string) {
+    const res = await this.sipService.getSIPTransectionDetails(this.id, type);
     this.transactionList = res.data?.data;
   }
 

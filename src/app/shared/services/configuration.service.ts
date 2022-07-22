@@ -11,7 +11,7 @@ export class ConfigurationService {
   constructor(
     private api: ApiCallService,
     private apiConfig: ApiConfiguration
-  ) {}
+  ) { }
 
   async getConfiguration(fetchFromServer = false) {
     if (fetchFromServer || !this.configuration) {

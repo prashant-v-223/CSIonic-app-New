@@ -57,7 +57,6 @@ export class BankVerificationPage implements OnInit {
     });
   }
 
-
   getBankDetails() {
     this.isLoading = true;
     this.bankService.getAccountDetails(this.userId).then(res => {
@@ -71,7 +70,6 @@ export class BankVerificationPage implements OnInit {
       this.isLoading = false;
     });
   }
-
   onBankVerification() {
     if (this.bankDetailsForm.valid) {
       const data = {

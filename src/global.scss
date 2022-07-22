@@ -15,7 +15,7 @@
 
 @font-face {
   font-family: 'Lexend';
-  src: url('/assets/fonts/Lexend-Regular.ttf');//mine
+  src        : url('/assets/fonts/Lexend-Regular.ttf'); //mine
 }
 
 /* Basic CSS for apps built with Ionic */
@@ -38,115 +38,128 @@
 :root {
 
   --amplify-primary-color: #558080;
-  --amplify-primary-tint: #337e7e;
-  --amplify-primary-shade: #115858/* #41a930 */;
-  --theme-color: #2B7979;
-  --theme-d-color: #337e7e;
-  --bg-lighter: #e1eeee;
-  --blackColor: #102e28;
-  --lighter-b-Color: #2f4858;
-  --f-Poppins: "Poppins", sans-serif;
-  --f-Lexend: "Lexend";
-  --f-Raleway: "Raleway", sans-serif;
-  --amplify-font-family: "Poppins", sans-serif;
-  --amplify-text-sm: 16px;
-  --amplify-text-xs: 14px;
-  --amplify-grey: #102e28;
-  --amplify-font-weight: 600;
-  --amplify-background-color: rgba(0, 0, 0, 0) !important;
+  --amplify-primary-tint : #337e7e;
+  --amplify-primary-shade: #115858
+    /* #41a930 */
+  ;
+  --theme-color               : #2B7979;
+  --theme-d-color             : #337e7e;
+  --bg-lighter                : #e1eeee;
+  --blackColor                : #102e28;
+  --lighter-b-Color           : #2f4858;
+  --f-Poppins                 : "Poppins", sans-serif;
+  --f-Lexend                  : "Lexend";
+  --f-Raleway                 : "Raleway", sans-serif;
+  --amplify-font-family       : "Poppins", sans-serif;
+  --amplify-text-sm           : 16px;
+  --amplify-text-xs           : 14px;
+  --amplify-grey              : #102e28;
+  --amplify-font-weight       : 600;
+  --amplify-background-color  : rgba(0, 0, 0, 0) !important;
   --amplify-secondary-contrast: var(--bg-lighter);
-  --light-gray: #78828A;
-  --light-black:#1F2C37;
-  --lighter-gray:#F5F5F5;
-  --light-gray-color:#F8F8F8;
-  ---border: 10px;
-  --input-border: #ECF1F6;
-  --input-color: #FDFDFD;
-  --white: #FFFFFF;
+  --light-gray                : #78828A;
+  --light-black               : #1F2C37;
+  --lighter-gray              : #F5F5F5;
+  --light-gray-color          : #F8F8F8;
+  //---border                   : 10px;
+  --input-border              : #ECF1F6;
+  --input-color               : #FDFDFD;
+  --white                     : #FFFFFF;
 
-  --ion-color-primary: #115858;
-	--ion-color-primary-rgb: 56,128,255;
-	--ion-color-primary-contrast: #ffffff;
-	--ion-color-primary-contrast-rgb: 255,255,255;
-	--ion-color-primary-shade: #2B7979;
-	--ion-color-primary-tint: #558080;
+  --ion-color-primary             : #115858;
+  --ion-color-primary-rgb         : 56, 128, 255;
+  --ion-color-primary-contrast    : #ffffff;
+  --ion-color-primary-contrast-rgb: 255, 255, 255;
+  --ion-color-primary-shade       : #2B7979;
+  --ion-color-primary-tint        : #558080;
 }
+
 .f-Poppins {
   font-family: var(--f-Lexend) !important;
 }
+
 .f-Lexend {
   font-family: var(--f-Lexend) !important;
 }
+
 ion-button {
   &.md {
     text-transform: inherit;
   }
 }
+
 .ion-button-theme {
-  --color: var(--blackColor);
-  --background: var(--theme-color);
-  --background-activated: var(--theme-color);
-  --background-focused: var(--theme-color);
-  --background-hover: var(--theme-color);
+  --color                       : var(--blackColor);
+  --background                  : var(--theme-color);
+  --background-activated        : var(--theme-color);
+  --background-focused          : var(--theme-color);
+  --background-hover            : var(--theme-color);
   --background-activated-opacity: 1;
-  --background-focused-opacity: 1;
-  --background-hover-opacity: 1;
-  color: #fff;
+  --background-focused-opacity  : 1;
+  --background-hover-opacity    : 1;
+  color                         : #fff;
 }
+
 .ion-button-theme-lighter {
-  --color: var(--blackColor);
-  color: var(--blackColor);
+  --color                       : var(--blackColor);
+  color                         : var(--blackColor);
   //--background: var(--bg-lighter);
-  --background: transparent;
-  --box-shadow: none !important;
-  border:1px solid #F8F8F8;
-  border-radius: 12px;
-  --background-activated: var(--theme-color);
-  --background-focused: var(--theme-color);
-  --background-hover: var(--theme-color);
+  --background                  : transparent;
+  --box-shadow                  : none !important;
+  border                        : 1px solid #F8F8F8;
+  border-radius                 : 12px;
+  --background-activated        : var(--theme-color);
+  --background-focused          : var(--theme-color);
+  --background-hover            : var(--theme-color);
   --background-activated-opacity: 1;
-  --background-focused-opacity: 1;
-  --background-hover-opacity: 1;
+  --background-focused-opacity  : 1;
+  --background-hover-opacity    : 1;
+
   &.ion-activated {
     color: #fff;
   }
 }
 
 .ion-button-white {
-  --background: #fff;
-  --background-activated: var(--theme-color);
-  --background-focused: var(--theme-color);
-  --background-hover: var(--theme-color);
+  --background                  : #fff;
+  --background-activated        : var(--theme-color);
+  --background-focused          : var(--theme-color);
+  --background-hover            : var(--theme-color);
   --background-activated-opacity: 1;
-  --background-focused-opacity: 1;
-  --background-hover-opacity: 1;
-  --ion-color-base: var(--blackColor) !important;
-  --box-shadow: inherit;
-  text-transform: inherit;
-  color: var(--blackColor);
+  --background-focused-opacity  : 1;
+  --background-hover-opacity    : 1;
+  --ion-color-base              : var(--blackColor) !important;
+  --box-shadow                  : inherit;
+  text-transform                : inherit;
+  color                         : var(--blackColor);
+
   &.ion-activated {
-    color: #fff;
+    color                 : #fff;
     --background-activated: var(--theme-color);
+
     ion-icon {
       stroke: #fff !important;
     }
   }
 }
+
 .ion-button-theme-outline {
-  --border-color: var(--theme-d-color);
-  --background: transparent;
-  --color: var(--theme-d-color);
-  --background-activated: var(--theme-d-color);
-  --background-focused: var(--theme-d-color);
-  --background-hover: var(--theme-d-color);
+  --border-color                : var(--theme-d-color);
+  --background                  : transparent;
+  --color                       : var(--theme-d-color);
+  --background-activated        : var(--theme-d-color);
+  --background-focused          : var(--theme-d-color);
+  --background-hover            : var(--theme-d-color);
   --background-activated-opacity: 1;
-  --background-focused-opacity: 1;
-  --background-hover-opacity: 1;
+  --background-focused-opacity  : 1;
+  --background-hover-opacity    : 1;
+
   &.ion-activated {
-    color: #fff;
+    color                 : #fff;
     --background-activated: var(--theme-d-color);
   }
 }
+
 .bg-lighter {
   background-color: var(--bg-lighter);
 }
@@ -154,137 +167,168 @@ ion-button {
 .bg-lighter-gray {
   background-color: var(--lighter-gray);
 }
+
 .bg-theme {
   background-color: var(--theme-color);
 }
+
 .bg-dark {
   background-color: var(--blackColor);
 }
+
 .bg-greenLighter {
   background-color: #91b9b3;
 }
+
 .bg-blue {
   background-color: #4f8ab7;
 }
+
 .bg-grey {
   background-color: #b1d2db;
 }
+
 .bg-danger {
   background-color: #ff8080;
 }
+
 .bg-danger-light {
   background-color: #ffdada;
 }
+
 .d-flex {
   display: flex;
 }
+
 .justify-center {
   justify-content: center;
 }
+
 .justify-start {
   justify-content: flex-start;
 }
+
 .justify-end {
   justify-content: flex-end;
 }
+
 .justify-between {
   justify-content: space-between;
 }
+
 .align-center {
   align-items: center;
 }
+
 .align-start {
   align-items: flex-start;
 }
+
 .align-end {
   align-items: flex-end;
 }
+
 .text-center {
   text-align: center !important;
 }
+
 .w-100 {
   width: 100%;
 }
+
 .text-white {
   color: #fff;
 }
+
 .text-theme {
   color: var(--theme-color);
 }
+
 .text-dark {
   color: var(--blackColor);
 }
+
 .text-d-theme {
   color: var(--theme-color);
 }
+
 .text-danger {
   color: #ff8080;
 }
+
 .text-right {
   text-align: right;
 }
+
 .text-left {
   text-align: left;
 }
+
 ion-content {
   --ion-background-color: #fff;
 }
+
 p {
-  font-size: 14px;
+  font-size  : 14px;
   line-height: 18px;
   font-family: var(--f-Lexend);
-  color: var(--blackColor);
-  opacity: 0.8;
+  color      : var(--blackColor);
+  opacity    : 0.8;
 }
+
 .link {
   text-decoration: none;
-  outline: none;
-  color: var(--ion-color-primary);
-  font-size: 0.9rem;
+  outline        : none;
+  color          : var(--ion-color-primary);
+  font-size      : 0.9rem;
 }
 
 .link-dark {
-  font-size: 14px;
-  color: #000;
-  font-family: var(--f-Lexend);
+  font-size      : 14px;
+  color          : #000;
+  font-family    : var(--f-Lexend);
   text-decoration: inherit;
 }
+
 .link-primary {
-  font-size: 14px;
-  color: var(--theme-color);
-  font-family: var(--f-Lexend);
+  font-size      : 14px;
+  color          : var(--theme-color);
+  font-family    : var(--f-Lexend);
   text-decoration: inherit;
 }
+
 .gray-text {
   color: var(--ion-color-medium);
 }
+
 .icon-up {
   font-size: 16px;
 }
+
 .page-container {
-  display: flex;
+  display       : flex;
   flex-direction: column;
-  align-items: stretch;
-  height: 100%;
-  padding: 1rem;
-  position: relative;
+  align-items   : stretch;
+  height        : 100%;
+  padding       : 1rem;
+  position      : relative;
 }
 
 .app-logo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display        : flex;
+  flex-direction : column;
+  align-items    : center;
   justify-content: center;
-  margin-bottom: 3rem;
+  margin-bottom  : 3rem;
 
   .logo {
-    width: 60px;
-    height: 60px;
+    width        : 60px;
+    height       : 60px;
     margin-bottom: 2rem;
   }
 
   span {
-    color: var(--ion-color-primary);
+    color    : var(--ion-color-primary);
     font-size: 1.5rem;
   }
 }
@@ -307,25 +351,25 @@ p {
 
 .green-bg {
   background-color: var(--ion-color-success);
-  color: #fff;
+  color           : #fff;
 }
 
 .header {
-  position: relative;
+  position     : relative;
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  min-height: 50px;
-  align-items: center;
-  padding: 1rem;
+  min-height   : 50px;
+  align-items  : center;
+  padding      : 1rem;
 
   .header-title {
-    position: absolute;
-    color: var(--ion-color-primary);
-    position: absolute;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
+    position     : absolute;
+    color        : var(--ion-color-primary);
+    position     : absolute;
+    margin-left  : auto;
+    margin-right : auto;
+    left         : 0;
+    right        : 0;
+    text-align   : center;
     margin-bottom: 0;
   }
 }
@@ -335,11 +379,11 @@ p {
 }
 
 .body-container {
-  display: flex;
+  display       : flex;
   flex-direction: column;
-  align-items: stretch;
-  overflow: auto;
-  flex-grow: 1;
+  align-items   : stretch;
+  overflow      : auto;
+  flex-grow     : 1;
 }
 
 .grow {
@@ -347,23 +391,23 @@ p {
 }
 
 .link-btn {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  outline: none;
-  padding: 0.5rem 0.7rem;
-  color: var(--ion-color-success);
+  display         : flex;
+  align-items     : center;
+  text-decoration : none;
+  outline         : none;
+  padding         : 0.5rem 0.7rem;
+  color           : var(--ion-color-success);
   background-color: rgba(45, 211, 111, 0.12);
-  border-radius: 20px;
+  border-radius   : 20px;
 }
 
 .amount-input {
-  width: 100%;
+  width     : 100%;
   margin-top: 2rem;
-  height: 40px;
-  font-size: 1.5rem;
-  border: none;
-  outline: none;
+  height    : 40px;
+  font-size : 1.5rem;
+  border    : none;
+  outline   : none;
   text-align: center;
 
   mat-error {
@@ -372,16 +416,17 @@ p {
 }
 
 .fa-icon {
-  font-size: 22px;
+  font-size  : 22px;
   line-height: 22px;
-  width: 22px;
-  height: 22px;
-  text-align: center;
+  width      : 22px;
+  height     : 22px;
+  text-align : center;
 
   &.size {
     &-sm {
       font-size: 15px;
     }
+
     &-very-large {
       font-size: 200px;
     }
@@ -393,43 +438,43 @@ p {
 }
 
 .link-btn {
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  outline: none;
-  padding: 0.5rem 0.7rem;
-  color: var(--ion-color-success);
+  display         : flex;
+  align-items     : center;
+  text-decoration : none;
+  outline         : none;
+  padding         : 0.5rem 0.7rem;
+  color           : var(--ion-color-success);
   background-color: rgba(45, 211, 111, 0.12);
-  border-radius: 20px;
+  border-radius   : 20px;
 }
 
 .amount-input {
-  width: 100%;
+  width     : 100%;
   margin-top: 2rem;
-  height: 40px;
-  font-size: 1.5rem;
-  border: none;
-  outline: none;
+  height    : 40px;
+  font-size : 1.5rem;
+  border    : none;
+  outline   : none;
   text-align: center;
 }
 
 .amplify-authenticator {
-  --box-shadow: none;
-  height: 400px !important;
+  --box-shadow      : none;
+  height            : 400px !important;
   --container-height: 400px;
-  --padding: 0;
+  --padding         : 0;
 }
 
 .page-header-container {
-  display: flex;
-  align-items: center;
+  display        : flex;
+  align-items    : center;
   justify-content: center;
-  position: relative;
-  flex-shrink: 0;
+  position       : relative;
+  flex-shrink    : 0;
 
   .back-btn {
     position: absolute;
-    left: 0;
+    left    : 0;
   }
 }
 
@@ -440,70 +485,81 @@ p {
     text-transform: uppercase !important;
   }
 }
+
 .ion-content {
   padding: 1rem;
 }
 
 // Theme Banner Section Star
 .theme-banner {
-  padding: 2rem 1rem 2.5rem 1rem;
+  padding : 2rem 1rem 2.5rem 1rem;
   position: relative;
+
   &::after {
-    content: "";
-    position: absolute;
-    left: 0px;
-    bottom: 0px;
-    height: 25px;
+    content         : "";
+    position        : absolute;
+    left            : 0px;
+    bottom          : 0px;
+    height          : 25px;
     background-color: #fff;
-    width: 100%;
-    border-radius: 25px 25px 0px 0px;
+    width           : 100%;
+    border-radius   : 25px 25px 0px 0px;
   }
+
   .ion-title {
-    font-size: 26px;
+    font-size  : 26px;
     font-family: var(--f-Lexend);
     font-weight: 500;
-    margin: 0rem;
+    margin     : 0rem;
     line-height: 28px;
-    color: #102e28;
+    color      : #102e28;
   }
+
   .Price {
-    font-size: 30px;
-    font-weight: 400;
-    line-height: 32px;
+    font-size     : 30px;
+    font-weight   : 400;
+    line-height   : 32px;
     letter-spacing: -1.08px;
-    margin-bottom: 0px;
-    font-weight: 400;
-    margin-top: 20px;
+    margin-bottom : 0px;
+    font-weight   : 400;
+    margin-top    : 20px;
   }
+
   .small-label {
-    font-size: 13px;
+    font-size  : 13px;
     line-height: 16px;
     //@at-root: var(--f-Lexend);
     font-family: var(--f-Lexend);
     font-weight: 400;
-    text-align: left;
+    text-align : left;
   }
+
   .invest-list {
-    padding: 0px;
+    padding   : 0px;
     margin-top: 15px;
   }
+
   .invest-list h6 {
-    font-size: 18px;
-    line-height: 20px;
-    font-weight: 500;
+    font-size     : 18px;
+    line-height   : 20px;
+    font-weight   : 500;
     letter-spacing: -0.08px;
-    color: var(--blackColor);
-    margin-bottom: 0px;
+    color         : var(--blackColor);
+    margin-bottom : 0px;
   }
+
   .plant-img {
-    display: flex;
-    align-items: center;
+    display        : flex;
+    align-items    : center;
     justify-content: center;
+
     ion-icon {
       font-size: 135px;
     }
   }
+
   &.bg-theme {
+
     .ion-title,
     .small-label,
     .Price,
@@ -512,112 +568,128 @@ p {
     }
   }
 }
+
 // Theme Banner Section End
 // Theme Header Start
 .themeHeader {
-  display: flex;
+  display        : flex;
   justify-content: space-between;
-  align-items: center;
+  align-items    : center;
 
   &::after {
     display: none;
   }
+
   .list-header {
     min-height: 55px;
-    padding: 0px 0.5rem;
+    padding   : 0px 0.5rem;
   }
+
   ion-toolbar {
-    --min-height: 55px;
+    --min-height  : 55px;
     //padding: 0rem 0.8rem 0rem 0.5rem;
-    padding: 0rem 1rem 0rem 1rem;
-    --background: #fff;
+    padding       : 0rem 1rem 0rem 1rem;
+    --background  : #fff;
     --border-width: 0px;
-    --opacity: 1;
+    --opacity     : 1;
     --border-color: transparent;
   }
+
   .menuLeft {
-    width: 36px;
-    height: 36px;
-    border-radius: 6px;
+    width           : 36px;
+    height          : 36px;
+    border-radius   : 6px;
     background-color: var(--bg-lighter);
-    font-size: 20px;
+    font-size       : 20px;
   }
+
   .userProfile {
-    width: 36px;
-    height: 36px;
+    width          : 36px;
+    height         : 36px;
     --border-radius: 6px;
   }
+
   ion-back-button,
   .back-button {
     --icon-margin-end: 0;
-    color: var(--blackColor);
-    --color: var(--blackColor);
-    font-family: var(--f-Lexend);
-    --icon-font-size: 28px;
-    --min-height: 32px;
-    font-size: 16px;
+    color            : var(--blackColor);
+    --color          : var(--blackColor);
+    font-family      : var(--f-Lexend);
+    --icon-font-size : 28px;
+    --min-height     : 32px;
+    font-size        : 16px;
+
     &.md {
-      width: 40px;
-      height: 40px;
-      --min-height: 40px;
-      --min-width: 40px;
-      min-width: 40px;
-      border-radius: 10px;
-     // background-color: var(--bg-lighter);
+      width              : 40px;
+      height             : 40px;
+      --min-height       : 40px;
+      --min-width        : 40px;
+      min-width          : 40px;
+      border-radius      : 10px;
+      // background-color: var(--bg-lighter);
       // font-size: 24px;
-      line-height: 0px;
-      --padding-start: 0;
-      --padding-end: 0;
-      --icon-font-size: 22px;
+      line-height        : 0px;
+      --padding-start    : 0;
+      --padding-end      : 0;
+      --icon-font-size   : 22px;
+
       .button-native {
-        padding-left: 0px;
+        padding-left : 0px;
         padding-right: 0px;
       }
     }
   }
+
   .list-md {
-    padding-top: 10px;
+    padding-top   : 10px;
     padding-bottom: 10px;
   }
 }
+
 // Theme Header End
 .ion-list {
   padding: 1rem;
 }
+
 .themeHeading {
-  display: flex;
+  display        : flex;
   justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  margin: 1rem 0rem 0.5rem;
+  align-items    : center;
+  width          : 100%;
+  margin         : 1rem 0rem 0.5rem;
+
   h6 {
-    font-size: 16px;
-    color: #000;
+    font-size     : 16px;
+    color         : #000;
     text-transform: uppercase;
-    line-height: 16px;
-    font-family: var(--f-Lexend);
-    font-weight: 600;
-    margin-bottom: 0px;
+    line-height   : 16px;
+    font-family   : var(--f-Lexend);
+    font-weight   : 600;
+    margin-bottom : 0px;
   }
 }
+
 //  Popular Coin Card Start
 .popularSection {
   app-package-card {
-    width: 100%;
-    margin-right: 10px;
+    width        : 100%;
+    margin-right : 10px;
     margin-bottom: 10px;
   }
+
   .card {
-    display: flex;
-    width: 100%;
+    display      : flex;
+    width        : 100%;
     border-radius: 15px;
-    margin-right: 15px;
-    flex-flow: column;
-    box-shadow: 0px 5px 20px rgba(122, 122, 122, 0.12);
+    margin-right : 15px;
+    flex-flow    : column;
+    box-shadow   : 0px 5px 20px rgba(122, 122, 122, 0.12);
+
     .card-body {
       padding: 12px;
       display: inline-block;
-      width: 100%;
+      width  : 100%;
+
       /* .coinTag {
         display: flex;
         justify-content: center;
@@ -630,83 +702,94 @@ p {
         }
       } */
       .coinTag {
-        display: flex;
+        display        : flex;
         justify-content: center;
-        align-items: center;
-        width: 28px;
-        height: 28px;
-        border-radius: 10px;
-        margin-right: 10px;
-        box-shadow: 0px 5px 20px rgb(122 122 122 / 12%);
-        border: solid 2px #fff;
+        align-items    : center;
+        width          : 28px;
+        height         : 28px;
+        border-radius  : 10px;
+        margin-right   : 10px;
+        box-shadow     : 0px 5px 20px rgb(122 122 122 / 12%);
+        border         : solid 2px #fff;
+
         .coin-icon {
           font-size: 32px;
         }
       }
+
       .small-text {
         border-radius: 5px;
-        padding: 2px 5px 2px 2px;
-        display: flex;
-        align-items: center;
-        font-size: 14px;
-        line-height: 12px;
-        font-weight: 400;
+        padding      : 2px 5px 2px 2px;
+        display      : flex;
+        align-items  : center;
+        font-size    : 14px;
+        line-height  : 12px;
+        font-weight  : 400;
+
         img {
           margin-right: 2px;
         }
       }
+
       .small-label {
-        font-size: 13px;
-        opacity: 0.9;
+        font-size  : 13px;
+        opacity    : 0.9;
         line-height: 16px;
         font-family: var(--f-Lexend);
         font-weight: 300;
-        text-align: left;
+        text-align : left;
       }
+
       .Price {
-        font-size: 18px;
-        font-weight: 500;
-        line-height: 22px;
+        font-size     : 18px;
+        font-weight   : 500;
+        line-height   : 22px;
         letter-spacing: -1.08px;
-        margin-bottom: 0px;
-        margin-top: 2px;
-        text-align: left;
+        margin-bottom : 0px;
+        margin-top    : 2px;
+        text-align    : left;
       }
     }
+
     .large-line {
       font-size: 165px;
-      height: 57px;
-      margin: 0 auto;
-      width: 100%;
+      height   : 57px;
+      margin   : 0 auto;
+      width    : 100%;
     }
   }
+
   &.basket {
     .card {
       .card-body {
         .view-icon {
           ion-icon {
             font-size: 22px;
-            color: #999;
+            color    : #999;
           }
         }
+
         .coinTag {
           margin-left: -18px;
-          border: solid 2px #fff;
-          z-index: 1;
-          box-shadow: 0px 5px 20px rgb(122 122 122 / 12%);
+          border     : solid 2px #fff;
+          z-index    : 1;
+          box-shadow : 0px 5px 20px rgb(122 122 122 / 12%);
+
           &:first-child {
             margin-left: 0px;
           }
         }
+
         .line-draw {
           font-size: 50px;
         }
+
         .small-price {
-          font-size: 16px;
-          line-height: 16px;
+          font-size     : 16px;
+          line-height   : 16px;
           letter-spacing: -0.05px;
-          margin-bottom: 0px;
-          margin-top: 5px;
+          margin-bottom : 0px;
+          margin-top    : 5px;
         }
 
         .line-draw {
@@ -715,35 +798,38 @@ p {
 
         .right-section {
           .small-label {
-            text-align: right;
+            text-align : right;
             line-height: 14px;
           }
         }
+
         .small-label {
-          opacity: 1;
-          line-height: 20px;
+          opacity      : 1;
+          line-height  : 20px;
           margin-bottom: 2px;
-          font-weight: 400;
-          line-height: 14px;
-          font-family: Lexend;
+          font-weight  : 400;
+          line-height  : 14px;
+          font-family  : Lexend;
         }
-        .change-percentage,.currncy-name
-        {
-          color: #6c757d !important;
+
+        .change-percentage,
+        .currncy-name {
+          color      : #6c757d !important;
           font-weight: 500;
           font-family: Lexend;
         }
-        .popular-currency
-        {
+
+        .popular-currency {
           background-color: #E6E6E6;
-          padding: 4px 6px;
-          color: #78828A;
-          font-family: Lexend;
+          padding         : 4px 6px;
+          color           : #78828A;
+          font-family     : Lexend;
         }
       }
     }
   }
 }
+
 .popularSection {
   &.basket {
     .card .card-body .Price {
@@ -751,85 +837,88 @@ p {
     }
   }
 }
-.popular-currency
-{
+
+.popular-currency {
   background-color: #E6E6E6;
-  padding: 4px 6px;
-  color: #78828A;
-  font-family: Lexend;
+  padding         : 4px 6px;
+  color           : #78828A;
+  font-family     : Lexend;
 }
 
 .coinTag-inner {
-  padding: 2px;
-  display: flex;
+  padding      : 2px;
+  display      : flex;
   border-radius: 20px;
 
   .coinTag {
-    display: flex;
+    display        : flex;
     justify-content: center;
-    align-items: center;
-    /* width: 50px;
-    height: 50px;
-    border: solid 2px #fff;
-    margin-left: -25px;
-    border-radius: 15px; */
-    margin-left: -15px;
-    z-index: 1;
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-    border: solid 2px #fff;
+    align-items    : center;
+    /* width       : 50px;
+    height         : 50px;
+    border         : solid 2px #fff;
+    margin-left    : -25px;
+    border-radius  : 15px; */
+    margin-left    : -15px;
+    z-index        : 1;
+    width          : 38px;
+    height         : 38px;
+    border-radius  : 12px;
+    border         : solid 2px #fff;
     //box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
-    box-shadow: 0px 5px 20px rgb(122 122 122 / 12%);
+    box-shadow     : 0px 5px 20px rgb(122 122 122 / 12%);
 
     &:first-child {
       margin-left: 0px;
     }
 
     .coin-icon {
-      width:100px;
+      width: 100px;
     }
   }
 }
+
 .themeProgress {
-  --progress-background: var(--theme-color);
+  --progress-background   : var(--theme-color);
   --progress-border-radius: 50px;
-  --buffer-background: transparent;
-  border-radius: 8px;
-  height: 8px;
-  position: relative;
+  --buffer-background     : transparent;
+  border-radius           : 8px;
+  height                  : 8px;
+  position                : relative;
+
   &::after {
-    content: "";
-    position: absolute;
-    top: 0px;
-    bottom: 0px;
-    margin: auto;
-    width: 100%;
-    height: 2px;
+    content         : "";
+    position        : absolute;
+    top             : 0px;
+    bottom          : 0px;
+    margin          : auto;
+    width           : 100%;
+    height          : 2px;
     background-color: #e6e6e6;
   }
 }
+
 .portfolio-price {
   span {
     display: inline-block;
-    width: 100%;
+    width  : 100%;
   }
 
   .Price {
-    font-size: 34px;
-    font-weight: 400;
-    line-height: 36px;
+    font-size     : 34px;
+    font-weight   : 400;
+    line-height   : 36px;
     letter-spacing: -1.08px;
-    margin-bottom: 0px;
-    margin-top: 5px;
+    margin-bottom : 0px;
+    margin-top    : 5px;
   }
 
   .small-label,
   .small-text {
-    font-size: 14px;
+    font-size  : 14px;
     line-height: 16px;
-    text-align: left;
-    color: #102e28;
+    text-align : left;
+    color      : #102e28;
   }
 
   .small-label {
@@ -838,73 +927,81 @@ p {
   }
 
   .small-text {
-    font-size: 15px;
+    font-size  : 15px;
     line-height: 20px;
     font-weight: 500;
-    color: var(--blackColor);
+    color      : var(--blackColor);
   }
 }
+
 //  Popular Coin Card End
 .topHeader {
   ion-searchbar {
-    padding: 0px;
-    --background: var(--bg-lighter);
-    height: 45px;
-    --border-radius: 10px;
-    --color: #000;
+    padding            : 0px;
+    --background       : var(--bg-lighter);
+    height             : 45px;
+    --border-radius    : 10px;
+    --color            : #000;
     --placeholder-color: #444;
-    font-family: var(--f-Lexend);
-    --box-shadow: none;
+    font-family        : var(--f-Lexend);
+    --box-shadow       : none;
+
     .searchbar-input-container.sc-ion-searchbar-ios {
       height: 100%;
     }
+
     .searchbar-search-icon.sc-ion-searchbar-ios {
-      left: 12px;
+      left : 12px;
       width: 20px;
     }
+
     .searchbar-search-icon.sc-ion-searchbar-md {
       left: 9px;
     }
+
     &.searchbar-left-aligned .sc-ion-searchbar-md input {
       -webkit-padding-start: 40px;
-      padding-inline-start: 40px;
-      -webkit-padding-end: 30px;
-      padding-inline-end: 30px;
+      padding-inline-start : 40px;
+      -webkit-padding-end  : 30px;
+      padding-inline-end   : 30px;
     }
-    &.searchbar-left-aligned.sc-ion-searchbar-ios-h
-      .searchbar-input.sc-ion-searchbar-ios {
+
+    &.searchbar-left-aligned.sc-ion-searchbar-ios-h .searchbar-input.sc-ion-searchbar-ios {
       -webkit-padding-start: 40px;
-      padding-inline-start: 40px;
-      font-size: 16px;
+      padding-inline-start : 40px;
+      font-size            : 16px;
     }
   }
 }
+
 // Create Sip Start
 
 .sip-created {
   --ion-background-color: var(--lighter-b-Color);
+
   .ion-list {
     padding-top: 3rem;
   }
+
   .sip-done {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 135px;
-    height: 135px;
-    border-radius: 100%;
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    width           : 135px;
+    height          : 135px;
+    border-radius   : 100%;
     background-color: var(--theme-color);
-    border: solid 10px #fff;
-    position: relative;
+    border          : solid 10px #fff;
+    position        : relative;
 
     &::after {
-      content: "";
-      position: absolute;
-      top: -18px;
-      left: -18px;
-      border: solid 1px #fff;
-      width: 150px;
-      height: 150px;
+      content      : "";
+      position     : absolute;
+      top          : -18px;
+      left         : -18px;
+      border       : solid 1px #fff;
+      width        : 150px;
+      height       : 150px;
       border-radius: 50%;
     }
 
@@ -914,51 +1011,52 @@ p {
   }
 
   .header-title {
-    font-size: 24px;
-    font-weight: 500;
-    margin-top: 0rem;
-    line-height: 32px;
-    color: #fff;
+    font-size     : 24px;
+    font-weight   : 500;
+    margin-top    : 0rem;
+    line-height   : 32px;
+    color         : #fff;
     letter-spacing: -0.08px;
-    margin-bottom: 5px;
+    margin-bottom : 5px;
   }
 
   .small-label {
-    font-size: 16px;
+    font-size  : 16px;
     line-height: 16px;
     font-family: var(--f-Lexend);
     font-weight: 300;
-    text-align: left;
-    opacity: 0.6;
-    color: #fff;
+    text-align : left;
+    opacity    : 0.6;
+    color      : #fff;
   }
 }
 
 .view-sip {
-  border-radius: 18px;
+  border-radius   : 18px;
   background-color: #fff;
-  width: 100%;
+  width           : 100%;
+
   .portfolio-price {
     span {
       display: inline-block;
-      width: 100%;
+      width  : 100%;
     }
 
     .Price {
-      font-size: 34px;
-      font-weight: 400;
-      line-height: 36px;
+      font-size     : 34px;
+      font-weight   : 400;
+      line-height   : 36px;
       letter-spacing: -1.08px;
-      margin-bottom: 0px;
-      margin-top: 5px;
+      margin-bottom : 0px;
+      margin-top    : 5px;
     }
 
     .small-label,
     .small-text {
-      font-size: 16px;
+      font-size  : 16px;
       line-height: 16px;
-      text-align: left;
-      color: #102e28;
+      text-align : left;
+      color      : #102e28;
     }
 
     .small-label {
@@ -967,10 +1065,10 @@ p {
     }
 
     .small-text {
-      font-size: 16px;
+      font-size  : 16px;
       line-height: 20px;
       font-weight: 500;
-      color: var(--blackColor);
+      color      : var(--blackColor);
     }
   }
 }
@@ -979,110 +1077,128 @@ p {
 // Custom Form Start
 .customForm,
 .custom-check {
-  --min-height: auto;
-  --padding-start: 0px;
-  --inner-padding-end: 0px;
-  --inner-border-width: 0px;
-  margin-bottom: 1.5rem;
-  --border-color: transparent !important;
-  --background-activated: transparent !important;
-  --background-focused: transparent !important;
-  --background-hover: currentColor !important;
-  --color-activated: var(--theme-color);
-  --color-focused: var(--theme-color);
-  --color-hover: var(--theme-color);
-  --full-highlight-height: transparent;
-  --inset-highlight-height: transparent;
-  --highlight-color-focused: var(--theme-color);
+  --min-height                  : auto;
+  --padding-start               : 0px;
+  --inner-padding-end           : 0px;
+  --inner-border-width          : 0px;
+  margin-bottom                 : 1.5rem;
+  --border-color                : transparent !important;
+  --background-activated        : transparent !important;
+  --background-focused          : transparent !important;
+  --background-hover            : currentColor !important;
+  --color-activated             : var(--theme-color);
+  --color-focused               : var(--theme-color);
+  --color-hover                 : var(--theme-color);
+  --full-highlight-height       : transparent;
+  --inset-highlight-height      : transparent;
+  --highlight-color-focused     : var(--theme-color);
   --background-activated-opacity: 0 !important;
-  --background-focused-opacity: 0 !important;
-  --background-hover-opacity: 0 !important;
-  --background: transparent;
+  --background-focused-opacity  : 0 !important;
+  --background-hover-opacity    : 0 !important;
+  --background                  : transparent;
 }
+
 .custom-check {
   ion-checkbox {
     margin: 0px 10px 0px 0px;
   }
+
   .check-theme {
-    --background-checked: var(--theme-color);
+    --background-checked  : var(--theme-color);
     --border-color-checked: var(--theme-color);
   }
+
   ion-label {
     font-family: var(--f-Lexend);
   }
 }
+
 .custom-select {
   ion-select {
     border-radius: 15px 0px 0px 15px !important;
-    border-right: 0px !important;
+    border-right : 0px !important;
   }
+
   ion-input {
     border-radius: 0px 15px 15px 0px !important;
-    border-left: 0px !important;
+    border-left  : 0px !important;
   }
+
   .flag-icon {
-    width: 15px;
-    height: 10px;
+    width           : 15px;
+    height          : 10px;
     background-color: red;
-    border-radius: 5px;
+    border-radius   : 5px;
   }
 }
+
 .customForm {
-  .sc-ion-input-ios,.so-ion-textarea-ios {
+
+  .sc-ion-input-ios,
+  .so-ion-textarea-ios {
     border-radius: 12px;
   }
+
   .sc-ion-input-ios:-webkit-autofill,
   .sc-ion-input-ios:-webkit-autofill:hover,
   .sc-ion-input-ios:-webkit-autofill:focus,
   .sc-ion-input-ios:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px var(--input-border) inset !important;
-    border: solid 1px var(--input-border);
+    border            : solid 1px var(--input-border);
   }
+
   &.item-has-focus {
     .label-stacked.sc-ion-label-md-h:not(.ion-color) {
       color: var(--input-color);
     }
-    ion-input,ion-select {
+
+    ion-input,
+    ion-select {
       border-color: var(--input-border);
     }
   }
+
   ion-label {
-    margin: 0px 0px 10px 0px !important;
-    font-size: 13px !important;
-    color: #000;
-    text-transform: uppercase;
-    line-height: 16px;
-    font-family: var(--f-Lexend);
-    font-weight: 500;
-    margin-bottom: 0px;
+    margin                   : 0px 0px 10px 0px !important;
+    font-size                : 13px !important;
+    color                    : #000;
+    text-transform           : uppercase;
+    line-height              : 16px;
+    font-family              : var(--f-Lexend);
+    font-weight              : 500;
+    margin-bottom            : 0px;
     --highlight-color-focused: red;
+
     &.sc-ion-label-md-h {
       -webkit-transform: inherit;
-      transform: inherit;
+      transform        : inherit;
     }
   }
-  ion-input,ion-textarea,
+
+  ion-input,
+  ion-textarea,
   ion-select {
-    background: var(--input-color);
-    --padding-top: 15px !important;
-    --padding-bottom: 15px !important;
-    --padding-start: 15px !important;
-    --padding-end: 15px !important;
-    border-radius: 12px;
-    font-size: 14px;
-    font-family: var(--f-Lexend);
-    font-weight: 400;
+    background           : var(--input-color);
+    --padding-top        : 15px !important;
+    --padding-bottom     : 15px !important;
+    --padding-start      : 15px !important;
+    --padding-end        : 15px !important;
+    border-radius        : 12px;
+    font-size            : 14px;
+    font-family          : var(--f-Lexend);
+    font-weight          : 400;
     --placeholder-opacity: 0.9;
-    border: solid 2px var(--input-border);
+    border               : solid 2px var(--input-border);
   }
-  & + div.error-message {
+
+  &+div.error-message {
     --padding-start: 15px !important;
-    --padding-end: 15px !important;
-    margin-top: -1rem;
-    margin-bottom: 1rem;
-    padding-left: var(--padding-start);
-    padding-right: var(--padding-end);
-    color: var(--ion-color-danger);
+    --padding-end  : 15px !important;
+    margin-top     : -1rem;
+    margin-bottom  : 1rem;
+    padding-left   : var(--padding-start);
+    padding-right  : var(--padding-end);
+    color          : var(--ion-color-danger);
   }
 }
 
@@ -1094,40 +1210,46 @@ p {
 // Dial Pad Start
 .dial-pad {
   padding: 0rem 2rem;
+
   ion-button {
-    width: 80px;
-    height: 55px;
+    width            : 80px;
+    height           : 55px;
     //box-shadow: 0px 5px 20px rgba(122, 122, 122, 0.12);
     //--border-radius: 100%;
-    background-color: #fff;
-    margin: 0px;
-    font-family: var(--f-Lexend);
-    font-size: 20px;
-    font-weight: 600;
-    --padding-start: 0;
-    --padding-end: 0;
+    background-color : #fff;
+    margin           : 0px;
+    font-family      : var(--f-Lexend);
+    font-size        : 20px;
+    font-weight      : 600;
+    --padding-start  : 0;
+    --padding-end    : 0;
+
     &.ion-button-white {
-      stroke: #1F2C37;
-      font-size: 20px;
-      width: 80px;
-      height: 55px;
+      stroke       : #1F2C37;
+      font-size    : 20px;
+      width        : 80px;
+      height       : 55px;
       //box-shadow: 0px 5px 20px rgba(122, 122, 122, 0.12);
       border-radius: 12px;
-      border:1px solid #F8F8F8;
+      border       : 1px solid #F8F8F8;
+
       &.ion-activated {
         color: #fff;
-        fill: #fff;
+        fill : #fff;
       }
     }
   }
 }
+
 // Dial Pad End
 ion-select-popover {
   ion-item {
-    --min-height: auto;
+    --min-height  : auto;
     --border-color: #ddd;
+
     ion-radio {
       --color-checked: var(--theme-d-color);
+
       &.radio-checked {
         label {
           color: var(--theme-d-color);
@@ -1136,59 +1258,72 @@ ion-select-popover {
     }
   }
 }
+
 ion-action-sheet {
   -webkit-padding-start: 0px;
-  padding-inline-start: 0px;
-  -webkit-padding-end: 0px;
-  padding-inline-end: 0px;
+  padding-inline-start : 0px;
+  -webkit-padding-end  : 0px;
+  padding-inline-end   : 0px;
+
   &.sc-ion-action-sheet-ios-h,
   .sc-ion-action-sheet-md {
     --button-color: #000;
-    font-family: var(--f-Lexend);
-    font-weight: 400;
+    font-family   : var(--f-Lexend);
+    font-weight   : 400;
   }
+
   .action-sheet-selected.sc-ion-action-sheet-md,
   .action-sheet-selected.sc-ion-action-sheet-ios {
     color: var(--theme-color);
   }
+
   .action-sheet-button.sc-ion-action-sheet-ios {
-    padding-top: 15px;
+    padding-top   : 15px;
     padding-bottom: 15px;
-    height: 55px;
-    font-size: 16px !important;
-    contain: strict;
+    height        : 55px;
+    font-size     : 16px !important;
+    contain       : strict;
   }
+
   .action-sheet-button-inner.sc-ion-action-sheet-md {
     justify-content: center;
   }
+
   .action-sheet-cancel.sc-ion-action-sheet-ios {
     --button-color: #fff !important;
   }
+
   .action-sheet-cancel.sc-ion-action-sheet-ios::after,
   .action-sheet-group.sc-ion-action-sheet-md:last-child {
     background: var(--theme-color);
-    color: #fff !important;
+    color     : #fff !important;
   }
+
   .action-sheet-container.sc-ion-action-sheet-ios {
     -webkit-padding-start: 0px;
-    padding-inline-start: 0px;
-    -webkit-padding-end: 0px;
-    padding-inline-end: 0px;
+    padding-inline-start : 0px;
+    -webkit-padding-end  : 0px;
+    padding-inline-end   : 0px;
   }
+
   .action-sheet-group.sc-ion-action-sheet-ios,
   .action-sheet-group.sc-ion-action-sheet-md {
     border-radius: 15px 15px 0px 0px;
   }
+
   .action-sheet-group.sc-ion-action-sheet-ios:first-child {
     margin-bottom: 0px;
   }
+
   .action-sheet-group.sc-ion-action-sheet-ios:last-child button,
   .action-sheet-group.sc-ion-action-sheet-md:last-child button {
     height: 60px;
   }
+
   .action-sheet-group.sc-ion-action-sheet-md:last-child button {
     color: #fff;
   }
+
   .action-sheet-group.sc-ion-action-sheet-ios:last-child,
   .action-sheet-group.sc-ion-action-sheet-md:last-child {
     margin-bottom: 0px;
@@ -1198,85 +1333,97 @@ ion-action-sheet {
 
 .bottomBtn {
   height: 60px;
+
   .footerTab {
-    margin: 0px;
-    line-height: 0px;
-    height: 60px;
-    font-size: 18px;
+    margin         : 0px;
+    line-height    : 0px;
+    height         : 60px;
+    font-size      : 18px;
     --border-radius: 0px;
-    font-weight: 500;
-    font-family: var(--f-Lexend);
-    letter-spacing: 0.08px;
-    text-transform: inherit;
+    font-weight    : 500;
+    font-family    : var(--f-Lexend);
+    letter-spacing : 0.08px;
+    text-transform : inherit;
   }
+
   ion-button {
     height: 100%;
   }
 }
+
 .custom-actionSheet {
+
   .action-sheet-container.sc-ion-action-sheet-md,
   .action-sheet-container.sc-ion-action-sheet-ios {
     -webkit-padding-start: 0px;
-    padding-inline-start: 0px;
-    -webkit-padding-end: 0px;
-    padding-inline-end: 0px;
+    padding-inline-start : 0px;
+    -webkit-padding-end  : 0px;
+    padding-inline-end   : 0px;
   }
-  .action-sheet-container.sc-ion-action-sheet-md
-    .action-sheet-group.sc-ion-action-sheet-md:last-child,
+
+  .action-sheet-container.sc-ion-action-sheet-md .action-sheet-group.sc-ion-action-sheet-md:last-child,
   .action-sheet-group.sc-ion-action-sheet-ios:last-child {
     margin-bottom: 0px;
   }
-  .action-sheet-container.sc-ion-action-sheet-md
-    .action-sheet-group.sc-ion-action-sheet-md,
+
+  .action-sheet-container.sc-ion-action-sheet-md .action-sheet-group.sc-ion-action-sheet-md,
   .action-sheet-group.sc-ion-action-sheet-ios {
     border-radius: 13px 13px 0px 0px !important;
+
     &:last-child {
       background-color: #fff;
     }
   }
+
   .action-sheet-group.sc-ion-action-sheet-md:last-child button {
     color: #000;
   }
+
   .action-sheet-title.sc-ion-action-sheet-md,
   .action-sheet-title.sc-ion-action-sheet-ios {
-    text-align: center;
-    color: #000;
-    font-weight: 600;
-    font-size: 18px;
-    padding-top: 14px;
+    text-align    : center;
+    color         : #000;
+    font-weight   : 600;
+    font-size     : 18px;
+    padding-top   : 14px;
     padding-bottom: 10px;
-    min-height: auto;
-    font-family: var(--f-Lexend);
-    border-bottom: solid 1px #ddd;
+    min-height    : auto;
+    font-family   : var(--f-Lexend);
+    border-bottom : solid 1px #ddd;
   }
+
   .action-sheet-button .sc-ion-action-sheet-md,
   .action-sheet-button-inner.sc-ion-action-sheet-ios {
     justify-content: flex-start;
   }
+
   .action-sheet-button.sc-ion-action-sheet-md,
   .action-sheet-button.sc-ion-action-sheet-ios {
-    margin-left: 25px;
+    margin-left         : 25px;
     padding-inline-start: 0px;
-    padding-inline-end: 0px;
-    border-bottom: solid 1px #ddd;
+    padding-inline-end  : 0px;
+    border-bottom       : solid 1px #ddd;
+
     &:last-child {
       border-bottom: 0px;
     }
   }
 }
+
 ion-datetime {
   .calendar-days-of-week {
-    padding: 0px 8px;
-    color: red;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
+    padding       : 0px 8px;
+    color         : red;
+    font-size     : 16px;
+    font-weight   : 500;
+    line-height   : 24px;
     text-transform: uppercase;
   }
 }
+
 ::ng-deep body .calendar-day.calendar-day-today.calendar-day-active::after {
   background: red !important;
-  opacity: 1;
+  opacity   : 1;
 }
 
 /* ion-spinner */
@@ -1291,73 +1438,91 @@ ion-spinner.size-sm {
 .font-weight-600 {
   font-weight: 600;
 }
+
 .font-weight-400 {
   font-weight: 400;
 }
+
 .font-weight-300 {
   font-weight: 300;
 }
+
 .font-weight-200 {
   font-weight: 400;
 }
+
 .font-weight-500 {
   font-weight: 500;
 }
+
 .font-weight-700 {
   font-weight: 700;
 }
+
 .font-20 {
   font-size: 20px !important;
 }
+
 .font-16 {
   font-size: 16px !important;
 }
+
 .font-12 {
   font-size: 12px !important;
 }
+
 .font-xx {
   font-size: xx-large;
 }
+
 .text-decoration-none {
   text-decoration: none;
 }
+
 .w-35 {
   width: 35%;
 }
 
-.text-muted-custom
-{
+.text-muted-custom {
   color: #6c757d !important;
 }
 
 .font-18 {
   font-size: 18px !important;
 }
+
 .font-10 {
   font-size: 10px !important;
 }
+
 .font-11 {
   font-size: 11px !important;
 }
+
 .font-15 {
   font-size: 15px !important;
 }
+
 .font-13 {
   font-size: 13px !important;
 }
+
 .font-14 {
   font-size: 14px !important;
 }
+
 .font-larger {
   font-size: larger;
 }
+
 .font-22 {
   font-size: 22px !important;
 }
+
 .font-24 {
   font-size: 24px !important;
 }
 
-.letter-spacing-05{
+.letter-spacing-05 {
   letter-spacing: 0.5px;
 }

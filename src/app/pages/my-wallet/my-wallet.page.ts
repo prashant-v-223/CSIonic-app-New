@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionsService } from 'src/app/shared/services/transactions.service';
-import {  AlertController,  NavController,  ToastController,} from '@ionic/angular';
+import { AlertController, NavController, ToastController, } from '@ionic/angular';
 import { UserService } from 'src/app/shared/services/user.service';
 @Component({
   selector: 'app-my-wallet',
@@ -9,10 +9,10 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class MyWalletPage implements OnInit {
 
-  constructor(private navCtrl: NavController,private userService: UserService,public toastController: ToastController,private alertCtrl: AlertController,private transactionService:TransactionsService) { }
-  transactionList : any[] = [];
-  user : any = [];
-  bankAccount : boolean = false;
+  constructor(private navCtrl: NavController, private userService: UserService, public toastController: ToastController, private alertCtrl: AlertController, private transactionService: TransactionsService) { }
+  transactionList: any[] = [];
+  user: any = [];
+  bankAccount: boolean = false;
   wallet
   async ngOnInit() {
     this.user = await this.userService.getUser();
@@ -23,23 +23,19 @@ export class MyWalletPage implements OnInit {
     this.getTransactionList();
   }
 
-  async ionViewWillEnter()
-  {
+  async ionViewWillEnter() {
     this.getTransactionList();
     this.user = await this.userService.getUser();
     await this.userService.setUserToStorage(this.user.data);
     this.user = await this.userService.getUserFromStorage();
     if (!this.user) this.onBack();
   }
-  async getTransactionList()
-  {
-    try
-    {
-        this.transactionList = await this.transactionService.transactionList();
-        this.transactionList = this.transactionList['data'];
+  async getTransactionList() {
+    try {
+      this.transactionList = await this.transactionService.transactionList();
+      this.transactionList = this.transactionList['data'];
     }
-    catch (e)
-    {
+    catch (e) {
       const toast = await this.toastController.create({
         message: e,
         duration: 2000,

@@ -1,234 +1,255 @@
-.themeHeader{
-  ion-toolbar{
+.themeHeader {
+  ion-toolbar {
     --background: var(--lighter-gray) !important;
-    padding: 0rem 0.5rem 0rem 0.5rem;
+    padding     : 0rem 0.5rem 0rem 0.5rem;
   }
-  ion-list{
+
+  ion-list {
     background: var(--lighter-gray) !important;
   }
-    ion-list{
-      background: var(--lighter-gray) !important;
-    }
-    ion-back-button.md{
-      background-color: var(--lighter-gray) !important;
-      ion-icon{
-        stroke: #2F4858;
-      }
-    }
+
+  ion-list {
+    background: var(--lighter-gray) !important;
   }
 
-  //  My Wallet Card Start
-.walletSection {
-padding-top: 0rem;
-  .max-withdrawal-amount
-  {
-    background-color: var( --theme-color);
-    font-size: 18px;
-    font-family:var(--f-Lexend);
-    color: #fff;
-    border-radius: 15px;
+  ion-back-button.md {
+    background-color: var(--lighter-gray) !important;
+
+    ion-icon {
+      stroke: #2F4858;
+    }
   }
+}
+
+//  My Wallet Card Start
+.walletSection {
+  padding-top: 0rem;
+
+  .max-withdrawal-amount {
+    background-color: var(--theme-color);
+    font-size       : 18px;
+    font-family     : var(--f-Lexend);
+    color           : #fff;
+    border-radius   : 15px;
+  }
+
   .border-box {
-    border: 1px solid #efebeb;
+    border       : 1px solid #efebeb;
     border-radius: 12px;
   }
-  .type-amount
-  {
-    font-size: 18px;
+
+  .type-amount {
+    font-size  : 18px;
     font-family: var(--f-Lexend);
   }
-  ion-list{
+
+  ion-list {
     padding-top: 0rem;
-    //background: var(--lighter-gray) !important;
-    }
-    ion-button{
-      margin: 0px;
-      line-height: 0px;
-      height:50px;
-      font-size: 16px;
-      --border-radius: 8px;
-      font-weight: 400;
-      font-family: var(--f-Lexend);
-      letter-spacing: .08px;
-      width: 100%;
   }
+
+  ion-button {
+    margin         : 0px;
+    line-height    : 0px;
+    height         : 50px;
+    font-size      : 16px;
+    --border-radius: 8px;
+    font-weight    : 400;
+    font-family    : var(--f-Lexend);
+    letter-spacing : .08px;
+    width          : 100%;
+  }
+
   .small-label {
-    font-size: 16px;
+    font-size  : 16px;
     font-weight: 400;
-    color: var(--blackColor);
+    color      : var(--blackColor);
+
     ion-icon {
-      background-color: var( --theme-color);
-      border-radius: 10px;
-      vertical-align: middle;
-      margin-top: -5%;
+      background-color: var(--theme-color);
+      border-radius   : 10px;
+      vertical-align  : middle;
+      margin-top      : -5%;
     }
+
     span {
       font-size: 18px;
-      padding: 5px 0;
+      padding  : 5px 0;
     }
   }
-  ion-item{
-    --min-height: 65px;
+
+  ion-item {
+    --min-height        : 65px;
     --inner-border-width: 0px;
-    --border-color: inherit;
-      --padding-start: 0px;
-      .list-md{
-           padding-bottom: 0px;
-      }
-      .up-icon{
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 50px;
-        height: 50px;
-        background-color: var(--bg-lighter);
-        border-radius: 15px;
-        margin-right: 1rem;
-        ion-icon{
-          font-size: 18px;
-        }
-      }
-      .ion-title{
-        font-size: 17px;
-        font-family: var(--f-Lexend);
-        letter-spacing: .08px;
-        margin-bottom: 0px;
-        font-weight: 600;
-        color: #000;
-        line-height: 20px;
-        margin-bottom: 2px;
-      }
-      .small-label{
-        font-size: 14px;
-        font-family: var(--f-Lexend);
-        color: var(--blackColor);
-      }
-      .priceTage{
-        font-size: 18px;
-        font-family: var(--f-Lexend);
-        letter-spacing: .08px;
-        margin-bottom: 0px;
-        font-weight: 600;
-        color: #000;
-        line-height: 18px;
-        margin-bottom: 0px;
-      }
-      ion-label{
-        margin-inline: 0px;
-        margin:0px;
-        .color-gray{
-          color:#9E9E9E;
-        }
-      }
-      .bank-details-display{
-        background-color: var(--bg-lighter);
-        border-radius: 15px;
-      }
+    --border-color      : inherit;
+    --padding-start     : 0px;
 
-  }
-
-}
-ion-button{
-  ion-icon{
-    font-size: 26px;
-    &.icon-theme{
-        stroke:#8AC680;
+    .list-md {
+      padding-bottom: 0px;
     }
-    &.icon-dark{
-      stroke:#2F4858;
+
+    .up-icon {
+      display         : flex;
+      align-items     : center;
+      justify-content : center;
+      width           : 50px;
+      height          : 50px;
+      background-color: var(--bg-lighter);
+      border-radius   : 15px;
+      margin-right    : 1rem;
+
+      ion-icon {
+        font-size: 18px;
+      }
+    }
+
+    .ion-title {
+      font-size     : 17px;
+      font-family   : var(--f-Lexend);
+      letter-spacing: .08px;
+      margin-bottom : 0px;
+      font-weight   : 600;
+      color         : #000;
+      line-height   : 20px;
+      margin-bottom : 2px;
+    }
+
+    .small-label {
+      font-size  : 14px;
+      font-family: var(--f-Lexend);
+      color      : var(--blackColor);
+    }
+
+    .priceTage {
+      font-size     : 18px;
+      font-family   : var(--f-Lexend);
+      letter-spacing: .08px;
+      margin-bottom : 0px;
+      font-weight   : 600;
+      color         : #000;
+      line-height   : 18px;
+      margin-bottom : 0px;
+    }
+
+    ion-label {
+      margin-inline: 0px;
+      margin       : 0px;
+
+      .color-gray {
+        color: #9E9E9E;
+      }
+    }
+
+    .bank-details-display {
+      background-color: var(--bg-lighter);
+      border-radius   : 15px;
+    }
+
   }
+
+}
+
+ion-button {
+  ion-icon {
+    font-size: 26px;
+
+    &.icon-theme {
+      stroke: #8AC680;
+    }
+
+    &.icon-dark {
+      stroke: #2F4858;
+    }
   }
 }
+
 .topHeader {
   ion-title {
-    position: inherit;
-    text-align: left;
-    height: inherit;
-    left: inherit;
-    padding-right: 0px;
+    position      : inherit;
+    text-align    : left;
+    height        : inherit;
+    left          : inherit;
+    padding-right : 0px;
     padding-inline: 0;
-    font-size: 24px;
-    font-family: var(--f-Lexend);
-    font-weight: 400;
-    margin-bottom: 1.5rem;
-    line-height: 28px;
+    font-size     : 24px;
+    font-family   : var(--f-Lexend);
+    font-weight   : 400;
+    margin-bottom : 1.5rem;
+    line-height   : 28px;
   }
 }
 
 
 .themeHeader {
   ion-button {
-    margin: 0px;
-    line-height: 0px;
-    height: 36px;
-    font-size: 14px;
-    --border-radius: 6px;
-    font-weight: 400;
-    font-family: var(--f-Lexend);
+    margin          : 0px;
+    line-height     : 0px;
+    height          : 36px;
+    font-size       : 14px;
+    --border-radius : 6px;
+    font-weight     : 400;
+    font-family     : var(--f-Lexend);
     --ion-color-base: #2F4858 !important;
-    letter-spacing: .08px;
+    letter-spacing  : .08px;
   }
-  ion-icon{
-    font-size: 42px;
-    margin-top: -10%;
-   padding-left: 1%;
+
+  ion-icon {
+    font-size   : 42px;
+    margin-top  : -10%;
+    padding-left: 1%;
   }
+
   .withdrawal-list {
-    --background: #1F2C37 !important;
+    --background : #1F2C37 !important;
     border-radius: 10px;
-    //padding: 4px 6px;
-    font-family: var(--f-Lexend);
-    color: #fff;
-    font-weight: 500;
-    width: 90%;
-    height: 32px;
-    margin-left: 10%;
+    font-family  : var(--f-Lexend);
+    color        : #fff;
+    font-weight  : 500;
+    width        : 90%;
+    height       : 32px;
+    margin-left  : 10%;
   }
-  .withdrawal-list b{
+
+  .withdrawal-list b {
     padding-left: 7%;
-    padding-top: 2%;
-    font-family: var(--f-Lexend);
+    padding-top : 2%;
+    font-family : var(--f-Lexend);
+    font-weight : 500;
+    font-size   : 20px;
+    color       : #000;
+  }
+}
+
+.notifications {
+  padding: 2% !important;
+
+  h2 {
     font-weight: 500;
-    font-size: 20px;
+  }
+
+  p {
     color: #000;
   }
 }
-.notifications{
-  padding:2% !important;
-  h2{
-    font-weight: 500;
-  }
-  p{
-    color: #000;
-  }
-}
-.withdrawal-btn
-{
+
+.withdrawal-btn {
   border-left: 1px solid #fff;
 }
+
 .currency-box {
-  width: 92%;
+  width : 92%;
   margin: auto;
 }
+
 .currency-chip {
-  background: #F8F8F8;
+  background   : #F8F8F8;
   border-radius: 24px;
 }
-/* .themeHeader ion-toolbar{
-  --background: var(--lighter-gray);
-}
-ion-content {
-  --ion-background-color: var(--lighter-gray);
-} */
-ion-input{
+
+ion-input {
   --padding-start: 10px;
-  font-size: 16px;
-  font-family: var(--f-Lexend);
-  font-weight: 400;
-  color: #000;
-  /* border: 1px solid #efebeb; */
-  border-radius: 10px;
- /*  &.has-value{
-    background-color: var( --bg-lighter);
-  } */
+  font-size      : 16px;
+  font-family    : var(--f-Lexend);
+  font-weight    : 400;
+  color          : #000;
+  border-radius  : 10px;
 }

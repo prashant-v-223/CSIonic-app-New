@@ -1,5 +1,5 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import {Chart} from 'chart.js';
+import { Chart } from 'chart.js';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 
 @Component({
@@ -8,23 +8,23 @@ import ChartDataLabels from 'chartjs-plugin-datalabels';
   styleUrls: ['./analytics.page.scss'],
 })
 export class AnalyticsPage implements OnInit {
-  
-  @ViewChild("barCanvas",{static: true}) barCanvas: ElementRef;
-  @ViewChild("doughnutCanvas",{static: true}) doughnutCanvas: ElementRef;
+
+  @ViewChild("barCanvas", { static: true }) barCanvas: ElementRef;
+  @ViewChild("doughnutCanvas", { static: true }) doughnutCanvas: ElementRef;
 
   public barChart: Chart;
   public doughnutChart: Chart;
   constructor() { }
-  
+
   ngOnInit() {
     this.barChart = new Chart(this.barCanvas.nativeElement, {
       plugins: [ChartDataLabels],
       type: "bar",
       data: {
-        labels: ["Jan","Feb","Mar","Apr","May","Jun","Jul"],
+        labels: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul"],
         datasets: [
           {
-            data: [26,84,49,20,30,35,96.00],
+            data: [26, 84, 49, 20, 30, 35, 96.00],
             barThickness: 20,
             borderRadius: 10,
             backgroundColor: [
@@ -49,7 +49,7 @@ export class AnalyticsPage implements OnInit {
         scales: {
           y: {
             ticks: {
-              callback: function(value, index, ticks) {
+              callback: function (value, index, ticks) {
                 return '$' + value;
               }
             }
@@ -66,16 +66,15 @@ export class AnalyticsPage implements OnInit {
       plugins: [ChartDataLabels],
       type: "doughnut",
       data: {
-        labels: ["22.5%","22.5%","50%"],
+        labels: ["22.5%", "22.5%", "50%"],
         datasets: [
           {
-            data: [22.5,22.5,50],
+            data: [22.5, 22.5, 50],
             backgroundColor: [
               "#FF7438",
               "#515F6A",
               "#2B7979"
             ],
-            // hoverBackgroundColor: ["#FF6384", "#36A2EB", "#FFCE56", "#FF6384", "#36A2EB", "#FFCE56"]
           }
         ]
       },

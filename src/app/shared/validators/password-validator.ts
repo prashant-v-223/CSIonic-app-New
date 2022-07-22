@@ -8,14 +8,14 @@ export const alphabetRegExp = new RegExp(/^[a-zA-Z ]*$/);
 
 export const passwordRequirementMessage = '<ul class="text-danger pl-1"><li>Password must contain Minimum eight characters.</li> <li>At least one uppercase letter.</li> <li>One lowercase letter, one number and one special character.</li></ul>';
 
-export const firstnameRequirementMessage = '<ul class="text-danger pl-1"><li>Number not allowed in first name.</li> </ul>';
+/* export const firstnameRequirementMessage = '<ul class="text-danger pl-1"><li>Number not allowed in first name.</li> </ul>'; */
 
 export function passwordValidator(control: AbstractControl): ValidationErrors | null {
   const isValidPassword = passwordRegExp.test(control.value);
   return !isValidPassword ? { password: true } : null;
 }
 
-export function alphabetValidator(control: AbstractControl): ValidationErrors | null {
+/* export function alphabetValidator(control: AbstractControl): ValidationErrors | null {
   const isValidString = alphabetRegExp.test(control.value);
   return !isValidString ? { first_name: true } : null;
-}
+} */

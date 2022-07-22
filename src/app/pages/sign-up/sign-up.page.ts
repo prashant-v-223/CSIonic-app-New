@@ -3,7 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { NavController, ToastController } from '@ionic/angular';
 import { Auth } from 'aws-amplify';
 import { COPY } from 'src/app/shared/helper/const';
-import { alphabetRegExp, passwordRequirementMessage, passwordValidator , alphabetValidator } from 'src/app/shared/validators/password-validator';
+import { alphabetRegExp, passwordRequirementMessage, passwordValidator } from 'src/app/shared/validators/password-validator';
 
 @Component({
   selector: 'app-sign-up',
@@ -85,16 +85,4 @@ export class SignUpPage {
       this.signUpForm.enable();
     }
   }
-
- /*  keyPressAlphabet(event) {
-
-    var inp = String.fromCharCode(event.keyCode);
-    // Allow numbers, alpahbets, space, underscore
-    if (/[a-zA-Z_ ]/.test(inp)) {
-      return true;
-    } else {
-      event.preventDefault();
-      return false;
-    }
-  } */
 }

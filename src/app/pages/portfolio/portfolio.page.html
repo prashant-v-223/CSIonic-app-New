@@ -1,15 +1,3 @@
-<!-- Header Section Start -->
-<!-- <ion-header translucent class="themeHeader">
-  <ion-toolbar>
-    <ion-list class="d-flex justify-end analytics">
-      <ion-button color="dark" routerLink="/analytics">
-        Analytics
-      </ion-button>
-    </ion-list>
-  </ion-toolbar>
-</ion-header> -->
-<!-- Header Section End -->
-<!-- Body Section Start -->
 <ion-content class="portfolio popularSection basket">
 
   <ion-list class="ion-list">
@@ -18,7 +6,10 @@
       <div class="card-body pt-2 pb-2">
         <div class="d-flex justify-between">
           <div>
-            <h4 class="myPrice text-d-theme"><!-- <ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon> --><ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ portfolioInfo?.currentAmount | number }}</h4>
+            <h4 class="myPrice text-d-theme">
+              <ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon>{{
+              portfolioInfo?.currentAmount | number }}
+            </h4>
             <span class="small-label">Current</span>
           </div>
           <div class="">
@@ -28,16 +19,28 @@
         <ion-grid class="invest-list">
           <ion-row class="w-100">
             <ion-col size="4" class="p-0" size-md>
-              <h6 class="text-dark"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ portfolioInfo?.investedAmount | number }}</h6>
+              <h6 class="text-dark">
+                <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{
+                portfolioInfo?.investedAmount | number }}
+              </h6>
               <span class="small-label">Invested</span>
             </ion-col>
             <ion-col size="4" class="p-0" size-md>
-              <h6 class="text-dark"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ portfolioInfo?.absoluteReturn | number }}</h6>
+              <h6 class="text-dark">
+                <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{
+                portfolioInfo?.absoluteReturn | number }}
+              </h6>
               <span class="small-label">Return</span>
             </ion-col>
             <ion-col size="4" class="p-0" size-md>
-              <h6 class="text-d-theme d-flex" [ngClass]="portfolioInfo?.absoluteReturnPercentage>0 ? 'theme-color' : 'text-danger'">
-                 <ion-icon class="text-muted-custom icon-up mt-1 font-16" *ngIf="portfolioInfo?.absoluteReturnPercentage>0" src="assets/icon/arrow-up-square.svg"></ion-icon><ion-icon class="text-muted-custom icon-up mt-1 font-16" *ngIf="portfolioInfo?.absoluteReturnPercentage<0" src="assets/icon/arrow-square-down.svg"></ion-icon>&nbsp;{{ portfolioInfo?.absoluteReturnPercentage | number }}%</h6>
+              <h6 class="text-d-theme d-flex"
+                [ngClass]="portfolioInfo?.absoluteReturnPercentage>0 ? 'theme-color' : 'text-danger'">
+                <ion-icon class="text-muted-custom icon-up mt-1 font-16"
+                  *ngIf="portfolioInfo?.absoluteReturnPercentage>0" src="assets/icon/arrow-up-square.svg"></ion-icon>
+                <ion-icon class="text-muted-custom icon-up mt-1 font-16"
+                  *ngIf="portfolioInfo?.absoluteReturnPercentage<0" src="assets/icon/arrow-square-down.svg"></ion-icon>
+                &nbsp;{{ portfolioInfo?.absoluteReturnPercentage | number }}%
+              </h6>
               <span class="small-label">Total Return</span>
             </ion-col>
           </ion-row>
@@ -49,66 +52,18 @@
       <h6>MY INVESTMENTS</h6>
     </ion-col>
     <ion-col size="12" class="p-0">
-
       <ng-container *ngIf="!showLoader else loadingTmplt">
-
         <ion-row *ngIf="sipList?.length else noSIPsTmplt">
-
-          <ion-col *ngFor="let sip of sipList" size="12" size-md [ngClass]="{'myPortfolio-list-completed': sip.status == 'withdrawn_completed', 'myPortfolio-list-inprogress' : sip.status === 'withdrawn_inprogress', 'myPortfolio-list-failure' : sip.status === 'withdrawn_failure' }" >
-            <app-package-card [package]="sip" [packageList]="sip.packageId.coins" [view]="'sip'" [navigationLink]="'/sip/' + sip._id"></app-package-card>
-
-            <span *ngIf="sip.status =='withdrawn_inprogress'" class="withdrawal-status font-12">Withdrawal Inprogress</span>
-            <span *ngIf="sip.status == 'withdrawn_completed'" class="withdrawal-status font-12">Withdrawal Completed</span>
+          <ion-col *ngFor="let sip of sipList" size="12" size-md
+            [ngClass]="{'myPortfolio-list-completed': sip.status == 'withdrawn_completed', 'myPortfolio-list-inprogress' : sip.status === 'withdrawn_inprogress', 'myPortfolio-list-failure' : sip.status === 'withdrawn_failure' }">
+            <app-package-card [package]="sip" [packageList]="sip.packageId.coins" [view]="'sip'"
+              [navigationLink]="'/sip/' + sip._id"></app-package-card>
+            <span *ngIf="sip.status =='withdrawn_inprogress'" class="withdrawal-status font-12">Withdrawal
+              Inprogress</span>
+            <span *ngIf="sip.status == 'withdrawn_completed'" class="withdrawal-status font-12">Withdrawal
+              Completed</span>
             <span *ngIf="sip.status == 'withdrawn_failure'" class="withdrawal-status font-12">Withdrawal Faliure</span>
           </ion-col>
-
-          <!-- <ion-col size="12" size-md>
-            <div class="card bg-lighter">
-              <div class="card-body">
-                <div class="d-flex align-center justify-between w-100 mb-3">
-                  <div class="d-flex">
-                    <div class="coinTag bg-blue">
-                      <ion-icon class="coin-icon"  src="../../../assets/icon-bitc.svg"></ion-icon>
-                    </div>
-                    <div class="coinTag bg-greenLighter">
-                      <ion-icon class="coin-icon"  src="../../../assets/icon-et.svg"></ion-icon>
-                    </div>
-                    <div class="coinTag bg-grey">
-                      <ion-icon class="coin-icon"  src="../../../assets/icon-vi.svg"></ion-icon>
-                    </div>
-                  </div>
-                  <div class="d-flex align-center">
-                    <div class="text-right mr-2 right-section">
-                      <div class="small-label text-dark">Invested</div>
-                      <h4 class="small-price text-dark">₹70.00/Weekly</h4>
-                    </div>
-                    <a href="#" class="view-icon" routerLink="/portfolio-details">
-                      <ion-icon name="chevron-forward-outline"></ion-icon>
-                    </a>
-                  </div>
-                </div>
-                <div class="small-label text-dark">Bitcoin + Etherium + Viacoin</div>
-                <div class="d-flex align-center justify-between mt-2">
-                  <div>
-                    <div class="small-label text-dark">Total Invested</div>
-                    <h4 class="Price text-dark">₹70.00</h4>
-                  </div>
-
-                  <div class="d-flex align-center">
-                    <div class="d-flex align-center mr-2">
-                      <ion-icon class="line-draw" src="../../../assets/small-line-theme.svg"></ion-icon>
-                    </div>
-                    <div>
-                      <div class="small-label text-dark">Returns</div>
-                      <div class="small-text bg-theme text-white">
-                        <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropup.svg"></ion-icon> 45%
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </ion-col> -->
         </ion-row>
         <ng-template #noSIPsTmplt>
           <div class="ion-text-center mt-5">

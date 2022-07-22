@@ -2,17 +2,14 @@
 <ion-header translucent class="themeHeader">
   <ion-toolbar>
     <ion-list>
-      <!-- <ion-buttons slot="start"> -->
-        <!-- <ion-back-button mat-icon-button class="back-btn" defaultHref="/tabs/dashboard">
-        </ion-back-button> -->
-        <ion-row>
-          <ion-col size="4">
-            <ion-icon src="../../../assets/icon/back-arrow.svg" routerLink="/tabs/dashboard"></ion-icon>
-          </ion-col>
-          <ion-col size="6">
-            <strong>Popular Baskets</strong>
-          </ion-col>
-        </ion-row>
+      <ion-row>
+        <ion-col size="4">
+          <ion-icon src="../../../assets/icon/back-arrow.svg" routerLink="/tabs/dashboard"></ion-icon>
+        </ion-col>
+        <ion-col size="6">
+          <strong>Popular Baskets</strong>
+        </ion-col>
+      </ion-row>
       <!-- </ion-buttons> -->
     </ion-list>
   </ion-toolbar>
@@ -21,55 +18,16 @@
 <ion-content class="popularSection basket">
   <ion-list class="ion-list">
     <ion-grid class="topHeader mb-2">
-      <!-- <ion-title>Popular Baskets</ion-title> -->
-      <ion-searchbar placeholder="Search..." #searchText *ngIf="!showLoader" (keyup)="onSearchChange(searchText)" (ionClear)="onClear()"></ion-searchbar>
+      <ion-searchbar placeholder="Search..." #searchText *ngIf="!showLoader" (keyup)="onSearchChange(searchText)"
+        (ionClear)="onClear()"></ion-searchbar>
     </ion-grid>
     <ng-container *ngIf="!showLoader else loadingTmplt">
       <ion-grid class="p-0" *ngIf="packageList?.length else noPackagesTmplt">
         <ion-row>
           <ion-col *ngFor="let package of packageList" class="popular-baskets-list" size="12" size-md>
-            <app-package-card [package]="package" [coinList]="package.coins" [packageList]="package.coins" [navigationLink]="'/packages/' + package._id"></app-package-card>
+            <app-package-card [package]="package" [coinList]="package.coins" [packageList]="package.coins"
+              [navigationLink]="'/packages/' + package._id"></app-package-card>
           </ion-col>
-          <!-- <ion-col size="12" size-md>
-          <div class="card bg-lighter">
-            <div class="card-body">
-              <div class="d-flex align-center justify-between w-100 mb-3">
-                <div class="d-flex">
-                  <div class="coinTag bg-blue">
-                    <ion-icon class="coin-icon" src="../../../assets/icon-et.svg"></ion-icon>
-                  </div>
-                </div>
-                <div class="d-flex align-center">
-                  <div class="text-right mr-2 right-section">
-                    <div class="small-label text-dark">Invested</div>
-                    <h4 class="small-price text-dark">₹70.00/Weekly</h4>
-                  </div>
-                  <a href="#" class="view-icon" routerLink="/portfolio-view">
-                    <ion-icon name="chevron-forward-outline"></ion-icon>
-                  </a>
-                </div>
-              </div>
-              <div class="small-label text-dark">Bitcoin + Etherium + Viacoin</div>
-              <div class="d-flex align-center justify-between mt-2">
-                <div>
-                  <div class="small-label text-dark">Total Invested</div>
-                  <h4 class="Price text-dark">₹70.00</h4>
-                </div>
-                <div class="d-flex align-center">
-                  <div class="d-flex align-center mr-2">
-                    <ion-icon class="line-draw" src="../../../assets/small-line-danger.svg"></ion-icon>
-                  </div>
-                  <div>
-                    <div class="small-label text-dark">Returns</div>
-                    <div class="small-text bg-danger text-white">
-                      <ion-icon class="text-white icon-up" src="../../../assets/md-arrow-dropdown.svg"></ion-icon> 45%
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </ion-col> -->
         </ion-row>
       </ion-grid>
       <ng-template #noPackagesTmplt>

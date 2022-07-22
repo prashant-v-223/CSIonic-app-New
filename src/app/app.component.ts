@@ -68,7 +68,6 @@ export class AppComponent implements OnInit, OnDestroy {
             autoHide: false
           });
 
-          // this.router.navigateByUrl('maintenance-mode');
           const userToken = this.userService.setHeaderToken();
           if (userToken) {
             const user = await this.getUser();

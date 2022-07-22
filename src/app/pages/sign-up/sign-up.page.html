@@ -2,7 +2,9 @@
 <ion-header translucent class="themeHeader">
   <ion-toolbar>
     <ion-list class="d-flex justify-between">
-      <ion-back-button mat-icon-button mode='md'><ion-icon src="../../../assets/icon/back-arrow.svg"></ion-icon></ion-back-button>
+      <ion-back-button mat-icon-button mode='md'>
+        <ion-icon src="../../../assets/icon/back-arrow.svg"></ion-icon>
+      </ion-back-button>
     </ion-list>
   </ion-toolbar>
 </ion-header>
@@ -15,7 +17,6 @@
     </div>
 
     <!-- TODO: add create account message -->
-    <!-- <p class="small-label">Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p> -->
     <form [formGroup]="signUpForm" (submit)="signUp()" class="w-100 mt-3">
       <ion-label class="input" position="stacked">First name</ion-label>
       <ion-item class="customForm">
@@ -44,7 +45,7 @@
         <ion-input type="email" placeholder="Enter your email address" formControlName="username"></ion-input>
       </ion-item>
       <div class="error-message"
-        *ngIf="signUpForm.get('username').dirty && !signUpForm.get('username').errors?.required && (signUpForm.get('username').errors?.email || signUpForm.get('username').errors?.pattern)" >
+        *ngIf="signUpForm.get('username').dirty && !signUpForm.get('username').errors?.required && (signUpForm.get('username').errors?.email || signUpForm.get('username').errors?.pattern)">
         <ul class="text-danger pl-1">
           <li>Enter valid email address</li>
         </ul>
@@ -54,11 +55,12 @@
       <ion-item class="customForm custom-select">
         <ion-select formControlName="phone_number_country_code" interface="popover">
           <ion-select-option *ngFor="let phoneNumberCountryCode of phoneNumberCountryCodes"
-          [value]="phoneNumberCountryCode.code">
-          {{ phoneNumberCountryCode.code }}
-        </ion-select-option>
-      </ion-select>
-        <ion-input type="number" placeholder="Enter your mobile number" formControlName="phone_number" class="h-100"></ion-input>
+            [value]="phoneNumberCountryCode.code">
+            {{ phoneNumberCountryCode.code }}
+          </ion-select-option>
+        </ion-select>
+        <ion-input type="number" placeholder="Enter your mobile number" formControlName="phone_number" class="h-100">
+        </ion-input>
       </ion-item>
       <div class="error-message"
         *ngIf="signUpForm.get('phone_number').dirty && !signUpForm.get('phone_number').errors?.required && signUpForm.get('phone_number').errors?.pattern">
@@ -74,7 +76,6 @@
       </ion-item>
       <div class="error-message" [innerHTML]="passwordRequirementMessage"
         *ngIf="signUpForm.get('password').dirty && !signUpForm.get('password').errors?.required && signUpForm.get('password').errors?.password">
-        <!-- {{ passwordRequirementMessage }} -->
       </div>
 
       <ion-item class="custom-check">
@@ -83,12 +84,14 @@
       </ion-item>
 
       <ion-list class="p-0 mt-3">
-        <ion-button class="ion-button-theme" expand="full" shape="round" type="submit" [disabled]="signUpForm.invalid || isLoading">
+        <ion-button class="ion-button-theme" expand="full" shape="round" type="submit"
+          [disabled]="signUpForm.invalid || isLoading">
           <ion-spinner *ngIf="isLoading" class="size-sm mr-2"></ion-spinner>
           {{ isLoading ? 'Creating An Account..' : 'Create An Account'}}
         </ion-button>
         <ion-list class="mt-3 p-0 text-center small-text">
-          Already have an account? <ion-router-link class="link-primary" routerLink="/sign-in"><strong>Sign in!</strong></ion-router-link>
+          Already have an account? <ion-router-link class="link-primary" routerLink="/sign-in"><strong>Sign in!</strong>
+          </ion-router-link>
         </ion-list>
       </ion-list>
     </form>

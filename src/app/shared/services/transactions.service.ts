@@ -10,33 +10,29 @@ export class TransactionsService {
   constructor(
     private api: ApiCallService,
     private apiConfig: ApiConfiguration
-  ) {}
+  ) { }
 
   //Deposit/Withdrawal Amount API
-  async depositWithdrawalAmount(amount:number,type:string,utrNumber?:string) {
-      try
-      {
-        const amountData = {depositAmount:amount,utrNumber:utrNumber};
-        const responseData = await this.api.postData(this.apiConfig.depositWithdrawalAmount+type,amountData);
-        return responseData;
-      }
-      catch(e)
-      {
-        throw e;
-      }
+  async depositWithdrawalAmount(amount: number, type: string, utrNumber?: string) {
+    try {
+      const amountData = { depositAmount: amount, utrNumber: utrNumber };
+      const responseData = await this.api.postData(this.apiConfig.depositWithdrawalAmount + type, amountData);
+      return responseData;
+    }
+    catch (e) {
+      throw e;
+    }
 
   }
 
   //Transaction List API
   async transactionList() {
-      try
-      {
-        const transactionListData = await this.api.getData(this.apiConfig.transactionList);
-        return transactionListData;
-      }
-      catch(e)
-      {
-        throw e;
-      }
+    try {
+      const transactionListData = await this.api.getData(this.apiConfig.transactionList);
+      return transactionListData;
+    }
+    catch (e) {
+      throw e;
+    }
   }
 }
