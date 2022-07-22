@@ -14,7 +14,7 @@
 
   <ion-list class="ion-list">
     <ion-title class="topHeader">My portfolio</ion-title>
-    <ion-col size="12" class="p-0 myPortfolio">
+    <ion-col size="12" class="p-0 myPortfolio" *ngIf="!showLoader else loadingTmplt">
       <div class="card-body pt-2 pb-2">
         <div class="d-flex justify-between">
           <div>

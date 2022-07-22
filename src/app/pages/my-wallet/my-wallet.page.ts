@@ -13,7 +13,8 @@ export class MyWalletPage implements OnInit {
   transactionList : any[] = [];
   user : any = [];
   bankAccount : boolean = false;
-  wallet
+  wallet;
+  showLoader = true;
   async ngOnInit() {
     this.user = await this.userService.getUser();
     await this.userService.setUserToStorage(this.user.data);
@@ -37,6 +38,7 @@ export class MyWalletPage implements OnInit {
     {
         this.transactionList = await this.transactionService.transactionList();
         this.transactionList = this.transactionList['data'];
+        this.showLoader = false;
     }
     catch (e)
     {

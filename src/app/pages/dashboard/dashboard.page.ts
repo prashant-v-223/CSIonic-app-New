@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class DashboardPage implements OnInit {
 
   showLoader = true;
+  showPortfolioLoader = true;
   /* packageList: any[] = [];
   coinList: any[] = []; */
   portfolioInfo:any=localStorage.getItem('portfolio-data');
@@ -65,16 +66,17 @@ export class DashboardPage implements OnInit {
 
   async getPortfolioDetails() {
 
-    if(localStorage.getItem('portfolio-data')!=null)
+    if(localStorage.getItem('portfolio-data')!='null')
     {
       this.portfolioInfo = localStorage.getItem('portfolio-data');
     }
-    this.showLoader = localStorage.getItem('portfolio-data')==null ? true : false;
+    this.showPortfolioLoader = localStorage.getItem('portfolio-data')=='null' ? true : false;
+    
     try {
       this.userService.getPortfolioDataDetails$().subscribe(res => {
         this.portfolioInfo = res.data;
         localStorage.setItem('portfolio-data',JSON.stringify(this.portfolioInfo));
-        this.showLoader==true ? this.showLoader=false : "";
+        this.showPortfolioLoader==true ? this.showPortfolioLoader=false : "";
       })
     } catch (e) {
       console.log('Error while getting portfolio details: ', e);
