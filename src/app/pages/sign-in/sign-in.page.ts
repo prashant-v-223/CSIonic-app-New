@@ -25,6 +25,8 @@ export class SignInPage implements OnInit {
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
   token : any = '';
+  errorResp: string = '';
+  errorShow: boolean = false;
   readonly passwordRequirementMessage = passwordRequirementMessage;
 
   signInForm = new FormGroup({
@@ -57,6 +59,7 @@ export class SignInPage implements OnInit {
 
     this.isLoading = true;
     this.signInForm.disable();
+    this.errorShow = false;
 
     try {
       await Auth.signIn(this.signInForm.value);
@@ -98,12 +101,14 @@ export class SignInPage implements OnInit {
         );
       }
 
-      const toast = await this.toastController.create({
-        message: e.message,
-        duration: 2000,
-        cssClass: 'ion-text-center',
-      });
-      toast.present();
+      this.errorShow = true;
+      this.errorResp = e.message;
+      // const toast = await this.toastController.create({
+      //   message: e.message,
+      //   duration: 2000,
+      //   cssClass: 'ion-text-center',
+      // });
+      // toast.present();
     } finally {
       this.isLoading = false;
       this.signInForm.enable();
