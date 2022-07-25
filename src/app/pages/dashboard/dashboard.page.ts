@@ -5,6 +5,7 @@ import { ConfigurationService } from 'src/app/shared/services/configuration.serv
 import { NavController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { SocialSharing } from '@ionic-native/social-sharing/ngx';
+
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -52,7 +53,6 @@ export class DashboardPage implements OnInit {
   }
 
   ShareWhatsapp(){
-
     this.socialSharing.shareViaWhatsApp(this.text, this.imgurl, this.link)
   }
 
