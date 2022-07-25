@@ -9,8 +9,7 @@
       "launchAutoHide": false,
       "backgroundColor": "#006a59",
       "showSpinner": false,
-      "androidScaleType": "CENTER_CROP",
-      "splashImmersive": true
+      "androidScaleType": "CENTER_CROP"
     },
     "PushNotifications": {
       "presentationOptions": [
