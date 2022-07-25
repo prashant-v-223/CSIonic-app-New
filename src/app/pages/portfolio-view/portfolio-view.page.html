@@ -3,9 +3,15 @@
   <ion-toolbar>
     <ion-list class="d-flex justify-between">
       <ion-buttons slot="start">
-        <ion-back-button mat-icon-button mode='md' defaultHref="/tabs/portfolio"><ion-icon src="../../../assets/icon/back-arrow.svg"></ion-icon></ion-back-button>
+        <ion-back-button mat-icon-button mode='md' defaultHref="/tabs/portfolio">
+          <ion-icon src="../../../assets/icon/back-arrow.svg"></ion-icon>
+        </ion-back-button>
       </ion-buttons>
-      <ion-label *ngIf="withdrawBtn=='true' && withdrawalStatus=='active'" class="sip-withdraw d-flex"> <ion-button class="withdraw-link-btn" (click)="showConfirm()"><ion-icon class="text-muted-custom font-24" src="assets/icon/arrow-up-square.svg"></ion-icon> <b>Withdraw</b></ion-button> </ion-label>
+      <ion-label *ngIf="withdrawBtn=='true' && withdrawalStatus=='active'" class="sip-withdraw d-flex">
+        <ion-button class="withdraw-link-btn" (click)="showConfirm()">
+          <ion-icon class="text-muted-custom font-24" src="assets/icon/arrow-up-square.svg"></ion-icon> <b>Withdraw</b>
+        </ion-button>
+      </ion-label>
     </ion-list>
   </ion-toolbar>
 </ion-header>
@@ -16,19 +22,21 @@
       <ion-col size="12" class="pt-1" size-md>
         <ion-list class="d-flex justify-center mt-3">
           <div class="coinTag-inner">
-            <app-coin-stack [coins]="packageDetails.coins" [coinList]="packageDetails.coins" [packageList]="packageDetails.coins"></app-coin-stack>
+            <app-coin-stack [coins]="packageDetails.coins" [coinList]="packageDetails.coins"
+              [packageList]="packageDetails.coins"></app-coin-stack>
           </div>
         </ion-list>
       </ion-col>
     </ion-row>
     <ion-row *ngIf="!showLoader else loadingTmplt">
       <ion-col size="12" class=" mt-1 pt-1 text-center" size-md>
-       <!-- <span class="sip-amount-subtext">Etherium (ETH)</span> -->
-        <h1 class="text-theme sip-amount mt-0"><ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ sipDetails?.installmentAmount ? sipDetails?.installmentAmount : packageDetails?.totalMinimumDepositAmount }}</h1>
-       <span class="sip-amount-subtext">{{ packageDetails.name }}</span>
+        <h1 class="text-theme sip-amount mt-0">
+          <ion-icon class="font-20" src="../../../assets/icon/rupee-green.svg"></ion-icon>{{
+          sipDetails?.installmentAmount ? sipDetails?.installmentAmount : packageDetails?.totalMinimumDepositAmount }}
+        </h1>
+        <span class="sip-amount-subtext">{{ packageDetails.name }}</span>
       </ion-col>
     </ion-row>
-
 
     <ion-list class="sip-chart pr-3">
       <canvas #lineCanvas id="chart"></canvas>
@@ -38,83 +46,87 @@
       <ion-segment class="tabbingTheme" [disabled]="time_frame" (ionChange)="segmentChanged($event)" value="3-month">
         <ion-segment-button value="3-month">
           <ion-label>
-           3 Month
+            3 Month
           </ion-label>
         </ion-segment-button>
         <ion-segment-button value="6-month">
           <ion-label>
-           6 Month
+            6 Month
           </ion-label>
         </ion-segment-button>
         <ion-segment-button value="1-year">
           <ion-label>
-           1 Year
+            1 Year
           </ion-label>
         </ion-segment-button>
         <ion-segment-button value="2-year">
           <ion-label>
-          2 Year
+            2 Year
           </ion-label>
         </ion-segment-button>
-        </ion-segment>
-      </ion-list>
+      </ion-segment>
+    </ion-list>
 
-      <ion-list class="ion-list portfolio-details"  *ngIf="!showLoader else loadingTmplt">
-        <ion-row>
-
-        <!-- TODO -->
+    <ion-list class="ion-list portfolio-details" *ngIf="!showLoader else loadingTmplt">
+      <ion-row>
         <ion-col size="6" class="mb-1" size-md>
-          <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (sipDetails?.currentAmount ? sipDetails?.currentAmount : 0 ) | number }}</h4>
+          <h4 class="heading-label f-Lexend mt-0">
+            <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{
+            (sipDetails?.currentAmount ? sipDetails?.currentAmount : 0 ) | number }}
+          </h4>
           <span class="small-label gray-text">Current Value</span>
         </ion-col>
-
-        <!-- TODO -->
         <ion-col size="6" class="mb-1" size-md>
-          <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (view === 'sip' ? sipDetails?.installmentAmount : 0) | number }}
+          <h4 class="heading-label f-Lexend mt-0">
+            <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (view === 'sip' ?
+            sipDetails?.installmentAmount : 0) | number }}
           </h4>
           <span class="small-label gray-text">Invested</span>
         </ion-col>
-
         <ion-col size="6" class="mb-1" size-md>
-          <h4 class="heading-label f-Lexend mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>2,000.00</h4>
+          <h4 class="heading-label f-Lexend mt-0">
+            <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>2,000.00
+          </h4>
         </ion-col>
         <ion-col size="6" class="mb-1" size-md>
-          <h4 class="font-16 f-Lexend mt-0" [ngClass]="sipDetails?.absoluteReturnPercentage<0 ? 'text-danger' : 'theme-color'" ><ion-icon *ngIf="sipDetails?.absoluteReturnPercentage>0" class="text-muted-custom icon-up vertical-middle" src="assets/icon/arrow-up-square.svg"></ion-icon><ion-icon *ngIf="sipDetails?.absoluteReturnPercentage<0" class="text-muted-custom icon-up vertical-middle" src="assets/icon/arrow-square-down.svg"></ion-icon>&nbsp;{{  sipDetails?.absoluteReturnPercentage }}  <span class="small-label text-muted" >(% ROI)</span></h4>
+          <h4 class="font-16 f-Lexend mt-0"
+            [ngClass]="sipDetails?.absoluteReturnPercentage<0 ? 'text-danger' : 'theme-color'">
+            <ion-icon *ngIf="sipDetails?.absoluteReturnPercentage>0" class="text-muted-custom icon-up vertical-middle"
+              src="assets/icon/arrow-up-square.svg"></ion-icon>
+            <ion-icon *ngIf="sipDetails?.absoluteReturnPercentage<0" class="text-muted-custom icon-up vertical-middle"
+              src="assets/icon/arrow-square-down.svg"></ion-icon>&nbsp;{{ sipDetails?.absoluteReturnPercentage }} <span
+              class="small-label text-muted">(% ROI)</span>
+          </h4>
         </ion-col>
-
         <ion-col size="12" size-md>
           <div class="line"></div>
         </ion-col>
         <ion-col size="6" class="mt-1" size-md>
           <ng-container *ngIf="view === 'package' else intervalTmplt">
-            <h6 class="smallHeading-label mt-0"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (sipDetails?.installmentAmount ? sipDetails?.installmentAmount : 0) | number }}</h6>
-            <span class="small-label"><!-- Minimum SIP Amt -->Active Plan</span>
+            <h6 class="smallHeading-label mt-0">
+              <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{
+              (sipDetails?.installmentAmount ? sipDetails?.installmentAmount : 0) | number }}
+            </h6>
+            <span class="small-label">
+              Active Plan
+            </span>
           </ng-container>
-
           <ng-template #intervalTmplt>
             <h6 class="smallHeading-label mt-0">
-              <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ sipDetails?.installmentAmount | number }}/<span class="ion-text-capitalize">{{sipDetails.interval.type }}</span>
-              </h6>
-              <span class="small-label">Interval</span>
-            </ng-template>
+              <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{
+              sipDetails?.installmentAmount | number }}/<span class="ion-text-capitalize">{{sipDetails.interval.type
+                }}</span>
+            </h6>
+            <span class="small-label">Interval</span>
+          </ng-template>
         </ion-col>
-
-        <!-- TODO -->
         <ion-col size="6" class="mt-1" size-md>
-          <h6 class="smallHeading-label text-dark mt-0">{{ sipDetails?.nextScheduleDate ? ((sipDetails?.nextScheduleDate ) | date) : '-' }} </h6>
+          <h6 class="smallHeading-label text-dark mt-0">{{ sipDetails?.nextScheduleDate ? ((sipDetails?.nextScheduleDate
+            ) | date) : '-' }} </h6>
           <span class="small-label">Next Investment</span>
         </ion-col>
-        </ion-row>
-
-        <ion-row class="mt-1 mb-4" *ngIf="!showLoader else loadingTmplt">
-       <!--  <ng-container *ngIf="canStartSIP else SIPPrerequisiteMessageTmplt">
-          <ion-col size="12" size-md>
-            <ion-button class="ion-button-theme" shape="round" expand="full" (click)="openSIPStep()" *ngIf="view === 'package'">
-              {{ view === 'package' ? 'Add' : 'Edit' }} SIP
-            </ion-button>
-          </ion-col>
-        </ng-container> -->
-
+      </ion-row>
+      <ion-row class="mt-1 mb-4" *ngIf="!showLoader else loadingTmplt">
         <ng-template #SIPPrerequisiteMessageTmplt>
           <div class="bg-danger-light p-4 prerequisite-message">
             To create SIP, please complete
@@ -127,7 +139,7 @@
             verification process
           </div>
         </ng-template>
-        </ion-row>
+      </ion-row>
     </ion-list>
   </ion-grid>
 
@@ -137,25 +149,25 @@
 </ion-content>
 <div *ngIf="view === 'package'">
   <ion-footer class="bottomBtn" *ngIf="!showLoader else loadingTmplt">
-    <!-- <ng-container *ngIf="canStartSIP else SIPPrerequisiteMessageTmplt"> -->
-      <ng-container *ngIf="canStartSIP">
-        <ion-button class="footerTab ion-button-theme m-0" shape="round" expand="full" (click)="openSIPStep()" *ngIf="view === 'package'">
-          {{ view === 'package' ? 'Add' : 'Edit' }} SIP
-        </ion-button>
+    <ng-container *ngIf="canStartSIP">
+      <ion-button class="footerTab ion-button-theme m-0" shape="round" expand="full" (click)="openSIPStep()"
+        *ngIf="view === 'package'">
+        {{ view === 'package' ? 'Add' : 'Edit' }} SIP
+      </ion-button>
     </ng-container>
     <ng-container *ngIf="!canStartSIP">
       <ion-button class="footerTab ion-button-theme m-0" shape="round" expand="full" (click)="completeKYC()">
         Complete your KYC
       </ion-button>
-  </ng-container>
+    </ng-container>
   </ion-footer>
 </div>
 <div *ngIf="listBtn === 'true'">
   <ion-footer class="bottomBtn">
     <ng-container>
-        <ion-button class="footerTab ion-button-theme m-0" shape="round" expand="full" (click)="transactionsList()">
-          Transactions
-        </ion-button>
+      <ion-button class="footerTab ion-button-theme m-0" shape="round" expand="full" (click)="transactionsList()">
+        Transactions
+      </ion-button>
     </ng-container>
   </ion-footer>
 </div>

@@ -15,7 +15,6 @@ enum SIPSteps {
   CREATED,
 }
 
-
 export enum RequiredVerificationEnum {
   AADHAR_CARD = 'Aadhar card',
   BANK_ACCOUNT = 'Bank details',
@@ -35,14 +34,14 @@ export class PortfolioViewPage implements OnInit {
   CONSTANT = COPY;
   COINS = COINS;
   eSignURL = '';
-  chartLabel : any;
-  chartData : any;
-  coinCode:string;
+  chartLabel: any;
+  chartData: any;
+  coinCode: string;
   @Output() coinList: any;
   @Output() packageList: any;
-  withdrawBtn:string='false';
-  listBtn:string='false';
-  time_frame:boolean=false;
+  withdrawBtn: string = 'false';
+  listBtn: string = 'false';
+  time_frame: boolean = false;
   public segment: string = 'day';
   showLoader = true;
   withdrawalStatus = "complete";
@@ -102,12 +101,9 @@ export class PortfolioViewPage implements OnInit {
     this.activateRoute.params.subscribe((params: Params) => {
       this.id = params.id;
       this.view = this.router.url.startsWith('/sip') ? 'sip' : 'package';
-
-      //this.lineChartMethod();
     });
     this.withdrawBtn = localStorage.getItem('withdraw');
     this.listBtn = localStorage.getItem('list');
-    //console.log(this.withdrawBtn);
   }
 
   ngAfterViewInit() {
@@ -115,104 +111,101 @@ export class PortfolioViewPage implements OnInit {
     this.lineChartMethod();
   }
 
- async lineChartMethod(duration?:any,interval?:string,symbol?:string) {
+  async lineChartMethod(duration?: any, interval?: string, symbol?: string) {
 
- if(duration!=undefined && interval!=undefined)
-  {
-    this.time_frame = true;
-    const res = await this.sipService.getChartDetailsPackage(this.coinCode,duration,interval);
-    this.chartLabel = res.data?.date;
-    this.chartData = res.data?.price;
-  }
-  else
-  {
-    this.time_frame = true;
-    const res = await (this.view === 'sip'
-    ? this.sipService.getSIPDetails(this.id)
-    : this.packagesService.getPackageDetails(this.id));
-
-    if (res.status === this.CONSTANT.SUCCESS && res.data) {
-      if (this.view === 'sip') {
-        this.sipDetails = res.data.sip;
-        this.packageDetails = this.sipDetails.packageId;
-      } else
-      {
-        this.packageDetails = res.data.package;
-      }
-      this.showLoader = false;
+    if (duration != undefined && interval != undefined) {
+      this.time_frame = true;
+      const res = await this.sipService.getChartDetailsPackage(this.coinCode, duration, interval);
+      this.chartLabel = res.data?.date;
+      this.chartData = res.data?.price;
     }
-    this.chartLabel = res.data?.chartData?.date;
-    this.chartData = res.data?.chartData?.price;
-    this.withdrawalStatus = res.data?.sip?.status;
-    this.coinCode = res.data?.sip?.packageId ? res.data?.sip?.packageId._id : res.data?.package?._id;
-  }
-  this.time_frame = false;
+    else {
+      this.time_frame = true;
+      const res = await (this.view === 'sip'
+        ? this.sipService.getSIPDetails(this.id)
+        : this.packagesService.getPackageDetails(this.id));
+
+      if (res.status === this.CONSTANT.SUCCESS && res.data) {
+        if (this.view === 'sip') {
+          this.sipDetails = res.data.sip;
+          this.packageDetails = this.sipDetails.packageId;
+        } else {
+          this.packageDetails = res.data.package;
+        }
+        this.showLoader = false;
+      }
+      this.chartLabel = res.data?.chartData?.date;
+      this.chartData = res.data?.chartData?.price;
+      this.withdrawalStatus = res.data?.sip?.status;
+      this.coinCode = res.data?.sip?.packageId ? res.data?.sip?.packageId._id : res.data?.package?._id;
+    }
+    this.time_frame = false;
     let context: CanvasRenderingContext2D = this.lineCanvas.nativeElement.getContext('2d');
     let grad = context.createLinearGradient(0, 0, 0, 200);
     grad.addColorStop(0, '#2B7979');
     grad.addColorStop(1, '#fff');
-   this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-     type: 'line',
-     data: {
-       labels: this.chartLabel,
-       datasets: [
-         {
-           data: this.chartData,
-           backgroundColor: grad,
-           borderColor: 'rgba(43, 121, 121, 1)',
-           borderCapStyle: 'butt',
-           fill: true,
-           tension: 0.5,
-           pointBorderColor: 'rgba(75,192,192,1)',
-           pointBackgroundColor: '#FFFFFF',
-           pointRadius: 0,
-           pointHitRadius: 10,
-           pointBorderWidth: 0.5,
-           pointHoverBorderWidth: 5,
-           pointHoverRadius: 10,
-           pointHoverBackgroundColor: '#FFFFFF',
-           pointHoverBorderColor: 'rgba(43, 121, 121, 1)',
-           spanGaps: false,
-         }
-       ]
-     },
-     options: {
-       plugins: {
-         legend: {
-           display: false
-         },
-         datalabels: {
-           display: false,
-         },
-       },
-       scales: {
-         y: {
-           grid: {
-             drawBorder: false,
-             display: false
-           },
-           ticks: {
-             display: false
-           }
-         },
-         x: {
-           grid: {
-             drawBorder: false,
-             display: false
-           },
-           ticks: {
-            display: false
+    this.lineChart = new Chart(this.lineCanvas.nativeElement, {
+      type: 'line',
+      data: {
+        labels: this.chartLabel,
+        datasets: [
+          {
+            data: this.chartData,
+            backgroundColor: grad,
+            borderColor: 'rgba(43, 121, 121, 1)',
+            borderCapStyle: 'butt',
+            fill: true,
+            tension: 0.5,
+            pointBorderColor: 'rgba(75,192,192,1)',
+            pointBackgroundColor: '#FFFFFF',
+            pointRadius: 0,
+            pointHitRadius: 10,
+            pointBorderWidth: 0.5,
+            pointHoverBorderWidth: 5,
+            pointHoverRadius: 10,
+            pointHoverBackgroundColor: '#FFFFFF',
+            pointHoverBorderColor: 'rgba(43, 121, 121, 1)',
+            spanGaps: false,
           }
-         }
-       }
-     }
-   });
- }
+        ]
+      },
+      options: {
+        plugins: {
+          legend: {
+            display: false
+          },
+          datalabels: {
+            display: false,
+          },
+        },
+        scales: {
+          y: {
+            grid: {
+              drawBorder: false,
+              display: false
+            },
+            ticks: {
+              display: false
+            }
+          },
+          x: {
+            grid: {
+              drawBorder: false,
+              display: false
+            },
+            ticks: {
+              display: false
+            }
+          }
+        }
+      }
+    });
+  }
 
   checkUserCanStartSIP() {
     this.canStartSIP = false;
     this.pendingVerificationList = [];
-    if (this.view === 'sip'){
+    if (this.view === 'sip') {
       this.canStartSIP = true;
       return;
     }
@@ -287,9 +280,7 @@ export class PortfolioViewPage implements OnInit {
         if (this.view === 'sip') {
           this.sipDetails = res.data.sip;
           this.packageDetails = this.sipDetails.packageId;
-          //this.packageDetails = this.packageDetails.data.sip;
-        } else
-        {
+        } else {
           this.packageDetails = res.data.package;
         }
 
@@ -323,7 +314,7 @@ export class PortfolioViewPage implements OnInit {
     this.segment = ev.detail.value;
     this.lineChart.destroy();
     var durationMonth = this.segment.split("-");
-    this.lineChartMethod(Number(durationMonth[0]),durationMonth[1]);
+    this.lineChartMethod(Number(durationMonth[0]), durationMonth[1]);
   }
 
   async openSIPStep() {
@@ -345,15 +336,19 @@ export class PortfolioViewPage implements OnInit {
   }
 
   transactionsList() {
-    this.navCtrl.navigateBack('/sip-transaction-list/'+this.id);
+    this.navCtrl.navigateBack('/sip-transaction-list/' + this.id);
   }
 
   goBack() {
     this.navCtrl.navigateBack('/tabs/portfolio');
   }
 
-  completeKYC()
-  {
-    this.navCtrl.navigateBack('/kyc-document');
+  completeKYC() {
+    if (!this.user?.kycDocuments?.bankAccount) {
+      this.navCtrl.navigateBack('/bank-details');
+    }
+    else {
+      this.navCtrl.navigateBack('/kyc-document');
+    }
   }
 }

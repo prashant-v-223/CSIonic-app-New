@@ -7,7 +7,7 @@ import { Browser } from '@capacitor/browser';
   styleUrls: ['./success-fail-screen.page.scss'],
 })
 export class SuccessFailScreenPage implements OnInit {
-  screenShow:string='success';
+  screenShow: string = 'success';
   showLoader = false;
   redirectURL: string = '';
   @Input() transactionStatus;
@@ -17,24 +17,21 @@ export class SuccessFailScreenPage implements OnInit {
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {
-    this.screenShow='success';
+    this.screenShow = 'success';
   }
 
   async ngAfterViewInit() {
-    if (this.transactionStatus==true) {
-      this.screenShow='success';
+    if (this.transactionStatus == true) {
+      this.screenShow = 'success';
     }
-    else
-    {
-      this.screenShow='fail';
+    else {
+      this.screenShow = 'fail';
     }
 
-    if(this.transactionType=='Deposit')
-    {
+    if (this.transactionType == 'Deposit') {
       this.redirectURL = 'deposit-amount'
     }
-    else
-    {
+    else {
       this.redirectURL = 'withdrawal-amount'
     }
 

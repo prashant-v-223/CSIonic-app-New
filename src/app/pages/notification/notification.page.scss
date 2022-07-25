@@ -1,75 +1,84 @@
-.topHeader{
-  position: inherit;
-  text-align: left;
-  height: inherit;
-  left: inherit;
-  font-size: 26px;
-  //font-family: var(--f-Poppins);
-  font-family: var(--f-Lexend);
-  font-weight: 500;
+.topHeader {
+  position     : inherit;
+  text-align   : left;
+  height       : inherit;
+  left         : inherit;
+  font-size    : 26px;
+  font-family  : var(--f-Lexend);
+  font-weight  : 500;
   margin-bottom: 0.8rem;
-  line-height: 28px;
+  line-height  : 28px;
 }
-ion-label.notification-data{
+
+ion-label.notification-data {
   white-space: normal !important;
 }
 
 .themeHeader {
-  ion-toolbar{
+  ion-toolbar {
     --background: var(--lighter-gray) !important;
-    padding: 0rem 0.5rem 0rem 0.5rem;
+    padding     : 0rem 0.5rem 0rem 0.5rem;
   }
-  ion-list{
+
+  ion-list {
     background: var(--lighter-gray) !important;
   }
+
   ion-button {
-    margin: 0px;
-    line-height: 0px;
-    height: 36px;
-    font-size: 14px;
-    --border-radius: 6px;
-    font-weight: 400;
-    font-family: var(--f-Lexend);
+    margin          : 0px;
+    line-height     : 0px;
+    height          : 36px;
+    font-size       : 14px;
+    --border-radius : 6px;
+    font-weight     : 400;
+    font-family     : var(--f-Lexend);
     --ion-color-base: #2F4858 !important;
-    letter-spacing: .08px;
+    letter-spacing  : .08px;
   }
-  ion-icon{
-    font-size: 42px;
-    margin-top: -10%;
-   padding-left: 1%;
+
+  ion-icon {
+    font-size   : 42px;
+    margin-top  : -10%;
+    padding-left: 1%;
   }
+
   .notifcation-list {
-    --background: #1F2C37 !important;
+    --background : #1F2C37 !important;
     border-radius: 10px;
-    //padding: 4px 6px;
-    font-family: var(--f-Lexend);
-    color: #fff;
-    font-weight: 500;
-    width: 90%;
-    height: 32px;
-    margin-left: 10%;
+    font-family  : var(--f-Lexend);
+    color        : #fff;
+    font-weight  : 500;
+    width        : 90%;
+    height       : 32px;
+    margin-left  : 10%;
   }
-  .notifcation-list b{
+
+  .notifcation-list b {
     padding-left: 7%;
-    padding-top: 2%;
-    font-family: var(--f-Lexend);
+    padding-top : 2%;
+    font-family : var(--f-Lexend);
+    font-weight : 500;
+    font-size   : 22px;
+    color       : #000;
+  }
+}
+
+.notifications {
+  padding: 2% !important;
+
+  h2 {
     font-weight: 500;
-    font-size: 22px;
+  }
+
+  p {
     color: #000;
   }
 }
-.notifications{
-  padding:2% !important;
-  h2{
-    font-weight: 500;
-  }
-  p{
-    color: #000;
-  }
-}
-.themeHeader ion-toolbar{
+
+.themeHeader ion-toolbar {
   --background: var(--lighter-gray);
 }
+
 ion-content {
   --ion-background-color: var(--lighter-gray);
 }

@@ -1,14 +1,4 @@
   <!-- Header Section Start -->
- <!-- <ion-header translucent class="themeHeader">
-  <ion-toolbar>
-    <ion-list class="d-flex justify-between">
-    <ion-buttons slot="start">
-      <ion-back-button  mat-icon-button class="back-btn" defaultHref="/tabs/profile">
-      </ion-back-button>
-    </ion-buttons>
-  </ion-list>
-  </ion-toolbar>
-</ion-header> -->
 <ion-row class="list-header p-0">
   <ion-col size="12" class="p-0">
     <p class="text-white font-weight-bold p-0"></p>
@@ -26,9 +16,6 @@
       <ion-col size="12" class="text-left mt-2" size-md>
         <h1 class="wallet-header-amount"><ion-icon src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ user.wallet | number:'1.2-2' }}</h1>
       </ion-col>
-     <!--  <ion-col size="12" class="text-left mt-1" size-md>
-        <h3 class="my-portfolio-heading">My portfolio</h3>
-      </ion-col> -->
       <ion-col size="4" class="text-center mt-4" size-md *ngIf="bankAccount">
         <ion-button class="ion-button-white" routerLink="/deposit-amount">
           <ion-icon class="mr-1 icon-theme" src="../../../assets/icon/deposit-icon.svg"></ion-icon>

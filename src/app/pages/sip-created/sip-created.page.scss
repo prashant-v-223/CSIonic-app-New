@@ -1,19 +1,18 @@
-.sip-success-fail
-{
+.sip-success-fail {
   background: var(--lighter-gray) !important;
 }
 
-.sip-created-image
-{
+.sip-created-image {
   margin: 0 auto;
 }
-.sip-coins-table{
+
+.sip-coins-table {
   line-height: 1.5;
 }
-.sip-fail-image
-{
-  height: calc(50vh - 0px - 100px);
+
+.sip-fail-image {
+  height    : calc(50vh - 0px - 100px);
   min-height: calc(50vh - 0px - 50px);
-  margin: 0 auto;
-  width: 75%;
+  margin    : 0 auto;
+  width     : 75%;
 }

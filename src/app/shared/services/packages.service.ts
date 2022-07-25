@@ -16,7 +16,7 @@ export class PackagesService {
   constructor(
     private api: ApiCallService,
     private apiConfig: ApiConfiguration
-  ) {}
+  ) { }
 
   async getPackages() {
     try {

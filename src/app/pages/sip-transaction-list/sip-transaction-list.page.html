@@ -31,7 +31,7 @@
   </div>
   <ion-list class="ion-list">
     <ion-grid class="p-0" *ngIf="segment === 'buy'">
-      <ion-list class="ion-list" >
+      <ion-list class="ion-list">
         <div *ngIf="transactionList?.length else notransactionTemplate">
           <ion-item *ngFor="let transaction of transactionList; index as i">
             <div class="item-inner">
@@ -45,9 +45,13 @@
                   <span class="small-label font-12">Qty</span>
                 </ion-col>
                 <ion-col class="p-0 text-right align-center justify-end" size="3" size-md>
-                  <h4 class="priceTage mt-1"><ion-icon class="font-14" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ transaction.amount }}</h4>
+                  <h4 class="priceTage mt-1">
+                    <ion-icon class="font-14" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{
+                    transaction.amount | number:'1.2-2' }}
+                  </h4>
                   <span class="small-label completed-status font-12" *ngIf="transaction.status=='done'">Completed</span>
-                  <span class="small-label in-progress-status font-12" *ngIf="transaction.status!='done'">In progress</span>
+                  <span class="small-label in-progress-status font-12" *ngIf="transaction.status!='done'">In
+                    progress</span>
                 </ion-col>
               </ion-row>
             </div>
@@ -58,7 +62,7 @@
         <ion-list class="p-3">
           <ion-grid>
             <ion-row class="w-100">
-              <ion-col class="p-0 text-center" size="12"  size-md>
+              <ion-col class="p-0 text-center" size="12" size-md>
                 <div class="mt-2">
                   No transactions available
                 </div>
@@ -69,7 +73,7 @@
       </ng-template>
     </ion-grid>
     <ion-grid class="p-0" *ngIf="segment === 'sell'">
-      <ion-list class="ion-list" >
+      <ion-list class="ion-list">
         <div *ngIf="transactionList?.length else notransactionTemplate">
           <ion-item *ngFor="let transaction of transactionList; index as i">
             <div class="item-inner">
@@ -83,9 +87,13 @@
                   <span class="small-label font-12">Qty</span>
                 </ion-col>
                 <ion-col class="p-0 text-right align-center justify-end" size="3" size-md>
-                  <h4 class="priceTage mt-1"><ion-icon class="font-14" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ transaction.amount }}</h4>
+                  <h4 class="priceTage mt-1">
+                    <ion-icon class="font-14" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{
+                    transaction.amount | number:'1.2-2' }}
+                  </h4>
                   <span class="small-label completed-status font-12" *ngIf="transaction.status=='done'">Completed</span>
-                  <span class="small-label in-progress-status font-12" *ngIf="transaction.status!='done'">In progress</span>
+                  <span class="small-label in-progress-status font-12" *ngIf="transaction.status!='done'">In
+                    progress</span>
                 </ion-col>
               </ion-row>
             </div>
@@ -96,7 +104,7 @@
         <ion-list class="p-3">
           <ion-grid>
             <ion-row class="w-100">
-              <ion-col class="p-0 text-center" size="12"  size-md>
+              <ion-col class="p-0 text-center" size="12" size-md>
                 <div class="mt-2">
                   No transactions available
                 </div>
@@ -108,4 +116,3 @@
     </ion-grid>
   </ion-list>
 </ion-content>
-

@@ -22,11 +22,6 @@ export class PortfolioPage implements OnInit {
    }
 
    async ngOnInit() {
-
-    //let navigation = this.router.getCurrentNavigation();
-    /* this.loadSIPList();
-    localStorage.setItem('withdraw','true');
-    this.getPortfolioDetails(); */
   }
 
   async ionViewWillEnter()
@@ -56,14 +51,6 @@ export class PortfolioPage implements OnInit {
     }
     this.showLoader = localStorage.getItem('portfolio-data')=='' ? true : false;
 
-    /* this.showLoader = true;
-    try {
-      const posrtfolioData = await this.userService.getPortfolioDataDetails();
-      this.portfolioInfo = posrtfolioData.data;
-      this.showLoader = false;
-    } catch (e) {
-      console.log('Error while getting portfolio details: ', e);
-    } */
     try {
         this.userService.getPortfolioDataDetails$().subscribe(res => {
           this.portfolioInfo = res.data;

@@ -10,7 +10,6 @@
       </div>
 
       <!-- TODO: add greeting text -->
-      <!-- <p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy</p> -->
     </div>
     <form class="w-100 mt-3" [formGroup]="signInForm" (submit)="signIn()">
       <ion-label class="input" position="stacked">Email address</ion-label>
@@ -18,7 +17,7 @@
         <ion-input type="email" placeholder="Email" formControlName="username"></ion-input>
       </ion-item>
       <div class="error-message"
-        *ngIf="signInForm.get('username').dirty && !signInForm.get('username').errors?.required && (signInForm.get('username').errors?.email || signInForm.get('username').errors?.pattern)" >
+        *ngIf="signInForm.get('username').dirty && !signInForm.get('username').errors?.required && (signInForm.get('username').errors?.email || signInForm.get('username').errors?.pattern)">
         <ul class="text-danger pl-1">
           <li>Enter valid email address</li>
         </ul>
@@ -31,20 +30,21 @@
       </ion-item>
       <div class="error-message" [innerHTML]="passwordRequirementMessage"
         *ngIf="signInForm.get('password').dirty && !signInForm.get('password').errors?.required && signInForm.get('password').errors?.password">
-        <!-- {{ passwordRequirementMessage }} -->
       </div>
 
       <ion-list class="p-0 text-right">
         <a routerLink="/forgot-password" class="link-dark font-weight-600"> Forgot Password?</a>
       </ion-list>
       <ion-list class="p-0 mt-3">
-        <ion-button class="ion-button-theme" type="submit" expand="full" shape="round" [disabled]="signInForm.invalid || isLoading">
+        <ion-button class="ion-button-theme" type="submit" expand="full" shape="round"
+          [disabled]="signInForm.invalid || isLoading">
           <ion-spinner *ngIf="isLoading" class="size-sm mr-2"></ion-spinner>
           {{ isLoading ? 'Logging in..' : 'Log in' }}
         </ion-button>
 
         <ion-list class="mt-3 p-0 text-center small-text">
-          Don't have an account? <ion-router-link class="link-primary" routerLink="/sign-up"><strong> Sign up!</strong></ion-router-link>
+          Don't have an account? <ion-router-link class="link-primary" routerLink="/sign-up"><strong> Sign up!</strong>
+          </ion-router-link>
         </ion-list>
       </ion-list>
     </form>

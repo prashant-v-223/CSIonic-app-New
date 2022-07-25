@@ -8,7 +8,7 @@ import {
   ModalController,
   NavController,
   NavParams
-  } from '@ionic/angular';
+} from '@ionic/angular';
 @Component({
   selector: 'app-support-model',
   templateUrl: './support-model.page.html',
@@ -18,7 +18,7 @@ export class SupportModelPage implements OnInit {
 
   modalTitle: string;
   modelId: number;
-  supportForm : FormGroup;
+  supportForm: FormGroup;
 
   constructor(
     private modalController: ModalController,
@@ -28,10 +28,9 @@ export class SupportModelPage implements OnInit {
 
   ngOnInit() {
     this.supportForm = new FormGroup({
-      mailSubject: new FormControl('',[Validators.required]),
-      mailBody: new FormControl('',[Validators.required]),
+      mailSubject: new FormControl('', [Validators.required]),
+      mailBody: new FormControl('', [Validators.required]),
     });
-    //console.table(this.navParams);
     this.modelId = this.navParams.data.paramID;
     this.modalTitle = this.navParams.data.paramTitle;
   }
@@ -48,7 +47,6 @@ export class SupportModelPage implements OnInit {
       "body": this.supportForm.controls['mailBody'].value,
     };
     EmailComposer.open(emailOps);
-    // await this.emailComposer.open(email);
     const onClosedData: string = "Wrapped Up!";
     await this.modalController.dismiss(onClosedData);
   }

@@ -5,13 +5,12 @@ import { Platform } from '@ionic/angular';
   templateUrl: './maintenance-mode.page.html',
   styleUrls: ['./maintenance-mode.page.scss'],
 })
-export class MaintenanceModePage implements OnInit{
+export class MaintenanceModePage implements OnInit {
   backButtonSubscription;
-  constructor (private platform: Platform) { }
+  constructor(private platform: Platform) { }
   ngOnInit() {
   }
-  exitApp()
-  {
+  exitApp() {
     this.platform.backButton.subscribe(() => {
       navigator['app'].exitApp();
     });

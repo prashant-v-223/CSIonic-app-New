@@ -6,9 +6,9 @@
       </button>
       <h2 class="m-0">Menu</h2>
     </div>
-    
+
     <div class="profile-section">
-      
+
       <ng-container *ngIf="user?.kycDocuments?.selfie else avatarTmplt">
         <ion-avatar class="mr-4">
           <img [src]="user.kycDocuments.selfie" />
