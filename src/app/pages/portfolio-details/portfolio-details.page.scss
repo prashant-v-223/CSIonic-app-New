@@ -1,61 +1,72 @@
-.themeHeader{ 
-  ion-toolbar{
-      --background:var(--bg-lighter); 
-      --border-color:var(--bg-lighter); 
-    }
-    ion-list{
-      background: transparent;
-    }
-    ion-back-button.md{ 
-      background-color:rgba($color: #fff, $alpha: 1); 
-      ion-icon{
-        stroke: #2F4858;
-      }
-    }
-    ion-button{
-        margin: 0px;
-        line-height: 0px;
-        height: 36px;
-        font-size: 14px;  
-        --border-radius: 6px; 
-        font-weight: 400;
-        font-family: var(--f-Poppins);
-        --ion-color-base:#2F4858 !important;
-        letter-spacing: .08px; 
-    }
-    &.bg-theme{
-      ion-toolbar{
-        --background:var(--theme-color); 
-        --border-color:var(--theme-color); 
-      }
-        .menuLeft{ 
-            background-color:rgba($color: #000, $alpha: .1);
-            color: #fff;
-            ion-icon{
-              stroke: #fff;
-            }
-        }
-        ion-button{
-            --ion-color-contrast: #000 !important;
-            --ion-color-base:#fff !important;
-            &.ion-activated{
-                --ion-color-contrast: #fff    !important;
-                --ion-color-base:#2F4858 !important;
-            }
-        } 
-    }
-  } 
-  .portfolio{ 
-      ion-list{
-          padding-top: 0rem;
-          
-      }
+.themeHeader {
+  ion-toolbar {
+    --background  : var(--bg-lighter);
+    --border-color: var(--bg-lighter);
   }
-  //  Popular Coin Card Start
+
+  ion-list {
+    background: transparent;
+  }
+
+  ion-back-button.md {
+    background-color: rgba($color: #fff, $alpha: 1);
+
+    ion-icon {
+      stroke: #2F4858;
+    }
+  }
+
+  ion-button {
+    margin          : 0px;
+    line-height     : 0px;
+    height          : 36px;
+    font-size       : 14px;
+    --border-radius : 6px;
+    font-weight     : 400;
+    font-family     : var(--f-Poppins);
+    --ion-color-base: #2F4858 !important;
+    letter-spacing  : .08px;
+  }
+
+  &.bg-theme {
+    ion-toolbar {
+      --background  : var(--theme-color);
+      --border-color: var(--theme-color);
+    }
+
+    .menuLeft {
+      background-color: rgba($color: #000, $alpha: .1);
+      color           : #fff;
+
+      ion-icon {
+        stroke: #fff;
+      }
+    }
+
+    ion-button {
+      --ion-color-contrast: #000 !important;
+      --ion-color-base    : #fff !important;
+
+      &.ion-activated {
+        --ion-color-contrast: #fff !important;
+        --ion-color-base    : #2F4858 !important;
+      }
+    }
+  }
+}
+
+.portfolio {
+  ion-list {
+    padding-top: 0rem;
+
+  }
+}
+
+//  Popular Coin Card Start
 .popularSection {
-    ion-col{
-        padding:5px 0px;
-      } 
+  ion-col {
+    padding: 5px 0px;
   }
-  //  Popular Coin Card End
-  
+}
+
+//  Popular Coin Card End

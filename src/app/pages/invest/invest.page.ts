@@ -28,8 +28,7 @@ export class InvestPage implements OnInit {
     await this.getPackages();
   }
 
-  async ionViewWillEnter()
-  {
+  async ionViewWillEnter() {
     await this.getPackages();
   }
 
@@ -46,7 +45,6 @@ export class InvestPage implements OnInit {
         const separated = this.packagesService.separatePackagesAndCoins(planListRes?.data?.data);
         this.packageList = separated.packages;
         this.coinList = separated.coins;
-       // console.log(this.coinList,'1',this.packageList);
         this.showLoader = false;
       }
     } catch (e) {

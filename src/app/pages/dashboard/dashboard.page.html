@@ -1,22 +1,18 @@
-<!-- Body Section Start -->
 <ion-header class="themeHeader">
   <ion-toolbar>
     <ion-list class="d-flex justify-between align-center">
       <ion-icon class="font-larger text-d-theme" routerLink="/notification" name="notifications"></ion-icon>
-      <!-- <ion-icon class="font-20" src="../../../assets/category.svg"></ion-icon> -->
       <img class="w-35" src="../../../assets/logo/Prosprr-Logo-H.svg" />
       <ion-icon class="font-xx" src="../../../assets/profile/profile.svg"></ion-icon>
     </ion-list>
   </ion-toolbar>
 </ion-header>
-
 <ion-content class="dashboard">
   <ion-list class="ion-list">
-
     <h1 class="userName ion-text-capitalize mt-1">Hello, {{ user.firstName }}!</h1>
     <p class="userInfo">Invest more to earn more, check out your portfolio,</p>
     <div *ngIf="!showPortfolioLoader else loadingTmplt">
-      <ion-col size="12" class="p-0 myPortfolio">
+        <ion-col size="12" class="p-0 myPortfolio" (click)="portfolioInfo.currentAmount==0 ? redirectPackages() : false">
         <div class="card-body">
           <div>
             <span class="label text-white">My Portfolio</span>
@@ -45,7 +41,8 @@
         <ng-container *ngIf="coinList?.length else noCoinsTmplt">
           <swiper [slidesPerView]="1.9" [loop]="false">
             <ng-template swiperSlide *ngFor="let coin of coinList">
-              <app-package-card [package]="coin"  [coinList]="coin.coins" [packageList]="coin.coins" view="coin" [navigationLink]="'/packages/' + coin._id"></app-package-card>
+              <app-package-card [package]="coin" [coinList]="coin.coins" [packageList]="coin.coins" view="coin"
+                [navigationLink]="'/packages/' + coin._id"></app-package-card>
             </ng-template>
           </swiper>
         </ng-container>
@@ -55,41 +52,31 @@
           </div>
         </ng-template>
       </ng-container>
-
-
     </ion-col>
-
     <ion-col size="12" class="themeHeading p-0">
       <h6 class="font-weight-700">POPULAR BASKETS</h6>
       <a href="#" class="text-theme text-decoration-none font-weight-500" routerLink="/popular-baskets">View All</a>
     </ion-col>
     <ion-col size="12" class="p-0 popularSection basket">
-
       <ng-container *ngIf="!showLoader else loadingTmplt">
         <ng-container *ngIf="packageList?.length else noPackagesTmplt">
-
           <swiper [slidesPerView]="1.5" [loop]="false">
-
             <ng-template swiperSlide *ngFor="let package of packageList">
-              <app-package-card [package]="package"  [coinList]="package.coins" [packageList]="package.coins" [navigationLink]="'/packages/' + package._id"></app-package-card>
+              <app-package-card [package]="package" [coinList]="package.coins" [packageList]="package.coins"
+                [navigationLink]="'/packages/' + package._id"></app-package-card>
             </ng-template>
-
           </swiper>
-
         </ng-container>
-
         <ng-template #noPackagesTmplt>
           <div class="ion-text-center mt-5">
             No packages available
           </div>
         </ng-template>
       </ng-container>
-
     </ion-col>
   </ion-list>
 </ion-content>
 <!-- Body Section End -->
-
 
 <ng-template #loadingTmplt>
   <app-loading-skeleton></app-loading-skeleton>

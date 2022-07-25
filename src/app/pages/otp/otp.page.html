@@ -10,11 +10,8 @@
   </ion-toolbar>
 </ion-header>
 <!-- Header Section End -->
-
 <ion-content>
-
   <div class="otp-content">
-
     <h2 class="heading">Verification</h2>
     <p class="small-label">Enter the OTP sent to <b>{{ email }}</b></p>
 
@@ -23,8 +20,6 @@
         <ion-input type="password" placeholder="OTP" class="otp-input" [formControl]="otpCtrl"></ion-input>
       </ion-item>
     </div>
-
-
     <ion-list class="p-0 mt-6">
       <ion-list class="p-0 text-center small-text">
         Didn't receive the verification OTP?
@@ -45,7 +40,5 @@
         {{ isLoading ? 'Verifying' : 'Verify'}}
       </ion-button>
     </ion-list>
-
   </div>
-
 </ion-content>

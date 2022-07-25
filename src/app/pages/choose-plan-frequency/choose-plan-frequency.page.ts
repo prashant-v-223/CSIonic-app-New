@@ -79,17 +79,14 @@ export class ChoosePlanFrequencyPage implements OnInit {
     this.coins = this.package.coins.map((coin) => coin.currencyId);
     this.onSelectFrequency('monthly');
     this.config = await this.configurationService.getConfiguration();
-    if(this.customSelectedData!=undefined && this.customSelectedFrequency!=undefined && this.customSelectedAmount!=undefined)
-    {
+    if (this.customSelectedData != undefined && this.customSelectedFrequency != undefined && this.customSelectedAmount != undefined) {
       this.selectedDate = this.customSelectedData;
       this.frequencyObject = this.customSelectedFrequency;
       this.currentDay = this.customSelectedFrequency.monthDay;
-      console.log(this.customSelectedAmount,'fre');
+      console.log(this.customSelectedAmount, 'fre');
       this.openNextStep();
 
     }
-    //this.tenureYears = this.config.tenure;
-    //this.onSelectTenure(0);
   }
 
   counter() {
@@ -112,11 +109,6 @@ export class ChoosePlanFrequencyPage implements OnInit {
     this.frequencyObject.weekDay = day;
     this.updateValidity();
   }
-
-/*   onSelectTenure(index) {
-    this.selectedTenure = this.tenureYears[index];
-    this.updateValidity();
-  } */
 
   onSelectDate(date) {
     this.frequencyObject.monthDay = (
@@ -153,10 +145,9 @@ export class ChoosePlanFrequencyPage implements OnInit {
       this.stepperSteps = "addAmount";
     }
     if (this.stepperSteps === "addAmount") {
-     // this.sipService.setSIPData('tenure', this.selectedTenure);
       this.sipService.setSIPData('plan-frequency', this.frequencyObject);
 
-      if(this.selectFrequency === 'monthly'){
+      if (this.selectFrequency === 'monthly') {
         this.sipService.setSIPData('selectedDate', this.selectedDate);
       }
       this.customSelectedData = this.selectedDate;
@@ -183,8 +174,6 @@ export class ChoosePlanFrequencyPage implements OnInit {
   closeModal(status: 'dismissed' | 'success' | 'error') {
     if (this.stepperSteps === "addAmount" && status === 'dismissed') {
       this.stepperSteps = "planFrequency";
-    /* } else if (this.stepperSteps === "planFrequency") {
-      this.stepperSteps = "tenure"; */
     } else {
       this.modalController.dismiss(
         {

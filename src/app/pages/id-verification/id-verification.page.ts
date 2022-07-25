@@ -260,10 +260,6 @@ export class IdVerificationPage implements OnInit {
     this.updateValidity();
   }
 
-  onBack() {
-    this.navCtrl.navigateBack('/kyc-document');
-  }
-
   isBackPageRequired() {
     // as of now for all the documents back page is required
     return this.verifyType !== this.verifyTypeEnum.SELFIE;
@@ -350,5 +346,9 @@ export class IdVerificationPage implements OnInit {
         this.subscriptions[sub].unsubscribe();
       }
     }
+  }
+
+  onBack() {
+    this.navCtrl.back();
   }
 }

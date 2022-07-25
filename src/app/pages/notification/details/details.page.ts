@@ -37,7 +37,7 @@ export class DetailsPage implements OnInit {
     try {
       this.notification = await this.notificationService.getNotification(this.id);
       this.isLoading = false;
-    } catch(e) {
+    } catch (e) {
       console.error('Error in loading notification service');
     }
   }

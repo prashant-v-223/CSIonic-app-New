@@ -9,15 +9,15 @@ import { Auth } from 'aws-amplify';
   styleUrls: ['./forgot-password.page.scss'],
 })
 export class ForgotPasswordPage implements OnInit {
-  usernameCtrl = new FormControl(null, [Validators.required,Validators.pattern('^[A-Za-z0-9_@.]+'), Validators.email]);
+  usernameCtrl = new FormControl(null, [Validators.required, Validators.pattern('^[A-Za-z0-9_@.]+'), Validators.email]);
   isLoading = false;
 
   constructor(
     private navCtrl: NavController,
     private toastController: ToastController
-  ) {}
+  ) { }
 
-  ngOnInit() {}
+  ngOnInit() { }
 
   async sendInstructions() {
     if (this.usernameCtrl.invalid) return;

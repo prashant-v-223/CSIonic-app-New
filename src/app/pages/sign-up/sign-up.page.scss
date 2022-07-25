@@ -1,55 +1,61 @@
 .signin-content {
-  position: relative;
-  padding: 0.5rem 1.5rem 1.5rem 1.5rem;
-  display: flex;
+  position : relative;
+  padding  : 0.5rem 1.5rem 1.5rem 1.5rem;
+  display  : flex;
   flex-flow: column;
-  
+
   ion-label.input {
-    margin: 0px 0px 5px 0px !important;
-    font-family: var(--f-Poppins);
+    margin        : 0px 0px 5px 0px !important;
+    font-family   : var(--f-Poppins);
     text-transform: capitalize;
-    font-weight: 600 !important;
+    font-weight   : 600 !important;
   }
+
   .customForm {
-    ion-icon{
+    ion-icon {
       position: absolute;
-      top: 25%;
-      z-index: 100;
-      right: 3%;
+      top     : 25%;
+      z-index : 100;
+      right   : 3%;
     }
   }
+
   .small-label {
-    font-size: 13px;
-    font-weight: 400;
-    color: var(--blackColor);
-    font-family: var(--f-Poppins);
+    font-size    : 13px;
+    font-weight  : 400;
+    color        : var(--blackColor);
+    font-family  : var(--f-Poppins);
     margin-bottom: 0px;
-    opacity: 1;
+    opacity      : 1;
   }
+
   .heading {
-    font-size: 24px;
-    font-weight: 600;
-    line-height: 24px;
-    font-family: var(--f-Poppins);
-    color: var(--blackColor);
+    font-size    : 24px;
+    font-weight  : 600;
+    line-height  : 24px;
+    font-family  : var(--f-Poppins);
+    color        : var(--blackColor);
     margin-bottom: 5px;
   }
+
   ion-button {
-    margin: 0px;
-    line-height: 0px;
-    height: 60px;
-    font-size: 18px;
+    margin         : 0px;
+    line-height    : 0px;
+    height         : 60px;
+    font-size      : 18px;
     --border-radius: 12px;
-    font-weight: 500;
-    font-family: var(--f-Poppins);
-    letter-spacing: 0.08px;
-    --box-shadow: inherit;
+    font-weight    : 500;
+    font-family    : var(--f-Poppins);
+    letter-spacing : 0.08px;
+    --box-shadow   : inherit;
   }
+
   .small-text {
-    font-size: 15px;
-    color: #000;
-    font-family: var(--f-Poppins);
+    font-size    : 15px;
+    color        : #000;
+    font-family  : var(--f-Poppins);
     margin-bottom: 1rem;
+
     .link-dark {
       font-weight: 800;
     }
@@ -58,14 +64,16 @@
   .mt-6 {
     margin-top: 3rem;
   }
+
   ion-select {
     position: relative;
+
     &::after {
-      content: "";
-      position: absolute;
-      right: 0px;
-      height: 20px;
-      width: 1px;
+      content   : "";
+      position  : absolute;
+      right     : 0px;
+      height    : 20px;
+      width     : 1px;
       background: #999;
     }
   }

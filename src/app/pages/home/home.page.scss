@@ -1,33 +1,33 @@
 .dash-card {
-  display: flex;
-  flex-direction: column;
-  align-items: stretch;
-  padding: 1rem;
-  border-radius: 4px;
+  display         : flex;
+  flex-direction  : column;
+  align-items     : stretch;
+  padding         : 1rem;
+  border-radius   : 4px;
   background-color: rgba(28, 12, 91, 0.05);
-  margin-bottom: 0.5rem;
-  flex-shrink: 0;
+  margin-bottom   : 0.5rem;
+  flex-shrink     : 0;
 
   .balance {
-    margin: 0;
+    margin     : 0;
     font-weight: 500;
-    color: var(--ion-color-primary);
+    color      : var(--ion-color-primary);
   }
 
   .card-item {
-    display: flex;
+    display       : flex;
     flex-direction: column;
-    align-items: stretch;
+    align-items   : stretch;
   }
 }
 
 .sip-list {
-  display: flex;
+  display       : flex;
   flex-direction: row;
-  align-items: center;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-  padding: 1rem 0;
-  flex-shrink: 0;
+  align-items   : center;
+  border-bottom : 1px solid rgba(0, 0, 0, 0.12);
+  padding       : 1rem 0;
+  flex-shrink   : 0;
 
   &:last-child {
     border-bottom: none;
@@ -35,8 +35,8 @@
 
   .chip {
     background-color: rgba(28, 12, 91, 0.05);
-    border-radius: 20px;
-    text-align: center;
-    padding: 0.3rem 0.7rem;
+    border-radius   : 20px;
+    text-align      : center;
+    padding         : 0.3rem 0.7rem;
   }
 }

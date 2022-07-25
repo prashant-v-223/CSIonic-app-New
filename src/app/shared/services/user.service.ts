@@ -42,9 +42,9 @@ export class UserService {
     return this.api.setHeaderToken();
   }
 
-  getUser(token?:string) {
-    const tokenData = {'fcmToken':token};
-    return this.api.putData(this.apiConfig.user,tokenData);
+  getUser(token?: string) {
+    const tokenData = { 'fcmToken': token };
+    return this.api.putData(this.apiConfig.user, tokenData);
   }
 
   verifySelfie(formData: FormData) {
@@ -67,59 +67,48 @@ export class UserService {
   }
 
   //User Bank Details Get API
- async getUserBankDetails(userId:string)
-  {
-    try
-      {
-        const depositData = await this.api.getData(this.apiConfig.bankAccount+'/'+userId);
-        return depositData;
-      }
-      catch(e)
-      {
-        throw e;
-      }
-  }
-
-  async addReferralCode(referralCode:string,referralCheck:Boolean)
-  {
-    try
-      {
-        const referralCodeData = {referralCode:referralCode,isReferalUsed:referralCheck};
-        const referralData = await this.api.postData(this.apiConfig.referralCode,referralCodeData);
-        return referralData;
-      }
-      catch(e)
-      {
-        throw e;
-      }
-  }
-
- async getEarlyAccessDetails(userId:string)
-  {
-    try
-    {
-      return await this.api.getData(this.apiConfig.earlyAccessCheck+'?_id='+userId);
+  async getUserBankDetails(userId: string) {
+    try {
+      const depositData = await this.api.getData(this.apiConfig.bankAccount + '/' + userId);
+      return depositData;
     }
-    catch(e)
-    {
+    catch (e) {
+      throw e;
+    }
+  }
+
+  async addReferralCode(referralCode: string, referralCheck: Boolean) {
+    try {
+      const referralCodeData = { referralCode: referralCode, isReferalUsed: referralCheck };
+      const referralData = await this.api.postData(this.apiConfig.referralCode, referralCodeData);
+      return referralData;
+    }
+    catch (e) {
+      throw e;
+    }
+  }
+
+  async getEarlyAccessDetails(userId: string) {
+    try {
+      return await this.api.getData(this.apiConfig.earlyAccessCheck + '?_id=' + userId);
+    }
+    catch (e) {
       throw e;
     }
   }
 
   async getPortfolioDataDetails() {
-    try
-    {
+    try {
       return this.api.getData(`${this.apiConfig.portfolio}`);
     }
-    catch(e)
-    {
+    catch (e) {
       throw e;
     }
 
   }
 
   getPortfolioDataDetails1(): Observable<any> {
-    return this.http.get<any>(this.apiConfig.apiUrl +'portfolio',this.api.getHeader())
+    return this.http.get<any>(this.apiConfig.apiUrl + 'portfolio', this.api.getHeader())
       .pipe(
         map(res => res),
         shareReplay(),
@@ -128,13 +117,13 @@ export class UserService {
 
   public getPortfolioDataDetails$(): Observable<any> {
     return this.getPortfolioDataDetails1()
-        .pipe(
-            map(response => response),
-            catchError(err => {
-                const message = "Error Investments";
-                return throwError(err);
-            }),
-            tap(portfolio$ => this.subject.next(portfolio$))
-        )
-    }
+      .pipe(
+        map(response => response),
+        catchError(err => {
+          const message = "Error Investments";
+          return throwError(err);
+        }),
+        tap(portfolio$ => this.subject.next(portfolio$))
+      )
+  }
 }

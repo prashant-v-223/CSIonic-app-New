@@ -1,42 +1,44 @@
-
 .card {
-  border: 1px solid #ECF1F6;
-  //box-shadow: 8px 8px 10px #ECF1F6;
+  border    : 1px solid #ECF1F6;
   box-shadow: 0px 5px 20px rgba(122, 122, 122, 0.12);
 }
+
 .icon-up {
   border-radius: 20%;
 }
+
 .vertical-middle {
   vertical-align: middle !important;
 }
+
 .font-16 {
- font-size: 16px;
+  font-size: 16px;
 }
+
 .popular-section {
-  padding: 3px 5px 3px 5px !important;
-  background: #e5e5e5;
+  padding      : 3px 5px 3px 5px !important;
+  background   : #e5e5e5;
   border-radius: 4px;
 }
+
 .popular-label {
-  color: #1F2C37;
+  color    : #1F2C37;
   font-size: 13px;
 }
 
-.line-draw
-{
+.line-draw {
   width: 80% !important;
 }
-.line-draw-full
-{
-  width: 100% !important;
+
+.line-draw-full {
+  width     : 100% !important;
   margin-top: -20%;
 }
-.popularSection .card .card-body
-{
+
+.popularSection .card .card-body {
   padding: 1px 12px !important;
 }
-.char-custom-css
-{
+
+.char-custom-css {
   margin-top: -10%;
 }

@@ -1,139 +1,125 @@
-/* .themeHeader{
-    ion-toolbar{
-        --background:var(--bg-lighter);
-        --border-color:var(--bg-lighter);
-      }
-      ion-list{
-        background: transparent;
-      }
-      .menuLeft{
-        background-color:rgba($color: #fff, $alpha: 1);
-        ion-icon{
-          stroke: #2F4858;
-        }
-      }
-      ion-button{
-          margin: 0px;
-          line-height: 0px;
-          height: 36px;
-          font-size: 14px;
-          --border-radius: 6px;
-          font-weight: 400;
-          font-family: var(--f-Poppins);
-          --ion-color-base:#2F4858 !important;
-          letter-spacing: .08px;
-      }
-    } */
-ion-header,#background-content{
+ion-header,
+#background-content {
   background-color: var(--lighter-gray);
 }
-  .themeHeader{
-    background-image: var(--lighter-gray);
-    background-size: cover;
-    background-position: top center;
-    background-repeat: no-repeat;
-    height: 40px;
-    display: block;
-    ion-toolbar{
-      --background:var(--lighter-gray);
-      color: #fff !important;
-    }
-    ion-list {
-      background:var(--lighter-gray);
-    }
-  }
-  .user-profile
-  {
-    padding-top: 2%;
-  }
-  // ion-icon{
-  //   font-size: 26px;
-  // }
-  .avatar ion-img{
-    width: 40px;
-    border-radius: 50px;
-    float: right;
-  }
-  .avatar-main ion-img{
-    width: 80px;
-    border-radius: 50px;
-    margin: auto;
-  }
-  .profile-mobile
-  {
-    margin-top: -7%;
-  }
-  .list-header
-  {
-    background:linear-gradient(to right, #1f7979 , #136464);
-    padding-bottom:0px;
-    ion-col p{
-      border-radius: 40px 40px 0px 0px;
-      height: 35px;
-      background-color: #fff;
-      margin-bottom:-2.5%;
-      opacity: 1;
 
+.themeHeader {
+  background-image   : var(--lighter-gray);
+  background-size    : cover;
+  background-position: top center;
+  background-repeat  : no-repeat;
+  height             : 40px;
+  display            : block;
+
+  ion-toolbar {
+    --background: var(--lighter-gray);
+    color       : #fff !important;
+  }
+
+  ion-list {
+    background: var(--lighter-gray);
+  }
+}
+
+.user-profile {
+  padding-top: 2%;
+}
+
+.avatar ion-img {
+  width        : 40px;
+  border-radius: 50px;
+  float        : right;
+}
+
+.avatar-main ion-img {
+  width        : 80px;
+  border-radius: 50px;
+  margin       : auto;
+}
+
+.profile-mobile {
+  margin-top: -7%;
+}
+
+.list-header {
+  background    : linear-gradient(to right, #1f7979, #136464);
+  padding-bottom: 0px;
+
+  ion-col p {
+    border-radius   : 40px 40px 0px 0px;
+    height          : 35px;
+    background-color: #fff;
+    margin-bottom   : -2.5%;
+    opacity         : 1;
+
+  }
+}
+
+ion-label {
+  font-family: var(--f-Lexend);
+}
+
+ion-content {
+  --ion-background-color: var(--lighter-gray);
+}
+
+.sip-list {
+  margin-bottom: -6% !important;
+}
+
+.invest {
+  font-family: var(--f-Lexend);
+
+  .theme-banner {
+    padding-bottom: 0rem;
+
+    .small-label {
+      opacity: 0.6;
+      display: block;
+      color  : #000;
     }
   }
-  ion-label{
-    font-family: var(--f-Lexend);
-  }
-  ion-content {
-    --ion-background-color: var(--lighter-gray);
-  }
-  .sip-list{
-    margin-bottom: -6% !important;
-  }
-  .invest{
-    font-family: var(--f-Lexend);
-      .theme-banner{
-        padding-bottom: 0rem;
-          .small-label{
-            opacity: 0.6;
-            display: block;
-            color: #000;
-          }
-      }
-      .tabbingTheme {
-        background-color:#FFF;
-        padding: 3px 8px;
-        border-radius: 18px;
-        position: relative;
-        z-index: 5;
-        margin-top: 1.5rem;
-        font-family: var(--f-Lexend);
 
-        ion-segment-button {
-          font-size: 14px;
-          color: rgba($color: #102E28, $alpha: .8);
-          font-family: var(--f-Lexend);
-          --padding-end: 15px;
-          --padding-start: 15px;
-          --border-radius: 12px;
-          text-transform: inherit;
-          --indicator-color: var(--theme-color);
-          --indicator-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-          height: 45px;
-          &.segment-button-checked {
-            font-size: 15px;
-            color: #fff;
-            &.md{
-              background-color:  var(--theme-color);
-              --indicator-color: inherit;
-            }
-          }
+  .tabbingTheme {
+    background-color: #FFF;
+    padding         : 3px 8px;
+    border-radius   : 18px;
+    position        : relative;
+    z-index         : 5;
+    margin-top      : 1.5rem;
+    font-family     : var(--f-Lexend);
 
-          &::before {
-            display: none;
-          }
+    ion-segment-button {
+      font-size             : 14px;
+      color                 : rgba($color: #102E28, $alpha: .8);
+      font-family           : var(--f-Lexend);
+      --padding-end         : 15px;
+      --padding-start       : 15px;
+      --border-radius       : 12px;
+      text-transform        : inherit;
+      --indicator-color     : var(--theme-color);
+      --indicator-box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+      height                : 45px;
+
+      &.segment-button-checked {
+        font-size: 15px;
+        color    : #fff;
+
+        &.md {
+          background-color : var(--theme-color);
+          --indicator-color: inherit;
         }
       }
-    }
 
-    .coins-list-invest{
-      padding-top: 0px !important;
-      padding-bottom: 0px !important;
-      margin-bottom: -2.5%;
+      &::before {
+        display: none;
+      }
     }
-    //  Popular Coin Card Start
+  }
+}
+
+.coins-list-invest {
+  padding-top   : 0px !important;
+  padding-bottom: 0px !important;
+  margin-bottom : -2.5%;
+}

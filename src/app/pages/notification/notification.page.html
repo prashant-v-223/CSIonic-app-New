@@ -3,7 +3,9 @@
   <ion-toolbar>
     <ion-list class="d-flex justify-between">
       <ion-buttons slot="start">
-        <ion-back-button mat-icon-button mode='md' defaultHref="/tabs/profile"><ion-icon src="../../../assets/icon/back-arrow.svg"></ion-icon></ion-back-button>
+        <ion-back-button mat-icon-button mode='md' defaultHref="/tabs/profile">
+          <ion-icon src="../../../assets/icon/back-arrow.svg"></ion-icon>
+        </ion-back-button>
       </ion-buttons>
       <ion-label class="notifcation-list d-flex"><b>Notification List</b></ion-label>
     </ion-list>
@@ -12,7 +14,6 @@
 
 <ion-content class="notifications">
 
- <!--  <ion-title  class="topHeader">Notifications</ion-title> -->
 
   <ng-container *ngIf="!isLoading else loadingTmplt">
 
@@ -28,17 +29,17 @@
     </ion-list>
 
     <ng-template #noNotificationsTmplt>
-        <ion-list class="p-3">
-          <ion-grid>
-            <ion-row class="w-100">
-              <ion-col class="p-0 text-center" size="12"  size-md>
-                <div class="mt-2">
-                  No notification available
-                </div>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-list>
+      <ion-list class="p-3">
+        <ion-grid>
+          <ion-row class="w-100">
+            <ion-col class="p-0 text-center" size="12" size-md>
+              <div class="mt-2">
+                No notification available
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-list>
     </ng-template>
 
   </ng-container>

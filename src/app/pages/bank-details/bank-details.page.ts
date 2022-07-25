@@ -102,7 +102,7 @@ export class BankDetailsPage implements OnInit {
       ]),
       IFSC: new FormControl('', [
         Validators.required,
-        Validators.pattern('^[A-Z]{4}0[A-Z0-9]{6}$'), // reference: https://www.geeksforgeeks.org/how-to-validate-ifsc-code-using-regular-expression/
+        Validators.pattern('^[A-Z]{4}0[A-Z0-9]{6}$'),
       ]),
       accountType: new FormControl('', [Validators.required]),
     });
@@ -184,10 +184,8 @@ export class BankDetailsPage implements OnInit {
     });
     await accessInfoAlert.present();
   }
-
   onBack() {
     this.navCtrl.navigateBack('/tabs/profile');
   }
-
-  ngOnDestroy() {}
+  ngOnDestroy() { }
 }
