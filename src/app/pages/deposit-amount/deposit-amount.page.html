@@ -132,6 +132,7 @@
                   <ion-label position="stacked">UTR No. / Reference No.</ion-label>
                   <ion-input type="text" placeholder="Enter UTR No. / Reference No." formControlName="utrNumber">
                   </ion-input>
+                  <span class="font-14 text-danger" [errorShow]>{{ errorResponse.error }}</span>
                 </ion-item>
               </ion-col>
             </ion-row>

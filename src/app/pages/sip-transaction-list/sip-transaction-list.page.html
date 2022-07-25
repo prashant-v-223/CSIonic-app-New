@@ -47,7 +47,7 @@
                 <ion-col class="p-0 text-right align-center justify-end" size="3" size-md>
                   <h4 class="priceTage mt-1">
                     <ion-icon class="font-14" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{
-                    transaction.amount }}
+                    transaction.amount | number:'1.2-2' }}
                   </h4>
                   <span class="small-label completed-status font-12" *ngIf="transaction.status=='done'">Completed</span>
                   <span class="small-label in-progress-status font-12" *ngIf="transaction.status!='done'">In
@@ -89,7 +89,7 @@
                 <ion-col class="p-0 text-right align-center justify-end" size="3" size-md>
                   <h4 class="priceTage mt-1">
                     <ion-icon class="font-14" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{
-                    transaction.amount }}
+                    transaction.amount | number:'1.2-2' }}
                   </h4>
                   <span class="small-label completed-status font-12" *ngIf="transaction.status=='done'">Completed</span>
                   <span class="small-label in-progress-status font-12" *ngIf="transaction.status!='done'">In

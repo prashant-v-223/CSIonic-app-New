@@ -34,6 +34,9 @@ export class DepositAmountPage implements OnInit {
   amount: number = 1;
   isAmountValid = true;
   utrNumberSet: string = '';
+  errorResponse : string = '';
+  errorShow : Boolean = false;
+
   @Input() newSIP;
   @Input() setCustomSelectedData;
   @Input() setCustomSelectedFrequency;
@@ -137,6 +140,7 @@ export class DepositAmountPage implements OnInit {
   }
 
   addDeposit() {
+    this.errorShow = false;
     this.isLoading = true;
     this.transactionService.depositWithdrawalAmount(this.amount, "deposit", this.amountForm.controls['utrNumber'].value)
       .then(async (res) => {
@@ -157,7 +161,8 @@ export class DepositAmountPage implements OnInit {
           });
           await successModal.present();
         }
-        else {
+        else
+        {
           const successModal = await this.modalController.create({
             component: SuccessFailScreenPage,
             componentProps: {
@@ -172,10 +177,13 @@ export class DepositAmountPage implements OnInit {
         }
       })
       .catch(async (error) => {
-        console.error(error);
+        this.errorShow = true;
+        this.errorResponse = error.error;
+        console.error(error.error);
         this.isLoading = false;
       })
       .finally(() => {
+        this.errorShow = true;
         this.isLoading = false;
       });
   }

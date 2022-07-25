@@ -12,7 +12,7 @@
     <h1 class="userName ion-text-capitalize mt-1">Hello, {{ user.firstName }}!</h1>
     <p class="userInfo">Invest more to earn more, check out your portfolio,</p>
     <div *ngIf="!showPortfolioLoader else loadingTmplt">
-      <ion-col size="12" class="p-0 myPortfolio">
+        <ion-col size="12" class="p-0 myPortfolio" (click)="portfolioInfo.currentAmount==0 ? redirectPackages() : false">
         <div class="card-body">
           <div>
             <span class="label text-white">My Portfolio</span>

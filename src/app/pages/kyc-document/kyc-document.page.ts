@@ -32,6 +32,6 @@ export class KYCDocumentPage implements OnInit {
   }
 
   onBack() {
-    this.navCtrl.back();
+    this.navCtrl.navigateBack('/tabs/profile');
   }
 }

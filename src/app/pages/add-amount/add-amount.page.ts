@@ -27,6 +27,7 @@ export class AddAmountPage implements OnInit {
   @ViewChild('amountInput') amountInput: IonInput;
   config;
   sipData: any = null;
+  eventText: string = '';
   coins = [];
   chartData: {
     labels: string[];
@@ -210,4 +211,14 @@ export class AddAmountPage implements OnInit {
     }
     return true;
   }
+
+  /* onSwipe(evt) {
+    this.modalController.dismiss(
+      {
+        status:'dismissed',
+      },
+      '',
+      'AddMountModal'
+    );
+  } */
 }

@@ -102,7 +102,12 @@ export class DashboardPage implements OnInit {
       this.router.navigateByUrl('/');
     }
   }
+  redirectPackages()
+  {
+    this.router.navigateByUrl('/tabs/invest');
+  }
 }
+
 function output() {
   throw new Error('Function not implemented.');
 }
