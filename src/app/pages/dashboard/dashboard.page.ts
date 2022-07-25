@@ -62,7 +62,6 @@ export class DashboardPage implements OnInit {
       this.portfolioInfo = localStorage.getItem('portfolio-data');
     }
     this.showPortfolioLoader = localStorage.getItem('portfolio-data')=='null' ? true : false;
-
     try {
       this.userService.getPortfolioDataDetails$().subscribe(res => {
         this.portfolioInfo = res.data;

@@ -12,6 +12,9 @@
       <!-- TODO: add greeting text -->
     </div>
     <form class="w-100 mt-3" [formGroup]="signInForm" (submit)="signIn()">
+      <div class="error-message pl-0 mb-2" *ngIf="errorShow">
+        <span class="text-danger">{{errorResp}}</span>
+      </div>
       <ion-label class="input" position="stacked">Email address</ion-label>
       <ion-item class="customForm">
         <ion-input type="email" placeholder="Email" formControlName="username"></ion-input>
@@ -22,7 +25,7 @@
           <li>Enter valid email address</li>
         </ul>
       </div>
-
+      
       <ion-label class="input" position="stacked">Password</ion-label>
       <ion-item class="customForm">
         <ion-input [type]="passwordType" placeholder="Password" formControlName="password"></ion-input>
