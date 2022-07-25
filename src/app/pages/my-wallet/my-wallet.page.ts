@@ -9,11 +9,12 @@ import { UserService } from 'src/app/shared/services/user.service';
 })
 export class MyWalletPage implements OnInit {
 
-  constructor(private navCtrl: NavController, private userService: UserService, public toastController: ToastController, private alertCtrl: AlertController, private transactionService: TransactionsService) { }
-  transactionList: any[] = [];
-  user: any = [];
-  bankAccount: boolean = false;
-  wallet
+  constructor(private navCtrl: NavController,private userService: UserService,public toastController: ToastController,private alertCtrl: AlertController,private transactionService:TransactionsService) { }
+  transactionList : any[] = [];
+  user : any = [];
+  bankAccount : boolean = false;
+  wallet;
+  showLoader = true;
   async ngOnInit() {
     this.user = await this.userService.getUser();
     await this.userService.setUserToStorage(this.user.data);
@@ -30,10 +31,13 @@ export class MyWalletPage implements OnInit {
     this.user = await this.userService.getUserFromStorage();
     if (!this.user) this.onBack();
   }
-  async getTransactionList() {
-    try {
-      this.transactionList = await this.transactionService.transactionList();
-      this.transactionList = this.transactionList['data'];
+  async getTransactionList()
+  {
+    try
+    {
+        this.transactionList = await this.transactionService.transactionList();
+        this.transactionList = this.transactionList['data'];
+        this.showLoader = false;
     }
     catch (e) {
       const toast = await this.toastController.create({
