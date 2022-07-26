@@ -9,6 +9,7 @@ import {
   IonInput,
   ModalController,
   NavController,
+  Platform,
   ToastController,
 } from '@ionic/angular';
 import { SIPService } from 'src/app/shared/services/sip.service';
@@ -59,10 +60,14 @@ export class AddAmountPage implements OnInit {
     private modalController: ModalController,
     private configurationService: ConfigurationService,
     private userService: UserService,
+    private platform : Platform,
     private router:Router
     ) {
     this.sipData = this.sipService.getSIPData();
     this.prepareChartData();
+    this.platform.backButton.subscribe(() => {
+        this.closeModal('dismissed');
+    });
   }
 
   async ngOnInit() {
