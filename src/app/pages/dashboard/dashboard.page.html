@@ -12,8 +12,8 @@
     <h1 class="userName ion-text-capitalize mt-1">Hello, {{ user.firstName }}!</h1>
     <p class="userInfo">Invest more to earn more, check out your portfolio.</p>
     <div *ngIf="!showPortfolioLoader else loadingTmplt">
-        <ion-col size="12" class="p-0 myPortfolio" (click)="portfolioInfo.currentAmount==0 ? redirectPackages() : false">
-        <div class="card-body">
+      <ion-col size="12" class="p-0 myPortfolio">
+        <div class="card-body" *ngIf="currentAmount!=0">
           <div>
             <span class="label text-white">My Portfolio</span>
             <h4 class="myPrice text-white"><ion-icon class="font-20" src="../../../assets/icon/rupee-white.svg"></ion-icon>{{ portfolioInfo?.currentAmount | number }}</h4>
@@ -27,6 +27,9 @@
             </div>
             <div class="small-text justify-end"><ion-icon class="font-12" src="../../../assets/icon/rupee-white.svg"></ion-icon> {{ portfolioInfo?.absoluteReturn | number }}</div>
           </div>
+        </div>
+        <div class="card-body" *ngIf="currentAmount==0">
+          <ion-button class="ion-button-theme" expand="full" shape="round" (click)="redirectPackages()">Explore Package</ion-button>
         </div>
       </ion-col>
     </div>

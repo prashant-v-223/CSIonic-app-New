@@ -68,6 +68,12 @@ ion-header,
       z-index        : 1;
       width          : 100%;
 
+      .ion-button-theme {
+        border: 1px solid #F8F8F8;
+        border-radius: 10px;
+        margin: auto;
+        height: 2.5em;
+      }
       .label {
         font-size    : 12px;
         color        : var(--white);
