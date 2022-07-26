@@ -5,13 +5,6 @@
       <ion-back-button mat-icon-button class="back-btn" defaultHref="/tabs/profile">
       </ion-back-button>
     </ion-buttons>
-
-    <!-- don't allow use to edit the bank details once verified -->
-    <!-- <ion-buttons slot="end">
-      <ion-button slot="end" (click)="toggleMode()">
-        <ion-icon [name]="mode === 'view' ? 'create' : 'close'" [class.text-d-theme]="mode === 'view'"></ion-icon>
-      </ion-button>
-    </ion-buttons> -->
   </ion-toolbar>
 </ion-header>
 <!-- Header Section End -->
@@ -55,8 +48,8 @@
 
             <ion-item class="customForm">
               <ion-label position="stacked">ACCOUNT TYPE</ion-label>
-              <ion-select interface="action-sheet" cancel-text="Account Type"
-                placeholder="Select account type.." formControlName="accountType">
+              <ion-select interface="action-sheet" cancel-text="Account Type" placeholder="Select account type.."
+                formControlName="accountType">
                 <ion-select-option *ngFor="let type of accountTypes" [value]="type.value">
                   {{ type.label }}
                 </ion-select-option>
@@ -104,7 +97,8 @@
 </ion-content>
 <!-- Footer Section Start -->
 <ion-footer class="bottomBtn" *ngIf="mode === 'edit'">
-  <ion-button class="footerTab ion-button-theme" expand="full" shape="round" (click)="save()" [disabled]="bankDetailsForm.invalid || bankDetailsForm.disabled">
+  <ion-button class="footerTab ion-button-theme" expand="full" shape="round" (click)="save()"
+    [disabled]="bankDetailsForm.invalid || bankDetailsForm.disabled">
     <ion-spinner *ngIf="bankDetailsForm.disabled" class="size-sm mr-2"></ion-spinner>
     {{ bankDetailsForm.disabled ? 'Verifying..' : 'Verify' }}
   </ion-button>

@@ -1,15 +1,12 @@
-<!-- Body Section Start -->
 <ion-header class="themeHeader">
   <ion-toolbar>
     <ion-list class="d-flex justify-between align-center">
       <ion-icon class="font-larger text-d-theme" routerLink="/notification" name="notifications"></ion-icon>
-      <!-- <ion-icon class="font-20" src="../../../assets/category.svg"></ion-icon> -->
       <img class="w-35" src="../../../assets/logo/Prosprr-Logo-H.svg" />
       <ion-icon class="font-xx" src="../../../assets/profile/profile.svg"></ion-icon>
     </ion-list>
   </ion-toolbar>
 </ion-header>
-
 <ion-content class="dashboard">
   <ion-list class="ion-list">
     <ion-col size="2" class="mt-5">
@@ -17,24 +14,29 @@
     </ion-col>
 
     <h1 class="userName ion-text-capitalize mt-1">Hello, {{ user.firstName }}!</h1>
-    <p class="userInfo">Invest more to earn more, check out your portfolio,</p>
-    <ion-col size="12" class="p-0 myPortfolio">
-      <div class="card-body">
-        <div>
-          <span class="label text-white">My Portfolio</span>
-          <h4 class="myPrice text-white"><ion-icon class="font-20" src="../../../assets/icon/rupee-white.svg"></ion-icon>{{ portfolioInfo?.currentAmount | number }}</h4>
-        </div>
-        <div class="text-right">
-          <span class="label">P/L</span>
-          <div class="small-text justify-end">
-            <ion-icon class="icon-up" *ngIf="portfolioInfo.absoluteReturnPercentage>0" src="../../../assets/md-arrow-dropup.svg"></ion-icon>
-            <ion-icon class="icon-up" *ngIf="portfolioInfo.absoluteReturnPercentage<0" src="../../../assets/md-arrow-dropdown.svg"></ion-icon>
-            {{ portfolioInfo?.absoluteReturnPercentage | number }}%
+    <p class="userInfo">Invest more to earn more, check out your portfolio.</p>
+    <div *ngIf="!showPortfolioLoader else loadingTmplt">
+      <ion-col size="12" class="p-0 myPortfolio">
+        <div class="card-body" *ngIf="currentAmount!=0">
+          <div>
+            <span class="label text-white">My Portfolio</span>
+            <h4 class="myPrice text-white"><ion-icon class="font-20" src="../../../assets/icon/rupee-white.svg"></ion-icon>{{ portfolioInfo?.currentAmount | number }}</h4>
           </div>
-          <div class="small-text justify-end"><ion-icon class="font-12" src="../../../assets/icon/rupee-white.svg"></ion-icon> {{ portfolioInfo?.absoluteReturn | number }}</div>
+          <div class="text-right">
+            <span class="label">P/L</span>
+            <div class="small-text justify-end">
+              <ion-icon class="icon-up" *ngIf="portfolioInfo.absoluteReturnPercentage>0" src="../../../assets/md-arrow-dropup.svg"></ion-icon>
+              <ion-icon class="icon-up" *ngIf="portfolioInfo.absoluteReturnPercentage<0" src="../../../assets/md-arrow-dropdown.svg"></ion-icon>
+              {{ portfolioInfo?.absoluteReturnPercentage | number }}%
+            </div>
+            <div class="small-text justify-end"><ion-icon class="font-12" src="../../../assets/icon/rupee-white.svg"></ion-icon> {{ portfolioInfo?.absoluteReturn | number }}</div>
+          </div>
         </div>
-      </div>
-    </ion-col>
+        <div class="card-body" *ngIf="currentAmount==0">
+          <ion-button class="ion-button-theme" expand="full" shape="round" (click)="redirectPackages()">Explore Package</ion-button>
+        </div>
+      </ion-col>
+    </div>
 
     <ion-col size="12" class="themeHeading p-0">
       <h6 class="font-weight-700">POPULAR COINS</h6>
@@ -46,7 +48,8 @@
         <ng-container *ngIf="coinList?.length else noCoinsTmplt">
           <swiper [slidesPerView]="1.9" [loop]="false">
             <ng-template swiperSlide *ngFor="let coin of coinList">
-              <app-package-card [package]="coin"  [coinList]="coin.coins" [packageList]="coin.coins" view="coin" [navigationLink]="'/packages/' + coin._id"></app-package-card>
+              <app-package-card [package]="coin" [coinList]="coin.coins" [packageList]="coin.coins" view="coin"
+                [navigationLink]="'/packages/' + coin._id"></app-package-card>
             </ng-template>
           </swiper>
         </ng-container>
@@ -56,41 +59,31 @@
           </div>
         </ng-template>
       </ng-container>
-
-
     </ion-col>
-
     <ion-col size="12" class="themeHeading p-0">
       <h6 class="font-weight-700">POPULAR BASKETS</h6>
       <a href="#" class="text-theme text-decoration-none font-weight-500" routerLink="/popular-baskets">View All</a>
     </ion-col>
     <ion-col size="12" class="p-0 popularSection basket">
-
       <ng-container *ngIf="!showLoader else loadingTmplt">
         <ng-container *ngIf="packageList?.length else noPackagesTmplt">
-
           <swiper [slidesPerView]="1.5" [loop]="false">
-
             <ng-template swiperSlide *ngFor="let package of packageList">
-              <app-package-card [package]="package"  [coinList]="package.coins" [packageList]="package.coins" [navigationLink]="'/packages/' + package._id"></app-package-card>
+              <app-package-card [package]="package" [coinList]="package.coins" [packageList]="package.coins"
+                [navigationLink]="'/packages/' + package._id"></app-package-card>
             </ng-template>
-
           </swiper>
-
         </ng-container>
-
         <ng-template #noPackagesTmplt>
           <div class="ion-text-center mt-5">
             No packages available
           </div>
         </ng-template>
       </ng-container>
-
     </ion-col>
   </ion-list>
 </ion-content>
 <!-- Body Section End -->
-
 
 <ng-template #loadingTmplt>
   <app-loading-skeleton></app-loading-skeleton>

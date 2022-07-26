@@ -10,15 +10,15 @@ import { ConfigurationService } from './configuration.service';
 })
 export class MaintenanceService {
 
-  constructor( private api: ApiCallService,
+  constructor(private api: ApiCallService,
     private apiConfig: ApiConfiguration
-    ) { }
+  ) { }
 
   checkMaintenance() {
-    return this.api.getData(this.apiConfig.checkMaintenance+'maintenance');
+    return this.api.getData(this.apiConfig.checkMaintenance + 'maintenance');
   }
 
   getLatestVersion() {
-    return this.api.getData(this.apiConfig.checkMaintenance+'latest');
+    return this.api.getData(this.apiConfig.checkMaintenance + 'latest');
   }
 }

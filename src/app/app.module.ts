@@ -29,7 +29,7 @@ Amplify.configure({
   entryComponents: [],
   imports: [
     BrowserModule,
-    IonicModule.forRoot({backButtonText:''}),
+    IonicModule.forRoot({ backButtonText: '' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,

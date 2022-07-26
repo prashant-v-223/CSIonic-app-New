@@ -10,18 +10,16 @@ export class TabsPage implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    localStorage.setItem('withdraw','false');
+    localStorage.setItem('withdraw', 'false');
   }
-  setWithDraw(screen:string)
-  {
-    if(screen!='portfolio')
-    {
-      localStorage.setItem('withdraw','false');
-      localStorage.setItem('list','false');
+  setWithDraw(screen: string) {
+    if (screen != 'portfolio') {
+      localStorage.setItem('withdraw', 'false');
+      localStorage.setItem('list', 'false');
     }
-    else{
-      localStorage.setItem('withdraw','true');
-      localStorage.setItem('list','true');
+    else {
+      localStorage.setItem('withdraw', 'true');
+      localStorage.setItem('list', 'true');
     }
   }
 }

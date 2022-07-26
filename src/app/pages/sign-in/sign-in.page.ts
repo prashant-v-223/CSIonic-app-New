@@ -21,14 +21,16 @@ import { Capacitor } from '@capacitor/core';
 export class SignInPage implements OnInit {
   CONSTANT: any = COPY;
   isLoading = false;
-  earlyAccessDetails : [] = [];
+  earlyAccessDetails: [] = [];
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
   token : any = '';
+  errorResp: string = '';
+  errorShow: boolean = false;
   readonly passwordRequirementMessage = passwordRequirementMessage;
 
   signInForm = new FormGroup({
-    username: new FormControl('', [Validators.required,Validators.pattern('^[A-Za-z0-9_@.]+'), Validators.email]),
+    username: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z0-9_@.]+'), Validators.email]),
     password: new FormControl('', [Validators.required, passwordValidator]),
   });
 
@@ -40,11 +42,11 @@ export class SignInPage implements OnInit {
     private configurationService: ConfigurationService,
     private notificationService: NotificationService,
     private platform: Platform
-  ) {}
+  ) { }
 
   async ngOnInit() {
     await SplashScreen.hide();
-    localStorage.setItem('portfolio-data',null);
+    localStorage.setItem('portfolio-data', null);
   }
 
   hideShowPassword() {
@@ -57,38 +59,32 @@ export class SignInPage implements OnInit {
 
     this.isLoading = true;
     this.signInForm.disable();
+    this.errorShow = false;
 
     try {
       await Auth.signIn(this.signInForm.value);
       await this.userService.setHeaderToken();
       const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
-      if (isPushNotificationsAvailable)
-      {
+      if (isPushNotificationsAvailable) {
         this.token = await this.notificationService.getPushNotificationToken();
       }
       const user = await this.getUser(this.token);
       const config = await this.getConfiguration();
 
-      if (user && config)
-      {
-        if(user.earlyAccess==true)
-        {
-          if(user.isReferalUsed==false && config.referral==true)
-          {
+      if (user && config) {
+        if (user.earlyAccess == true) {
+          if (user.isReferalUsed == false && config.referral == true) {
             this.router.navigateByUrl('/referral');
           }
-          else
-          {
+          else {
             this.router.navigateByUrl('/tabs/dashboard');
           }
         }
-        else
-        {
+        else {
           this.router.navigateByUrl('/early-access');
         }
       }
-      else
-      {
+      else {
         this.userService.signOut();
       }
     } catch (e) {
@@ -98,19 +94,21 @@ export class SignInPage implements OnInit {
         );
       }
 
-      const toast = await this.toastController.create({
-        message: e.message,
-        duration: 2000,
-        cssClass: 'ion-text-center',
-      });
-      toast.present();
+      this.errorShow = true;
+      this.errorResp = e.message;
+      // const toast = await this.toastController.create({
+      //   message: e.message,
+      //   duration: 2000,
+      //   cssClass: 'ion-text-center',
+      // });
+      // toast.present();
     } finally {
       this.isLoading = false;
       this.signInForm.enable();
     }
   }
 
-  async getUser(token?:string) {
+  async getUser(token?: string) {
     try {
       const userRes = await this.userService.getUser(token);
       if (userRes.status === this.CONSTANT.SUCCESS) {

@@ -11,7 +11,7 @@ export class PackageCardComponent implements OnInit, OnChanges {
 
   @ViewChild('lineCanvas') private lineCanvas: ElementRef;
   lineChart: any;
-  @Input() view: 'package'|'sip'|'coin' = 'package';
+  @Input() view: 'package' | 'sip' | 'coin' = 'package';
   @Input() package: any;
   @Input() navigationLink = '/';
   @Input() coinList: any;
@@ -19,10 +19,10 @@ export class PackageCardComponent implements OnInit, OnChanges {
   coinCode: string = "";
   chartDateLabel: any;
   chartPriceLabel: any;
-  chartHide:boolean= false;
-  totalMinimumDepositAmount:number= 0;
+  chartHide: boolean = false;
+  totalMinimumDepositAmount: number = 0;
   coins = [];
-  coinData:any;
+  coinData: any;
   constructor(
     private sipService: SIPService,
   ) { }
@@ -36,44 +36,36 @@ export class PackageCardComponent implements OnInit, OnChanges {
     return ['package', 'coin'].includes(this.view) ? this.package : this.package.packageId;
   }
 
-  ngOnInit()
-  {
+  ngOnInit() {
     this.packageList;
     this.coinList;
-    if(this.coinList==undefined)
-    {
+    if (this.coinList == undefined) {
       this.packageList.forEach(element => {
-        this.totalMinimumDepositAmount =  this.totalMinimumDepositAmount + parseInt(element.currencyId.minimumDepositAmount);
+        this.totalMinimumDepositAmount = this.totalMinimumDepositAmount + parseInt(element.currencyId.minimumDepositAmount);
       });
     }
     this.totalMinimumDepositAmount = this.package?.packageId?.totalMinimumDepositAmount ? this.package?.packageId?.totalMinimumDepositAmount : this.totalMinimumDepositAmount;
-    this.coinCode = this.coinList!=undefined ? this.coinList[0]?.currencyId.baseAsset : this.package?.packageId?._id;
+    this.coinCode = this.coinList != undefined ? this.coinList[0]?.currencyId.baseAsset : this.package?.packageId?._id;
   }
 
   ngAfterViewInit() {
     this.lineChartMethod(this.coinCode);
   }
 
-  async lineChartMethod(coinCodeName:string)
-  {
-    if(coinCodeName!='')
-    {
-      try
-      {
-        if(this.package?.packageId?._id!=undefined && this.package?.packageId?._id!='')
-        {
-          this.coinData = await this.sipService.getChartDetailsPackage(coinCodeName,"3","month");
+  async lineChartMethod(coinCodeName: string) {
+    if (coinCodeName != '') {
+      try {
+        if (this.package?.packageId?._id != undefined && this.package?.packageId?._id != '') {
+          this.coinData = await this.sipService.getChartDetailsPackage(coinCodeName, "3", "month");
         }
-        else
-        {
-          this.coinData = await this.sipService.getChartDetails(coinCodeName,"3","month");
+        else {
+          this.coinData = await this.sipService.getChartDetails(coinCodeName, "3", "month");
         }
         this.chartDateLabel = this.coinData.data.date;
         this.chartPriceLabel = this.coinData.data.price;
         this.chartHide = false;
       }
-      catch(error)
-      {
+      catch (error) {
         this.chartHide = true;
       }
     }
@@ -141,8 +133,8 @@ export class PackageCardComponent implements OnInit, OnChanges {
               display: false
             },
             ticks: {
-             display: false
-           }
+              display: false
+            }
           }
         }
       }

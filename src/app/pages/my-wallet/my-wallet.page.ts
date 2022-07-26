@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { TransactionsService } from 'src/app/shared/services/transactions.service';
-import {  AlertController,  NavController,  ToastController,} from '@ionic/angular';
+import { AlertController, NavController, ToastController, } from '@ionic/angular';
 import { UserService } from 'src/app/shared/services/user.service';
 @Component({
   selector: 'app-my-wallet',
@@ -13,7 +13,8 @@ export class MyWalletPage implements OnInit {
   transactionList : any[] = [];
   user : any = [];
   bankAccount : boolean = false;
-  wallet
+  wallet;
+  showLoader = true;
   async ngOnInit() {
     this.user = await this.userService.getUser();
     await this.userService.setUserToStorage(this.user.data);
@@ -23,8 +24,7 @@ export class MyWalletPage implements OnInit {
     this.getTransactionList();
   }
 
-  async ionViewWillEnter()
-  {
+  async ionViewWillEnter() {
     this.getTransactionList();
     this.user = await this.userService.getUser();
     await this.userService.setUserToStorage(this.user.data);
@@ -37,9 +37,9 @@ export class MyWalletPage implements OnInit {
     {
         this.transactionList = await this.transactionService.transactionList();
         this.transactionList = this.transactionList['data'];
+        this.showLoader = false;
     }
-    catch (e)
-    {
+    catch (e) {
       const toast = await this.toastController.create({
         message: e,
         duration: 2000,

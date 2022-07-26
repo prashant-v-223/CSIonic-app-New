@@ -40,7 +40,7 @@ export class PopularBasketsPage implements OnInit {
       this.packageList = this.packages;
     }
   }
-  
+
   onClear() {
     this.packageList = this.packages;
   }

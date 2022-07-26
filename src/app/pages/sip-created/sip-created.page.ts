@@ -30,7 +30,7 @@ export class SipCreatedPage implements AfterViewInit {
   @Input() newSIP;
   sipData: any = null;
   coins = [];
-  screenShow:string='success';
+  screenShow: string = 'success';
   showLoader = false;
   mandateStatus: SIPStatus;
   isShowingMandateEsign = false;
@@ -50,32 +50,25 @@ export class SipCreatedPage implements AfterViewInit {
   }
 
   async ngAfterViewInit() {
-    if (this.newSIP!='') {
-      this.screenShow='success';
+    if (this.newSIP != '') {
+      this.screenShow = 'success';
       this.updateMandateStatus();
       this.cdr.detectChanges();
     }
-    else
-    {
-      this.screenShow='fail';
+    else {
+      this.screenShow = 'fail';
     }
   }
 
   updateMandateStatus() {
     // TODO: change this initialization when eSignining needs to enabled
     this.mandateStatus = SIPStatus.SIGNING_SUCCESS;
-    // this.mandateStatus =
-    //   this.newSIP.mandate.statusUpdates[
-    //     this.newSIP.mandate.statusUpdates.length - 1
-    //   ].status;
   }
 
   async initESign() {
-    this.eSignURL = `https://ext.digio.in/#/gateway/login/${
-      this.newSIP.mandate.id
-    }/${Date.now()}/${
-      this.user.email
-    }?logo=https://prosppr.in/images/p-logo.svg`;
+    this.eSignURL = `https://ext.digio.in/#/gateway/login/${this.newSIP.mandate.id
+      }/${Date.now()}/${this.user.email
+      }?logo=https://prosppr.in/images/p-logo.svg`;
 
     this.isShowingMandateEsign = true;
 
@@ -135,7 +128,7 @@ export class SipCreatedPage implements AfterViewInit {
   } */
 
   handleFooterButtonClick() {
-      this.onBackHomeClick();
+    this.onBackHomeClick();
   }
 
   onBackHomeClick() {

@@ -11,39 +11,36 @@ import { NavController, ToastController } from '@ionic/angular';
 })
 export class ReferralPage implements OnInit {
 
-  constructor(private userService:UserService,private navCtrl:NavController) { }
-  disabled : boolean = true;
+  constructor(private userService: UserService, private navCtrl: NavController) { }
+  disabled: boolean = true;
   isLoading = false;
-  ngOnInit() {}
+  ngOnInit() { }
   referralForm = new FormGroup({
-    referralCode: new FormControl('',[Validators.required,Validators.max(6)]),
+    referralCode: new FormControl('', [Validators.required, Validators.max(6)]),
   });
 
-  addReferral(referralCheck:Boolean)
-  {
+  addReferral(referralCheck: Boolean) {
     this.isLoading = true;
     var referralCode = this.referralForm.controls['referralCode'].value;
-    this.userService.addReferralCode(referralCode,referralCheck)
+    this.userService.addReferralCode(referralCode, referralCheck)
       .then((res) => {
-      if (res.status =="SUCCESS")
-      {
+        if (res.status == "SUCCESS") {
+          this.isLoading = false;
+          this.referralForm.reset();
+          this.navCtrl.navigateRoot('/tabs/dashboard')
+        }
+        else {
+          console.error("Something went wrong");
+          this.isLoading = false;
+        }
+      })
+      .catch(async (error) => {
+        console.error(error);
         this.isLoading = false;
-        this.referralForm.reset();
-        this.navCtrl.navigateRoot('/tabs/dashboard')
-      }
-      else
-      {
-        console.error("Something went wrong");
+      })
+      .finally(() => {
         this.isLoading = false;
-      }
-    })
-    .catch( async (error) => {
-      console.error(error);
-      this.isLoading = false;
-    })
-    .finally(() => {
-      this.isLoading = false;
-    });
+      });
   }
 
 }

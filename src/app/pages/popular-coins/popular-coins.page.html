@@ -14,17 +14,18 @@
   </ion-toolbar>
 </ion-header>
 <!-- Header Section End -->
-<!-- Header Section End -->
 <ion-content class="popularSection">
   <ion-list class="ion-list">
     <ion-grid class="topHeader mb-2">
-      <ion-searchbar placeholder="Search..." #searchText (keyup)="onSearchChange(searchText)" (ionClear)="onClear()"></ion-searchbar>
+      <ion-searchbar placeholder="Search..." #searchText (keyup)="onSearchChange(searchText)" (ionClear)="onClear()">
+      </ion-searchbar>
     </ion-grid>
     <ng-container *ngIf="!showLoader else loadingTmplt">
       <ion-grid class="p-0" *ngIf="coinList?.length else noCoinsTmplt">
         <ion-row>
           <ion-col *ngFor="let coin of coinList" size="6" class="popular-coins-list" size-md>
-            <app-package-card [package]="coin"  [coinList]="coin.coins" [packageList]="coin.coins" view="coin" [navigationLink]="'/packages/' + coin._id">
+            <app-package-card [package]="coin" [coinList]="coin.coins" [packageList]="coin.coins" view="coin"
+              [navigationLink]="'/packages/' + coin._id">
             </app-package-card>
           </ion-col>
         </ion-row>

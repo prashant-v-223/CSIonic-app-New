@@ -22,13 +22,13 @@ export class SIPService {
     interval?: {
       type: 'daily' | 'weekly' | 'monthly';
       weekDay?:
-        | 'SUNDAY'
-        | 'MONDAY'
-        | 'TUESDAY'
-        | 'WEDNESDAY'
-        | 'THURSDAY'
-        | 'FRIDAY'
-        | 'SATURDAY';
+      | 'SUNDAY'
+      | 'MONDAY'
+      | 'TUESDAY'
+      | 'WEDNESDAY'
+      | 'THURSDAY'
+      | 'FRIDAY'
+      | 'SATURDAY';
       monthDay?: number;
     };
     installmentAmount?: number;
@@ -38,7 +38,7 @@ export class SIPService {
   constructor(
     private api: ApiCallService,
     private apiConfig: ApiConfiguration
-  ) {}
+  ) { }
 
   getSIPData() {
     // returning a clone so that external cann't change this object
@@ -130,11 +130,11 @@ export class SIPService {
     return this.api.getData(`${this.apiConfig.sip}/${id}`);
   }
 
-  getChartDetails(symbol: string,duration: string,interval: string) {
+  getChartDetails(symbol: string, duration: string, interval: string) {
     return this.api.getData(`${this.apiConfig.chart}/?symbol=${symbol}&duration=${duration}&interval=${interval}`);
   }
 
-  getChartDetailsPackage(packegeId:string,duration: string,interval: string) {
+  getChartDetailsPackage(packegeId: string, duration: string, interval: string) {
     return this.api.getData(`${this.apiConfig.chart}/${packegeId}?duration=${duration}&interval=${interval}`);
   }
 
@@ -147,10 +147,10 @@ export class SIPService {
   }
 
   withdrawSIP(sipId: string) {
-    return this.api.putData(`${this.apiConfig.sip}/${sipId}/withdrawal`,{});
+    return this.api.putData(`${this.apiConfig.sip}/${sipId}/withdrawal`, {});
   }
 
-  getSIPTransectionDetails(sipId: string,type:string) {
+  getSIPTransectionDetails(sipId: string, type: string) {
     return this.api.getData(`${this.apiConfig.sip}/${sipId}/transaction/${type}`);
   }
 }

@@ -1,14 +1,4 @@
   <!-- Header Section Start -->
- <!-- <ion-header translucent class="themeHeader">
-  <ion-toolbar>
-    <ion-list class="d-flex justify-between">
-    <ion-buttons slot="start">
-      <ion-back-button  mat-icon-button class="back-btn" defaultHref="/tabs/profile">
-      </ion-back-button>
-    </ion-buttons>
-  </ion-list>
-  </ion-toolbar>
-</ion-header> -->
 <ion-row class="list-header p-0">
   <ion-col size="12" class="p-0">
     <p class="text-white font-weight-bold p-0"></p>
@@ -26,9 +16,6 @@
       <ion-col size="12" class="text-left mt-2" size-md>
         <h1 class="wallet-header-amount"><ion-icon src="../../../assets/icon/rupee-green.svg"></ion-icon>{{ user.wallet | number:'1.2-2' }}</h1>
       </ion-col>
-     <!--  <ion-col size="12" class="text-left mt-1" size-md>
-        <h3 class="my-portfolio-heading">My portfolio</h3>
-      </ion-col> -->
       <ion-col size="4" class="text-center mt-4" size-md *ngIf="bankAccount">
         <ion-button class="ion-button-white" routerLink="/deposit-amount">
           <ion-icon class="mr-1 icon-theme" src="../../../assets/icon/deposit-icon.svg"></ion-icon>
@@ -94,24 +81,26 @@
     <ion-grid class="themeHeading mt-0 pt-0">
       <h6>Transaction</h6>
     </ion-grid>
-    <div *ngIf="transactionList?.length else notransactionTemplate">
-      <ion-item  *ngFor="let transaction of transactionList; index as i">
-        <ion-list class="up-icon " slot="start">
-          <ion-icon *ngIf="transaction.type=='deposit'" src="../../../assets/icon/deposit-icon.svg"></ion-icon>
-          <ion-icon *ngIf="transaction.type=='withdrawal'" src="../../../assets/icon/withdraw-icon.svg"></ion-icon>
-        </ion-list>
-        <ion-label>
-          <ion-row class="w-100">
-            <ion-col class="p-0" size="10"  size-md>
-              <h2 class="ion-title">{{ transaction?.trxStatus.status | titlecase }}</h2>
-              <span class="small-label">{{ transaction.createdAt | date }}</span>
-            </ion-col>
-            <ion-col class="p-0 align-center d-flex justify-end" size="2"  size-md>
-              <h4 class="priceTage"><ion-icon class="font-14" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ transaction.amount | number:'1.2-2' }}</h4>
-            </ion-col>
-          </ion-row>
-        </ion-label>
-      </ion-item>
+    <div *ngIf="!showLoader else loadingTmplt">
+      <div *ngIf="transactionList?.length else notransactionTemplate">
+        <ion-item  *ngFor="let transaction of transactionList; index as i">
+          <ion-list class="up-icon " slot="start">
+            <ion-icon *ngIf="transaction.type=='deposit'" src="../../../assets/icon/deposit-icon.svg"></ion-icon>
+            <ion-icon *ngIf="transaction.type=='withdrawal'" src="../../../assets/icon/withdraw-icon.svg"></ion-icon>
+          </ion-list>
+          <ion-label>
+            <ion-row class="w-100">
+              <ion-col class="p-0" size="10"  size-md>
+                <h2 class="ion-title">{{ transaction?.trxStatus.status | titlecase }}</h2>
+                <span class="small-label">{{ transaction.createdAt | date }}</span>
+              </ion-col>
+              <ion-col class="p-0 align-center d-flex justify-end" size="2"  size-md>
+                <h4 class="priceTage"><ion-icon class="font-14" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ transaction.amount | number:'1.2-2' }}</h4>
+              </ion-col>
+            </ion-row>
+          </ion-label>
+        </ion-item>
+      </div>
     </div>
   </ion-list>
     <ng-template #notransactionTemplate>
@@ -127,5 +116,9 @@
         </ion-grid>
       </ion-list>
     </ng-template>
-</ion-content>
-<!-- Body Section End -->
+  </ion-content>
+  <!-- Body Section End -->
+  
+  <ng-template #loadingTmplt>
+    <app-loading-skeleton class="w-100"></app-loading-skeleton>
+  </ng-template>

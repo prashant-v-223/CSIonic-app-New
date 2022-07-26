@@ -40,7 +40,7 @@ export class ErrorPage implements OnInit, OnDestroy {
     this.isLoading = true;
     if (this.errorEnum.NO_INTERNET) {
       const status = await Network.getStatus();
-      if (!status.connected){
+      if (!status.connected) {
         this.isLoading = false;
         return;
       }

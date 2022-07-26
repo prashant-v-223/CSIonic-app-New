@@ -19,7 +19,7 @@ export class NotificationService {
     private apiConfig: ApiConfiguration
   ) {
     const isPushNotificationsAvailable = Capacitor.isPluginAvailable('PushNotifications');
-     
+
     if (isPushNotificationsAvailable) {
       this.listenForNotifications();
     }

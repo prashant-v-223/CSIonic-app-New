@@ -32,7 +32,7 @@ export class PopularCoinsPage implements OnInit {
       console.log('Error while getting packages list: ', e);
     }
   }
-  
+
   onSearchChange(evt: any) {
     if (evt.value.length !== 0) {
       this.coinList = this.coins.filter((value) => value.name.includes(evt.value));
@@ -40,7 +40,7 @@ export class PopularCoinsPage implements OnInit {
       this.coinList = this.coins;
     }
   }
-  
+
   onClear() {
     this.coinList = this.coins;
   }

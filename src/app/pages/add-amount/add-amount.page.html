@@ -34,24 +34,17 @@
               </ion-text>
             </ion-col>
             <ion-col size="7" size-md>
-              <!-- <h1 class="text-dark mt-3 " *ngIf="amount else amountPlaceholderTmplt">
-                {{ amount | number : '1.0-0' }}
-              </h1> -->
-              <ion-input type="text" onPaste="return false" onCopy="return false" onCut="return false" autocomplete=off #planAmount placeholder="Type Amount" (keypress)="numbersOnly($event)" value="{{ amount }}" (keyup)="setAmount(planAmount.value)" ></ion-input>
+              <ion-input type="text" onPaste="return false" onCopy="return false" onCut="return false" autocomplete=off
+                #planAmount placeholder="Type Amount" (keypress)="numbersOnly($event)" value="{{ amount }}"
+                (keyup)="setAmount(planAmount.value)"></ion-input>
             </ion-col>
           </ion-row>
-          <!-- <ion-text class="small-label mt-3">
-            <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon> INR
-          </ion-text>
-          <h1 class="text-dark  mt-3 " *ngIf="amount else amountPlaceholderTmplt">
-            {{ amount | number : '1.0-0' }}
-          </h1> -->
-
           <div class="d-flex justify-center mt-2">
-           <!--  <div class="error-message"
-              *ngIf="amount > config?.sip?.maxInstallmentAmount || amount < sipService?.getSIPData()?.package?.totalMinimumDepositAmount"> -->
-               <div class="font-12">
-              <!-- Installment amount should be greater than or equal to --><b>Note : Minimum amount is<ion-icon class="font-10" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ sipService?.getSIPData()?.package?.totalMinimumDepositAmount | number : '1.0-0' }}. Maximum amount is<ion-icon class="font-10" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ config?.sip?.maxInstallmentAmount | number : '1.0-0' }}</b>
+            <div class="font-12">
+              <b>Note : Minimum amount is<ion-icon class="font-10" src="../../../assets/icon/rupee-black.svg">
+                </ion-icon>{{ sipService?.getSIPData()?.package?.totalMinimumDepositAmount | number : '1.0-0' }}.
+                Maximum amount is<ion-icon class="font-10" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{
+                config?.sip?.maxInstallmentAmount | number : '1.0-0' }}</b>
             </div>
           </div>
           <div class="bg-danger p-3 mt-2 prerequisite-message d-flex justify-between text-white" *ngIf="addFundError">
@@ -62,41 +55,18 @@
               <ion-label color="light">Add Funds</ion-label>
             </ion-chip>
           </div>
-
           <ng-template #amountPlaceholderTmplt>
-            <!-- <h1 class="gray-text  mt-3 ">
-              Type Amount
-            </h1> -->
           </ng-template>
         </ion-list>
-        <!-- <ion-list class="mt-2 text-center dial-pad p-0">
-          <ion-row>
-            <ion-col *ngFor="let digit of [1,2,3,4,5,6,7,8,9]" size="4" size-md>
-              <ion-button class="ion-button-theme-lighter" (click)="setAmount(digit)">{{ digit }}</ion-button>
-            </ion-col>
-            <ion-col size="4" size-md>
-
-            </ion-col>
-            <ion-col size="4" size-md>
-              <ion-button class="ion-button-theme-lighter" (click)="setAmount(0)">0</ion-button>
-            </ion-col>
-            <ion-col size="4" size-md>
-              <ion-button class="ion-button-white" (click)="setAmount('remove')">
-                <ion-icon src="assets/icon/delete-dial-button-icon.svg"></ion-icon>
-              </ion-button>
-            </ion-col>
-          </ion-row>
-        </ion-list> -->
       </ion-col>
     </ion-row>
   </ion-list>
-
   <app-loading *ngIf="showLoader"></app-loading>
-
 </ion-content>
 <!-- Footer Section Start -->
 <ion-footer class="bottomBtn">
-  <ion-button class="footerTab ion-button-theme m-0 letter-spacing-05" expand="full" (click)="createSIP()" [disabled]="!isAmountValid">
+  <ion-button class="footerTab ion-button-theme m-0 letter-spacing-05" expand="full" (click)="createSIP()"
+    [disabled]="!isAmountValid">
     Create SIP
   </ion-button>
 </ion-footer>

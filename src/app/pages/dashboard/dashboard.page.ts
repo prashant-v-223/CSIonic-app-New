@@ -1,4 +1,4 @@
-import { Component, OnInit, Output, ViewEncapsulation  } from '@angular/core';
+import { Component, OnInit, Output, ViewEncapsulation } from '@angular/core';
 import { PackagesService } from 'src/app/shared/services/packages.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
@@ -13,8 +13,9 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
   encapsulation: ViewEncapsulation.None
 })
 export class DashboardPage implements OnInit {
-
   showLoader = true;
+  showPortfolioLoader = true;
+  currentAmount = 0;
   /* packageList: any[] = [];
   coinList: any[] = []; */
   portfolioInfo:any=localStorage.getItem('portfolio-data');
@@ -22,23 +23,18 @@ export class DashboardPage implements OnInit {
   @Output() packageList: any;
   user: any;
   userData: any;
-
   constructor(
     private packagesService: PackagesService,
     private userService: UserService,
-    private navCtrl:NavController,
+    private navCtrl: NavController,
     private configurationService: ConfigurationService,
     private router:Router,
     private socialSharing: SocialSharing
   ) {
     this.user = this.userService.getUserFromStorage();
-
   }
 
   async ngOnInit() {
-    /* await this.getPackages();
-    await this.getUserInfo();
-    await this.getPortfolioDetails(); */
   }
 
   text: string='Flamenco'
@@ -58,7 +54,6 @@ export class DashboardPage implements OnInit {
 
   async getPackages() {
     this.showLoader = true;
-
     try {
       const planListRes = await this.packagesService.getPackages();
       if (planListRes?.data?.data) {
@@ -74,66 +69,57 @@ export class DashboardPage implements OnInit {
 
   async getPortfolioDetails() {
 
-    if(localStorage.getItem('portfolio-data')!=null)
+    if(localStorage.getItem('portfolio-data')!='null')
     {
       this.portfolioInfo = localStorage.getItem('portfolio-data');
     }
-    this.showLoader = localStorage.getItem('portfolio-data')==null ? true : false;
+    this.showPortfolioLoader = localStorage.getItem('portfolio-data')=='null' ? true : false;
     try {
       this.userService.getPortfolioDataDetails$().subscribe(res => {
         this.portfolioInfo = res.data;
+        this.currentAmount = this.portfolioInfo.currentAmount;
         localStorage.setItem('portfolio-data',JSON.stringify(this.portfolioInfo));
-        this.showLoader==true ? this.showLoader=false : "";
+        this.showPortfolioLoader==true ? this.showPortfolioLoader=false : "";
       })
     } catch (e) {
       console.log('Error while getting portfolio details: ', e);
     }
   }
 
-
   async getUserInfo() {
-
-    try
-    {
+    try {
       await this.userService.setHeaderToken();
-
       this.userData = await this.userService.getUser();
-      //console.log(this.userData);
       this.userService.setUserToStorage(this.userData.data);
       const user = await this.userService.getUserFromStorage();
       const config = await this.configurationService.getConfiguration();
-
-      if (user && config)
-      {
-
-        if(user.earlyAccess==true)
-        {
-          //console.log(user.earlyAccess,"2313");
-          if(user.isReferalUsed==false && config.referral==true)
-          {
+      if (user && config) {
+        if (user.earlyAccess == true) {
+          if (user.isReferalUsed == false && config.referral == true) {
             this.router.navigateByUrl('/referral');
           }
-          else
-          {
+          else {
             this.router.navigateByUrl('/tabs/dashboard');
           }
         }
-        else
-        {
+        else {
           this.router.navigateByUrl('/early-access');
         }
       }
-      else
-      {
+      else {
         this.router.navigateByUrl('/');
       }
     }
-    catch (e)
-    {
+    catch (e) {
       this.router.navigateByUrl('/');
     }
   }
+  redirectPackages()
+  {
+    this.router.navigateByUrl('/tabs/invest');
+  }
 }
+
 function output() {
   throw new Error('Function not implemented.');
 }

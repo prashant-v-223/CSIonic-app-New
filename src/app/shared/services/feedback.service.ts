@@ -16,17 +16,15 @@ export class FeedbackService {
     private navCtrl: NavController,
     private configurationService: ConfigurationService) { }
 
-    async feedbackSubmit(questionAnswers:any) {
-      try
-      {
-        const questionAnsData = {questionAns:questionAnswers};
-        const responseData = await this.api.postData(this.apiConfig.feedback,questionAnsData);
-        return responseData;
-      }
-      catch(e)
-      {
-        throw e;
-      }
+  async feedbackSubmit(questionAnswers: any) {
+    try {
+      const questionAnsData = { questionAns: questionAnswers };
+      const responseData = await this.api.postData(this.apiConfig.feedback, questionAnsData);
+      return responseData;
+    }
+    catch (e) {
+      throw e;
+    }
 
   }
 }

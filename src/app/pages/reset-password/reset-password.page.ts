@@ -29,7 +29,7 @@ export class ResetPasswordPage implements OnInit {
     private navCtrl: NavController,
     private activateRoute: ActivatedRoute,
     private toastController: ToastController
-  ) {}
+  ) { }
 
   ngOnInit() {
     this.activateRoute.queryParams.subscribe((params: Params) => {

@@ -8,13 +8,13 @@
         <div class="d-flex align-center">
           <div class="text-right mr-2 right-section" *ngIf="view === 'sip'">
             <div class="small-label text-dark">
-              <!-- <span>Interval</span>&nbsp; -->
               <span class="text-dark font-weight-600">
-                <ion-icon class="font-10" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ package.installmentAmount | number }}/<span class="ion-text-capitalize">{{ package.interval.type }}</span>
+                <ion-icon class="font-10" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{
+                package.installmentAmount | number }}/<span class="ion-text-capitalize">{{ package.interval.type
+                  }}</span>
               </span>
             </div>
           </div>
-          <!-- <div class="small-label text-dark mr-2"><span class="text-muted-custom">Interval </span> <b>₹ 80.00/weekly</b></div> -->
           <a class="view-icon mt-2" [routerLink]="navigationLink">
             <ion-icon name="chevron-forward-outline" src="assets/icon/arrow-right.svg"></ion-icon>
           </a>
@@ -25,11 +25,12 @@
         <ion-row class="pl-0 ml-0">
           <ion-col size="6" class="pl-0">
             <div class="small-label text-muted-custom">
-              <!-- {{ view === 'package' ? 'Min Invest' : 'Total Invested' }} -->
               Min Invest
             </div>
             <h4 class="Price text-dark ion-text-left">
-              <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{ (totalMinimumDepositAmount!=0 ? totalMinimumDepositAmount : packageObj.totalMinimumDepositAmount) | number }}
+              <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>{{
+              (totalMinimumDepositAmount!=0 ? totalMinimumDepositAmount : packageObj.totalMinimumDepositAmount) | number
+              }}
             </h4>
           </ion-col>
           <ion-col size="6">
@@ -38,49 +39,24 @@
               <canvas class="w-100" *ngIf="!chartHide" #lineCanvas></canvas>
             </div>
           </ion-col>
-         <!--  <ion-col size="4">
-            <div class="small-label text-dark">24 hr Returns</div>
-            <div class="small-text text-muted-custom change-percentage">
-              <ion-icon class="text-muted-custom icon-up mt-2 pt-1" src="assets/icon/arrow-up-square.svg"></ion-icon>&nbsp;45%
-            </div>
-          </ion-col> -->
         </ion-row>
       </div>
     </div>
   </div>
 
-  <!--
-    classes for card color
-    bg-theme text-white
-    bg-lighter
-  -->
   <div class="card bg-white" *ngSwitchCase="view === 'coin'" [routerLink]="navigationLink">
     <div class="card-body pb-0">
       <div class="d-flex align-center justify-between w-100 mb-3">
         <app-coin-stack [coins]="coinList"></app-coin-stack>
-
-        <!-- <div class="coinTag bg-dark">
-          <ion-icon class="coin-icon" src="assets/icon-bitc.svg"></ion-icon>
-        </div> -->
-
-        <!--
-          classes for different up-down status
-          bg-white text-dark
-          bg-danger text-white
-          bg-theme text-white
-        -->
         <div class="small-text popular-currency text-dark" *ngIf="package.isPopular">
           popular
-          <!--
-            src arrows
-            assets/md-arrow-dropup.svg
-            assets/md-arrow-dropdown.svg
-          -->
         </div>
       </div>
       <div class="small-label currncy-name">{{ package.coins[0].currencyId.fullName }}</div>
       <div class="d-flex align-end">
-        <h4 class="Price"><ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>19,006</h4>
+        <h4 class="Price">
+          <ion-icon class="font-12" src="../../../assets/icon/rupee-black.svg"></ion-icon>19,006
+        </h4>
         <span class="small-label ml-2">{{ package.coins[0].currencyId.code }}</span><br>
       </div>
       <div class="d-flex">
@@ -93,6 +69,4 @@
       <canvas class="w-100" *ngIf="!chartHide" #lineCanvas></canvas>
     </div>
   </div>
-
-
 </ng-container>

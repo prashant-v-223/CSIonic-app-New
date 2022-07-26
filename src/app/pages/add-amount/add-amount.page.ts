@@ -9,17 +9,16 @@ import {
   IonInput,
   ModalController,
   NavController,
+  Platform,
   ToastController,
 } from '@ionic/angular';
 import { SIPService } from 'src/app/shared/services/sip.service';
-// import { FormControl, Validators } from '@angular/forms';
 import { COLORS, COPY } from 'src/app/shared/helper/const';
 import { SipCreatedPage } from '../sip-created/sip-created.page';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { Router } from '@angular/router';
 import { DepositAmountPage } from '../deposit-amount/deposit-amount.page';
-
 @Component({
   selector: 'app-add-amount',
   templateUrl: './add-amount.page.html',
@@ -27,9 +26,9 @@ import { DepositAmountPage } from '../deposit-amount/deposit-amount.page';
 })
 export class AddAmountPage implements OnInit {
   @ViewChild('amountInput') amountInput: IonInput;
-
   config;
   sipData: any = null;
+  eventText: string = '';
   coins = [];
   chartData: {
     labels: string[];
@@ -39,14 +38,13 @@ export class AddAmountPage implements OnInit {
     }[];
   };
 
-   @Input() customSelectedData;
-   @Input() customSelectedFrequency;
-   @Input() customSelectedAmount;
+  @Input() customSelectedData;
+  @Input() customSelectedFrequency;
+  @Input() customSelectedAmount;
 
-   @Output() setCustomSelectedData;
-   @Output() setCustomSelectedFrequency;
-   @Output() setSelectedAmount;
-
+  @Output() setCustomSelectedData;
+  @Output() setCustomSelectedFrequency;
+  @Output() setSelectedAmount;
 
   CONSTANT: any = COPY;
 
@@ -62,11 +60,14 @@ export class AddAmountPage implements OnInit {
     private modalController: ModalController,
     private configurationService: ConfigurationService,
     private userService: UserService,
-    // private navCtrl: NavController,
+    private platform : Platform,
     private router:Router
     ) {
     this.sipData = this.sipService.getSIPData();
     this.prepareChartData();
+    this.platform.backButton.subscribe(() => {
+        this.closeModal('dismissed');
+    });
   }
 
   async ngOnInit() {
@@ -129,7 +130,6 @@ export class AddAmountPage implements OnInit {
     this.addFundError = false;
     if (!this.isAmountValid) return;
     const user = this.userService.getUserFromStorage();
-    // this.sipService.setSIPData('amount', { installmentAmount: this.amountCtrl.value });
     if (this.amount>=user.wallet) {
       this.addFundError = true;
       return;
@@ -141,14 +141,7 @@ export class AddAmountPage implements OnInit {
       this.isAmountValid = false;
       const sipRes = await this.sipService.addSIP();
       if (sipRes.status === this.CONSTANT.SUCCESS) {
-        // this.sipService.setSIPData('reset', null);
-        /* const toast = await this.toastController.create({
-          message: 'SIP created successfully',
-          duration: 2000,
-        }); */
-        //toast.present();
         this.closeModal('success');
-
         // show the success screen
         const successModal = await this.modalController.create({
           component: SipCreatedPage,
@@ -161,7 +154,6 @@ export class AddAmountPage implements OnInit {
       } else
       {
         this.closeModal('success');
-
         // show the success screen
         const successModal = await this.modalController.create({
           component: SipCreatedPage,
@@ -172,7 +164,6 @@ export class AddAmountPage implements OnInit {
         });
         await successModal.present();
       }
-      //} else this.handleSIPCreateError();
     } catch (e) {
       console.log('Error while creating SIP: ', e);
       this.handleSIPCreateError();
@@ -204,7 +195,6 @@ export class AddAmountPage implements OnInit {
       id: 'SuccessModal',
     });
     await successModal.present();
-    //this.router.navigateByUrl('/deposit-amount');
   }
 
   closeModal(status: 'dismissed' | 'success' | 'error') {
@@ -226,4 +216,14 @@ export class AddAmountPage implements OnInit {
     }
     return true;
   }
+
+  /* onSwipe(evt) {
+    this.modalController.dismiss(
+      {
+        status:'dismissed',
+      },
+      '',
+      'AddMountModal'
+    );
+  } */
 }

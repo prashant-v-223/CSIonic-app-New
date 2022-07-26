@@ -18,7 +18,6 @@ export class ProfilePage {
   user: any;
   dataReturned: any;
 
-
   constructor(
     private userService: UserService, private navCtrl: NavController,private modalController: ModalController
   )
@@ -28,7 +27,6 @@ export class ProfilePage {
       this.userService.setUserToStorage(this.user.data);
       this.user = this.userService.getUserFromStorage();
     });
-
   }
 
   ionViewWillEnter()
@@ -41,10 +39,6 @@ export class ProfilePage {
     if (!this.user) this.onBack();
   }
 
-  /* async ionViewWillEnter(){
-     this.user = await this.userService.getUserFromStorage();
-  }
- */
   signOut() {
     this.userService.signOut();
   }
@@ -60,10 +54,8 @@ export class ProfilePage {
     modal.onDidDismiss().then((dataReturned) => {
       if (dataReturned !== null) {
         this.dataReturned = dataReturned.data;
-        //alert('Modal Sent Data :'+ dataReturned);
       }
     });
-
     return await modal.present();
   }
 
