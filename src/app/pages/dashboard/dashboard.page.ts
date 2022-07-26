@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class DashboardPage implements OnInit {
   showLoader = true;
   showPortfolioLoader = true;
+  currentAmount = 0;
   /* packageList: any[] = [];
   coinList: any[] = []; */
   portfolioInfo:any=localStorage.getItem('portfolio-data');
@@ -65,6 +66,7 @@ export class DashboardPage implements OnInit {
     try {
       this.userService.getPortfolioDataDetails$().subscribe(res => {
         this.portfolioInfo = res.data;
+        this.currentAmount = this.portfolioInfo.currentAmount;
         localStorage.setItem('portfolio-data',JSON.stringify(this.portfolioInfo));
         this.showPortfolioLoader==true ? this.showPortfolioLoader=false : "";
       })
