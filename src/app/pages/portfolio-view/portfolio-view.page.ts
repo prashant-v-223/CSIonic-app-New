@@ -8,6 +8,7 @@ import { PackagesService } from 'src/app/shared/services/packages.service';
 import { SIPService } from 'src/app/shared/services/sip.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { ChoosePlanFrequencyPage } from '../choose-plan-frequency/choose-plan-frequency.page';
+import { SuccessFailScreenPage } from '../success-fail-screen/success-fail-screen.page';
 
 enum SIPSteps {
   FREQUENCY,
@@ -39,6 +40,7 @@ export class PortfolioViewPage implements OnInit {
   coinCode: string;
   @Output() coinList: any;
   @Output() packageList: any;
+  @Output() page: any;
   withdrawBtn: string = 'false';
   listBtn: string = 'false';
   time_frame: boolean = false;
@@ -233,7 +235,8 @@ export class PortfolioViewPage implements OnInit {
           text: 'confirm',
           handler: () => {
             this.sipService.withdrawSIP(this.id).then(res => {
-              this.navCtrl.back();
+              this.withdrawalResponse('success');
+              // this.navCtrl.back();
             }).catch((e) => {
               if (e.status === 400) {
                 this.showToast(e.error.error);
@@ -244,6 +247,7 @@ export class PortfolioViewPage implements OnInit {
               if (e.status === 404) {
                 this.showToast("SIP not found.");
               }
+              this.withdrawalResponse('fail');
             });
           }
         }
@@ -251,6 +255,31 @@ export class PortfolioViewPage implements OnInit {
     }).then(res => {
       res.present();
     });
+  }
+
+  async withdrawalResponse(type) {
+    if (type=="success") {
+      const successModal = await this.modalController.create({
+        component: SuccessFailScreenPage,
+        componentProps: {
+          transactionStatus: true,
+          transactionType: "Withdrawal",
+          page: "sip",
+        },
+        id: 'SuccessModal',
+      });
+      await successModal.present();
+    } else {
+      const successModal = await this.modalController.create({
+        component: SuccessFailScreenPage,
+        componentProps: {
+          transactionStatus: false,
+          transactionType: "Withdrawal",
+        },
+        id: 'SuccessModal',
+      });
+      await successModal.present();
+    }
   }
 
   async showToast(text) {
