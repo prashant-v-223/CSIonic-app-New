@@ -154,23 +154,20 @@ export class PortfolioViewPage implements OnInit {
             backgroundColor: grad,
             borderColor: 'rgba(43, 121, 121, 1)',
             borderCapStyle: 'butt',
+            borderWidth: 1,
             fill: true,
             tension: 0.5,
-            pointBorderColor: 'rgba(75,192,192,1)',
-            pointBackgroundColor: '#FFFFFF',
             pointRadius: 0,
-            pointHitRadius: 10,
-            pointBorderWidth: 0.5,
-            pointHoverBorderWidth: 5,
-            pointHoverRadius: 10,
-            pointHoverBackgroundColor: '#FFFFFF',
-            pointHoverBorderColor: 'rgba(43, 121, 121, 1)',
+            pointHoverRadius: 0,
             spanGaps: false,
           }
         ]
       },
       options: {
         plugins: {
+          tooltip: {
+            enabled: false
+          },
           legend: {
             display: false
           },
