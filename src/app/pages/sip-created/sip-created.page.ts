@@ -39,7 +39,7 @@ export class SipCreatedPage implements AfterViewInit {
   isShowingMandateEsign = false;
   eSignURL = '';
   browserFinishHandler: PluginListenerHandle;
-
+  showButton:boolean=true;
 
   constructor(
     private sipService: SIPService,
@@ -139,6 +139,7 @@ export class SipCreatedPage implements AfterViewInit {
   }
 
   shareSIP(){
+    this.showButton=false;
     Screenshot.take().then(async (ret: { base64: string }) => {
         console.log(ret.base64); // or `data:image/png;base64,${ret.base64}`
 
@@ -153,6 +154,8 @@ export class SipCreatedPage implements AfterViewInit {
           url: writeSecretFile.uri,
           dialogTitle: 'Prosppr',
         });
+        this.showButton=true;
+
         //this.socialSharing.shareViaWhatsApp(this.text, writeSecretFile.uri, this.link)
     });
   }
