@@ -1,8 +1,8 @@
 <div *ngFor="let coin of coins; index as i" class="coinTag mr-2">
-  <ion-img class="coin-icon" *ngIf="coin?.currencyId?.icon?.key && !coin?.icon?.key"
-    src="{{ coin?.currencyId?.icon?.url+'/'+coin?.currencyId?.icon?.key }}"></ion-img>
-  <ion-img class="coin-icon" *ngIf="!coin?.currencyId?.icon?.key && coin?.icon?.key"
-    src="{{ coin?.icon?.url+'/'+coin?.icon?.key }}"></ion-img>
-  <ion-img class="coin-icon" *ngIf="!coin?.currencyId?.icon?.key && !coin?.icon?.key"
+  <ion-img class="coin-icon" *ngIf="coin?.currencyId?.icon && !coin?.icon"
+    src="{{ coin?.currencyId?.icon }}"></ion-img>
+  <ion-img class="coin-icon" *ngIf="!coin?.currencyId?.icon && coin?.icon"
+    src="{{ coin?.icon }}"></ion-img>
+  <ion-img class="coin-icon" *ngIf="!coin?.currencyId?.icon && !coin?.icon"
     [src]="'assets/currency/bitcoin.svg'"></ion-img>
 </div>

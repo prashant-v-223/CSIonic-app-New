@@ -15,3 +15,4 @@
 
 - Start the app in android using `ionic capacitor run android -l --external`
 - This will start the Android Studio and once the process is finished, it can be started from there.
+- Command for generating resources `cordova-res android --skip-config --copy` link(https://capacitorjs.com/docs/guides/splash-screens-and-icons)
