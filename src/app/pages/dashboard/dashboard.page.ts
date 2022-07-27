@@ -4,8 +4,6 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
 import { NavController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -28,8 +26,7 @@ export class DashboardPage implements OnInit {
     private userService: UserService,
     private navCtrl: NavController,
     private configurationService: ConfigurationService,
-    private router:Router,
-    private socialSharing: SocialSharing
+    private router:Router
   ) {
     this.user = this.userService.getUserFromStorage();
   }
@@ -46,10 +43,6 @@ export class DashboardPage implements OnInit {
     await this.getPackages();
     await this.getUserInfo();
     await this.getPortfolioDetails();
-  }
-
-  ShareWhatsapp(){
-    this.socialSharing.shareViaWhatsApp(this.text, this.imgurl, this.link)
   }
 
   async getPackages() {

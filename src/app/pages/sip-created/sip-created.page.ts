@@ -13,6 +13,9 @@ import { COPY } from 'src/app/shared/helper/const';
 import { SIPService, SIPStatus } from 'src/app/shared/services/sip.service';
 import { UserService } from 'src/app/shared/services/user.service';
 import { PluginListenerHandle } from '@capacitor/core';
+import { Screenshot } from 'capacitor-screenshot';
+import { Filesystem, Directory, Encoding } from '@capacitor/filesystem';
+import { Share } from '@capacitor/share';
 
 declare var Digio: any;
 @Component({
@@ -133,5 +136,24 @@ export class SipCreatedPage implements AfterViewInit {
 
   onBackHomeClick() {
     this.modalController.dismiss(null, '', 'SuccessModal');
+  }
+
+  shareSIP(){
+    Screenshot.take().then(async (ret: { base64: string }) => {
+        console.log(ret.base64); // or `data:image/png;base64,${ret.base64}`
+
+        const writeSecretFile = await Filesystem.writeFile({
+          path: 'prosppr/newSip.png',
+          data: `data:image/png;base64,${ret.base64}`,
+          directory: Directory.Documents,
+        });
+        await Share.share({
+          title: 'Prosppr SIP',
+          text: 'Hi I started '+this.sipData.package.name+' SIP',
+          url: writeSecretFile.uri,
+          dialogTitle: 'Prosppr',
+        });
+        //this.socialSharing.shareViaWhatsApp(this.text, writeSecretFile.uri, this.link)
+    });
   }
 }
