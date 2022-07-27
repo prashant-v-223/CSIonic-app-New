@@ -88,15 +88,8 @@ export class PackageCardComponent implements OnInit, OnChanges {
             borderWidth: 1,
             fill: true,
             tension: 0.5,
-            pointBorderColor: 'rgba(75,192,192,1)',
-            pointBackgroundColor: '#FFFFFF',
             pointRadius: 0,
-            pointHitRadius: 5,
-            pointBorderWidth: 0.7,
-            pointHoverBorderWidth: 5,
-            pointHoverRadius: 6,
-            pointHoverBackgroundColor: '#FFFFFF',
-            pointHoverBorderColor: 'rgba(43, 121, 121, 1)',
+            pointHoverRadius: 0,
             spanGaps: false,
           }
         ]
@@ -110,6 +103,9 @@ export class PackageCardComponent implements OnInit, OnChanges {
           }
         },
         plugins: {
+          tooltip: {
+            enabled: false
+          },
           legend: {
             display: false
           },
