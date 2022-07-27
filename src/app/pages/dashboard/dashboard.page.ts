@@ -4,7 +4,6 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
 import { NavController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { Screenshot } from 'capacitor-screenshot';
 
 @Component({
   selector: 'app-dashboard',
@@ -113,10 +112,3 @@ export class DashboardPage implements OnInit {
 function output() {
   throw new Error('Function not implemented.');
 }
-
-function screenshot() {
-  Screenshot.take().then((ret: { base64: string }) => {
-    console.log(ret.base64);
-  });
-}
-

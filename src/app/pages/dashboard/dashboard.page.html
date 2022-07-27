@@ -10,7 +10,6 @@
 <ion-content class="dashboard">
   <ion-list class="ion-list">
     <h1 class="userName ion-text-capitalize mt-1">Hello, {{ user.firstName }}!</h1>
-    <button (click)="screenshot()">Test</button>
     <p class="userInfo">Invest more to earn more, check out your portfolio.</p>
     <div *ngIf="!showPortfolioLoader else loadingTmplt">
       <ion-col size="12" class="p-0 myPortfolio">
