@@ -4,7 +4,6 @@ import { UserService } from 'src/app/shared/services/user.service';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
 import { NavController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.page.html',
@@ -27,15 +26,15 @@ export class DashboardPage implements OnInit {
     private userService: UserService,
     private navCtrl: NavController,
     private configurationService: ConfigurationService,
-    private router: Router
+    private router:Router
   ) {
     this.user = this.userService.getUserFromStorage();
   }
 
   async ngOnInit() {
   }
-
-  async ionViewWillEnter() {
+  async ionViewWillEnter()
+  {
     await this.getPackages();
     await this.getUserInfo();
     await this.getPortfolioDetails();
