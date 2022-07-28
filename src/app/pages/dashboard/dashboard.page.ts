@@ -33,11 +33,6 @@ export class DashboardPage implements OnInit {
 
   async ngOnInit() {
   }
-
-  text: string='Flamenco'
-  imgurl:string= 'https://images.pexels.com/photos/358457/pexels-photo-358457.jpeg?auto=compress&cs=tinysrgb&w=1600'
-  link: string='https://google.com'
-
   async ionViewWillEnter()
   {
     await this.getPackages();
