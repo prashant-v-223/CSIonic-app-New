@@ -8,16 +8,23 @@ import { Browser } from '@capacitor/browser';
 })
 export class SuccessFailScreenPage implements OnInit {
   screenShow: string = 'success';
-  showLoader = false;
+  // showLoader = false;
   redirectURL: string = '';
+  pagetype : string = '';
   @Input() transactionStatus;
   @Input() transactionType;
   @Input() transactionAmount;
+  @Input() page;
 
   constructor(private modalController: ModalController) { }
 
   ngOnInit() {
     this.screenShow = 'success';
+    if (this.page == 'sip') {
+      this.pagetype = 'sip';
+    } else {
+      this.pagetype = 'payment';
+    }
   }
 
   async ngAfterViewInit() {
@@ -34,7 +41,6 @@ export class SuccessFailScreenPage implements OnInit {
     else {
       this.redirectURL = 'withdrawal-amount'
     }
-
   }
 
   handleFooterButtonClick() {

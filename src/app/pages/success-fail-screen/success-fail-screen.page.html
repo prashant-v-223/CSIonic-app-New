@@ -8,17 +8,21 @@
               src="../../../assets/sip-created.png"></ion-img>
           </div>
         </ion-col>
-        <ion-col class="mt-1 mb-1 text-center" size="12" size-md>
+        <ion-col class="mt-1 mb-1 text-center" size="12" size-md *ngIf="pagetype=='payment'">
           <h2 class="text-theme text-center f-Lexend">Congratulations</h2>
           <span class="font-14 f-Lexend font-weight-400 text-muted-custom">We received your {{ transactionType }}
             request of {{ transactionAmount }}.</span>
           <span class="font-14 f-Lexend font-weight-400 text-muted-custom"> Your {{ transactionType }} request is
             in-progress.</span>
         </ion-col>
+        <ion-col class="mt-1 mb-1 text-center" size="12" size-md *ngIf="pagetype=='sip'">
+          <h2 class="text-theme text-center f-Lexend">Congratulations</h2>
+          <span class="font-14 f-Lexend font-weight-400 text-muted-custom">Your SIP successfully withdrawn.</span>
+        </ion-col>
       </ion-row>
     </ion-grid>
   </ion-list>
-  <app-loading *ngIf="showLoader"></app-loading>
+  <!-- <app-loading *ngIf="showLoader"></app-loading> -->
 </ion-content>
 <ion-content class="transaction-fail" *ngIf="screenShow=='fail'">
   <ion-list class="ion-list">
@@ -29,16 +33,21 @@
             <ion-img class="w-75 transaction-fail-image" src="../../../assets/Wrong-PNG.png"></ion-img>
           </div>
         </ion-col>
-        <ion-col class="mt-1 mb-1 text-center" size="12" size-md>
+        <ion-col class="mt-1 mb-1 text-center" size="12" size-md *ngIf="pagetype=='payment'">
           <h2 class="text-danger text-center f-Lexend">Transaction Failed!</h2>
           <span class="font-12 f-Lexend font-weight-400 text-muted-custom">There was a problem while you generating {{
             transactionType }} request. Please try again.</span>
+        </ion-col>
+        <ion-col class="mt-1 mb-1 text-center" size="12" size-md *ngIf="pagetype=='sip'">
+          <h2 class="text-danger text-center f-Lexend">Transaction Failed!</h2>
+          <span class="font-12 f-Lexend font-weight-400 text-muted-custom">There was a problem while you generating {{
+            transactionType }} SIP request. Please try again.</span>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-list>
 
-  <app-loading *ngIf="showLoader"></app-loading>
+  <!-- <app-loading *ngIf="showLoader"></app-loading> -->
 </ion-content>
 
 <!-- Footer Section Start -->
