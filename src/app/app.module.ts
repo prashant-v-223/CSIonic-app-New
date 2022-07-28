@@ -37,7 +37,7 @@ Amplify.configure({
   ],
   providers: [
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
-    ApiConfiguration
+    ApiConfiguration,
     AppVersion,
     {
       provide: RouteReuseStrategy,
