@@ -40,6 +40,7 @@ export class SipCreatedPage implements AfterViewInit {
   eSignURL = '';
   browserFinishHandler: PluginListenerHandle;
   showButton:boolean=true;
+  packagename = '';
 
   constructor(
     private sipService: SIPService,
@@ -50,6 +51,7 @@ export class SipCreatedPage implements AfterViewInit {
     this.user = this.userService.getUserFromStorage();
     this.sipData = this.sipService.getSIPData();
     this.coins = this.sipData.package.coins.map((coin) => coin.currencyId);
+    this.packagename = this.sipData.package.name;
   }
 
   async ngAfterViewInit() {
