@@ -34,7 +34,7 @@
               </ion-text>
             </ion-col>
             <ion-col size="7" size-md>
-              <ion-input type="text" onPaste="return false" onCopy="return false" onCut="return false" autocomplete=off
+              <ion-input type="number" min="0" onPaste="return false" onCopy="return false" onCut="return false" autocomplete=off
                 #planAmount placeholder="Type Amount" (keypress)="numbersOnly($event)" value="{{ amount }}"
                 (keyup)="setAmount(planAmount.value)"></ion-input>
             </ion-col>

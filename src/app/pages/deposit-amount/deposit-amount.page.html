@@ -34,7 +34,7 @@
                       </ion-text>
                     </ion-col>
                     <ion-col size="7" size-md>
-                      <ion-input type="text" onPaste="return false" onCopy="return false" onCut="return false"
+                      <ion-input type="number" min="0" onPaste="return false" onCopy="return false" onCut="return false"
                         autocomplete=off #depostiAmount placeholder="Type Amount" (keypress)="numbersOnly($event)"
                         value="{{ amount }}" (keyup)="setAmount(depostiAmount.value)"></ion-input>
                     </ion-col>
@@ -130,7 +130,7 @@
               <ion-col size="12" class="p-0" size-md>
                 <ion-item class="customForm">
                   <ion-label position="stacked">UTR No. / Reference No.</ion-label>
-                  <ion-input type="text" placeholder="Enter UTR No. / Reference No." formControlName="utrNumber">
+                  <ion-input type="number" min="0" placeholder="Enter UTR No. / Reference No." formControlName="utrNumber">
                   </ion-input>
                   <span class="font-14 text-danger" [errorShow]>{{ errorResponse.error }}</span>
                 </ion-item>

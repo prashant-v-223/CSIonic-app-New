@@ -30,7 +30,7 @@
 
             <ion-item class="customForm">
               <ion-label position="stacked">BANK ACCOUNT NUMBER</ion-label>
-              <ion-input placeholder="Type here" formControlName="accountNumber"></ion-input>
+              <ion-input type="number" min="0" placeholder="Type here" formControlName="accountNumber"></ion-input>
             </ion-item>
             <div class="error-message"
               *ngIf="bankDetailsForm.controls.accountNumber.touched && !bankDetailsForm.controls.accountNumber.errors?.required && bankDetailsForm.controls.accountNumber.errors?.pattern">
