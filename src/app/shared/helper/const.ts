@@ -33,12 +33,11 @@ export const COPY: any = {
 };
 
 export const BANK_ACCOUNT_TYPE = [
-  { label: "Current account", value: "current" },
-  { label: "Savings account", value: "savings" },
+  { label: "Saving account", value: "savings" },
   { label: "Salary account", value: "salary" },
+  { label: "Current account", value: "current" },
   { label: "Fixed deposit account", value: "fixed_deposit" },
   { label: "Recurring deposit account", value: "recurring_deposit" },
-  { label: "NRI accounts", value: "NRI" },
 ];
 
 export enum DocumentTypeEnum {
