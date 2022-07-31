@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { Browser } from '@capacitor/browser';
 import { NavController, ToastController } from '@ionic/angular';
 import { Auth } from 'aws-amplify';
 import { COPY } from 'src/app/shared/helper/const';
@@ -30,10 +31,10 @@ export class SignUpPage {
   }
 
   signUpForm = new FormGroup({
-    username: new FormControl(null, [Validators.required, Validators.pattern('^[A-Za-z0-9_@.]+'),Validators.email]),
+    username: new FormControl(null, [Validators.required, Validators.pattern('^[A-Za-z0-9_@.]+'), Validators.email]),
     password: new FormControl(null, [Validators.required, passwordValidator]),
-    given_name: new FormControl(null,[ Validators.required, Validators.pattern('^[a-zA-Z]+')]),
-    family_name: new FormControl(null, [ Validators.required, Validators.pattern('^[a-zA-Z]+')]),
+    given_name: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+')]),
+    family_name: new FormControl(null, [Validators.required, Validators.pattern('^[a-zA-Z]+')]),
     phone_number_country_code: new FormControl('+91', Validators.required),
     phone_number: new FormControl(null, [
       Validators.required,
@@ -45,7 +46,7 @@ export class SignUpPage {
   constructor(
     private navCtrl: NavController,
     private toastController: ToastController
-  ) {}
+  ) { }
 
   async signUp() {
     if (this.signUpForm.invalid) return;
@@ -84,5 +85,9 @@ export class SignUpPage {
       this.isLoading = false;
       this.signUpForm.enable();
     }
+  }
+
+  browsePolicy() {
+    Browser.open({ url: 'https://prosppr.com/privacy.html' });
   }
 }
