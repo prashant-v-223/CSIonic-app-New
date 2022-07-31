@@ -9,7 +9,6 @@ import { Auth } from 'aws-amplify';
 
 import { COPY } from 'src/app/shared/helper/const';
 import { UserService } from 'src/app/shared/services/user.service';
-import { passwordRequirementMessage, passwordValidator } from 'src/app/shared/validators/password-validator';
 import { ConfigurationService } from 'src/app/shared/services/configuration.service';
 import { NotificationService } from 'src/app/shared/services/notification.service';
 import { Capacitor } from '@capacitor/core';
@@ -24,14 +23,13 @@ export class SignInPage implements OnInit {
   earlyAccessDetails: [] = [];
   passwordType: string = 'password';
   passwordIcon: string = 'eye-off';
-  token : any = '';
+  token: any = '';
   errorResp: string = '';
   errorShow: boolean = false;
-  readonly passwordRequirementMessage = passwordRequirementMessage;
 
   signInForm = new FormGroup({
     username: new FormControl('', [Validators.required, Validators.pattern('^[A-Za-z0-9_@.]+'), Validators.email]),
-    password: new FormControl('', [Validators.required, passwordValidator]),
+    password: new FormControl('', [Validators.required]),
   });
 
   constructor(
@@ -96,12 +94,6 @@ export class SignInPage implements OnInit {
 
       this.errorShow = true;
       this.errorResp = e.message;
-      // const toast = await this.toastController.create({
-      //   message: e.message,
-      //   duration: 2000,
-      //   cssClass: 'ion-text-center',
-      // });
-      // toast.present();
     } finally {
       this.isLoading = false;
       this.signInForm.enable();

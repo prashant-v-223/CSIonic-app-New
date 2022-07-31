@@ -25,15 +25,12 @@
           <li>Enter valid email address</li>
         </ul>
       </div>
-      
+
       <ion-label class="input" position="stacked">Password</ion-label>
       <ion-item class="customForm">
         <ion-input [type]="passwordType" placeholder="Password" formControlName="password"></ion-input>
         <ion-icon item-end [name]="passwordIcon" class="passwordIcon" (click)='hideShowPassword()'></ion-icon>
       </ion-item>
-      <div class="error-message" [innerHTML]="passwordRequirementMessage"
-        *ngIf="signInForm.get('password').dirty && !signInForm.get('password').errors?.required && signInForm.get('password').errors?.password">
-      </div>
 
       <ion-list class="p-0 text-right">
         <a routerLink="/forgot-password" class="link-dark font-weight-600"> Forgot Password?</a>
