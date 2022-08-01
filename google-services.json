@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "694396700364",
+    "project_id": "dev-prosppr",
+    "storage_bucket": "dev-prosppr.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:694396700364:android:c1bc8ea4fd4583cde36469",
+        "android_client_info": {
+          "package_name": "com.coinstation.prosppr"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "694396700364-54fk4aaae55cqv6k5m6voge0ms5ahf3h.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCH55ZA4pG0kLS6XyxfDnF3yGERXEWpmOk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "694396700364-54fk4aaae55cqv6k5m6voge0ms5ahf3h.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

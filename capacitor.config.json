@@ -1,0 +1,25 @@
+{
+  "appId": "com.coinstation.prosppr",
+  "appName": "Prosppr",
+  "webDir": "www",
+  "version": "0.0.2",
+  "bundledWebRuntime": false,
+  "plugins": {
+    "SplashScreen": {
+      "launchAutoHide": false,
+      "backgroundColor": "#006a59",
+      "showSpinner": false,
+      "androidScaleType": "CENTER_CROP"
+    },
+    "PushNotifications": {
+      "presentationOptions": [
+        "badge",
+        "sound",
+        "alert"
+      ]
+    }
+  },
+  "server": {
+    "cleartext": true
+  }
+}
