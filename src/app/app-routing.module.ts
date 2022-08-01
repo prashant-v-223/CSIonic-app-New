@@ -72,12 +72,18 @@ const routes: Routes = [
   {
     path: 'packages/:id',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./pages/portfolio-view/portfolio-view.module').then(m => m.PortfolioViewPageModule)
+    loadChildren: () =>
+      import('./pages/portfolio-view/portfolio-view.module').then(
+        (m) => m.PortfolioViewPageModule
+      ),
   },
   {
     path: 'sip/:id',
     canActivate: [AuthGuard],
-    loadChildren: () => import('./pages/portfolio-view/portfolio-view.module').then(m => m.PortfolioViewPageModule)
+    loadChildren: () =>
+      import('./pages/portfolio-view/portfolio-view.module').then(
+        (m) => m.PortfolioViewPageModule
+      ),
   },
   {
     path: 'popular-coins',
@@ -143,70 +149,106 @@ const routes: Routes = [
   },
   {
     path: 'bank-details',
-    loadChildren: () => import('./pages/bank-details/bank-details.module').then(m => m.BankDetailsPageModule)
+    loadChildren: () =>
+      import('./pages/bank-details/bank-details.module').then(
+        (m) => m.BankDetailsPageModule
+      ),
   },
   {
     path: 'kyc-document',
-    loadChildren: () => import('./pages/kyc-document/kyc-document.module').then(m => m.KYCDocumentPageModule)
+    loadChildren: () =>
+      import('./pages/kyc-document/kyc-document.module').then(
+        (m) => m.KYCDocumentPageModule
+      ),
   },
   {
     path: 'deposit-amount',
-    loadChildren: () => import('./pages/deposit-amount/deposit-amount.module').then(m => m.DepositAmountModule)
+    loadChildren: () =>
+      import('./pages/deposit-amount/deposit-amount.module').then(
+        (m) => m.DepositAmountModule
+      ),
   },
   {
     path: 'withdrawal-amount',
-    loadChildren: () => import('./pages/withdrawal-amount/withdrawal-amount.module').then(m => m.WithdrawalAmountModule)
+    loadChildren: () =>
+      import('./pages/withdrawal-amount/withdrawal-amount.module').then(
+        (m) => m.WithdrawalAmountModule
+      ),
   },
   {
     path: 'referral',
-    loadChildren: () => import('./pages/referral/referral.module').then(m => m.ReferralModule)
+    loadChildren: () =>
+      import('./pages/referral/referral.module').then((m) => m.ReferralModule),
   },
   {
     path: 'early-access',
-    loadChildren: () => import('./pages/early-access/early-access.module').then(m => m.EarlyAccessModule)
+    loadChildren: () =>
+      import('./pages/early-access/early-access.module').then(
+        (m) => m.EarlyAccessModule
+      ),
   },
   {
     path: 'support-model',
-    loadChildren: () => import('./pages/common-design/support-model/support-model.module').then(m => m.SupportModelPageModule)
+    loadChildren: () =>
+      import('./pages/common-design/support-model/support-model.module').then(
+        (m) => m.SupportModelPageModule
+      ),
   },
   {
     path: 'support',
-    loadChildren: () => import('./pages/support/support.module').then(m => m.SupportPageModule)
+    loadChildren: () =>
+      import('./pages/support/support.module').then((m) => m.SupportPageModule),
   },
   {
     path: 'maintenance-mode',
-    loadChildren: () => import('./pages/maintenance-mode/maintenance-mode.module').then(m => m.MaintenanceModePageModule),
+    loadChildren: () =>
+      import('./pages/maintenance-mode/maintenance-mode.module').then(
+        (m) => m.MaintenanceModePageModule
+      ),
     canActivate: [NonAuthGuard],
   },
   {
     path: 'force-app-update',
-    loadChildren: () => import('./pages/force-app-update/force-app-update.module').then(m => m.ForceAppUpdatePageModule),
+    loadChildren: () =>
+      import('./pages/force-app-update/force-app-update.module').then(
+        (m) => m.ForceAppUpdatePageModule
+      ),
     canActivate: [NonAuthGuard],
   },
   {
     path: 'feedback',
-    loadChildren: () => import('./pages/feedback/feedback.module').then(m => m.FeedbackPageModule)
+    loadChildren: () =>
+      import('./pages/feedback/feedback.module').then(
+        (m) => m.FeedbackPageModule
+      ),
   },
   {
     path: 'notification',
-    loadChildren: () => import('./pages/notification/notification.module').then(m => m.NotificationPageModule)
+    loadChildren: () =>
+      import('./pages/notification/notification.module').then(
+        (m) => m.NotificationPageModule
+      ),
   },
   {
     path: 'onboard',
-    loadChildren: () => import('./pages/onboard/onboard.module').then(m => m.OnboardPageModule),
+    loadChildren: () =>
+      import('./pages/onboard/onboard.module').then((m) => m.OnboardPageModule),
     canActivate: [NonAuthGuard],
   },
   {
     path: 'sip-transaction-list/:id',
-    loadChildren: () => import('./pages/sip-transaction-list/sip-transaction-list.module').then(m => m.SipTransactionListPageModule)
+    loadChildren: () =>
+      import('./pages/sip-transaction-list/sip-transaction-list.module').then(
+        (m) => m.SipTransactionListPageModule
+      ),
   },
   {
     path: 'success-fail-screen',
-    loadChildren: () => import('./pages/success-fail-screen/success-fail-screen.module').then(m => m.SuccessFailScreenPageModule)
-  }
-
-
-
+    loadChildren: () =>
+      import('./pages/success-fail-screen/success-fail-screen.module').then(
+        (m) => m.SuccessFailScreenPageModule
+      ),
+  },
 ];
 
 @NgModule({
@@ -215,5 +257,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-
-export class AppRoutingModule { }
+export class AppRoutingModule {}
